@@ -1,3 +1,128 @@
 2016-02-12 15:14:05 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-02-12 15:21:18 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-02-12 15:32:08 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-02-12 16:32:38 Error: [Cake\Controller\Exception\MissingActionException] Action PagesController::test() could not be found, or is not accessible.
+Exception Attributes: array (
+  'controller' => 'PagesController',
+  'action' => 'test',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Request URL: /Product_tracker/
+Stack Trace:
+#0 C:\wamp\www\Product_tracker\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#1 C:\wamp\www\Product_tracker\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\PagesController))
+#2 C:\wamp\www\Product_tracker\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#3 C:\wamp\www\Product_tracker\index.php(16): require('C:\\wamp\\www\\Pro...')
+#4 {main}
+
+
+2016-02-19 15:21:14 Error: Fatal Error (1): Call to undefined method App\Model\Table\ProductsTable::defaultConnectionName() in [C:\wamp\www\Product_tracker\vendor\cakephp\cakephp\src\ORM\Locator\TableLocator.php, line 164]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 99
+[main] - [internal], line ??
+
+
+
+2016-02-19 15:21:14 Error: [Cake\Error\FatalErrorException] Call to undefined method App\Model\Table\ProductsTable::defaultConnectionName()
+Request URL: /Product_tracker/
+Stack Trace:
+#0 C:\wamp\www\Product_tracker\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(99): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to undefin...', 'C:\\wamp\\www\\Pro...', 164)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-02-19 15:33:58 Error: Fatal Error (4): syntax error, unexpected ')', expecting '(' in [C:\wamp\www\Product_tracker\src\Template\Products\product.ctp, line 1]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 99
+[main] - [internal], line ??
+
+
+
+2016-02-19 15:33:58 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ')', expecting '('
+Request URL: /Product_tracker/
+Stack Trace:
+#0 C:\wamp\www\Product_tracker\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(99): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\Pro...', 1)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-02-19 15:36:30 Error: Fatal Error (4): syntax error, unexpected ')', expecting '(' in [C:\wamp\www\Product_tracker\src\Template\Products\product.ctp, line 1]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 99
+[main] - [internal], line ??
+
+
+
+2016-02-19 15:36:31 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ')', expecting '('
+Request URL: /Product_tracker/
+Stack Trace:
+#0 C:\wamp\www\Product_tracker\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(99): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\Pro...', 1)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-02-19 15:36:41 Error: Fatal Error (4): syntax error, unexpected ')', expecting '(' in [C:\wamp\www\Product_tracker\src\Template\Products\product.ctp, line 1]
+Trace:
+Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
+Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 99
+[main] - [internal], line ??
+
+
+
+2016-02-19 15:36:42 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ')', expecting '('
+Request URL: /Product_tracker/
+Stack Trace:
+#0 C:\wamp\www\Product_tracker\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(99): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\Pro...', 1)
+#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
+#2 {main}
+
+
+2016-02-19 15:39:55 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\wamp\www\Product_tracker\src\Template\Products\product.ctp, line 1]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 147
+include - APP/Template\Products\product.ctp, line 1
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::render() - CORE\src\View\View.php, line 587
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+require - ROOT\webroot\index.php, line 37
+[main] - ROOT\index.php, line 16
+
+
+
+2016-02-19 15:40:54 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\wamp\www\Product_tracker\src\Template\Products\product.ctp, line 1]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 147
+include - APP/Template\Products\product.ctp, line 1
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::render() - CORE\src\View\View.php, line 587
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+require - ROOT\webroot\index.php, line 37
+[main] - ROOT\index.php, line 16
+
+
+
+2016-02-19 15:41:04 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\wamp\www\Product_tracker\src\Template\Products\product.ctp, line 1]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 147
+include - APP/Template\Products\product.ctp, line 1
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
+Cake\View\View::_render() - CORE\src\View\View.php, line 952
+Cake\View\View::render() - CORE\src\View\View.php, line 587
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+require - ROOT\webroot\index.php, line 37
+[main] - ROOT\index.php, line 16
+
+
+
