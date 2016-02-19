@@ -47,7 +47,9 @@ Router::scope('/', function ($routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Products', 'action' => 'product', 'product']);
+    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+
+    $routes->connect('/product', ['controller' => 'Products', 'action' => 'product', 'product']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.

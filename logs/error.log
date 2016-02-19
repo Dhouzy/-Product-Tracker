@@ -1,128 +1,34 @@
 2016-02-12 15:14:05 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-02-12 15:21:18 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2016-02-12 15:32:08 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
-2016-02-12 16:32:38 Error: [Cake\Controller\Exception\MissingActionException] Action PagesController::test() could not be found, or is not accessible.
-Exception Attributes: array (
-  'controller' => 'PagesController',
-  'action' => 'test',
-  'prefix' => '',
-  'plugin' => NULL,
-)
+2016-02-19 17:56:45 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-02-19 20:28:22 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-02-19 20:28:22 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'producttracker.products' doesn't exist
 Request URL: /Product_tracker/
 Stack Trace:
-#0 C:\wamp\www\Product_tracker\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
-#1 C:\wamp\www\Product_tracker\vendor\cakephp\cakephp\src\Routing\Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\PagesController))
-#2 C:\wamp\www\Product_tracker\webroot\index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
-#3 C:\wamp\www\Product_tracker\index.php(16): require('C:\\wamp\\www\\Pro...')
-#4 {main}
+#0 /var/www/Product_tracker/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'products', Array, Object(Cake\Database\Schema\Table))
+#1 /var/www/Product_tracker/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(64): Cake\Database\Schema\Collection->describe('products', Array)
+#2 /var/www/Product_tracker/vendor/cakephp/cakephp/src/ORM/Table.php(429): Cake\Database\Schema\CachedCollection->describe('products')
+#3 /var/www/Product_tracker/vendor/cakephp/cakephp/src/ORM/Query.php(211): Cake\ORM\Table->schema()
+#4 /var/www/Product_tracker/vendor/cakephp/cakephp/src/ORM/Query.php(169): Cake\ORM\Query->addDefaultTypes(Object(App\Model\Table\ProductsTable))
+#5 /var/www/Product_tracker/vendor/cakephp/cakephp/src/ORM/Table.php(1238): Cake\ORM\Query->__construct(Object(Cake\Database\Connection), Object(App\Model\Table\ProductsTable))
+#6 /var/www/Product_tracker/vendor/cakephp/cakephp/src/ORM/Table.php(941): Cake\ORM\Table->query()
+#7 /var/www/Product_tracker/src/Controller/ProductsController.php(30): Cake\ORM\Table->find('all')
+#8 [internal function]: App\Controller\ProductsController->product('product')
+#9 /var/www/Product_tracker/vendor/cakephp/cakephp/src/Controller/Controller.php(429): call_user_func_array(Array, Array)
+#10 /var/www/Product_tracker/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#11 /var/www/Product_tracker/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\ProductsController))
+#12 /var/www/Product_tracker/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#13 /var/www/Product_tracker/index.php(16): require('/var/www/Produc...')
+#14 {main}
 
 
-2016-02-19 15:21:14 Error: Fatal Error (1): Call to undefined method App\Model\Table\ProductsTable::defaultConnectionName() in [C:\wamp\www\Product_tracker\vendor\cakephp\cakephp\src\ORM\Locator\TableLocator.php, line 164]
-Trace:
-Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
-Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 99
-[main] - [internal], line ??
-
-
-
-2016-02-19 15:21:14 Error: [Cake\Error\FatalErrorException] Call to undefined method App\Model\Table\ProductsTable::defaultConnectionName()
-Request URL: /Product_tracker/
-Stack Trace:
-#0 C:\wamp\www\Product_tracker\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(99): Cake\Error\BaseErrorHandler->handleFatalError(1, 'Call to undefin...', 'C:\\wamp\\www\\Pro...', 164)
-#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
-#2 {main}
-
-
-2016-02-19 15:33:58 Error: Fatal Error (4): syntax error, unexpected ')', expecting '(' in [C:\wamp\www\Product_tracker\src\Template\Products\product.ctp, line 1]
-Trace:
-Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
-Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 99
-[main] - [internal], line ??
-
-
-
-2016-02-19 15:33:58 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ')', expecting '('
-Request URL: /Product_tracker/
-Stack Trace:
-#0 C:\wamp\www\Product_tracker\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(99): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\Pro...', 1)
-#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
-#2 {main}
-
-
-2016-02-19 15:36:30 Error: Fatal Error (4): syntax error, unexpected ')', expecting '(' in [C:\wamp\www\Product_tracker\src\Template\Products\product.ctp, line 1]
-Trace:
-Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
-Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 99
-[main] - [internal], line ??
-
-
-
-2016-02-19 15:36:31 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ')', expecting '('
-Request URL: /Product_tracker/
-Stack Trace:
-#0 C:\wamp\www\Product_tracker\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(99): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\Pro...', 1)
-#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
-#2 {main}
-
-
-2016-02-19 15:36:41 Error: Fatal Error (4): syntax error, unexpected ')', expecting '(' in [C:\wamp\www\Product_tracker\src\Template\Products\product.ctp, line 1]
-Trace:
-Cake\Error\BaseErrorHandler::handleFatalError() - CORE\src\Error\BaseErrorHandler.php, line 216
-Cake\Error\BaseErrorHandler::Cake\Error\{closure}() - CORE\src\Error\BaseErrorHandler.php, line 99
-[main] - [internal], line ??
-
-
-
-2016-02-19 15:36:42 Error: [Cake\Error\FatalErrorException] syntax error, unexpected ')', expecting '('
-Request URL: /Product_tracker/
-Stack Trace:
-#0 C:\wamp\www\Product_tracker\vendor\cakephp\cakephp\src\Error\BaseErrorHandler.php(99): Cake\Error\BaseErrorHandler->handleFatalError(4, 'syntax error, u...', 'C:\\wamp\\www\\Pro...', 1)
-#1 [internal function]: Cake\Error\BaseErrorHandler->Cake\Error\{closure}()
-#2 {main}
-
-
-2016-02-19 15:39:55 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\wamp\www\Product_tracker\src\Template\Products\product.ctp, line 1]
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 147
-include - APP/Template\Products\product.ctp, line 1
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
-Cake\View\View::_render() - CORE\src\View\View.php, line 952
-Cake\View\View::render() - CORE\src\View\View.php, line 587
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
-Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
-Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
-require - ROOT\webroot\index.php, line 37
-[main] - ROOT\index.php, line 16
-
-
-
-2016-02-19 15:40:54 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\wamp\www\Product_tracker\src\Template\Products\product.ctp, line 1]
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 147
-include - APP/Template\Products\product.ctp, line 1
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
-Cake\View\View::_render() - CORE\src\View\View.php, line 952
-Cake\View\View::render() - CORE\src\View\View.php, line 587
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
-Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
-Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
-require - ROOT\webroot\index.php, line 37
-[main] - ROOT\index.php, line 16
-
-
-
-2016-02-19 15:41:04 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\wamp\www\Product_tracker\src\Template\Products\product.ctp, line 1]
-Trace:
-Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 147
-include - APP/Template\Products\product.ctp, line 1
-Cake\View\View::_evaluate() - CORE\src\View\View.php, line 992
-Cake\View\View::_render() - CORE\src\View\View.php, line 952
-Cake\View\View::render() - CORE\src\View\View.php, line 587
-Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
-Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
-Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
-require - ROOT\webroot\index.php, line 37
-[main] - ROOT\index.php, line 16
-
-
-
+2016-02-19 20:40:17 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-02-19 20:40:24 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-02-19 20:40:49 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-02-19 20:41:25 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-02-19 20:41:27 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-02-19 20:41:28 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-02-19 20:42:13 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-02-19 20:43:52 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2016-02-19 20:48:17 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
