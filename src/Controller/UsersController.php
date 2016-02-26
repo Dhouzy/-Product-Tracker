@@ -10,6 +10,8 @@ namespace App\Controller;
 
 
 use App\Controller\AppController;
+use App\Model\Entity\User;
+use App\Model\Table\UsersTable;
 use Cake\Event\Event;
 
 class UsersController extends AppController
@@ -34,7 +36,7 @@ class UsersController extends AppController
 
     public function add()
     {
-        $user = $this->Users->newEntity();
+        $user = new User();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {

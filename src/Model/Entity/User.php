@@ -6,7 +6,7 @@
  * Time: 10:39 PM
  */
 
-namespace Model\Entity;
+namespace App\Model\Entity;
 
 
 use Cake\Auth\DefaultPasswordHasher;

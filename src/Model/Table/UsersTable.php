@@ -6,7 +6,7 @@
  * Time: 5:38 PM
  */
 
-namespace Model\Table;
+namespace App\Model\Table;
 
 
 use Cake\ORM\Table;
