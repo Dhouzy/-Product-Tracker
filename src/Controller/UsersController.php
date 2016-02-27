@@ -9,19 +9,12 @@
 namespace App\Controller;
 
 
-use App\Controller\AppController;
+
 use App\Model\Entity\User;
-use App\Model\Table\UsersTable;
 use Cake\Event\Event;
 
 class UsersController extends AppController
 {
-
-//    public function beforeFilter(Event $event)
-//    {
-//        parent::beforeFilter($event);
-//        $this->Auth->allow('add');
-//    }
 
     public function index()
     {
@@ -52,13 +45,13 @@ class UsersController extends AppController
     {
         parent::beforeFilter($event);
 
-//        $this->loadComponent('Auth', [
-//            'authenticate' => [
-//                'Form' => [
-//                    'fields' => ['email' => 'email', 'password' => 'password']
-//                ]
-//            ]
-//        ]);
+        $this->loadComponent('Auth', [
+            'authenticate' => [
+                'Form' => [
+                    'fields' => ['email' => 'email', 'password' => 'password']
+                ]
+            ]
+        ]);
 
         // Allow users to register and logout.
         // You should not add the "login" action to allow list. Doing so would

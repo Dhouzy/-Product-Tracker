@@ -11,11 +11,16 @@ namespace App\Controller;
 
 class IndexsController extends AppController
 {
+
+    public function initialize()
+    {
+        parent::initialize();
+
+        $this->loadComponent('Flash');
+    }
+
     public function index() {
         $this ->set(compact('posts'));
     }
 
-    public function login() {
-
-    }
 }
