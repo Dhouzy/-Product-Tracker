@@ -17,8 +17,14 @@ if($session == null){
         '/users/logout',
         ['class' => 'button', 'target' => '_blank']
     );
-
-}
+} ?>
+<br>
+<?php
+echo $this->Html->link(
+    'sign up',
+    '/users/add',
+    ['class' => 'button', 'target' => '_blank']
+);
 
 
 

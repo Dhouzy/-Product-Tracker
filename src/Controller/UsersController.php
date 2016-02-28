@@ -12,6 +12,7 @@ namespace App\Controller;
 
 use App\Model\Entity\User;
 use Cake\Event\Event;
+use Cake\Validation\Validation;
 
 class UsersController extends AppController
 {
@@ -44,15 +45,6 @@ class UsersController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-
-        $this->loadComponent('Auth', [
-            'authenticate' => [
-                'Form' => [
-                    'fields' => ['email' => 'email', 'password' => 'password']
-                ]
-            ]
-        ]);
-
         // Allow users to register and logout.
         // You should not add the "login" action to allow list. Doing so would
         // cause problems with normal functioning of AuthComponent.
@@ -62,6 +54,17 @@ class UsersController extends AppController
     public function login()
     {
         if ($this->request->is('post')) {
+            if (Validation::email($this->request->data['username'])) {
+                $this->Auth->config('authenticate', [
+                    'Form' => [
+                        'fields' => ['username' => 'email']
+                    ]
+                ]);
+                $this->Auth->constructAuthenticate();
+                $this->request->data['email'] = $this->request->data['username'];
+                unset($this->request->data['username']);
+            }
+
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
@@ -75,6 +78,4 @@ class UsersController extends AppController
     {
         return $this->redirect($this->Auth->logout());
     }
-
-
 }
