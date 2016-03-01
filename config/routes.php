@@ -51,6 +51,7 @@ Router::scope('/', function ($routes) {
     $routes->connect('/', ['controller' => 'Indexs', 'action' => 'index', 'index']);
     $routes->connect('/product', ['controller' => 'Products', 'action' => 'product', 'product']);
 
+
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
