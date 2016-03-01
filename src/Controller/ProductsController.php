@@ -10,7 +10,7 @@ namespace App\Controller;
 
 
 use Cake\Controller\Controller;
-use Model\ViewModel\ProductsViewModel;
+use App\Model\ViewModel\ProductViewModel;
 use Cake\ORM\TableRegistry;
 
 /**
@@ -28,17 +28,16 @@ class ProductsController extends Controller
 
     public function product()
     {
-
         $product = $this->getProductsViewmModel(1);
-        $nam = $product->__get("name");
-        $this->set('name',$nam);
+        $this->set(compact('product'));
     }
+
 
     private function getProductsViewmModel($id) {
         $companies = TableRegistry::get('Companies');
         $product = $this->Products->get($id);
         $company = $companies->get(1);
-        $product = new ProductsViewModel($product->name, $company->name, 10, $product->rating, $product->description );
+        $product = new ProductViewModel($product->name, $company->name, 10, $product->rating, $product->description );
         return $product;
     }
 

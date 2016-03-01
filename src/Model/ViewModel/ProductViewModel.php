@@ -6,10 +6,12 @@
  * Time: 09:11
  */
 
-namespace Model\ViewModel;
+namespace App\Model\ViewModel;
 
 
-class ProductsViewModel
+use App\Controller\ProductsController;
+
+class ProductViewModel
 {
 
     private $name;
@@ -40,10 +42,4 @@ class ProductsViewModel
             $this->$property = $value;
         }
     }
-
-    public function getName() {
-        return $this->name;
-    }
-
-
 }
