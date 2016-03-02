@@ -1,3 +1,6 @@
+### Amazon ###
+/config/amazon.php
+
 ### CakePHP template
 # CakePHP 3
 
@@ -26,6 +29,7 @@
 # Sensitive or high-churn files:
 .idea/dataSources.ids
 .idea/dataSources.xml
+.idea/dataSources.local.xml
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
