@@ -49,7 +49,7 @@ Router::scope('/', function ($routes) {
      */
 //    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
     $routes->connect('/', ['controller' => 'Homes', 'action' => 'home']);
-    $routes->connect('/search', ['controller' => 'Searches', 'action' => 'homeSearch']);
+    $routes->connect('/search', ['controller' => 'Homes', 'action' => 'home']);
     $routes->connect('/product', ['controller' => 'Products', 'action' => 'product', 'product']);
     $routes->connect('/home', ['controller' => 'Homes', 'action' => 'home']);
 

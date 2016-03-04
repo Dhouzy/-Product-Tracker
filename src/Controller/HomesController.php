@@ -13,7 +13,10 @@ class HomesController extends AppController
 {
 
     public function home() {
-        $this ->set(compact('posts'));
+        if ($this->request->is('post')) {
+            $received = $this->request->data;
+            $this->Flash->success(__('Your search for '.$received['search'].' returned no results.'));
+        }
     }
 
 }
