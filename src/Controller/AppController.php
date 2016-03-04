@@ -23,6 +23,7 @@ use Cake\Event\Event;
  * Add your application-wide methods in the class below, your controllers
  * will inherit them.
  *
+ * @property  Auth
  * @link http://book.cakephp.org/3.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller
@@ -76,5 +77,6 @@ class AppController extends Controller
     {
 //        $this->Auth->allow(['index', 'view', 'display']);
         $this->Auth->allow(['controller' => 'Index', 'action' => 'index']);
+        $this->Auth->allow(['controller' => 'Users', 'action' => 'profile']);
     }
 }

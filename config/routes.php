@@ -50,6 +50,8 @@ Router::scope('/', function ($routes) {
 //    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
     $routes->connect('/', ['controller' => 'Indexs', 'action' => 'index', 'index']);
     $routes->connect('/product', ['controller' => 'Products', 'action' => 'product', 'product']);
+    $routes->connect('/profile', ['controller' => 'Users', 'action' => 'profile', 'profile']);
+
 
 
     /**

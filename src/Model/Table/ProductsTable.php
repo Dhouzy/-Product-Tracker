@@ -18,5 +18,6 @@ class ProductsTable extends Table
     public function initialize(array $config)
     {
         $this->belongsTo('companies');
+        $this->entityClass('App\Model\Entity\Product');
     }
 }
