@@ -1,6 +1,8 @@
-
-    <h3>Name:<?php echo $product->name ?></h3>
-    <h3>CompanyName: <?php echo $product->companyName ?></h3>
-    <h3>Rating: <?php echo $product->rating ?></h3>
-    <h3>Description: <?php echo $product->description ?></h3>
-    <h3>Price: <?php echo $product->price .'$' ?></h3>
+<fieldset>
+    <h1><b><?= $product->name ?></b></h1>
+    <h4><?= $product->companyName ?></h4>
+    <h5>Rating: <?= $product->rating ?></h5>
+    <p>Description: <?= $product->description ?></p>
+    <h3><b><?= $product->price . '$' ?></b></h3>
+    <img src="<?= $product->imageLink ?>">
+</fieldset>

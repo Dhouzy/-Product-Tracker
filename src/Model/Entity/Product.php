@@ -13,6 +13,9 @@ use Cake\ORM\Entity;
 use Cake\ORM\TableRegistry;
 
 
+/**
+ * @property mixed company_id
+ */
 class Product extends Entity
 {
     public function _getCompanyName() {

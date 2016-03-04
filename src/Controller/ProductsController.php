@@ -35,7 +35,7 @@ class ProductsController extends Controller
 
     private function getProductsViewmModel($id) {
         $product = $this->Products->get($id);
-        $product = new ProductViewModel($product->name, $product->_getCompanyName(), 10, $product->rating, $product->description );
+        $product = new ProductViewModel($product->name, $product->_getCompanyName(), 10, $product->rating, $product->description, $product->image_link );
         return $product;
     }
 

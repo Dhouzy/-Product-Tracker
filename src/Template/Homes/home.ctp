@@ -7,8 +7,8 @@
         <?= $this->Form->button(__('Go')); ?>
         <?= $this->Form->end() ?>
     </div>
-    <?php $session = $this->request->session()->read('Auth.User.id'); ?>
-    <p>User logged in <?= $session ?></p>
+    <?php $session = $this->request->session()->read('Auth.User'); ?>
+    <p>User logged in:<br><?= '<b>Id:</b>'.$session['id'].'<br><b>Username:</b>'.$session['username'].'<br><b>email:</b>'.$session['email'] ?></p>
 
     <?php
     if ($session == null) {
