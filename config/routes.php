@@ -48,9 +48,10 @@ Router::scope('/', function ($routes) {
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
 //    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
-    $routes->connect('/', ['controller' => 'Indexs', 'action' => 'index', 'index']);
-    $routes->connect('/search', ['controller' => 'Searches', 'action' => 'search', 'search']);
+    $routes->connect('/', ['controller' => 'Homes', 'action' => 'home']);
+    $routes->connect('/search', ['controller' => 'Searches', 'action' => 'homeSearch']);
     $routes->connect('/product', ['controller' => 'Products', 'action' => 'product', 'product']);
+    $routes->connect('/home', ['controller' => 'Homes', 'action' => 'home']);
 
 
     /**

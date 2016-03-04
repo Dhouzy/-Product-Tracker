@@ -1,11 +1,9 @@
-<h1>Blog
-    Posts</h1>
+<h1>Blog Posts</h1>
 
 <?php
 $session = $this->request->session()->read('Auth.User.id');
 
 if($session == null){
-
     echo $this->Html->link(
         'login',
         ['controller' => 'Users', 'action' => 'login'],

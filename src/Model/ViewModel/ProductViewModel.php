@@ -8,9 +8,6 @@
 
 namespace App\Model\ViewModel;
 
-
-use App\Controller\ProductsController;
-
 class ProductViewModel
 {
 

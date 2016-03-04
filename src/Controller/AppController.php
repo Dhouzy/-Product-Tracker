@@ -46,13 +46,12 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
             'loginRedirect' => [
-                'controller' => 'Indexs',
-                'action' => 'index'
+                'controller' => 'Homes',
+                'action' => 'home'
             ],
             'logoutRedirect' => [
-                'controller' => 'Indexs',
-                'action' => 'index',
-                'home'
+                'controller' => 'Homes',
+                'action' => 'home'
             ]
         ]);
     }
@@ -75,6 +74,6 @@ class AppController extends Controller
     public function beforeFilter(Event $event)
     {
 //        $this->Auth->allow(['index', 'view', 'display']);
-        $this->Auth->allow(['controller' => 'Index', 'action' => 'index']);
+        $this->Auth->allow(['controller' => 'Homes', 'action' => 'home']);
     }
 }
