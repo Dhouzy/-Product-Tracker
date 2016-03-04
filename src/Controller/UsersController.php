@@ -11,7 +11,9 @@ namespace App\Controller;
 
 
 use App\Model\Entity\User;
+use App\Model\ViewModel\ProductViewModel;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 use Cake\Validation\Validation;
 
 class UsersController extends AppController
@@ -77,5 +79,10 @@ class UsersController extends AppController
     public function logout()
     {
         return $this->redirect($this->Auth->logout());
+    }
+
+    public function profile()
+    {
+
     }
 }
