@@ -8,7 +8,9 @@
 namespace App\Controller;
 //include('\var\www\Product_tracker\src\Controller\Component\AmazonHelper.php');
 
-class HomesController extends AppController
+use Cake\Controller\Controller;
+
+class HomesController extends Controller
 {
 
     public function home() {

@@ -47,12 +47,11 @@ Router::scope('/', function ($routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-//    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
-    $routes->connect('/', ['controller' => 'Indexs', 'action' => 'index', 'index']);
+//    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home'])
     $routes->connect('/product', ['controller' => 'Products', 'action' => 'product', 'product']);
     $routes->connect('/profile', ['controller' => 'Users', 'action' => 'profile', 'profile']);
 
-    $routes->connect('/home', ['controller' => 'Homes', 'action' => 'home']);
+    $routes->connect('/', ['controller' => 'Homes', 'action' => 'home']);
 
 
     /**

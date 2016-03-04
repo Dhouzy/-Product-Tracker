@@ -11,6 +11,8 @@
 <?php
 $session = $this->request->session()->read('Auth.User.id');
 
+echo $session;
+
 if($session == null){
     echo $this->Html->link(
         'login',

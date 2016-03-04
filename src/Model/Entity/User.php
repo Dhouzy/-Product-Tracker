@@ -11,6 +11,7 @@ namespace App\Model\Entity;
 
 use Cake\Auth\DefaultPasswordHasher;
 use Cake\ORM\Entity;
+use Cake\ORM\TableRegistry;
 
 class User extends Entity
 {
@@ -28,6 +29,18 @@ class User extends Entity
     }
 
     public function _getProducts() {
+        $userProductsTable = TableRegistry::get('user_products');
+        $usersProducts = $userProductsTable->find('all')->where(['user_id' => $this->id])->toArray();
+        return $this->getProductsFromUserProduct($usersProducts);
+    }
 
+    private function getProductsFromUserProduct($userProducts) {
+        $productsTable = TableRegistry::get('Products');
+        $products = array();
+        foreach($userProducts as $userProduct) {
+            $product = $productsTable->get($userProduct->product_id);
+            $products[] = $product;
+        }
+        return $products;
     }
 }
