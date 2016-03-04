@@ -6,11 +6,10 @@
  * Time: 10:44 AM
  */
 namespace App\Controller;
-//include('\var\www\Product_tracker\src\Controller\Component\AmazonHelper.php');
 
-use Cake\Controller\Controller;
+use Cake\Event\Event;
 
-class HomesController extends Controller
+class HomesController extends AppController
 {
 
     public function home() {
@@ -22,4 +21,9 @@ class HomesController extends Controller
         }
     }
 
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $this->Auth->allow(['home']);
+    }
 }
