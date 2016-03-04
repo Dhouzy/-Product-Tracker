@@ -27,10 +27,14 @@ class UsersTable extends Table
             ->notEmpty('username', 'A username is required')
             ->notEmpty('password', 'A password is required')
             ->notEmpty('email', 'A password is required')
+            ->notEmpty('first_name', 'A name is required')
+            ->notEmpty('last_name', 'A last name is required')
             ->notEmpty('role', 'A role is required')
-            ->add('role', 'inList', [
-                'rule' => ['inList', ['admin', 'author']],
-                'message' => 'Please enter a valid role'
-            ]);
+            ->allowEmpty('phone')
+            ->allowEmpty('street_number')
+            ->allowEmpty('street')
+            ->allowEmpty('city')
+            ->allowEmpty('province')
+            ->allowEmpty('country');
     }
 }

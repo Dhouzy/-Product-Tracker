@@ -5,9 +5,14 @@
         <?= $this->Form->input('username') ?>
         <?= $this->Form->input('email') ?>
         <?= $this->Form->input('password') ?>
-        <?= $this->Form->input('role', [
-            'options' => ['admin' => 'Admin', 'author' => 'Author']
-        ]) ?>
+        <?= $this->Form->input('first_name') ?>
+        <?= $this->Form->input('last_name') ?>
+        <?= $this->Form->input('phone') ?>
+        <?= $this->Form->input('street_number') ?>
+        <?= $this->Form->input('street') ?>
+        <?= $this->Form->input('city') ?>
+        <?= $this->Form->input('province') ?>
+        <?= $this->Form->input('country') ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')); ?>
     <?= $this->Form->end() ?>
