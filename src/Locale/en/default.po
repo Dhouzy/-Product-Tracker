@@ -77,9 +77,15 @@ msgstr "Description: {0}"
 
 #############################
 # SignIn ####################
-#############################.
+#############################
 msgid "SignIn.FormTitle"
 msgstr "Enter your username (or email) and password to sign in."
 
 msgid "SignIn.OrEmail"
 msgstr " (or email)"
+
+#############################
+# Profile ###################
+#############################
+msgid "Profile.Title"
+msgstr "Profile"

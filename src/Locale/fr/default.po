@@ -34,7 +34,7 @@ msgid "Global.Password"
 msgstr "Mot de passe"
 
 msgid "Global.FirstName"
-msgstr "Prenom"
+msgstr "Prénom"
 
 msgid "Global.LastName"
 msgstr "Nom de famille"
@@ -77,9 +77,15 @@ msgstr "Description: {0}"
 
 #############################
 # SignIn ####################
-#############################.
+#############################
 msgid "SignIn.FormTitle"
 msgstr "Entrez votre nom d'utilisateur (ou courriel) et votre mot de passe pour vous connecter."
 
 msgid "SignIn.OrEmail"
 msgstr " (ou courriel)"
+
+#############################
+# Profile ###################
+#############################
+msgid "Profile.Title"
+msgstr "Profil"
