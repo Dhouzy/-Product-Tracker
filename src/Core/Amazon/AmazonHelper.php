@@ -8,7 +8,7 @@
  * This class should be temporary while the service gets completed
  */
 
-namespace App\Controller;
+namespace App\Core\Amazon;
 
 use Cake\Core\Configure;
 
