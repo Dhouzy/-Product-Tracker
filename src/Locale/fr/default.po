@@ -2,25 +2,25 @@
 # Home #####################
 ############################
 msgid "Home.Title"
-msgstr "Home"
+msgstr "Accueil"
 
 msgid "Home.WhoIsLoggedIn"
-msgstr "User online: <br><b>Id: </b>{0}<br><b>Username: </b>{1}<br><b>Email: </b>{2}"
+msgstr "Utilisateur en ligne: <br><b>Id: </b>{0}<br><b>Nom 'utilisateur: </b>{1}<br><b>Courriel: </b>{2}"
 
 ############################
 # Global ###################
 ############################
 msgid "Global.Search"
-msgstr "Search"
+msgstr "Recherche"
 
 msgid "Global.SignIn"
-msgstr "Sign In"
+msgstr "Connexion"
 
 msgid "Global.SignOut"
-msgstr "Sign Out"
+msgstr "Déconnexion"
 
 msgid "Global.SignUp"
-msgstr "Sign Up"
+msgstr "Inscription"
 
 msgid "Global.Submit"
-msgstr "Submit"
+msgstr "Soumettre"

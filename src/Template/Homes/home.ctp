@@ -8,11 +8,10 @@
         <?= $this->Form->end() ?>
     </div>
     <?php $session = $this->request->session()->read('Auth.User'); ?>
-    <p><?=__('Home.WhoIsLoggedIn',[$session['id'],$session['username'],$session['email']]) ?></p>
 
     <?php
     if ($session == null) {
-        echo $this->Html->link(
+    echo $this->Html->link(
             __('Global.SignIn'),
             ['controller' => 'Users', 'action' => 'login'],
             ['class' => 'button']
@@ -23,6 +22,7 @@
             ['class' => 'button']
         );
     } else {
+        echo '<p>'.__('Home.WhoIsLoggedIn',[$session['id'],$session['username'],$session['email']]).'</p>';
         echo $this->Html->link(
             __('Global.SignOut'),
             ['controller' => 'Users', 'action' => 'logout'],
