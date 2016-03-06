@@ -2,10 +2,10 @@
     <?= $this->Flash->render('auth') ?>
     <?= $this->Form->create() ?>
     <fieldset>
-        <legend><?= __('Please enter your username and password') ?></legend>
-        <?= $this->Form->input('username') ?>
-        <?= $this->Form->input('password') ?>
+        <legend><?= __('SignIn.FormTitle') ?></legend>
+        <?= $this->Form->input('username', ['label' =>__('Global.Username').__('SignIn.OrEmail')]) ?>
+        <?= $this->Form->input('password',['label' =>__('Global.Password')]) ?>
     </fieldset>
-    <?= $this->Form->button(__('Login')); ?>
+    <?= $this->Form->button(__('Global.SignIn')); ?>
     <?= $this->Form->end() ?>
 </div>
