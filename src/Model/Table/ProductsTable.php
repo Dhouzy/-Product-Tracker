@@ -9,15 +9,15 @@
 namespace App\Model\Table;
 
 
-
 use Cake\ORM\Table;
 
 class ProductsTable extends Table
 {
-
     public function initialize(array $config)
     {
-        $this->belongsTo('companies');
-        $this->entityClass('App\Model\Entity\Product');
+        $this->belongsTo('Companies');
+        $this->hasOne('Prices');
+        $this->belongsToMany('Users');
     }
+
 }

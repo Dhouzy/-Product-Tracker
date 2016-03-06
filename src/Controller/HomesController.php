@@ -16,7 +16,6 @@ class HomesController extends AppController
         $amazon = new AmazonHelper();
         if ($this->request->is('post')) {
             $received = $this->request->data;
-            $this->Flash->success(__('Your search for '.$received['search'].' returned no results.'));
             $this->redirect($amazon->search($received['search']));
         }
     }

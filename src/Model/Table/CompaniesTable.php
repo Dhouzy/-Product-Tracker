@@ -15,6 +15,6 @@ class CompaniesTable extends Table
 {
     public function initialize(array $config)
     {
-
+        $this->hasMany('Products');
     }
 }
