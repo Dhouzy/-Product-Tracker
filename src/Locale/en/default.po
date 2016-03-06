@@ -1,0 +1,22 @@
+############################
+# Home
+############################
+msgid "Home.Title"
+msgstr "Home"
+msgid "Home.WhoIsLoggedIn"
+msgstr "User logged in:<br><b>Id:</b>{0}<br><b>Username:</b>{1}<br><b>Email:</b>{2}"
+
+
+############################
+# global
+############################
+msgid "Global.Search"
+msgstr "Search"
+msgid "Global.SignIn"
+msgstr "Sign In"
+msgid "Global.SignOut"
+msgstr "Sign Out"
+msgid "Global.SignUp"
+msgstr "Sign Up"
+msgid "Global.Submit"
+msgstr "Submit"

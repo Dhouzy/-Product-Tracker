@@ -1,30 +1,30 @@
 <fieldset>
-    <h1>Home</h1>
+    <h1><?= __('Home.Title') ?></h1>
     <div class="form">
         <?= $this->Form->create() ?>
-        <legend><?= __('Search') ?></legend>
-        <?= $this->Form->input('search') ?>
-        <?= $this->Form->button(__('Go')); ?>
+        <legend><?= __('Global.Search') ?></legend>
+        <?= $this->Form->input('search',['label'=>__('Global.Search')]) ?>
+        <?= $this->Form->button(__('Global.Submit')); ?>
         <?= $this->Form->end() ?>
     </div>
     <?php $session = $this->request->session()->read('Auth.User'); ?>
-    <p>User logged in:<br><?= '<b>Id:</b>'.$session['id'].'<br><b>Username:</b>'.$session['username'].'<br><b>email:</b>'.$session['email'] ?></p>
+    <p><?=__('Home.WhoIsLoggedIn',[$session['id'],$session['username'],$session['email']]) ?></p>
 
     <?php
     if ($session == null) {
         echo $this->Html->link(
-            'login',
+            __('Global.SignIn'),
             ['controller' => 'Users', 'action' => 'login'],
             ['class' => 'button']
         );
         echo $this->Html->link(
-            'sign up',
+            __('Global.SignUp'),
             ['controller' => 'Users', 'action' => 'add'],
             ['class' => 'button']
         );
     } else {
         echo $this->Html->link(
-            'logout',
+            __('Global.SignOut'),
             ['controller' => 'Users', 'action' => 'logout'],
             ['class' => 'button']
         );
