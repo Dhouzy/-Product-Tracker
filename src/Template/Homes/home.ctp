@@ -1,7 +1,7 @@
 <fieldset>
     <h1><?= __('Home.Title') ?></h1>
     <div class="form">
-        <?= $this->Form->create() ?>
+        <?= $this->Form->create(null, ['url' => ['controller' => 'Searches', 'action' => 'search']]) ?>
         <legend><?= __('Global.Search') ?></legend>
         <?= $this->Form->input('search',['label'=>__('Global.Search')]) ?>
         <?= $this->Form->button(__('Global.Submit')); ?>
