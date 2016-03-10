@@ -50,7 +50,7 @@ Router::scope('/', function ($routes) {
 
     $routes->connect('/', ['controller' => 'Homes', 'action' => 'home']);
     $routes->connect('/home', ['controller' => 'Homes', 'action' => 'home']);
-    $routes->connect('/search', ['controller' => 'Searches', 'action' => 'search']);
+    $routes->connect('/search', ['controller' => 'Homes', 'action' => 'home']);
     $routes->connect('/product', ['controller' => 'Products', 'action' => 'product', 'product']);
     $routes->connect('/profile', ['controller' => 'Users', 'action' => 'profile', 'profile']);
 

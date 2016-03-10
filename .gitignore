@@ -1,5 +1,9 @@
 ### Amazon ###
 /config/amazon.php
+/config/amazon.php~
+
+
+composer.phar
 
 ### CakePHP template
 # CakePHP 3
