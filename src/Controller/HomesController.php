@@ -17,7 +17,8 @@ class HomesController extends AppController
         if ($this->request->is('post')) {
             $received = $this->request->data;
 
-            $xml = json_encode(simplexml_load_file($amazon->search($received['search'])));
+            $searchResult = $amazon->search($received['search']);
+
         }
     }
 

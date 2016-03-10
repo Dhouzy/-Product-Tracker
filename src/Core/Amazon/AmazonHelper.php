@@ -11,6 +11,8 @@
 namespace App\Core\Amazon;
 
 use Cake\Core\Configure;
+use App\Core\Amazon\AmazonItem;
+use App\Core\Amazon\SearchResult;
 
 class AmazonHelper
 {
@@ -27,9 +29,46 @@ class AmazonHelper
         $this->awsSecretKey = Configure::read('AwsSecretKey');
     }
 
-
-
     function search($search)
+    {
+        $url = $this->_generateURL($search);
+        return $this->_readResult($url);
+    }
+
+    function nextItemsSearch($url)
+    {
+        return $this->_readResult($url);
+    }
+
+    private function _readResult($url)
+    {
+        $content = file_get_contents($url);
+        $jsonObj = $this->_parseXmlToJsonObj($content);
+        $items = $jsonObj->Items;
+
+        $searchResult = new SearchResult();
+        $searchResult->moreSearchURL = $items->MoreSearchResultsUrl;
+
+        foreach($items->Item as $item)
+        {
+            $itemAttribute = $item->ItemAttributes;
+
+            $amazonItem = new AmazonItem();
+            $amazonItem->title = $itemAttribute->Title;
+            $amazonItem->amazonLink = $item->DetailPageURL;
+            if(property_exists(get_class($itemAttribute), 'ListPrice')) {
+                $amazonItem->fullPrice = $itemAttribute->ListPrice->Amount;
+            }
+            $amazonItem->currentPrice = $item->OfferSummary->LowestNewPrice->Amount;
+            //$amazonItem->description = $item->EditorialReviews->EditorialReview->Content;
+
+            $searchResult->amazonItems = $amazonItem;
+        }
+
+        return $searchResult;
+    }
+
+    private function _generateURL($search)
     {
         $params = array(
             "Service" => "AWSECommerceService",
@@ -38,35 +77,41 @@ class AmazonHelper
             "AssociateTag" => "developement-20",
             "SearchIndex" => "All",
             "Keywords" => $search,
-            "ResponseGroup" => "Images,ItemAttributes,Offers"
+            "ResponseGroup" => "Images,ItemAttributes,Offers,Reviews"
         );
 
-        // Set current timestamp if not set
-        if (!isset($params["Timestamp"])) {
+        if (!isset($params["Timestamp"]))
+        {
             $params["Timestamp"] = gmdate('Y-m-d\TH:i:s\Z');
         }
 
-        // Sort the parameters by key
         ksort($params);
 
         $pairs = array();
 
-        foreach ($params as $key => $value) {
+        foreach ($params as $key => $value)
+        {
             array_push($pairs, rawurlencode($key) . "=" . rawurlencode($value));
         }
 
-        // Generate the canonical query
         $canonical_query_string = join("&", $pairs);
-
-        // Generate the string to be signed
         $string_to_sign = "GET\n" . $this->endpoint . "\n" . $this->uri . "\n" . $canonical_query_string;
-
-        // Generate the signature required by the Product Advertising API
         $signature = base64_encode(hash_hmac("sha256", $string_to_sign, $this->awsSecretKey, true));
-
-        // Generate the signed URL
         $request_url = 'http://' . $this->endpoint . $this->uri . '?' . $canonical_query_string . '&Signature=' . rawurlencode($signature);
 
         return $request_url;
+    }
+
+    private function _parseXmlToJsonObj ($xml)
+    {
+        $xml = str_replace(array("\n", "\r", "\t"), '', $xml);
+        $xml = trim(str_replace('"', "'", $xml));
+        $simpleXml = simplexml_load_string($xml);
+        $json = json_encode($simpleXml);
+        echo "<script>console.log($json);</script>";
+
+        $jsonObj = json_decode($json);
+
+        return $jsonObj;
     }
 }
