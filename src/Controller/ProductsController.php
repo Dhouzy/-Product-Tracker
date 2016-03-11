@@ -21,4 +21,8 @@ class ProductsController extends AppController
         $this->set(compact('product'));
     }
 
+    public function graphics(){
+        $this->set(compact('graphics'));
+    }
+
 }
