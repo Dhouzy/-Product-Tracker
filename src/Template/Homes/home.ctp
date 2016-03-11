@@ -69,7 +69,5 @@
             echo "<a href='?search=$searchKeywordsEncoded&p=" . ($currentPage + 1) . "'>&gt;&gt;</a>&nbsp;";
     }
     ?>
-
-    ?>
 </fieldset>
 
