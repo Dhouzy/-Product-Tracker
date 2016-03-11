@@ -1,19 +1,7 @@
 <fieldset>
     <h1><?= __('Home.Title') ?></h1>
-    <?php $session = $this->request->session()->read('Auth.User'); ?>
-    <?php
-    if ($session == null) {
-        echo $this->Html->link(
-            __('Global.SignIn'),
-            ['controller' => 'Users', 'action' => 'login'],
-            ['class' => 'button']
-        );
-        echo $this->Html->link(
-            __('Global.SignUp'),
-            ['controller' => 'Users', 'action' => 'add'],
-            ['class' => 'button']
-        );
-    } else {
+    <?php $session = $this->request->session()->read('Auth.User');
+    if ($session != null) {
         echo '<p>'.__('Home.WhoIsLoggedIn',[$session['id'],$session['username'],$session['email']]).'</p>';
         echo $this->Html->link(
             __('Global.SignOut'),
