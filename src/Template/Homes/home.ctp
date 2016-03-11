@@ -44,7 +44,7 @@
             <tbody>
                 <?php
                 foreach ($searchResult->amazonItems as $item) {
-                    ?><tr><td><?= $item->title ?></td><td><?= $item->currentFormattedPrice ?></td><td></td><td><?= $item->description ?></td></tr><?php
+                    ?><tr><td><a href="/product?asin=<?= $item->ASIN ?>"><?= $item->title ?></a></td><td><?= $item->currentFormattedPrice ?></td><td></td><td><?= $item->description ?></td></tr><?php
                 }
                 ?>
             </tbody>
@@ -68,8 +68,6 @@
         else
             echo "<a href='?search=$searchKeywordsEncoded&p=" . ($currentPage + 1) . "'>&gt;&gt;</a>&nbsp;";
     }
-    ?>
-
     ?>
 </fieldset>
 
