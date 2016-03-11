@@ -19,11 +19,23 @@ class PriceUpdateShell extends Shell
 {
     private $products;
     private $prices;
+    private $now;
 
-    public function main(){
-        $this->out('Daily update started');
-
+    public function main($item = null){
         $this->products = TableRegistry::get('products');
+        $this->prices = TableRegistry::get('products');
+        $this->now = new DateTime(null, new DateTimeZone('America/Toronto'));
+
+        if($item == null){
+            $this->updateAllProduct();
+        } else{
+            $this->updateOneProduct($item);
+        }
+    }
+
+    private function updateAllProduct()
+    {
+        $this->out('Daily update started');
 
         $query = $this->products->find()->contain(['Prices'])->all();
 
@@ -36,10 +48,15 @@ class PriceUpdateShell extends Shell
 
             $this->out($interval->format('%R%a days'));
             if($interval->d > 0){
-//                $this->updatePrice($row);
+                $this->updatePrice($row);
             }
         }
         $this->out('Daily update ended');
+    }
+
+    private function updateOneProduct($item)
+    {
+
     }
 
     function updatePrice($product_row){
@@ -47,15 +64,14 @@ class PriceUpdateShell extends Shell
 //        $prices = TableRegistry::get('prices');
 
         //call service api / adapter_api
-        $new_price = null;
         $amazon = new AmazonHelper();
-
+        $new_price = $amazon->findProduct($product_row->article_uid);
 
         //create new price row
         $query = $this->prices->query();
         $query->insert(['date', 'price', 'product_id'])
             ->values([
-                'date' => $new_price->date,
+                'date' => $new_price->$this->now,
                 'price' => $new_price->price,
                 'product_id' => $product_row->id
             ])
@@ -66,7 +82,6 @@ class PriceUpdateShell extends Shell
 //            ->insert(['date', 'price', 'product_id'])
 //            ->values($NEW_PRICE_OBJECT)
 //            ->execute();
-
 
         $last_insert_id =  $query->last();
         $query->select('LAST_INSERT_ID()');
@@ -80,9 +95,9 @@ class PriceUpdateShell extends Shell
     }
 
     private function compareTime($last_price_update){
-        $now = new DateTime(null, new DateTimeZone('America/Toronto'));
-//        echo $now->format('Y-m-d H:i:s');    // MySQL datetime format
 
-        return $interval = $last_price_update->diff($now);
+//        echo $now->format('Y-m-d H:i:s');    // MySQL datetime format
+        return $interval = $last_price_update->diff($this->now);
     }
+
 }
