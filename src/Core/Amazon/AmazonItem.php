@@ -16,6 +16,7 @@ class AmazonItem
     private $amazonLink;
     private $fullPrice;
     private $currentPrice;
+    private $currentFormattedPrice;
     private $description;
     private $group;
     private $brand;

@@ -7,8 +7,25 @@
         <?= $this->Form->button(__('Global.Submit')); ?>
         <?= $this->Form->end() ?>
     </div>
-    <?php $session = $this->request->session()->read('Auth.User'); ?>
 
+    <?php
+    if(isset($searchResult)) {
+        ?>
+        <table>
+            <thead><tr><th>Name</th><th>Price</th><th>Rating</th><th>Resume</th></tr></thead>
+            <tbody>
+            <?php
+            foreach ($searchResult->amazonItems as $item) {
+                ?><tr><td><?= $item->title ?></td><td><?= $item->currentFormattedPrice ?></td><td></td><td><?= $item->description ?></td></tr><?php
+            }
+            ?>
+            </tbody>
+        </table>
+        <?php
+    }
+    ?>
+
+    <?php $session = $this->request->session()->read('Auth.User'); ?>
     <?php
     if ($session == null) {
     echo $this->Html->link(
@@ -31,6 +48,4 @@
     }
     ?>
 </fieldset>
-
-
 

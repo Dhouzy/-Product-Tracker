@@ -29,9 +29,9 @@ class AmazonHelper
         $this->awsSecretKey = Configure::read('AwsSecretKey');
     }
 
-    function search($search)
+    function search($search, $page)
     {
-        $url = $this->_generateURL($search);
+        $url = $this->_generateURL($search, $page);
         return $this->_readResult($url);
     }
 
@@ -59,19 +59,24 @@ class AmazonHelper
             if(property_exists(get_class($itemAttribute), 'ListPrice')) {
                 $amazonItem->fullPrice = $itemAttribute->ListPrice->Amount;
             }
-            $amazonItem->currentPrice = $item->OfferSummary->LowestNewPrice->Amount;
+
+            if(isset($item->OfferSummary) && isset($item->OfferSummary->LowestNewPrice)) {
+                $amazonItem->currentPrice = $item->OfferSummary->LowestNewPrice->Amount;
+                $amazonItem->currentFormattedPrice = $item->OfferSummary->LowestNewPrice->FormattedPrice;
+            }
             //$amazonItem->description = $item->EditorialReviews->EditorialReview->Content;
 
-            $searchResult->amazonItems = $amazonItem;
+            $searchResult->addItem($amazonItem);
         }
 
         return $searchResult;
     }
 
-    private function _generateURL($search)
+    private function _generateURL($search, $page)
     {
         $params = array(
             "Service" => "AWSECommerceService",
+            "ItemPage" => $page,
             "Operation" => "ItemSearch",
             "AWSAccessKeyId" => $this->awsAccessKey,
             "AssociateTag" => "developement-20",

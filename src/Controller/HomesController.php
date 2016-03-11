@@ -17,8 +17,8 @@ class HomesController extends AppController
         if ($this->request->is('post')) {
             $received = $this->request->data;
 
-            $searchResult = $amazon->search($received['search']);
-
+            $searchResult = $amazon->search($received['search'], (isset($received['page']) ? $received['page'] : 1));
+            $this->set(compact('searchResult'));
         }
     }
 

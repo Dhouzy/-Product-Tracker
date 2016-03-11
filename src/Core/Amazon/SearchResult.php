@@ -18,6 +18,11 @@ class SearchResult
     {
     }
 
+    public function addItem($item)
+    {
+        $this->amazonItems[] = $item;
+    }
+
     public function __get($property)
     {
         if (property_exists($this, $property))
