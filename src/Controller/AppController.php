@@ -7,6 +7,7 @@
 namespace App\Controller;
 
 use Cake\Controller\Controller;
+use Cake\I18n\I18n;
 use Cake\Event\Event;
 
 /**
@@ -46,6 +47,14 @@ class AppController extends Controller
             in_array($this->response->type(), ['application/json', 'application/xml'])
         ) {
             $this->set('_serialize', true);
+        }
+
+        $session = $this->request->session();
+
+        if(!$session->check('Config.language')){
+            $session->write('Config.language', 'fr');
+        } else {
+            I18n::locale($session->read('Config.language'));
         }
     }
 

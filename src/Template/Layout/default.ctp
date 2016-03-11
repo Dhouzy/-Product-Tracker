@@ -14,6 +14,7 @@
  */
 
 $cakeDescription = 'CakePHP: the rapid development php framework';
+$session = $this->request->session();
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,8 +43,31 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </ul>
         <section class="top-bar-section">
             <ul class="right">
-                <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
+                <?php
+                if($session->read('Config.language') == 'fr')
+                    $switchLanguage = 'en';
+                else
+                    $switchLanguage = 'fr';
+                ?>
+                <li><a href="/lang?l=<?= $switchLanguage ?>&fromUrl=<?=
+                    urlencode($this->request->here) ?>"><?= strtoupper($switchLanguage) ?></a></li>
+                <?php $loggedUser = $session->read('Auth.User');
+                    if ($loggedUser == null) {
+                        echo '<li>' . $this->Html->link(
+                            __('Global.SignIn'),
+                            ['controller' => 'Users', 'action' => 'login']
+                        ) . '</li>';
+                        echo '<li>' . $this->Html->link(
+                            __('Global.SignUp'),
+                            ['controller' => 'Users', 'action' => 'add']
+                        ) . '</li>';
+                    } else {
+                        echo '<li>' . $this->Html->link(
+                            __('Global.SignOut'),
+                            ['controller' => 'Users', 'action' => 'logout']
+                        ) . '</li>';
+                    }
+                    ?>
             </ul>
         </section>
     </nav>
