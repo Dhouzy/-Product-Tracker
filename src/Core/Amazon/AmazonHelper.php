@@ -116,7 +116,7 @@ class AmazonHelper
             "Service" => "AWSECommerceService",
             "AWSAccessKeyId" => $this->awsAccessKey,
             "AssociateTag" => $this->associateTag,
-            "Operation" => ItemLookup,
+            "Operation" => "ItemLookup",
             "ItemId" => $productASIN,
             "ResponseGroup" => "Images,ItemAttributes,Offers,Reviews"
         );
