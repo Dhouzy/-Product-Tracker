@@ -81,8 +81,8 @@ class UsersController extends AppController
         return $this->redirect($this->Auth->logout());
     }
 
-    public function profile()
+    public function profile($userId)
     {
-
+        $user = $this->Users->get($userId);
     }
 }

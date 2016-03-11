@@ -11,8 +11,6 @@
 <?php
 $session = $this->request->session()->read('Auth.User.id');
 
-echo $session;
-
 if($session == null){
     echo $this->Html->link(
         'login',
@@ -24,6 +22,10 @@ if($session == null){
         'logout',
         ['controller' => 'Users', 'action' => 'logout'],
         ['class' => 'button']
+    );
+
+    echo $this->Html->link ('Profile',
+    ['controller' => 'Users', 'action' => 'profile', $session]
     );
 } ?>
 <br>
