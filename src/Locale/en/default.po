@@ -89,3 +89,27 @@ msgstr " (or email)"
 #############################
 msgid "Profile.Title"
 msgstr "Profile"
+
+#############################
+# Search ####################
+#############################
+msgid "Search.Table.Name"
+msgstr "Product Name"
+
+msgid "Search.Table.Price"
+msgstr "Price"
+
+msgid "Search.Table.Rating"
+msgstr "Rating"
+
+msgid "Search.Table.Description"
+msgstr "Description"
+
+#############################
+# Flash #####################
+#############################
+msgid "Flash.UserRegistered"
+msgstr "{0} registered successfully!"
+
+msgid "Flash.RegistrationFailed"
+msgstr "Oops! The registration has failed."

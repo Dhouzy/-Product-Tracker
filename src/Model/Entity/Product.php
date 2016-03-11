@@ -12,13 +12,12 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 use Cake\ORM\TableRegistry;
 
-/**
- * @property mixed id
- */
+
 class Product extends Entity
 {
-    public function _getPrices() {
-        $prices = TableRegistry::get('Prices');
-        return $prices->find()->where(['Prices.product_id'=>$this->id]);
+    public function _getCompanyName() {
+        $company = TableRegistry::get('Companies');
+        return $company->get($this->company_id)->name;
+
     }
 }

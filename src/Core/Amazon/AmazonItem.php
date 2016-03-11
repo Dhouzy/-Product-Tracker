@@ -12,6 +12,7 @@ namespace App\Core\Amazon;
 class AmazonItem
 {
 
+    private $ASIN;
     private $title;
     private $amazonLink;
     private $fullPrice;
