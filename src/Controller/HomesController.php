@@ -13,12 +13,24 @@ use App\Core\Amazon\AmazonHelper;
 class HomesController extends AppController
 {
     public function home() {
-        $amazon = new AmazonHelper();
-        if ($this->request->is('post')) {
-            $received = $this->request->data;
+        if (isset($this->request->query['search'])) {
+            $searchKeywordsEncoded = urlencode($this->request->query['search']);
+            $amazon = new AmazonHelper();
 
-            $searchResult = $amazon->search($received['search'], (isset($received['page']) ? $received['page'] : 1));
-            $this->set(compact('searchResult'));
+            if(isset($this->request->query['p'])) {
+                $currentPage = $this->request->query['p'];
+                if(!ctype_digit($currentPage))
+                    $this->redirect("/?search=$searchKeywordsEncoded&p=1");
+                else if(intval($currentPage) < 1)
+                    $this->redirect("/?search=$searchKeywordsEncoded&p=1");
+                else if(intval($currentPage) > 10)
+                    $this->redirect("/?search=$searchKeywordsEncoded&p=10");
+            } else
+                $currentPage = 1;
+
+            $searchResult = $amazon->search($this->request->query['search'], $currentPage);
+            //echo "<pre>";var_dump($searchResult);echo "</pre>";
+            $this->set(compact('searchResult', 'currentPage', 'searchKeywordsEncoded'));
         }
     }
 
