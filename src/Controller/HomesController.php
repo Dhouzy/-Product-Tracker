@@ -8,16 +8,17 @@
 namespace App\Controller;
 
 use Cake\Event\Event;
+use App\Core\Amazon\AmazonHelper;
 
 class HomesController extends AppController
 {
-
     public function home() {
         $amazon = new AmazonHelper();
         if ($this->request->is('post')) {
             $received = $this->request->data;
-            $this->Flash->success(__('Your search for '.$received['search'].' returned no results.'));
-            $this->redirect($amazon->search($received['search']));
+
+            $searchResult = $amazon->search($received['search'], (isset($received['page']) ? $received['page'] : 1));
+            $this->set(compact('searchResult'));
         }
     }
 

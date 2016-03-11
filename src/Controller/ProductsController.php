@@ -8,35 +8,17 @@
 
 namespace App\Controller;
 
+use Cake\ORM\TableRegistry;
 
-use Cake\Controller\Controller;
-use App\Model\ViewModel\ProductViewModel;
-
-/**
- * @property bool|object Products
- * @property bool|object Companies
- * @property bool|object Users
- */
-class ProductsController extends Controller
+class ProductsController extends AppController
 {
-
-    public function initialize()
-    {
-        parent::initialize();
-        $this->loadComponent('Flash');
-    }
 
     public function product()
     {
-        $product = $this->getProductsViewmModel(1);
+        $id = 1;
+        $products = TableRegistry::get('products');
+        $product = $products->get($id, ['contain' => ['Companies','Prices']]);
         $this->set(compact('product'));
-    }
-
-
-    private function getProductsViewmModel($id) {
-        $product = $this->Products->get($id);
-        $product = new ProductViewModel($product->name, $product->_getCompanyName(), 10, $product->rating, $product->description, $product->image_link );
-        return $product;
     }
 
 }

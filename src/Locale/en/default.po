@@ -1,0 +1,91 @@
+#############################
+# default                  ##
+# Created by M-A           ##
+# Since: 05 Mar 2016       ##
+#############################
+# English translation file ##
+#############################
+
+#############################
+# Global ####################
+#############################
+msgid "Global.Search"
+msgstr "Search"
+
+msgid "Global.SignIn"
+msgstr "Sign In"
+
+msgid "Global.SignOut"
+msgstr "Sign Out"
+
+msgid "Global.SignUp"
+msgstr "Sign Up"
+
+msgid "Global.Submit"
+msgstr "Submit"
+
+msgid "Global.Username"
+msgstr "Username"
+
+msgid "Global.Email"
+msgstr "Email"
+
+msgid "Global.Password"
+msgstr "Password"
+
+msgid "Global.FirstName"
+msgstr "First Name"
+
+msgid "Global.LastName"
+msgstr "Last Name"
+
+msgid "Global.Phone"
+msgstr "Phone"
+
+msgid "Global.StreetNumber"
+msgstr "Street Number"
+
+msgid "Global.Street"
+msgstr "Street"
+
+msgid "Global.City"
+msgstr "City"
+
+msgid "Global.Province"
+msgstr "Province"
+
+msgid "Global.Country"
+msgstr "Pays"
+
+#############################
+# Home ######################
+#############################
+msgid "Home.Title"
+msgstr "Home"
+
+msgid "Home.WhoIsLoggedIn"
+msgstr "User online: <br><b>Id: </b>{0}<br><b>Username: </b>{1}<br><b>Email: </b>{2}"
+
+#############################
+# Product ###################
+#############################
+msgid "Product.Rating"
+msgstr "Rating: {0, number}/5"
+
+msgid "Product.Description"
+msgstr "Description: {0}"
+
+#############################
+# SignIn ####################
+#############################
+msgid "SignIn.FormTitle"
+msgstr "Enter your username (or email) and password to sign in."
+
+msgid "SignIn.OrEmail"
+msgstr " (or email)"
+
+#############################
+# Profile ###################
+#############################
+msgid "Profile.Title"
+msgstr "Profile"
