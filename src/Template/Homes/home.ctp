@@ -1,7 +1,7 @@
 <fieldset>
     <h1><?= __('Home.Title') ?></h1>
     <div class="form">
-        <?= $this->Form->create() ?>
+        <?= $this->Form->create(null, ['type' => 'get']) ?>
         <legend><?= __('Global.Search') ?></legend>
         <?= $this->Form->input('search',['label'=>__('Global.Search')]) ?>
         <?= $this->Form->button(__('Global.Submit')); ?>
@@ -22,6 +22,23 @@
             </tbody>
         </table>
         <?php
+        $maxPage = min(10, $searchResult->numMaxPages);
+        if($currentPage == 1)
+            echo "&lt;&lt;&nbsp;";
+        else
+            echo "<a href='?search=$searchKeywordsEncoded&p=" . ($currentPage - 1) . "'>&lt;&lt;</a>&nbsp;";
+
+        for($i = 1; $i <= $maxPage; $i++){
+            if($currentPage == $i)
+                echo "$i&nbsp;";
+            else
+                echo "<a href='?search=$searchKeywordsEncoded&p=$i'>$i</a>&nbsp;";
+        }
+
+        if($currentPage == $maxPage)
+            echo "&gt;&gt;&nbsp;";
+        else
+            echo "<a href='?search=$searchKeywordsEncoded&p=" . ($currentPage + 1) . "'>&gt;&gt;</a>&nbsp;";
     }
     ?>
 

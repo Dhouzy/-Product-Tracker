@@ -43,11 +43,13 @@ class AmazonHelper
     private function _readResult($url)
     {
         $content = file_get_contents($url);
+        echo $url;
         $jsonObj = $this->_parseXmlToJsonObj($content);
         $items = $jsonObj->Items;
 
         $searchResult = new SearchResult();
         $searchResult->moreSearchURL = $items->MoreSearchResultsUrl;
+        $searchResult->numMaxPages = $items->TotalPages;
 
         foreach($items->Item as $item)
         {
@@ -61,10 +63,10 @@ class AmazonHelper
             }
 
             if(isset($item->OfferSummary) && isset($item->OfferSummary->LowestNewPrice)) {
-                $amazonItem->currentPrice = $item->OfferSummary->LowestNewPrice->Amount;
+                if(isset($item->OfferSummary->LowestNewPrice->Amount))
+                    $amazonItem->currentPrice = $item->OfferSummary->LowestNewPrice->Amount;
                 $amazonItem->currentFormattedPrice = $item->OfferSummary->LowestNewPrice->FormattedPrice;
             }
-            //$amazonItem->description = $item->EditorialReviews->EditorialReview->Content;
 
             $searchResult->addItem($amazonItem);
         }
