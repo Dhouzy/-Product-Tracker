@@ -13,6 +13,7 @@ class SearchResult
 
     private $amazonItems = array();
     private $moreSearchURL;
+    private $numMaxPages;
 
     function __construct()
     {
