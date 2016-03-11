@@ -56,6 +56,7 @@ class AmazonHelper
 
         $searchResult = new SearchResult();
         $searchResult->moreSearchURL = $items->MoreSearchResultsUrl;
+        $searchResult->numMaxPages = $items->TotalPages;
 
         foreach($items->Item as $item)
         {
@@ -78,12 +79,11 @@ class AmazonHelper
             $amazonItem->fullPrice = $itemAttribute->ListPrice->Amount;
         }
 
-        if(isset($item->OfferSummary) && isset($item->OfferSummary->LowestNewPrice)) {
-            $amazonItem->currentPrice = $item->OfferSummary->LowestNewPrice->Amount;
-            $amazonItem->currentFormattedPrice = $item->OfferSummary->LowestNewPrice->FormattedPrice;
-        }
-
-        //$amazonItem->description = $item->EditorialReviews->EditorialReview->Content;
+            if(isset($item->OfferSummary) && isset($item->OfferSummary->LowestNewPrice)) {
+                if(isset($item->OfferSummary->LowestNewPrice->Amount))
+                    $amazonItem->currentPrice = $item->OfferSummary->LowestNewPrice->Amount;
+                $amazonItem->currentFormattedPrice = $item->OfferSummary->LowestNewPrice->FormattedPrice;
+            }
 
         return $amazonItem;
     }
