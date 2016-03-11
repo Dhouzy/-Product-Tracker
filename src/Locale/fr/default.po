@@ -1,0 +1,91 @@
+#############################
+# default                  ##
+# Created by M-A           ##
+# Since: 05 Mar 2016       ##
+#############################
+# French translation file  ##
+#############################
+
+#############################
+# Global ####################
+#############################
+msgid "Global.Search"
+msgstr "Recherche"
+
+msgid "Global.SignIn"
+msgstr "Connexion"
+
+msgid "Global.SignOut"
+msgstr "Déconnexion"
+
+msgid "Global.SignUp"
+msgstr "Inscription"
+
+msgid "Global.Submit"
+msgstr "Soumettre"
+
+msgid "Global.Username"
+msgstr "Nom d'utilisateur"
+
+msgid "Global.Email"
+msgstr "Courriel"
+
+msgid "Global.Password"
+msgstr "Mot de passe"
+
+msgid "Global.FirstName"
+msgstr "Prénom"
+
+msgid "Global.LastName"
+msgstr "Nom de famille"
+
+msgid "Global.Phone"
+msgstr "Telephone"
+
+msgid "Global.StreetNumber"
+msgstr "Numéro civique"
+
+msgid "Global.Street"
+msgstr "Rue"
+
+msgid "Global.City"
+msgstr "Ville"
+
+msgid "Global.Province"
+msgstr "Province"
+
+msgid "Global.Country"
+msgstr "Pays"
+
+#############################
+# Home ######################
+#############################
+msgid "Home.Title"
+msgstr "Accueil"
+
+msgid "Home.WhoIsLoggedIn"
+msgstr "Utilisateur en ligne: <br><b>Id: </b>{0}<br><b>Nom d'utilisateur: </b>{1}<br><b>Courriel: </b>{2}"
+
+#############################
+# Product ###################
+#############################
+msgid "Product.Rating"
+msgstr "Score: {0}/5"
+
+msgid "Product.Description"
+msgstr "Description: {0}"
+
+#############################
+# SignIn ####################
+#############################
+msgid "SignIn.FormTitle"
+msgstr "Entrez votre nom d'utilisateur (ou courriel) et votre mot de passe pour vous connecter."
+
+msgid "SignIn.OrEmail"
+msgstr " (ou courriel)"
+
+#############################
+# Profile ###################
+#############################
+msgid "Profile.Title"
+msgstr "Profil"

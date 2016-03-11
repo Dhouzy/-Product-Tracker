@@ -1,1 +1,1 @@
-<h3>profile<h3>
+<h3><?= __('Profile.Title') ?><h3>

@@ -1,40 +1,51 @@
-<h1>Home</h1>
-<div class="form">
-    <?= $this->Form->create() ?>
-    <fieldset>
-        <legend><?= __('Search') ?></legend>
-        <?= $this->Form->input('search') ?>
-        <?= $this->Form->button(__('Go')); ?>
-    </fieldset>
-    <?= $this->Form->end() ?>
-</div>
-<?php
-$session = $this->request->session()->read('Auth.User.id');
+<fieldset>
+    <h1><?= __('Home.Title') ?></h1>
+    <div class="form">
+        <?= $this->Form->create() ?>
+        <legend><?= __('Global.Search') ?></legend>
+        <?= $this->Form->input('search',['label'=>__('Global.Search')]) ?>
+        <?= $this->Form->button(__('Global.Submit')); ?>
+        <?= $this->Form->end() ?>
+    </div>
 
-if($session == null){
+    <?php
+    if(isset($searchResult)) {
+        ?>
+        <table>
+            <thead><tr><th>Name</th><th>Price</th><th>Rating</th><th>Resume</th></tr></thead>
+            <tbody>
+            <?php
+            foreach ($searchResult->amazonItems as $item) {
+                ?><tr><td><?= $item->title ?></td><td><?= $item->currentFormattedPrice ?></td><td></td><td><?= $item->description ?></td></tr><?php
+            }
+            ?>
+            </tbody>
+        </table>
+        <?php
+    }
+    ?>
+
+    <?php $session = $this->request->session()->read('Auth.User'); ?>
+    <?php
+    if ($session == null) {
     echo $this->Html->link(
-        'login',
-        ['controller' => 'Users', 'action' => 'login'],
-        ['class' => 'button']
-    );
-} else {
-    echo $this->Html->link(
-        'logout',
-        ['controller' => 'Users', 'action' => 'logout'],
-        ['class' => 'button']
-    );
-
-    echo $this->Html->link ('Profile',
-    ['controller' => 'Users', 'action' => 'profile', $session]
-    );
-} ?>
-<br>
-<?php
-echo $this->Html->link(
-    'sign up',
-    ['controller' => 'Users', 'action' => 'add'],
-    ['class' => 'button']
-);
-
-
+            __('Global.SignIn'),
+            ['controller' => 'Users', 'action' => 'login'],
+            ['class' => 'button']
+        );
+        echo $this->Html->link(
+            __('Global.SignUp'),
+            ['controller' => 'Users', 'action' => 'add'],
+            ['class' => 'button']
+        );
+    } else {
+        echo '<p>'.__('Home.WhoIsLoggedIn',[$session['id'],$session['username'],$session['email']]).'</p>';
+        echo $this->Html->link(
+            __('Global.SignOut'),
+            ['controller' => 'Users', 'action' => 'logout'],
+            ['class' => 'button']
+        );
+    }
+    ?>
+</fieldset>
 

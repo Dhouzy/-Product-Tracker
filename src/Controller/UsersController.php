@@ -11,11 +11,12 @@ namespace App\Controller;
 
 
 use App\Model\Entity\User;
-use App\Model\ViewModel\ProductViewModel;
 use Cake\Event\Event;
-use Cake\ORM\TableRegistry;
 use Cake\Validation\Validation;
 
+/**
+ * @property bool|object Users
+ */
 class UsersController extends AppController
 {
 
@@ -47,10 +48,7 @@ class UsersController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
-        // Allow users to register and logout.
-        // You should not add the "login" action to allow list. Doing so would
-        // cause problems with normal functioning of AuthComponent.
-        $this->Auth->allow(['add', 'logout']);
+        $this->Auth->allow(['add', 'profile']);
     }
 
     public function login()
