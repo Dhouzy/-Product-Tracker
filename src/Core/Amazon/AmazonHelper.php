@@ -21,12 +21,14 @@ class AmazonHelper
     private $uri = "/onca/xml";
     private $awsAccessKey;
     private $awsSecretKey;
+    private $associateTag;
 
     function __construct()
     {
         Configure::load('amazon', 'default');
         $this->awsAccessKey = Configure::read('AwsAccessKey');
         $this->awsSecretKey = Configure::read('AwsSecretKey');
+        $this->associateTag = Configure::read('AssociateTag');
     }
 
     function search($search, $page)
@@ -79,7 +81,7 @@ class AmazonHelper
             "ItemPage" => $page,
             "Operation" => "ItemSearch",
             "AWSAccessKeyId" => $this->awsAccessKey,
-            "AssociateTag" => "developement-20",
+            "AssociateTag" => $this->associateTag,
             "SearchIndex" => "All",
             "Keywords" => $search,
             "ResponseGroup" => "Images,ItemAttributes,Offers,Reviews"
