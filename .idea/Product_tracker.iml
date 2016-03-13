@@ -29,5 +29,15 @@
     <orderEntry type="library" name="jQuery" level="application" />
     <orderEntry type="library" name="Chart.js" level="project" />
     <orderEntry type="library" name="Chart.min.js" level="project" />
+    <orderEntry type="module-library">
+      <library name="PHP">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>
