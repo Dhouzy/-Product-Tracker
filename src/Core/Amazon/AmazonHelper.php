@@ -44,7 +44,7 @@ class AmazonHelper
         $jsonObj = $this->_getJSONFromURL($url);
         $item = $jsonObj->Items->Item;
 
-        $amazonItem = _readOneResult($item);
+        $amazonItem = $this->_readOneResult($item);
 
         return $amazonItem;
     }
@@ -154,7 +154,7 @@ class AmazonHelper
         $xml = trim(str_replace('"', "'", $xml));
         $simpleXml = simplexml_load_string($xml);
         $json = json_encode($simpleXml);
-        echo "<script>console.log($json);</script>";
+//        echo "<script>console.log($json);</script>";
 
         $jsonObj = json_decode($json);
 
