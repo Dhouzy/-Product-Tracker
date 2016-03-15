@@ -2,20 +2,12 @@
     <h1><?= __('Home.Title') ?></h1>
     <?php $session = $this->request->session()->read('Auth.User');
     if ($session != null) {
-        echo '<p>'.__('Home.WhoIsLoggedIn',[$session['id'],$session['username'],$session['email']]).'</p>';
-        echo $this->Html->link(
-            __('Global.SignOut'),
-            ['controller' => 'Users', 'action' => 'logout'],
-            ['class' => 'button']
-        );
+        echo '<p>' . __('Home.WhoIsLoggedIn',[$session['id'],$session['username'],$session['email']]) . '</p>';
     }
     ?>
     <div class="form">
-        <?= $this->Form->create(null, ['type' => 'get']) ?>
         <legend><?= __('Global.Search') ?></legend>
-        <?= $this->Form->input('search',['label'=>__('Global.Search')]) ?>
-        <?= $this->Form->button(__('Global.Submit')); ?>
-        <?= $this->Form->end() ?>
+        <?= $this->element('searchbar') ?>
     </div>
 
     <?php
