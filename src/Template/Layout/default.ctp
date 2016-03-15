@@ -24,10 +24,13 @@ $session = $this->request->session();
     <title>
         <?= $this->fetch('title') ?>
     </title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+
     <?= $this->Html->meta('icon') ?>
 
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('cake.css') ?>
+    <?= $this->Html->css('graphic.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>

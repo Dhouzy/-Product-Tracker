@@ -54,7 +54,7 @@ Router::scope('/', function ($routes) {
     $routes->connect('/search', ['controller' => 'Homes', 'action' => 'home']);
     $routes->connect('/product', ['controller' => 'Products', 'action' => 'product', 'product']);
     $routes->connect('/profile', ['controller' => 'Users', 'action' => 'profile', 'profile']);
-
+    $routes->connect('/graphic', ['controller' => 'Graphics', 'action' => 'graphic', 'graphic']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.

@@ -26,6 +26,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+<<<<<<< HEAD
+=======
     <orderEntry type="library" name="jQuery" level="application" />
     <orderEntry type="library" name="Chart.js" level="project" />
     <orderEntry type="library" name="Chart.min.js" level="project" />
@@ -39,5 +41,6 @@
         </SOURCES>
       </library>
     </orderEntry>
+>>>>>>> 19ec816dc44bc7d38691eac619b4a4952349d7e9
   </component>
 </module>
