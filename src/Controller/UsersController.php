@@ -12,6 +12,7 @@ namespace App\Controller;
 
 use App\Model\Entity\User;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 use Cake\Validation\Validation;
 
 /**
@@ -79,8 +80,11 @@ class UsersController extends AppController
         return $this->redirect($this->Auth->logout());
     }
 
-    public function profile($userId)
+    public function profile()
     {
-        $user = $this->Users->get($userId);
+        $products = TableRegistry::get('users');
+        $id = 1;
+        $users = $products->find('all')->contain(['Products']);
+        $this->set(compact("users"));
     }
 }

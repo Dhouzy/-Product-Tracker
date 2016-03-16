@@ -27,20 +27,4 @@ class User extends Entity
     {
         return (new DefaultPasswordHasher)->hash($password);
     }
-
-    public function _getProducts() {
-        $userProductsTable = TableRegistry::get('user_products');
-        $usersProducts = $userProductsTable->find('all')->where(['user_id' => $this->id])->toArray();
-        return $this->getProductsFromUserProduct($usersProducts);
-    }
-
-    private function getProductsFromUserProduct($userProducts) {
-        $productsTable = TableRegistry::get('Products');
-        $products = array();
-        foreach($userProducts as $userProduct) {
-            $product = $productsTable->get($userProduct->product_id);
-            $products[] = $product;
-        }
-        return $products;
-    }
 }

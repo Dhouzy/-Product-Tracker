@@ -17,7 +17,7 @@ class ProductsTable extends Table
     {
         $this->belongsTo('Companies');
         $this->hasOne('Prices');
-        $this->belongsToMany('Users');
+        $this->belongsToMany('Users', ['joinTable' => 'users_products']);
     }
 
 }

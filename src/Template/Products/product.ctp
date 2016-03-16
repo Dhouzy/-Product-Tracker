@@ -1,5 +1,6 @@
 <fieldset>
     <h1><b><?= $product->name ?></b></h1>
+    <h1><b><?= $product ?></b></h1>
     <h4><?= $product->company->name ?></h4>
     <h5><?= __('Product.Rating', $product->rating) ?></h5>
     <p><?= __('Product.Descripion', $product->description) ?></p>
