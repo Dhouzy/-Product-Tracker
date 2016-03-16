@@ -18,7 +18,7 @@ class UsersTable extends Table
 
     public function initialize(array $config)
     {
-        $this->belongsToMany('Products', ['joinTable' => 'users_products']);
+        $this->belongsToMany('Products');
     }
 
     public function validationDefault(Validator $validator)
