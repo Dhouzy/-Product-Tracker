@@ -6,11 +6,8 @@
     }
     ?>
     <div class="form">
-        <?= $this->Form->create(null, ['type' => 'get']) ?>
         <legend><?= __('Global.Search') ?></legend>
-        <?= $this->Form->input('search', ['label' => __('Global.Search')]) ?>
-        <?= $this->Form->button(__('Global.Submit')); ?>
-        <?= $this->Form->end() ?>
+        <?= $this->element('searchbar') ?>
     </div>
 
     <?php

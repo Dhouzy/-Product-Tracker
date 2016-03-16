@@ -22,13 +22,15 @@ $session = $this->request->session();
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
     </title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+
     <?= $this->Html->meta('icon') ?>
 
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('cake.css') ?>
+    <?= $this->Html->css('graphic.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -36,12 +38,11 @@ $session = $this->request->session();
 </head>
 <body>
     <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
-            </li>
-        </ul>
         <section class="top-bar-section">
+            <?php
+            if(!isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader)
+                echo $this->element('searchbar');
+            ?>
             <ul class="right">
                 <?php
                 if($session->read('Config.language') == 'fr')

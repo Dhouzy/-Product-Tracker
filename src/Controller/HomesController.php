@@ -30,7 +30,6 @@ class HomesController extends AppController
                 $currentPage = 1;
 
             $searchResult = $amazon->search($this->request->query['search'], $currentPage);
-            //echo "<pre>";var_dump($searchResult);echo "</pre>";
             $this->set(compact('searchResult', 'currentPage', 'searchKeywordsEncoded'));
         }
     }
@@ -38,6 +37,7 @@ class HomesController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
+        $this->set('doNotShowSearchBarInHeader', true);
         $this->Auth->allow(['home']);
     }
 }
