@@ -72,8 +72,8 @@ class AmazonHelper
         $itemAttribute = $item->ItemAttributes;
 
         $amazonItem = new AmazonItem();
-        $amazonItem->ASIN = $item->ASIN;
-        $amazonItem->title = $itemAttribute->Title;
+        $amazonItem->article_uid = $item->ASIN;
+        $amazonItem->name = $itemAttribute->Title;
         $amazonItem->amazonLink = $item->DetailPageURL;
         if(property_exists(get_class($itemAttribute), 'ListPrice')) {
             $amazonItem->fullPrice = $itemAttribute->ListPrice->Amount;

@@ -9,16 +9,13 @@
 namespace App\Core\Amazon;
 
 
-class AmazonItem
-{
+use App\Core\item;
 
-    private $ASIN;
-    private $title;
+class AmazonItem extends item
+{
     private $amazonLink;
     private $fullPrice;
-    private $currentPrice;
-    private $currentFormattedPrice;
-    private $description;
+    public $currentFormattedPrice;
     private $group;
     private $brand;
 

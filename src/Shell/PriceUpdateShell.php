@@ -9,32 +9,38 @@
 namespace App\Shell;
 
 use App\Core\Amazon\AmazonHelper;
+use App\Core\ProductItem;
 use Cake\Console\Shell;
 use Cake\ORM\TableRegistry;
 use DateTime;
 use DateTimeZone;
+use Exception;
 use Model\Entity\Price;
 
 
-
-// !!!!!!! Pour caller le service !!!!!!!!!!
-//$update = new PriceUpdateShell();
-//itemUpdate = $update->main(item);
+/**
+ * -------Pour caller le service-------
+ * $update = new PriceUpdateShell()
+ * $itemUpdate = $update->main(item-uid);
+ * -------------------------------------
+ * Class PriceUpdateShell
+ * @package App\Shell
+ */
 class PriceUpdateShell extends Shell
 {
     private $productsTable;
     private $pricesTable;
     private $now;
 
-    public function main($item = null){
+    public function main($itemUid = null){
         $this->productsTable = TableRegistry::get('products');
         $this->pricesTable = TableRegistry::get('prices');
         $this->now = new DateTime(null, new DateTimeZone('America/Toronto'));
 
-        if($item == null){
+        if($itemUid == null){
             $this->updateAllProduct();
         } else{
-           return $this->updateOneProduct($item);
+           return $this->updateOneProduct($itemUid);
         }
         return "succes";
     }
@@ -61,17 +67,16 @@ class PriceUpdateShell extends Shell
         $this->out('Daily update ended');
     }
 
-    private function updateOneProduct($item)
+    private function updateOneProduct($itemUid)
     {
         $product = $this->productsTable
             ->find()
-            ->where(['article_uid' => $item])
+            ->contain(['Prices'])
+            ->where(['article_uid' => $itemUid])
             ->first();
-        $this->out($product->name);
-        $this->out($product->price->date);
 
         if($product == null){
-            return $this->fetchProductFromAmazon($item);
+            return $this->fetchProductFromAmazon($itemUid);
 
         }else {
             $interval = $this->compareTime($product->price->date);
@@ -79,7 +84,7 @@ class PriceUpdateShell extends Shell
                 $this->updatePrice($product);
             }
 
-            return $this->transformeProductToViewModel();
+            return $this->transformProductToViewModel($product);
         }
     }
 
@@ -87,7 +92,6 @@ class PriceUpdateShell extends Shell
     function updatePrice($product_row){
         $this->out("updating price");
 
-        //call service api / adapter_api
         $amazon = new AmazonHelper();
         $new_price_table = $amazon->findProduct($product_row->article_uid);
 
@@ -104,15 +108,13 @@ class PriceUpdateShell extends Shell
         if ($this->pricesTable->save($price)) {
             $newPriceId = $price->id;
         }else{
-            //TODO: catch error
+            throw new Exception('Save new price failed.');
         }
 
 //        update price_id of product_row
         $product = $this->productsTable->get($product_row->id);
         $product->price_id = $newPriceId;
         $this->productsTable->save($product);
-//        $this->out($product);
-
     }
 
     private function compareTime($last_price_update){
@@ -125,19 +127,22 @@ class PriceUpdateShell extends Shell
         return floatval($matches[0]);
     }
 
-    private function fetchProductFromAmazon($item)
+    private function fetchProductFromAmazon($itemUid)
     {
         $amazon = new AmazonHelper();
-        $productFromAmazon = $amazon->findProduct($item);
-
-//        TODO: return $productFromAmazon; -> sous forme de view model
+        return $amazon->findProduct($itemUid);
      }
 
-    private function transformeProductToViewModel($produit)
+    private function transformProductToViewModel($product)
     {
-        $amazon = new AmazonHelper();
+        $currentPrice = $this->productsTable
+            ->find()
+            ->contain(['Prices'])
+            ->where(['price_id' => $product->price_id])
+            ->first();
 
-//        TODO: return : not yet implemented
+        return new ProductItem($product->article_uid, $product->name, $currentPrice, $product->desciption,
+            $product->rating, $product->type);
     }
 
 }
