@@ -66,6 +66,9 @@ $session = $this->request->session();
                         ) . '</li>';
                     } else {
                         echo '<li>' . $this->Html->link(
+                                __('Profile.Title'),
+                                ['controller' => 'Users', 'action' => 'profile']) . '</li>';
+                        echo '<li>' . $this->Html->link(
                             __('Global.SignOut'),
                             ['controller' => 'Users', 'action' => 'logout']
                         ) . '</li>';

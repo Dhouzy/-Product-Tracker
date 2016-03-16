@@ -75,6 +75,9 @@ msgstr "Score: {0}/5"
 msgid "Product.Description"
 msgstr "Description: {0}"
 
+msgid "Product.YourProducts"
+msgstr "Vos produits:"
+
 #############################
 # SignIn ####################
 #############################

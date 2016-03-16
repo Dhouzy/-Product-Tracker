@@ -13,9 +13,8 @@ use Cake\ORM\TableRegistry;
 class ProductsController extends AppController
 {
 
-    public function product()
+    public function product($id)
     {
-        $id = 1;
         $products = TableRegistry::get('products');
         $product = $products->get($id, ['contain' => ['Companies','Prices']]);
         $this->set(compact('product'));

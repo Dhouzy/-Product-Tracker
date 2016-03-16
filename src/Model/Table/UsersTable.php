@@ -11,6 +11,7 @@ namespace App\Model\Table;
 
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\ORM\Query;
 
 class UsersTable extends Table
 {
@@ -35,5 +36,10 @@ class UsersTable extends Table
             ->allowEmpty('city')
             ->allowEmpty('province')
             ->allowEmpty('country');
+    }
+
+    public function findUserById(Query $query, array $options) {
+        $id = $options['id'];
+        return $query->where(['id' => $id]);
     }
 }

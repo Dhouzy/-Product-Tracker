@@ -82,9 +82,8 @@ class UsersController extends AppController
 
     public function profile()
     {
-        $products = TableRegistry::get('users');
-        $id = 1;
-        $users = $products->find('all')->contain(['Products']);
-        $this->set(compact("users"));
+        $userLogged = $this->request->session()->read('Auth.User');
+        $user = $this->Users->get($userLogged['id'], ['contain' => ['Products']]);
+        $this->set(compact("user"));
     }
 }
