@@ -47,16 +47,14 @@ class PriceUpdateShell extends Shell
 
     private function updateAllProduct()
     {
-        $this->out('Daily update started');
+        $this->out(date('m/d/Y h:i:s a') . 'Daily update started');
 
         $query = $this->productsTable->find()->contain(['Prices']);
 
-        $this->out($query);
         foreach ($query as $row) {
             $this->out($row->name);
             $this->out($row->price->price);
 
-            //compare 2 dates
             $interval = $this->compareTime($row->price->date);
 
 //            $this->out($interval->format('%R%a days'));
@@ -64,7 +62,7 @@ class PriceUpdateShell extends Shell
                 $this->updatePrice($row);
             }
         }
-        $this->out('Daily update ended');
+        $this->out(date('m/d/Y h:i:s a') .'Daily update ended');
     }
 
     private function updateOneProduct($itemUid)
@@ -84,24 +82,22 @@ class PriceUpdateShell extends Shell
                 $this->updatePrice($product);
             }
 
-            return $this->transformProductToViewModel($product);
+            return $this->transformProductToProductItem($product);
         }
     }
 
 
-    function updatePrice($product_row){
+    function updatePrice($productRow){
         $this->out("updating price");
 
         $amazon = new AmazonHelper();
-        $new_price_table = $amazon->findProduct($product_row->article_uid);
-
+        $new_price_table = $amazon->findProduct($productRow->article_uid);
         $price_int = $this->extractNumber($new_price_table->currentFormattedPrice);
-//        $this->out($price_int);
 
         $price = new Price();
         $price->date = $this->now;
         $price->price = $price_int;
-        $price->product_id = $product_row->id;
+        $price->product_id = $productRow->id;
         $price->rebate_price = null;
         $price->rebate_amount = null;
 
@@ -112,18 +108,18 @@ class PriceUpdateShell extends Shell
         }
 
 //        update price_id of product_row
-        $product = $this->productsTable->get($product_row->id);
+        $product = $this->productsTable->get($productRow->id);
         $product->price_id = $newPriceId;
         $this->productsTable->save($product);
     }
 
-    private function compareTime($last_price_update){
-        return $interval = $last_price_update->diff($this->now);
+    private function compareTime($lastPriceUpdate){
+        return $interval = $lastPriceUpdate->diff($this->now);
     }
 
-    private function extractNumber($str_to_int)
+    private function extractNumber($strToInt)
     {
-        preg_match('!((?:\d,?)+\d\.[0-9]*)!', $str_to_int, $matches);
+        preg_match('!((?:\d,?)+\d\.[0-9]*)!', $strToInt, $matches);
         return floatval($matches[0]);
     }
 
@@ -133,7 +129,7 @@ class PriceUpdateShell extends Shell
         return $amazon->findProduct($itemUid);
      }
 
-    private function transformProductToViewModel($product)
+    private function transformProductToProductItem($product)
     {
         $currentPrice = $this->productsTable
             ->find()
