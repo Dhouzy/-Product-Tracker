@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: gogo
+ * User: Hippolyte Glaus
  * Date: 20/02/16
  * Time: 6:49 PM
  */
@@ -38,10 +38,10 @@ class UsersController extends AppController
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('Flash.UserRegistered', $user->first_name));
                 return $this->redirect(['controller' => 'Homes', 'action' => 'home']);
             }
-            $this->Flash->error(__('Unable to add the user.'));
+            $this->Flash->error(__('Flash.RegistrationFailed'));
         }
         $this->set('user', $user);
     }

@@ -33,20 +33,25 @@ class AmazonHelper
 
     function search($search, $page)
     {
-        $url = $this->_generateURL($search, $page);
-        return $this->_readResult($url);
+        $url = $this->_generateItemSearchURL($search, $page);
+
+        return $this->_readSearchResult($url);
     }
 
-    function nextItemsSearch($url)
+    function findProduct($productASIN)
     {
-        return $this->_readResult($url);
+        $url = $this->_generateItemLookupURL($productASIN);
+        $jsonObj = $this->_getJSONFromURL($url);
+        $item = $jsonObj->Items->Item;
+
+        $amazonItem = $this->_readOneResult($item);
+
+        return $amazonItem;
     }
 
-    private function _readResult($url)
+    private function _readSearchResult($url)
     {
-        $content = file_get_contents($url);
-        echo $url;
-        $jsonObj = $this->_parseXmlToJsonObj($content);
+        $jsonObj = $this->_getJSONFromURL($url);
         $items = $jsonObj->Items;
 
         $searchResult = new SearchResult();
@@ -55,14 +60,24 @@ class AmazonHelper
 
         foreach($items->Item as $item)
         {
-            $itemAttribute = $item->ItemAttributes;
+            $amazonItem = $this->_readOneResult($item);
+            $searchResult->addItem($amazonItem);
+        }
 
-            $amazonItem = new AmazonItem();
-            $amazonItem->title = $itemAttribute->Title;
-            $amazonItem->amazonLink = $item->DetailPageURL;
-            if(property_exists(get_class($itemAttribute), 'ListPrice')) {
-                $amazonItem->fullPrice = $itemAttribute->ListPrice->Amount;
-            }
+        return $searchResult;
+    }
+
+    private function _readOneResult($item)
+    {
+        $itemAttribute = $item->ItemAttributes;
+
+        $amazonItem = new AmazonItem();
+        $amazonItem->article_uid = $item->ASIN;
+        $amazonItem->name = $itemAttribute->Title;
+        $amazonItem->amazonLink = $item->DetailPageURL;
+        if(property_exists(get_class($itemAttribute), 'ListPrice')) {
+            $amazonItem->fullPrice = $itemAttribute->ListPrice->Amount;
+        }
 
             if(isset($item->OfferSummary) && isset($item->OfferSummary->LowestNewPrice)) {
                 if(isset($item->OfferSummary->LowestNewPrice->Amount))
@@ -70,13 +85,16 @@ class AmazonHelper
                 $amazonItem->currentFormattedPrice = $item->OfferSummary->LowestNewPrice->FormattedPrice;
             }
 
-            $searchResult->addItem($amazonItem);
-        }
-
-        return $searchResult;
+        return $amazonItem;
     }
 
-    private function _generateURL($search, $page)
+    private function _getJSONFromURL($url)
+    {
+        $content = file_get_contents($url);
+        return $this->_parseXmlToJsonObj($content);
+    }
+
+    private function _generateItemSearchURL($search, $page)
     {
         $params = array(
             "Service" => "AWSECommerceService",
@@ -89,6 +107,25 @@ class AmazonHelper
             "ResponseGroup" => "Images,ItemAttributes,Offers,Reviews"
         );
 
+        return $this->_generateSearchURL($params);
+    }
+
+    private function _generateItemLookupURL($productASIN)
+    {
+        $params = array(
+            "Service" => "AWSECommerceService",
+            "AWSAccessKeyId" => $this->awsAccessKey,
+            "AssociateTag" => $this->associateTag,
+            "Operation" => "ItemLookup",
+            "ItemId" => $productASIN,
+            "ResponseGroup" => "Images,ItemAttributes,Offers,Reviews"
+        );
+
+        return $this->_generateSearchURL($params);
+    }
+
+    private function _generateSearchURL($params)
+    {
         if (!isset($params["Timestamp"]))
         {
             $params["Timestamp"] = gmdate('Y-m-d\TH:i:s\Z');
@@ -117,7 +154,6 @@ class AmazonHelper
         $xml = trim(str_replace('"', "'", $xml));
         $simpleXml = simplexml_load_string($xml);
         $json = json_encode($simpleXml);
-        echo "<script>console.log($json);</script>";
 
         $jsonObj = json_decode($json);
 

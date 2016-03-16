@@ -14,6 +14,7 @@
  */
 
 $cakeDescription = 'CakePHP: the rapid development php framework';
+$session = $this->request->session();
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,13 +22,15 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
     </title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+
     <?= $this->Html->meta('icon') ?>
     <?= $this->Html->css('bootstrap.min.css')?>
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('cake.css') ?>
+    <?= $this->Html->css('graphic.css') ?>
 
 
 
@@ -37,15 +40,37 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </head>
 <body>
     <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
-            <li class="name">
-                <h1><a href=""><?= $this->fetch('title') ?></a></h1>
-            </li>
-        </ul>
         <section class="top-bar-section">
+            <?php
+            if(!isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader)
+                echo $this->element('searchbar');
+            ?>
             <ul class="right">
-                <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
+                <?php
+                if($session->read('Config.language') == 'fr')
+                    $switchLanguage = 'en';
+                else
+                    $switchLanguage = 'fr';
+                ?>
+                <li><a href="/lang?l=<?= $switchLanguage ?>&fromUrl=<?=
+                    urlencode($this->request->here) ?>"><?= strtoupper($switchLanguage) ?></a></li>
+                <?php
+                    if (!$session->check('Auth.User')) {
+                        echo '<li>' . $this->Html->link(
+                            __('Global.SignIn'),
+                            ['controller' => 'Users', 'action' => 'login']
+                        ) . '</li>';
+                        echo '<li>' . $this->Html->link(
+                            __('Global.SignUp'),
+                            ['controller' => 'Users', 'action' => 'add']
+                        ) . '</li>';
+                    } else {
+                        echo '<li>' . $this->Html->link(
+                            __('Global.SignOut'),
+                            ['controller' => 'Users', 'action' => 'logout']
+                        ) . '</li>';
+                    }
+                    ?>
             </ul>
         </section>
     </nav>

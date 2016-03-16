@@ -89,3 +89,28 @@ msgstr " (ou courriel)"
 #############################
 msgid "Profile.Title"
 msgstr "Profil"
+
+
+#############################
+# Search ####################
+#############################
+msgid "Search.Table.Name"
+msgstr "Nom du produit"
+
+msgid "Search.Table.Price"
+msgstr "Prix"
+
+msgid "Search.Table.Rating"
+msgstr "Évaluation"
+
+msgid "Search.Table.Description"
+msgstr "Description"
+
+#############################
+# Flash #####################
+#############################
+msgid "Flash.UserRegistered"
+msgstr "Bravo {0}! vous êtes inscrit!"
+
+msgid "Flash.RegistrationFailed"
+msgstr "Oups! L'inscription à échouée"
