@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: gogo
+ * User: Hippolyte Glaus
  * Date: 19/02/16
  * Time: 10:44 AM
  */

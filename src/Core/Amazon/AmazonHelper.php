@@ -44,7 +44,7 @@ class AmazonHelper
         $jsonObj = $this->_getJSONFromURL($url);
         $item = $jsonObj->Items->Item;
 
-        $amazonItem = _readOneResult($item);
+        $amazonItem = $this->_readOneResult($item);
 
         return $amazonItem;
     }
