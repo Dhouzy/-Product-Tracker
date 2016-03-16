@@ -52,8 +52,8 @@ $session = $this->request->session();
                 ?>
                 <li><a href="/lang?l=<?= $switchLanguage ?>&fromUrl=<?=
                     urlencode($this->request->here) ?>"><?= strtoupper($switchLanguage) ?></a></li>
-                <?php $loggedUser = $session->read('Auth.User');
-                    if ($loggedUser == null) {
+                <?php
+                    if (!$session->check('Auth.User')) {
                         echo '<li>' . $this->Html->link(
                             __('Global.SignIn'),
                             ['controller' => 'Users', 'action' => 'login']

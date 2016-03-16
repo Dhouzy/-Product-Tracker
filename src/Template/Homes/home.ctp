@@ -1,8 +1,8 @@
 <fieldset>
     <h1><?= __('Home.Title') ?></h1>
-    <?php $session = $this->request->session()->read('Auth.User');
-    if ($session != null) {
-        echo '<p>' . __('Home.WhoIsLoggedIn', [$session['id'], $session['username'], $session['email']]) . '</p>';
+    <?php $loggedUser = $this->request->session()->read('Auth.User');
+    if ($loggedUser != null) {
+        echo '<p>' . __('Home.WhoIsLoggedIn', [$loggedUser['id'], $loggedUser['username'], $loggedUser['email']]) . '</p>';
     }
     ?>
     <div class="form">
