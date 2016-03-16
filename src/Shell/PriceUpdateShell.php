@@ -13,32 +13,39 @@ use Cake\Console\Shell;
 use Cake\ORM\TableRegistry;
 use DateTime;
 use DateTimeZone;
+use Model\Entity\Price;
 
 
+
+// !!!!!!! Pour caller le service !!!!!!!!!!
+//$update = new PriceUpdateShell();
+//itemUpdate = $update->main(item);
 class PriceUpdateShell extends Shell
 {
-    private $products;
-    private $prices;
+    private $productsTable;
+    private $pricesTable;
     private $now;
 
     public function main($item = null){
-        $this->products = TableRegistry::get('products');
-        $this->prices = TableRegistry::get('products');
+        $this->productsTable = TableRegistry::get('products');
+        $this->pricesTable = TableRegistry::get('prices');
         $this->now = new DateTime(null, new DateTimeZone('America/Toronto'));
 
         if($item == null){
             $this->updateAllProduct();
         } else{
-            $this->updateOneProduct($item);
+           return $this->updateOneProduct($item);
         }
+        return "succes";
     }
 
     private function updateAllProduct()
     {
         $this->out('Daily update started');
 
-        $query = $this->products->find()->contain(['Prices'])->all();
+        $query = $this->productsTable->find()->contain(['Prices']);
 
+        $this->out($query);
         foreach ($query as $row) {
             $this->out($row->name);
             $this->out($row->price->price);
@@ -46,7 +53,7 @@ class PriceUpdateShell extends Shell
             //compare 2 dates
             $interval = $this->compareTime($row->price->date);
 
-            $this->out($interval->format('%R%a days'));
+//            $this->out($interval->format('%R%a days'));
             if($interval->d > 0){
                 $this->updatePrice($row);
             }
@@ -56,48 +63,81 @@ class PriceUpdateShell extends Shell
 
     private function updateOneProduct($item)
     {
+        $product = $this->productsTable
+            ->find()
+            ->where(['article_uid' => $item])
+            ->first();
+        $this->out($product->name);
+        $this->out($product->price->date);
 
+        if($product == null){
+            return $this->fetchProductFromAmazon($item);
+
+        }else {
+            $interval = $this->compareTime($product->price->date);
+            if($interval->d > 0){
+                $this->updatePrice($product);
+            }
+
+            return $this->transformeProductToViewModel();
+        }
     }
+
 
     function updatePrice($product_row){
         $this->out("updating price");
-//        $prices = TableRegistry::get('prices');
 
         //call service api / adapter_api
         $amazon = new AmazonHelper();
-        $new_price = $amazon->findProduct($product_row->article_uid);
+        $new_price_table = $amazon->findProduct($product_row->article_uid);
 
-        //create new price row
-        $query = $this->prices->query();
-        $query->insert(['date', 'price', 'product_id'])
-            ->values([
-                'date' => $new_price->$this->now,
-                'price' => $new_price->price,
-                'product_id' => $product_row->id
-            ])
-            ->execute();
+        $price_int = $this->extractNumber($new_price_table->currentFormattedPrice);
+//        $this->out($price_int);
 
-        // IF I RECEIVE A PRICE OBJECT DO IT LIKE THAT(GOOD/BAD??)
-//        $query = $articles->query()
-//            ->insert(['date', 'price', 'product_id'])
-//            ->values($NEW_PRICE_OBJECT)
-//            ->execute();
+        $price = new Price();
+        $price->date = $this->now;
+        $price->price = $price_int;
+        $price->product_id = $product_row->id;
+        $price->rebate_price = null;
+        $price->rebate_amount = null;
 
-        $last_insert_id =  $query->last();
-        $query->select('LAST_INSERT_ID()');
+        if ($this->pricesTable->save($price)) {
+            $newPriceId = $price->id;
+        }else{
+            //TODO: catch error
+        }
 
-        //update last_price id of product_row
-        $query = $this->products->query();
-        $query->update()
-            ->set(['last_price_id' => $last_insert_id])
-            ->where(['id' => $product_row->id])
-            ->execute();
+//        update price_id of product_row
+        $product = $this->productsTable->get($product_row->id);
+        $product->price_id = $newPriceId;
+        $this->productsTable->save($product);
+//        $this->out($product);
+
     }
 
     private function compareTime($last_price_update){
-
-//        echo $now->format('Y-m-d H:i:s');    // MySQL datetime format
         return $interval = $last_price_update->diff($this->now);
+    }
+
+    private function extractNumber($str_to_int)
+    {
+        preg_match('!((?:\d,?)+\d\.[0-9]*)!', $str_to_int, $matches);
+        return floatval($matches[0]);
+    }
+
+    private function fetchProductFromAmazon($item)
+    {
+        $amazon = new AmazonHelper();
+        $productFromAmazon = $amazon->findProduct($item);
+
+//        TODO: return $productFromAmazon; -> sous forme de view model
+     }
+
+    private function transformeProductToViewModel($produit)
+    {
+        $amazon = new AmazonHelper();
+
+//        TODO: return : not yet implemented
     }
 
 }
