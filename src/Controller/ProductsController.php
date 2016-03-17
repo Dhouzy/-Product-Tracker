@@ -7,17 +7,23 @@
  */
 
 namespace App\Controller;
+use App\Shell\PriceUpdateShell;
 
-use Cake\ORM\TableRegistry;
-
+/**
+ * Class ProductsController
+ * @package App\Controller
+ */
 class ProductsController extends AppController
 {
 
-    public function product($id)
+    public function product()
     {
-        $products = TableRegistry::get('products');
-        $product = $products->get($id, ['contain' => ['Companies','Prices']]);
-        $this->set(compact('product'));
+        if (isset($this->request->uid)) {
+            $update = new PriceUpdateShell();
+            $itemUpdate = $update->main($this->request->uid);
+
+            $this->set(compact('itemUpdate'));
+        }
     }
 
 }
