@@ -75,8 +75,8 @@ msgstr "Score: {0}/5"
 msgid "Product.Description"
 msgstr "Description: {0}"
 
-msgid "Product.YourProducts"
-msgstr "Vos produits:"
+msgid "Product.Follow"
+msgstr "Suivre ce produit"
 
 #############################
 # SignIn ####################
@@ -93,6 +93,8 @@ msgstr " (ou courriel)"
 msgid "Profile.Title"
 msgstr "Profil"
 
+msgid "Profile.YourProducts"
+msgstr "Vos produits:"
 
 #############################
 # Search ####################

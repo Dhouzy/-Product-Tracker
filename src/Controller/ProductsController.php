@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 use App\Shell\PriceUpdateShell;
+use Cake\Event\Event;
 
 /**
  * Class ProductsController
@@ -16,14 +17,32 @@ use App\Shell\PriceUpdateShell;
 class ProductsController extends AppController
 {
 
+    private $uid;
+    private $itemUpdate;
+    private $updateService;
+
+    public function initialize()
+    {
+        parent::initialize();
+        $this->updateService = new PriceUpdateShell();
+    }
+
     public function product()
     {
         if (isset($this->request->uid)) {
-            $update = new PriceUpdateShell();
-            $itemUpdate = $update->main($this->request->uid);
-
+            $itemUpdate = $this->updateService->main($this->request->uid);
             $this->set(compact('itemUpdate'));
         }
     }
 
+    public function addToUser()
+    {
+
+    }
+
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $this->Auth->allow(['product']);
+    }
 }

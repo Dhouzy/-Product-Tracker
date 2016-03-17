@@ -75,8 +75,8 @@ msgstr "Rating: {0, number}/5"
 msgid "Product.Description"
 msgstr "Description: {0}"
 
-msgid "Product.YourProducts"
-msgstr "You products:"
+msgid "Product.Follow"
+msgstr "Follow this product"
 
 #############################
 # SignIn ####################
@@ -92,6 +92,9 @@ msgstr " (or email)"
 #############################
 msgid "Profile.Title"
 msgstr "Profile"
+
+msgid "Profile.YourProducts"
+msgstr "Your products:"
 
 #############################
 # Search ####################
