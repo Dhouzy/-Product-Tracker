@@ -15,16 +15,6 @@ class ProductItem extends item
     {
     }
 
-    function __construct2($article_uid, $name, $currentPrice, $description, $rating, $type)
-    {
-        $this->article_uid =$article_uid;
-        $this->name = $name;
-        $this->currentPrice = $currentPrice;
-        $this->description = $description;
-        $this->rating =$rating;
-        $this->type = $type;
-    }
-
     public function __get($property)
     {
         if (property_exists($this, $property))
