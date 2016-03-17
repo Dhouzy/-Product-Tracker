@@ -27,10 +27,12 @@ $session = $this->request->session();
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 
     <?= $this->Html->meta('icon') ?>
-
+    <?= $this->Html->css('bootstrap.min.css')?>
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('cake.css') ?>
     <?= $this->Html->css('graphic.css') ?>
+
+
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -63,6 +65,9 @@ $session = $this->request->session();
                             ['controller' => 'Users', 'action' => 'add']
                         ) . '</li>';
                     } else {
+                        echo '<li>' . $this->Html->link(
+                                __('Profile.Title'),
+                                ['controller' => 'Users', 'action' => 'profile']) . '</li>';
                         echo '<li>' . $this->Html->link(
                             __('Global.SignOut'),
                             ['controller' => 'Users', 'action' => 'logout']

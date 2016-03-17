@@ -21,7 +21,7 @@ class ProductsTable extends Table
             'foreignKey' => 'id',
             'bindingKey' => 'price_id'
         ]);
-        $this->belongsToMany('Users');
+        $this->belongsToMany('Users', ['joinTable' => 'users_products']);
     }
 
 }
