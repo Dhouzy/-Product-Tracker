@@ -33,6 +33,7 @@ class PriceUpdateShell extends Shell
     private $now;
 
     public function main($itemUid = null){
+
         $this->productsTable = TableRegistry::get('products');
         $this->pricesTable = TableRegistry::get('prices');
         $this->now = new DateTime(null, new DateTimeZone('America/Toronto'));
@@ -40,6 +41,7 @@ class PriceUpdateShell extends Shell
         if($itemUid == null){
             $this->updateAllProduct();
         } else{
+
            return $this->updateOneProduct($itemUid);
         }
         return "succes";
@@ -62,6 +64,7 @@ class PriceUpdateShell extends Shell
                 $this->updatePrice($row);
             }
         }
+        sleep(10);
         $this->out(date('m/d/Y h:i:s a') .'Daily update ended');
     }
 
@@ -131,14 +134,22 @@ class PriceUpdateShell extends Shell
 
     private function transformProductToProductItem($product)
     {
+        $this->out($product->price_id);
         $currentPrice = $this->productsTable
             ->find()
             ->contain(['Prices'])
             ->where(['price_id' => $product->price_id])
             ->first();
 
-        return new ProductItem($product->article_uid, $product->name, $currentPrice, $product->desciption,
-            $product->rating, $product->type);
+        $productItem = new ProductItem();
+        $productItem->article_uid =$product->article_uid;
+        $productItem->name = $product->name;
+        $productItem->currentPrice = $currentPrice;
+        $productItem->description = $product->description;
+        $productItem->rating =$product->rating;
+        $productItem->type = $product->type;
+
+        return $productItem;
     }
 
 }
