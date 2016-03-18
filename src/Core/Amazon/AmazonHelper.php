@@ -70,6 +70,7 @@ class AmazonHelper
     {
         $itemAttributes = $item->ItemAttributes;
         $smallImageLink = $item->SmallImage->URL;
+        $largeImageLink = $item->LargeImage->URL;
 
         $amazonItem = new AmazonItem($item->ASIN, $itemAttributes->Title, $item->DetailPageURL);
 
@@ -83,6 +84,7 @@ class AmazonHelper
             }
             $amazonItem->currentFormattedPrice = $item->OfferSummary->LowestNewPrice->FormattedPrice;
             $amazonItem->smallImageLink = $smallImageLink;
+            $amazonItem->largeImageLink = $largeImageLink;
         }
 
         if(isset($itemAttributes->Brand))

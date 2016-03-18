@@ -24,6 +24,7 @@ class AmazonItem extends AbstractItem
             case 'fullPrice':
             case 'currentPrice':
             case 'smallImageLink':
+            case 'largeImageLink':
             case 'currentFormattedPrice':
             case 'brand':
             case 'color':

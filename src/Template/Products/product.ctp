@@ -6,4 +6,5 @@
         echo $this->Form->end();
     } ?>
     <h1><b><?= $item->name ?></b></h1>
+    <img src="<?= $item->largeImageLink?>"/>
 </fieldset>

@@ -28,11 +28,10 @@ $session = $this->request->session();
 
     <?= $this->Html->meta('icon') ?>
     <?= $this->Html->css('bootstrap.min.css')?>
-    <?= $this->Html->css('base.css') ?>
+    <?= $this->Html->css('base_cake.css') ?>
     <?= $this->Html->css('cake.css') ?>
     <?= $this->Html->css('graphic.css') ?>
-
-
+    <?= $this->Html->css('base.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
