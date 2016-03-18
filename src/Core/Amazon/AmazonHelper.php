@@ -63,25 +63,41 @@ class AmazonHelper
             $amazonItem = $this->_readOneResult($item);
             $searchResult->addItem($amazonItem);
         }
-
         return $searchResult;
     }
 
     private function _readOneResult($item)
     {
-        $itemAttribute = $item->ItemAttributes;
+        $itemAttributes = $item->ItemAttributes;
+        $smallImageLink = $item->SmallImage->URL;
+        $largeImageLink = $item->LargeImage->URL;
 
-        $amazonItem = new AmazonItem($item->ASIN, $itemAttribute->Title, $item->DetailPageURL);
+        $amazonItem = new AmazonItem($item->ASIN, $itemAttributes->Title, $item->DetailPageURL);
 
-        if(property_exists(get_class($itemAttribute), 'ListPrice')) {
-            $amazonItem->fullPrice = $itemAttribute->ListPrice->Amount;
+        if(property_exists(get_class($itemAttributes), 'ListPrice')) {
+            $amazonItem->fullPrice = $itemAttributes->ListPrice->Amount;
         }
 
         if(isset($item->OfferSummary) && isset($item->OfferSummary->LowestNewPrice)) {
-            if(isset($item->OfferSummary->LowestNewPrice->Amount))
+            if(isset($item->OfferSummary->LowestNewPrice->Amount)) {
                 $amazonItem->currentPrice = $item->OfferSummary->LowestNewPrice->Amount;
+            }
             $amazonItem->currentFormattedPrice = $item->OfferSummary->LowestNewPrice->FormattedPrice;
+            $amazonItem->smallImageLink = $smallImageLink;
+            $amazonItem->largeImageLink = $largeImageLink;
         }
+
+        if(isset($itemAttributes->Brand))
+            $amazonItem->brand = $itemAttributes->Brand;
+
+        if(isset($itemAttributes->Color))
+            $amazonItem->color = $itemAttributes->Color;
+
+        if(isset($itemAttributes->Size))
+            $amazonItem->size = $itemAttributes->Size;
+
+        if(isset($itemAttributes->CustomerReviews->IFrameURL))
+            $amazonItem->reviewUrl = $itemAttributes->CustomerReviews->IFrameURL;
 
         return $amazonItem;
     }
@@ -152,7 +168,6 @@ class AmazonHelper
         $xml = trim(str_replace('"', "'", $xml));
         $simpleXml = simplexml_load_string($xml);
         $json = json_encode($simpleXml);
-
         $jsonObj = json_decode($json);
 
         return $jsonObj;

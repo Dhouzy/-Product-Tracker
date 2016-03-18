@@ -22,8 +22,14 @@ abstract class AbstractItem
     protected $maxPrice;
     protected $lowestPrice;
     protected $description;
+    protected $brand;
+    protected $color;
+    protected $size;
+    protected $reviewUrl;
     protected $rating;
     protected $type;
+    protected $largeImageLink;
+    protected $smallImageLink;
 
     public function __get($property){
         if (property_exists($this, $property))

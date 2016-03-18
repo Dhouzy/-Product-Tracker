@@ -8,7 +8,6 @@
 
 namespace App\Model\Table;
 
-
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 use Cake\ORM\Query;
@@ -36,6 +35,20 @@ class UsersTable extends Table
             ->allowEmpty('city')
             ->allowEmpty('province')
             ->allowEmpty('country');
+    }
+
+    public function findEmailAlreadyExists(Query $query, array $options){
+        $count = $query->where(['email' => $options['email']])
+            ->count();
+
+        return $count > 0;
+    }
+
+    public function findUsernameAlreadyExists(Query $query, array $options){
+        $count = $query->where(['username' => $options['username']])
+            ->count();
+
+        return $count > 0;
     }
 
     public function findUserById(Query $query, array $options) {

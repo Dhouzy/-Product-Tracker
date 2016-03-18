@@ -8,8 +8,6 @@
 
 namespace App\Controller;
 
-
-
 use App\Model\Entity\User;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
@@ -36,12 +34,21 @@ class UsersController extends AppController
     {
         $user = new User();
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->data);
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('Flash.UserRegistered', $user->first_name));
-                return $this->redirect(['controller' => 'Homes', 'action' => 'home']);
+            $requestEmail = $this->request->data['email'];
+            $requestUsername = $this->request->data['username'];
+
+            if($this->Users->find('emailAlreadyExists', ['email' => $requestEmail])){
+                $this->Flash->error(__('Flash.EmailAlreadyExists', $requestEmail));
+            } else if($this->Users->find('usernameAlreadyExists', ['username' => $requestUsername])){
+                $this->Flash->error(__('Flash.UsernameAlreadyExists', $requestUsername));
+            } else {
+                $user = $this->Users->patchEntity($user, $this->request->data);
+                if ($this->Users->save($user)) {
+                    $this->Flash->success(__('Flash.UserRegistered', $user->first_name));
+                    return $this->redirect(['controller' => 'Homes', 'action' => 'home']);
+                }
+                $this->Flash->error(__('Flash.RegistrationFailed'));
             }
-            $this->Flash->error(__('Flash.RegistrationFailed'));
         }
         $this->set('user', $user);
     }

@@ -22,14 +22,12 @@ class ProductsController extends AppController
     private $uid;
     private $productUpdater;
 
-    public function initialize()
-    {
+    public function initialize(){
         parent::initialize();
         $this->productUpdater = new ProductUpdater();
     }
 
-    public function product()
-    {
+    public function product(){
         if (isset($this->request->uid)) {
             $articleUid = $this->request->uid;
             $this->productUpdater->updateProduct($articleUid);
@@ -45,13 +43,27 @@ class ProductsController extends AppController
         }
     }
 
-    public function addToUser()
-    {
+    public function addToUser(){
+        if($this->request->is('post')){
+            $uid = $this->request->data['uid'];
+            $productId = $this->Products->find('productId', ['uid' => $uid]);
 
+            if($productId == null){
+                $this->Flash->error(__('Flash.InvalidUID'));
+            } else {
+                $this->loadModel('ProductsUsers');
+                $newUserProduct = new ProductsUser();
+                $newUserProduct->user_id = $this->request->session()->read('Auth.User')['id'];
+                $newUserProduct->product_id = $productId;
+                $this->ProductsUsers->save($newUserProduct);
+                $this->Flash->success(__('Flash.ProductAdded'));
+            }
+        }
+
+        $this->redirect(['controller' => 'Users', 'action' => 'profile']);
     }
 
-    public function beforeFilter(Event $event)
-    {
+    public function beforeFilter(Event $event){
         parent::beforeFilter($event);
         $this->Auth->allow(['product']);
     }

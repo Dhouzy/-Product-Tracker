@@ -109,7 +109,19 @@ msgstr "Prix"
 # Flash #####################
 #############################
 msgid "Flash.UserRegistered"
-msgstr "Bravo {0}! vous êtes inscrit!"
+msgstr "Bravo {0}! Vous êtes inscrit!"
 
 msgid "Flash.RegistrationFailed"
-msgstr "Oups! L'inscription à échouée"
+msgstr "Oups! L'inscription a échoué."
+
+msgid "Flash.EmailAlreadyExists"
+msgstr "Un utilisateur avec le courriel {0} existe déjà."
+
+msgid "Flash.UsernameAlreadyExists"
+msgstr "Un utilisateur {0} existe déjà."
+
+msgid "Flash.InvalidUID"
+msgstr "UID invalide."
+
+msgid "Flash.ProductAdded"
+msgstr "Produit enregistré avec succès."

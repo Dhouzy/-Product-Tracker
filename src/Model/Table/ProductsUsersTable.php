@@ -6,12 +6,11 @@
  * Time: 10:35
  */
 
-namespace Model\Table;
-
+namespace App\Model\Table;
 
 use Cake\ORM\Table;
 
-class UsersProductsTable extends Table
+class ProductsUsersTable extends Table
 {
     public function initialize(array $config)
     {

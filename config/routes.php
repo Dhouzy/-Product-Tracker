@@ -52,6 +52,7 @@ Router::scope('/', function ($routes) {
     $routes->connect('/home', ['controller' => 'Homes', 'action' => 'home']);
     $routes->connect('/search', ['controller' => 'Homes', 'action' => 'home']);
     $routes->connect('/product/:uid', ['controller' => 'Products', 'action' => 'product']);
+    $routes->connect('/follow', ['controller' => 'Products', 'action' => 'addToUser']);
     $routes->connect('/profile', ['controller' => 'Users', 'action' => 'profile', 'profile']);
     $routes->connect('/graphic', ['controller' => 'Graphics', 'action' => 'graphic', 'graphic']);
 
