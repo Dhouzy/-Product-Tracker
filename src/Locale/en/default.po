@@ -119,3 +119,9 @@ msgstr "User with email {0} already exists."
 
 msgid "Flash.UsernameAlreadyExists"
 msgstr "User {0} already exists."
+
+msgid "Flash.InvalidUID"
+msgstr "Invalid UID."
+
+msgid "Flash.ProductAdded"
+msgstr "Product successfully registered."
