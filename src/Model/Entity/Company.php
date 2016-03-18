@@ -7,7 +7,7 @@
  * A company representation
  */
 
-namespace Model\Entity;
+namespace App\Model\Entity;
 
 
 use Cake\ORM\Entity;

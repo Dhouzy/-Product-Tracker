@@ -38,6 +38,7 @@ class ProductUpdater
             ->where(['article_uid' => $articleUid])
             ->first();
 
+        $apiItem = $this->fetchProductFromApi($articleUid);
         if(isset($product)){
             $latestPrice = $this->pricesTable
                 ->find()
@@ -48,15 +49,13 @@ class ProductUpdater
 
             $interval = $this->compareTime($latestPrice->date);
             if($interval->d > 0){
-                $apiItem = $this->fetchProductFromApi($articleUid);
                 $this->updatePrice($apiItem, $product);
             }
         }
         else{
-            $apiItem = $this->fetchProductFromApi($articleUid);
             $this->createProduct($apiItem);
-            $this->updatePrice($apiItem, $product);
         }
+        return $apiItem;
     }
 
     function createProduct($apiItem){

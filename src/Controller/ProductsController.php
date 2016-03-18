@@ -10,6 +10,8 @@ namespace App\Controller;
 
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
+use App\Model\Entity\ProductsUser;
+use App\Model\Table\ProductsTable;
 use App\Core\Updater\ProductUpdater;
 
 /**
@@ -30,8 +32,8 @@ class ProductsController extends AppController
     public function product(){
         if (isset($this->request->uid)) {
             $articleUid = $this->request->uid;
-            $this->productUpdater->updateProduct($articleUid);
-
+            $item = $this->productUpdater->updateProduct($articleUid);
+            
             $products = TableRegistry::get('products');
             $product = $products
                 ->find()
@@ -39,7 +41,7 @@ class ProductsController extends AppController
                 ->where(['article_uid' => $articleUid])
                 ->first();
 
-            $this->set(compact('product'));
+            $this->set(compact('item', 'product'));
         }
     }
 
