@@ -18,10 +18,19 @@ class GraphicsController extends AppController
 
     public function graphic() {
 
-        $graph1Data = array(1, 2, 6);
-        $graph2Data = array(3, 2, 1);
+        if (isset($this->request->product)) {
 
-        $this->set(compact('graph1Data', 'graph2Data'));
+            $fieldsGraph1 = array('price', 'date');
+            $fieldsGraph2 = array('rebate_price', 'date');
+            $conditionsGraph2 = array('NOT' => array(
+                'prices.rebate_price' => null
+            ));
+
+            $product = $this->request->product;
+            $graph1Data = $product->prices->find('all', array('fields' => $fieldsGraph1));
+            $graph2Data = $product->prices->find('all', array('fields' => $fieldsGraph2, 'conditions' => $conditionsGraph2));
+            $this->set(compact('graph1Data', 'graph2Data'));
+        }
     }
 
 }
