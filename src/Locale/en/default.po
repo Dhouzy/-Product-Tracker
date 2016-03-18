@@ -113,3 +113,9 @@ msgstr "{0} registered successfully!"
 
 msgid "Flash.RegistrationFailed"
 msgstr "Oops! The registration has failed."
+
+msgid "Flash.EmailAlreadyExists"
+msgstr "User with email {0} already exists."
+
+msgid "Flash.UsernameAlreadyExists"
+msgstr "User {0} already exists."
