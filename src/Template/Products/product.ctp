@@ -6,5 +6,21 @@
         echo $this->Form->end();
     } ?>
     <h1><b><?= $item->name ?></b></h1>
-    <img src="<?= $item->largeImageLink?>"/>
+    <img src="<?= $item->largeImageLink?>"/><br/>
+    <?php
+    if($item->reviewUrl != null)
+        echo "<iframe src=\"$item->reviewUrl\"></iframe><br/>";
+
+    if($item->description != null)
+        echo __('Product.Description', $item->description) . '<br/>';
+
+    if($item->brand != null)
+        echo __('Product.Brand', $item->brand) . '<br/>';
+
+    if($item->color != null)
+        echo __('Product.Color', $item->color) . '<br/>';
+
+    if($item->size != null)
+        echo __('Product.size', $item->size) . '<br/>';
+    ?>
 </fieldset>

@@ -75,6 +75,15 @@ msgstr "Score: {0}/5"
 msgid "Product.Description"
 msgstr "Description: {0}"
 
+msgid "Product.Brand"
+msgstr "Marque: {0}"
+
+msgid "Product.Color"
+msgstr "Couleur: {0}"
+
+msgid "Product.Size"
+msgstr "Taille: {0}"
+
 msgid "Product.Follow"
 msgstr "Suivre ce produit"
 

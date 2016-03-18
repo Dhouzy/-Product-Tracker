@@ -75,6 +75,15 @@ msgstr "Rating: {0, number}/5"
 msgid "Product.Description"
 msgstr "Description: {0}"
 
+msgid "Product.Brand"
+msgstr "Brand: {0}"
+
+msgid "Product.Color"
+msgstr "Color: {0}"
+
+msgid "Product.Size"
+msgstr "Size: {0}"
+
 msgid "Product.Follow"
 msgstr "Follow this product"
 

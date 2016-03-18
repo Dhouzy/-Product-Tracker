@@ -79,9 +79,9 @@ class AmazonHelper
         }
 
         if(isset($item->OfferSummary) && isset($item->OfferSummary->LowestNewPrice)) {
-            if(isset($item->OfferSummary->LowestNewPrice->Amount)) {
+            if(isset($item->OfferSummary->LowestNewPrice->Amount))
                 $amazonItem->currentPrice = $item->OfferSummary->LowestNewPrice->Amount;
-            }
+
             $amazonItem->currentFormattedPrice = $item->OfferSummary->LowestNewPrice->FormattedPrice;
             $amazonItem->smallImageLink = $smallImageLink;
             $amazonItem->largeImageLink = $largeImageLink;
@@ -96,8 +96,8 @@ class AmazonHelper
         if(isset($itemAttributes->Size))
             $amazonItem->size = $itemAttributes->Size;
 
-        if(isset($itemAttributes->CustomerReviews->IFrameURL))
-            $amazonItem->reviewUrl = $itemAttributes->CustomerReviews->IFrameURL;
+        if(isset($item->CustomerReviews->IFrameURL))
+            $amazonItem->reviewUrl = $item->CustomerReviews->IFrameURL;
 
         return $amazonItem;
     }
