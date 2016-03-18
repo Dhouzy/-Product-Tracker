@@ -7,8 +7,10 @@
  */
 
 namespace App\Controller;
+
 use App\Shell\PriceUpdateShell;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
 
 /**
  * Class ProductsController
@@ -31,7 +33,14 @@ class ProductsController extends AppController
     {
         if (isset($this->request->uid)) {
             $item = $this->updateService->main($this->request->uid);
-            $this->set(compact('item'));
+
+            $products = TableRegistry::get('products');
+            //$product = $products->findget($id, ['contain' => ['Companies', 'Prices']]);
+            $product = $products->find()->contain(['Companies', 'Prices'])->where(['article_uid' => $this->request->uid])->first();
+
+            $this->set(compact('product'));
+
+            //$this->set(compact('item'));
         }
     }
 

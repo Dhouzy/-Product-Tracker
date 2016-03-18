@@ -82,11 +82,11 @@ class PriceUpdateShell extends Shell
             return $this->fetchProductFromAmazon($itemUid);
 
         } else {
-            $interval = $this->compareTime($product->price->date);
-
-            if($interval->d > 0){
-                $this->updatePrice($product);
-            }
+//            $interval = $this->compareTime($product->price->date);
+//
+//            if($interval->d > 0){
+//                $this->updatePrice($product);
+//            }
 
             return $this->transformProductToProductItem($product);
         }

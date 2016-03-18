@@ -17,11 +17,12 @@ class ProductsTable extends Table
     public function initialize(array $config)
     {
         $this->belongsTo('Companies');
-        $this->hasOne('Prices', [
-            'foreignKey' => 'id',
-            'bindingKey' => 'price_id'
-        ]);
+//        $this->hasOne('Prices', [
+//            'foreignKey' => 'id',
+//            'bindingKey' => 'price_id'
+//        ]);
         $this->belongsToMany('Users');
+        $this->hasMany('Prices');
     }
 
 }
