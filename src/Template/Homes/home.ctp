@@ -16,6 +16,7 @@
         <table>
             <thead>
             <tr>
+                <th></th>
                 <th><?= __('Search.Table.Name') ?></th>
                 <th><?= __('Search.Table.Price') ?></th>
             </tr>
@@ -23,8 +24,9 @@
             <tbody>
             <?php foreach ($searchResult->amazonItems as $item): ?>
                 <tr>
-                <td><a href="/product/<?= $item->uid ?>"><?= $item->name ?></a></td>
-                <td><?= $item->currentFormattedPrice ?></td>
+                    <td><img src="<?= $item->smallImageLink?>"></td>
+                    <td><a href="/product/<?= $item->uid ?>"><?= $item->name ?></a></td>
+                    <td><?= $item->currentFormattedPrice ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
