@@ -95,6 +95,16 @@ class AmazonHelper
 
         if(isset($itemAttributes->Size))
             $amazonItem->size = $itemAttributes->Size;
+        else if(isset($itemAttributes->PackageDimensions)){
+            $dimensions = $itemAttributes->PackageDimensions;
+            $amazonItem->size = $dimensions->Length / 100 . "&nbsp;&times;&nbsp;"
+                    . $dimensions->Width / 100 . "&nbsp;&times;&nbsp;"
+                    . $dimensions->Height / 100; // hundrenths of inches to inches
+            $amazonItem->sizeFromDimensions = true;
+        }
+
+        if(isset($itemAttributes->PackageDimensions->Weight))
+            $amazonItem->weight = $itemAttributes->PackageDimensions->Weight / 100; // hundrenths of pounds to pounds
 
         if(isset($item->CustomerReviews->IFrameURL))
             $amazonItem->reviewUrl = $item->CustomerReviews->IFrameURL;

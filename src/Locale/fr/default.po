@@ -72,9 +72,6 @@ msgstr "Utilisateur en ligne: <br><b>Id: </b>{0}<br><b>Nom d'utilisateur: </b>{1
 msgid "Product.Rating"
 msgstr "Score: {0}/5"
 
-msgid "Product.Description"
-msgstr "Description: {0}"
-
 msgid "Product.Brand"
 msgstr "Marque: {0}"
 
@@ -83,6 +80,15 @@ msgstr "Couleur: {0}"
 
 msgid "Product.Size"
 msgstr "Taille: {0}"
+
+msgid "Product.Size.Unit"
+msgstr "pouces"
+
+msgid "Product.Weight"
+msgstr "Poids: {0}"
+
+msgid "Product.Weight.Unit"
+msgstr "livres"
 
 msgid "Product.Follow"
 msgstr "Suivre ce produit"
