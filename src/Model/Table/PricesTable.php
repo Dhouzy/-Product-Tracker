@@ -18,6 +18,5 @@ class PricesTable extends Table
     public function initialize(array $config)
     {
         $this->belongsTo('Products');
-        //$this->hasOne('Products');
     }
 }

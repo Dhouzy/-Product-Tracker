@@ -10,7 +10,6 @@ namespace Model\Table;
 
 
 use Cake\ORM\Table;
-use Cake\ORM\Association\HasMany;
 
 class UsersProductsTable extends Table
 {
