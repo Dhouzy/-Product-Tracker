@@ -21,6 +21,6 @@
         echo __('Product.Color', $item->color) . '<br/>';
 
     if($item->size != null)
-        echo __('Product.size', $item->size) . '<br/>';
+        echo __('Product.Size', $item->size) . '<br/>';
     ?>
 </fieldset>

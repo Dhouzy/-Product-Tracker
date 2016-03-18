@@ -69,8 +69,6 @@ class AmazonHelper
     private function _readOneResult($item)
     {
         $itemAttributes = $item->ItemAttributes;
-        $smallImageLink = $item->SmallImage->URL;
-        $largeImageLink = $item->LargeImage->URL;
 
         $amazonItem = new AmazonItem($item->ASIN, $itemAttributes->Title, $item->DetailPageURL);
 
@@ -83,8 +81,18 @@ class AmazonHelper
                 $amazonItem->currentPrice = $item->OfferSummary->LowestNewPrice->Amount;
 
             $amazonItem->currentFormattedPrice = $item->OfferSummary->LowestNewPrice->FormattedPrice;
-            $amazonItem->smallImageLink = $smallImageLink;
-            $amazonItem->largeImageLink = $largeImageLink;
+            if(isset($item->SmallImage)) {
+                $amazonItem->smallImageLink = $item->SmallImage->URL;
+            }
+            else {
+                $amazonItem->smallImageLink = "";
+            }
+            if(isset($item->LargeImage)) {
+                $amazonItem->largeImageLink = $item->LargeImage->URL;
+            }
+            else {
+                $amazonItem->largeImageLink = "";
+            }
         }
 
         if(isset($itemAttributes->Brand))
