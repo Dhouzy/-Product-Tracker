@@ -10,4 +10,28 @@
     <?php foreach ($product->prices as $price) {
         echo $price.'<br>';
     } ?>
+    <h1><b><?= $item->name ?></b></h1>
+    <img src="<?= $item->largeImageLink?>"/><br/>
+    <?php
+    if($item->reviewUrl != null)
+        echo "<iframe src=\"$item->reviewUrl\"></iframe><br/>";
+
+    if($item->brand != null)
+        echo __('Product.Brand', $item->brand) . '<br/>';
+
+    if($item->color != null)
+        echo __('Product.Color', $item->color) . '<br/>';
+
+    if($item->size != null) {
+        echo __('Product.Size', $item->size);
+
+        if($item->sizeFromDimensions)
+            echo '&nbsp;' . __('Product.Size.Unit');
+
+        echo '<br/>';
+    }
+
+    if($item->size != null)
+        echo __('Product.Weight', $item->weight) . '&nbsp;' . __('Product.Weight.Unit') . '<br/>';
+    ?>
 </fieldset>

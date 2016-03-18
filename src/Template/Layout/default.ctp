@@ -28,8 +28,6 @@ $session = $this->request->session();
 
     <?= $this->Html->meta('icon') ?>
     <?= $this->Html->css('bootstrap.min.css')?>
-    <?= $this->Html->css('base_cake.css') ?>
-    <?= $this->Html->css('cake.css') ?>
     <?= $this->Html->css('graphic.css') ?>
     <?= $this->Html->css('base.css') ?>
 
@@ -39,19 +37,19 @@ $session = $this->request->session();
 </head>
 <body>
     <nav class="top-bar expanded" data-topbar role="navigation">
-        <section class="top-bar-section">
+        <section class="navbar navbar-default">
             <?php
             if(!isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader)
                 echo $this->element('searchbar');
             ?>
-            <ul class="right">
+            <ul class="nav navbar-nav navbar-right">
                 <?php
                 if($session->read('Config.language') == 'fr')
                     $switchLanguage = 'en';
                 else
                     $switchLanguage = 'fr';
                 ?>
-                <li><a href="/lang?l=<?= $switchLanguage ?>&fromUrl=<?=
+                <li><a  href="/lang?l=<?= $switchLanguage ?>&fromUrl=<?=
                     urlencode($this->request->here) ?>"><?= strtoupper($switchLanguage) ?></a></li>
                 <?php
                     if (!$session->check('Auth.User')) {

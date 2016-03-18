@@ -29,6 +29,9 @@ class AmazonItem extends AbstractItem
             case 'brand':
             case 'color':
             case 'size':
+                $this->sizeFromDimensions = false;
+            case 'sizeFromDimensions':
+            case 'weight':
             case 'reviewUrl':
                 $this->$property = $value;
                 break;

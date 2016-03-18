@@ -69,8 +69,6 @@ class AmazonHelper
     private function _readOneResult($item)
     {
         $itemAttributes = $item->ItemAttributes;
-        $smallImageLink = $item->SmallImage->URL;
-        $largeImageLink = $item->LargeImage->URL;
 
         $amazonItem = new AmazonItem($item->ASIN, $itemAttributes->Title, $item->DetailPageURL);
 
@@ -79,12 +77,22 @@ class AmazonHelper
         }
 
         if(isset($item->OfferSummary) && isset($item->OfferSummary->LowestNewPrice)) {
-            if(isset($item->OfferSummary->LowestNewPrice->Amount)) {
+            if(isset($item->OfferSummary->LowestNewPrice->Amount))
                 $amazonItem->currentPrice = $item->OfferSummary->LowestNewPrice->Amount;
-            }
+
             $amazonItem->currentFormattedPrice = $item->OfferSummary->LowestNewPrice->FormattedPrice;
-            $amazonItem->smallImageLink = $smallImageLink;
-            $amazonItem->largeImageLink = $largeImageLink;
+            if(isset($item->SmallImage)) {
+                $amazonItem->smallImageLink = $item->SmallImage->URL;
+            }
+            else {
+                $amazonItem->smallImageLink = "";
+            }
+            if(isset($item->LargeImage)) {
+                $amazonItem->largeImageLink = $item->LargeImage->URL;
+            }
+            else {
+                $amazonItem->largeImageLink = "";
+            }
         }
 
         if(isset($itemAttributes->Brand))
@@ -95,9 +103,19 @@ class AmazonHelper
 
         if(isset($itemAttributes->Size))
             $amazonItem->size = $itemAttributes->Size;
+        else if(isset($itemAttributes->PackageDimensions)){
+            $dimensions = $itemAttributes->PackageDimensions;
+            $amazonItem->size = $dimensions->Length / 100 . "&nbsp;&times;&nbsp;"
+                    . $dimensions->Width / 100 . "&nbsp;&times;&nbsp;"
+                    . $dimensions->Height / 100; // hundrenths of inches to inches
+            $amazonItem->sizeFromDimensions = true;
+        }
 
-        if(isset($itemAttributes->CustomerReviews->IFrameURL))
-            $amazonItem->reviewUrl = $itemAttributes->CustomerReviews->IFrameURL;
+        if(isset($itemAttributes->PackageDimensions->Weight))
+            $amazonItem->weight = $itemAttributes->PackageDimensions->Weight / 100; // hundrenths of pounds to pounds
+
+        if(isset($item->CustomerReviews->IFrameURL))
+            $amazonItem->reviewUrl = $item->CustomerReviews->IFrameURL;
 
         return $amazonItem;
     }
