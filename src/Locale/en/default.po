@@ -105,12 +105,6 @@ msgstr "Product Name"
 msgid "Search.Table.Price"
 msgstr "Price"
 
-msgid "Search.Table.Rating"
-msgstr "Rating"
-
-msgid "Search.Table.Description"
-msgstr "Description"
-
 #############################
 # Flash #####################
 #############################

@@ -47,8 +47,7 @@ class PriceUpdateShell extends Shell
         return "succes";
     }
 
-    private function updateAllProduct()
-    {
+    private function updateAllProduct(){
         $this->out(date('m/d/Y h:i:s a') . 'Daily update started');
 
         $query = $this->productsTable->find()->contain(['Prices']);
@@ -68,8 +67,11 @@ class PriceUpdateShell extends Shell
         $this->out(date('m/d/Y h:i:s a') .'Daily update ended');
     }
 
-    private function updateOneProduct($itemUid)
-    {
+    /**
+     * @param $itemUid Product UDI to be fetched.
+     * @return \App\Core\Amazon\AbstractItem
+     */
+    private function updateOneProduct($itemUid){
         $product = $this->productsTable
             ->find()
             ->contain(['Prices'])
@@ -79,8 +81,9 @@ class PriceUpdateShell extends Shell
         if($product == null){
             return $this->fetchProductFromAmazon($itemUid);
 
-        }else {
+        } else {
             $interval = $this->compareTime($product->price->date);
+
             if($interval->d > 0){
                 $this->updatePrice($product);
             }
@@ -104,9 +107,9 @@ class PriceUpdateShell extends Shell
         $price->rebate_price = null;
         $price->rebate_amount = null;
 
-        if ($this->pricesTable->save($price)) {
+        if ($this->pricesTable->save($price)){
             $newPriceId = $price->id;
-        }else{
+        } else {
             throw new Exception('Save new price failed.');
         }
 

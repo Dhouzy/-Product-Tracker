@@ -8,19 +8,10 @@
 
 namespace App\Core;
 
-class ProductItem extends item
+class ProductItem extends AbstractItem
 {
-
     function __construct()
     {
-    }
-
-    public function __get($property)
-    {
-        if (property_exists($this, $property))
-        {
-            return $this->$property;
-        }
     }
 
     public function __set($property, $value)

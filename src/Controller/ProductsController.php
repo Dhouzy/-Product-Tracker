@@ -30,8 +30,8 @@ class ProductsController extends AppController
     public function product()
     {
         if (isset($this->request->uid)) {
-            $itemUpdate = $this->updateService->main($this->request->uid);
-            $this->set(compact('itemUpdate'));
+            $item = $this->updateService->main($this->request->uid);
+            $this->set(compact('item'));
         }
     }
 

@@ -9,34 +9,25 @@
 namespace App\Core\Amazon;
 
 
-use App\Core\item;
+use App\Core\AbstractItem;
 
-class AmazonItem extends item
+class AmazonItem extends AbstractItem
 {
-    private $amazonLink;
-    private $fullPrice;
-    public $currentFormattedPrice;
-    private $group;
-    private $brand;
-
-    function __construct()
-    {
+    function __construct($uid, $name, $link){
+        $this->uid = $uid;
+        $this->name = $name;
+        $this->amazonLink = $link;
     }
 
-    public function __get($property)
-    {
-        if (property_exists($this, $property))
-        {
-            return $this->$property;
+    public function __set($property, $value){
+        switch($property){
+            case 'fullPrice':
+            case 'currentPrice':
+            case 'currentFormattedPrice':
+                $this->$property = $value;
+                break;
+            default:
+                throw new \RuntimeException("Property $property may not be set.");
         }
     }
-
-    public function __set($property, $value)
-    {
-        if (property_exists($this, $property))
-        {
-            $this->$property = $value;
-        }
-    }
-
 }

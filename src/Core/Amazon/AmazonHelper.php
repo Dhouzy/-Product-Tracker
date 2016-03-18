@@ -71,19 +71,17 @@ class AmazonHelper
     {
         $itemAttribute = $item->ItemAttributes;
 
-        $amazonItem = new AmazonItem();
-        $amazonItem->article_uid = $item->ASIN;
-        $amazonItem->name = $itemAttribute->Title;
-        $amazonItem->amazonLink = $item->DetailPageURL;
+        $amazonItem = new AmazonItem($item->ASIN, $itemAttribute->Title, $item->DetailPageURL);
+
         if(property_exists(get_class($itemAttribute), 'ListPrice')) {
             $amazonItem->fullPrice = $itemAttribute->ListPrice->Amount;
         }
 
-            if(isset($item->OfferSummary) && isset($item->OfferSummary->LowestNewPrice)) {
-                if(isset($item->OfferSummary->LowestNewPrice->Amount))
-                    $amazonItem->currentPrice = $item->OfferSummary->LowestNewPrice->Amount;
-                $amazonItem->currentFormattedPrice = $item->OfferSummary->LowestNewPrice->FormattedPrice;
-            }
+        if(isset($item->OfferSummary) && isset($item->OfferSummary->LowestNewPrice)) {
+            if(isset($item->OfferSummary->LowestNewPrice->Amount))
+                $amazonItem->currentPrice = $item->OfferSummary->LowestNewPrice->Amount;
+            $amazonItem->currentFormattedPrice = $item->OfferSummary->LowestNewPrice->FormattedPrice;
+        }
 
         return $amazonItem;
     }

@@ -18,20 +18,15 @@
             <tr>
                 <th><?= __('Search.Table.Name') ?></th>
                 <th><?= __('Search.Table.Price') ?></th>
-                <th><?= __('Search.Table.Description') ?></th>
             </tr>
             </thead>
             <tbody>
-            <?php
-            foreach ($searchResult->amazonItems as $item) {
-                ?>
+            <?php foreach ($searchResult->amazonItems as $item): ?>
                 <tr>
-                <td><a href="/product?asin=<?= $item->ASIN ?>"><?= $item->title ?></a></td>
+                <td><a href="/product/<?= $item->uid ?>"><?= $item->name ?></a></td>
                 <td><?= $item->currentFormattedPrice ?></td>
-                <td></td>
-                <td><?= $item->description ?></td></tr><?php
-            }
-            ?>
+                </tr>
+            <?php endforeach; ?>
             </tbody>
         </table>
         <?php
