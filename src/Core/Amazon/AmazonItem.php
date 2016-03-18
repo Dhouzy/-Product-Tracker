@@ -23,6 +23,8 @@ class AmazonItem extends AbstractItem
         switch($property){
             case 'fullPrice':
             case 'currentPrice':
+            case 'smallImageLink':
+            case 'largeImageLink':
             case 'currentFormattedPrice':
                 $this->$property = $value;
                 break;

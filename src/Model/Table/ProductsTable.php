@@ -8,7 +8,6 @@
 
 namespace App\Model\Table;
 
-
 use Cake\Database\Query;
 use Cake\ORM\Table;
 
@@ -24,4 +23,15 @@ class ProductsTable extends Table
         $this->belongsToMany('Users');
     }
 
+    public function findProductId(Query $query, array $options){
+        $result = $query
+            ->select(['id'])
+            ->where(['article_uid' => $options['uid']])
+            ->first();
+
+        if($result == null)
+            return null;
+        else
+            return $result->id;
+    }
 }

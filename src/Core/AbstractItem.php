@@ -24,6 +24,8 @@ abstract class AbstractItem
     protected $description;
     protected $rating;
     protected $type;
+    protected $largeImageLink;
+    protected $smallImageLink;
 
     public function __get($property){
         if (property_exists($this, $property))

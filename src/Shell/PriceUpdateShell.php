@@ -145,12 +145,13 @@ class PriceUpdateShell extends Shell
             ->first();
 
         $productItem = new ProductItem();
-        $productItem->article_uid =$product->article_uid;
+        $productItem->uid =$product->article_uid;
         $productItem->name = $product->name;
         $productItem->currentPrice = $currentPrice;
         $productItem->description = $product->description;
         $productItem->rating =$product->rating;
         $productItem->type = $product->type;
+        $productItem->largeImageLink = $product->image_link;
 
         return $productItem;
     }
