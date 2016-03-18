@@ -49,7 +49,7 @@ class ProductUpdater
         else{
             $apiItem = $this->fetchProductFromApi($articleUid);
             $this->createProduct($apiItem);
-            $this->updatePrice($apiItem);
+            $this->updatePrice($apiItem, $product);
         }
     }
 
