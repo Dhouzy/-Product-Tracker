@@ -22,6 +22,10 @@ abstract class AbstractItem
     protected $maxPrice;
     protected $lowestPrice;
     protected $description;
+    protected $brand;
+    protected $color;
+    protected $size;
+    protected $reviewUrl;
     protected $rating;
     protected $type;
     protected $largeImageLink;

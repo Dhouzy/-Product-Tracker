@@ -68,13 +68,13 @@ class AmazonHelper
 
     private function _readOneResult($item)
     {
-        $itemAttribute = $item->ItemAttributes;
+        $itemAttributes = $item->ItemAttributes;
         $smallImageLink = $item->SmallImage->URL;
 
-        $amazonItem = new AmazonItem($item->ASIN, $itemAttribute->Title, $item->DetailPageURL);
+        $amazonItem = new AmazonItem($item->ASIN, $itemAttributes->Title, $item->DetailPageURL);
 
-        if(property_exists(get_class($itemAttribute), 'ListPrice')) {
-            $amazonItem->fullPrice = $itemAttribute->ListPrice->Amount;
+        if(property_exists(get_class($itemAttributes), 'ListPrice')) {
+            $amazonItem->fullPrice = $itemAttributes->ListPrice->Amount;
         }
 
         if(isset($item->OfferSummary) && isset($item->OfferSummary->LowestNewPrice)) {
@@ -84,6 +84,18 @@ class AmazonHelper
             $amazonItem->currentFormattedPrice = $item->OfferSummary->LowestNewPrice->FormattedPrice;
             $amazonItem->smallImageLink = $smallImageLink;
         }
+
+        if(isset($itemAttributes->Brand))
+            $amazonItem->brand = $itemAttributes->Brand;
+
+        if(isset($itemAttributes->Color))
+            $amazonItem->color = $itemAttributes->Color;
+
+        if(isset($itemAttributes->Size))
+            $amazonItem->size = $itemAttributes->Size;
+
+        if(isset($itemAttributes->CustomerReviews->IFrameURL))
+            $amazonItem->reviewUrl = $itemAttributes->CustomerReviews->IFrameURL;
 
         return $amazonItem;
     }

@@ -25,6 +25,10 @@ class AmazonItem extends AbstractItem
             case 'currentPrice':
             case 'smallImageLink':
             case 'currentFormattedPrice':
+            case 'brand':
+            case 'color':
+            case 'size':
+            case 'reviewUrl':
                 $this->$property = $value;
                 break;
             default:

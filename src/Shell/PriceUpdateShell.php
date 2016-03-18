@@ -92,7 +92,6 @@ class PriceUpdateShell extends Shell
         }
     }
 
-
     function updatePrice($productRow){
         $this->out("updating price");
 
