@@ -3,4 +3,5 @@
         echo $this->Form->button(__('Product.Follow'));
     } ?>
     <h1><b><?= $item->name ?></b></h1>
+    <img src="<?= $item->largeImageLink?>"/>
 </fieldset>

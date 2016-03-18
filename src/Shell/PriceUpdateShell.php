@@ -151,6 +151,7 @@ class PriceUpdateShell extends Shell
         $productItem->description = $product->description;
         $productItem->rating =$product->rating;
         $productItem->type = $product->type;
+        $productItem->largeImageLink = $product->image_link;
 
         return $productItem;
     }
