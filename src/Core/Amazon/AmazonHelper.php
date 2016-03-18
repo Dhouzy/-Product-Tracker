@@ -63,13 +63,13 @@ class AmazonHelper
             $amazonItem = $this->_readOneResult($item);
             $searchResult->addItem($amazonItem);
         }
-
         return $searchResult;
     }
 
     private function _readOneResult($item)
     {
         $itemAttribute = $item->ItemAttributes;
+        $smallImageLink = $item->SmallImage->URL;
 
         $amazonItem = new AmazonItem($item->ASIN, $itemAttribute->Title, $item->DetailPageURL);
 
@@ -78,9 +78,11 @@ class AmazonHelper
         }
 
         if(isset($item->OfferSummary) && isset($item->OfferSummary->LowestNewPrice)) {
-            if(isset($item->OfferSummary->LowestNewPrice->Amount))
+            if(isset($item->OfferSummary->LowestNewPrice->Amount)) {
                 $amazonItem->currentPrice = $item->OfferSummary->LowestNewPrice->Amount;
+            }
             $amazonItem->currentFormattedPrice = $item->OfferSummary->LowestNewPrice->FormattedPrice;
+            $amazonItem->smallImageLink = $smallImageLink;
         }
 
         return $amazonItem;
@@ -152,7 +154,6 @@ class AmazonHelper
         $xml = trim(str_replace('"', "'", $xml));
         $simpleXml = simplexml_load_string($xml);
         $json = json_encode($simpleXml);
-
         $jsonObj = json_decode($json);
 
         return $jsonObj;
