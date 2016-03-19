@@ -1,4 +1,15 @@
 <?php
+/**
+ * For production server the env var is set, development machines will auto switch to true
+ */
+$debug = getenv('CAKEPHP_DEBUG'); // Returns string of content if set, false if not
+if($debug ==! false){
+    $debug = (bool)$debug;
+}
+else{
+    $debug = true;
+}
+
 return [
     /**
      * Debug Level:
@@ -9,7 +20,7 @@ return [
      * Development Mode:
      * true: Errors and warnings shown.
      */
-    'debug' => true,
+    'debug' => $debug,
 
     /**
      * Configure basic information about the application.
@@ -44,9 +55,9 @@ return [
         'wwwRoot' => WWW_ROOT,
         // 'baseUrl' => env('SCRIPT_NAME'),
         'fullBaseUrl' => false,
-        'imageBaseUrl' => 'webroot/img/',
-        'cssBaseUrl' => 'webroot/css/',
-        'jsBaseUrl' => 'webroot/js/',
+        'imageBaseUrl' => 'img/',
+        'cssBaseUrl' => 'css/',
+        'jsBaseUrl' => 'js/',
         'paths' => [
             'plugins' => [ROOT . DS . 'plugins' . DS],
             'templates' => [APP . 'Template' . DS],
@@ -74,7 +85,7 @@ return [
      * enable timestamping regardless of debug value.
      */
     'Asset' => [
-        // 'timestamp' => true,
+         'timestamp' => true,
     ],
 
     /**

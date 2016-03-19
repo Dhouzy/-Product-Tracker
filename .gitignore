@@ -2,6 +2,10 @@
 /config/amazon.php
 /config/amazon.php~
 
+### Override app config ###
+/config/app_local.php
+/config/app_local.php~
+
 
 composer.phar
 
