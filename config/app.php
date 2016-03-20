@@ -1,14 +1,4 @@
 <?php
-/**
- * For production server the env var is set, development machines will auto switch to true
- */
-$debug = (bool)getenv('CAKEPHP_DEBUG'); // Returns string of content if set, false if not
-if($debug !== false){
-    $debug = false;
-}
-else{
-    $debug = true;
-}
 
 return [
     /**
@@ -20,7 +10,7 @@ return [
      * Development Mode:
      * true: Errors and warnings shown.
      */
-    'debug' => $debug,
+    'debug' => true,
 
     /**
      * Configure basic information about the application.
