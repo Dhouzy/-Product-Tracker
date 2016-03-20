@@ -2,9 +2,9 @@
 /**
  * For production server the env var is set, development machines will auto switch to true
  */
-$debug = getenv('CAKEPHP_DEBUG'); // Returns string of content if set, false if not
-if($debug ==! false){
-    $debug = (bool)$debug;
+$debug = (bool)getenv('CAKEPHP_DEBUG'); // Returns string of content if set, false if not
+if($debug !== false){
+    $debug = false;
 }
 else{
     $debug = true;
