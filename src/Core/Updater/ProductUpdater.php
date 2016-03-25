@@ -95,7 +95,7 @@ class ProductUpdater
         }
     }
 
-    private function compareTime($lastPriceUpdate){
+    public function compareTime($lastPriceUpdate){
         $now  = new DateTime(null, new DateTimeZone('America/Toronto'));
         return $interval = $lastPriceUpdate->diff($now);
     }
@@ -106,7 +106,7 @@ class ProductUpdater
 //        return floatval($matches[0]);
 //    }
 
-    private function fetchProductFromApi($articleUid)
+    public function fetchProductFromApi($articleUid)
     {
         $amazon = new AmazonHelper();
         return $amazon->findProduct($articleUid);
