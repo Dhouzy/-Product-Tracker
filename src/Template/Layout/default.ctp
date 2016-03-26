@@ -36,13 +36,16 @@ $session = $this->request->session();
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav class="top-bar expanded" data-topbar role="navigation">
-        <section class="navbar navbar-default">
+    <nav class="top-bar expanded " data-topbar role="navigation">
+        <section class="header navbar navbar-default ">
+            <div class="left"></div>
             <?php
-            if(!isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader)
+            if(!isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader){
                 echo $this->element('searchbar');
-            ?>
-            <ul class="nav navbar-nav navbar-right">
+            }else{ ?>
+                <div class="middle"></div>
+                <?php  } ?>
+            <ul class="buttonsHeader nav navbar-nav ">
                 <?php
                 if($session->read('Config.language') == 'fr')
                     $switchLanguage = 'en';

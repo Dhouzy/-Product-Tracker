@@ -1,5 +1,56 @@
-.test {
-  background-color: #A40C0E;
+.header {
+  display: flex;
+  text-align: center;
+  background-color: #302e2e;
+
+  .SearchBar {
+    #search {
+      height: 30px;
+    }
+    button {
+      height: 30px;
+      background-color: #e00007;
+      border-color: #ff5a5f #ff5a5f #e00007;
+      color: #fff;
+
+    }
+    order: 50;
+    align-self: center;
+    width: 60%;
+    -moz-box-flex: 1;
+
+  }
+  .left {
+    width: 20%;
+    order: 1;
+  }
+
+  .middle {
+    width: 60%;
+    order: 50;
+  }
+
+  .buttonsHeader {
+    order: 100;
+    width: 20%;
+    align-self: center;
+    padding-right: 5px !important;
+    // margin-right: 1px;
+    a {
+      display: block;
+      padding: 0.5em;
+      text-align: center;
+      padding: 10px;
+      color: #ffffff !important;
+      font-weight: 300;
+    }
+    li:hover {
+      // background: darken(deepskyblue, 2%);
+      background-color: #000000;
+      a {
+        color: #ffffff;
+        font-weight: 600;
+      }
+    }
+  }
 }
-
-
