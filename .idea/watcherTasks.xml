@@ -20,7 +20,7 @@
         </array>
       </option>
       <option name="outputFromStdout" value="true" />
-      <option name="program" value="$PROJECT_DIR$/vendor/bin/lessc.bat" />
+      <option name="program" value="$PROJECT_DIR$/vendor/bin/lessc" />
       <option name="scopeName" value="Project Files" />
       <option name="trackOnlyRoot" value="false" />
       <option name="workingDir" value="$FileDir$" />
