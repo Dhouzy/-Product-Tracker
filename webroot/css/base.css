@@ -12,12 +12,6 @@
 .header .SearchBar #search {
   height: 30px;
 }
-.header .SearchBar button {
-  height: 30px;
-  background-color: #e00007;
-  border-color: #ff5a5f #ff5a5f #e00007;
-  color: #fff;
-}
 .header .left {
   width: 20%;
   order: 1;
@@ -46,4 +40,14 @@
 .header .buttonsHeader li:hover a {
   color: #ffffff;
   font-weight: 600;
+}
+.btn.red {
+  height: 30px;
+  background-color: #e00007;
+  border-color: #ff5a5f #ff5a5f #e00007;
+  color: #fff;
+  padding-top: 0.3em;
+}
+.btn.red:hover {
+  background-color: darkred;
 }

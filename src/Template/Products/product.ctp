@@ -2,7 +2,7 @@
     <?php if ($this->request->session()->read('Auth.User')) {
         echo $this->Form->create(null, ['url' => 'follow']);
         echo $this->Form->input(null, ['name' => 'uid', 'value' => "$product->article_uid", 'type' => 'hidden']);
-        echo $this->Form->button(__('Product.Follow'));
+        echo $this->Form->button(__('Product.Follow'), ['class' => 'btn red']);
         echo $this->Form->end();
     } ?>
     <h1><b><?= $product->name ?></b></h1>
