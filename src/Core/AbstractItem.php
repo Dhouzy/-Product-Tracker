@@ -15,7 +15,8 @@ abstract class AbstractItem
 {
     protected $uid;
     protected $name;
-    protected $amazonLink;
+    protected $amazonUrl;
+    protected $reviewUrl;
     protected $fullPrice;
     protected $currentPrice;
     protected $currentFormattedPrice;
@@ -23,10 +24,10 @@ abstract class AbstractItem
     protected $lowestPrice;
     protected $brand;
     protected $color;
-    protected $size;
-    protected $sizeFromDimensions;
-    protected $weight;
-    protected $reviewUrl;
+    protected $length; // Millimeters
+    protected $width;
+    protected $height;
+    protected $weight; // Milligrams
     protected $rating;
     protected $type;
     protected $largeImageLink;
