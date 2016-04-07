@@ -64,7 +64,13 @@ class ProductUpdater
         $product->name = $apiItem->name;
         $product->company_id = $companyRow->id;
         $product->article_uid = $apiItem->uid;
+        $product->lengthmm = $apiItem->length;
+        $product->widthmm = $apiItem->width;
+        $product->heightmm = $apiItem->height;
+        $product->weightmg = $apiItem->weight;
         $product->imageLink = $apiItem->largeImageLink;
+        $product->amazon_url = $apiItem->amazonUrl;
+        $product->review_url = $apiItem->reviewUrl;
         if ($this->productsTable->save($product)){
             $product = $this->productsTable
                 ->find()

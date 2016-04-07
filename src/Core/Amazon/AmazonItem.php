@@ -16,7 +16,7 @@ class AmazonItem extends AbstractItem
     function __construct($uid, $name, $link){
         $this->uid = $uid;
         $this->name = $name;
-        $this->amazonLink = $link;
+        $this->amazonUrl = $link;
     }
 
     public function __set($property, $value){
@@ -28,9 +28,9 @@ class AmazonItem extends AbstractItem
             case 'currentFormattedPrice':
             case 'brand':
             case 'color':
-            case 'size':
-                $this->sizeFromDimensions = false;
-            case 'sizeFromDimensions':
+            case 'length':
+            case 'width':
+            case 'height':
             case 'weight':
             case 'reviewUrl':
                 $this->$property = $value;

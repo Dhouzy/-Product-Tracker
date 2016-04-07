@@ -79,16 +79,10 @@ msgid "Product.Color"
 msgstr "Couleur: {0}"
 
 msgid "Product.Size"
-msgstr "Taille: {0}"
-
-msgid "Product.Size.Unit"
-msgstr "pouces"
+msgstr "Taille: {0} mm &times; {1} mm &times; {2} mm"
 
 msgid "Product.Weight"
-msgstr "Poids: {0}"
-
-msgid "Product.Weight.Unit"
-msgstr "livres"
+msgstr "Poids: {0} mg"
 
 msgid "Product.Follow"
 msgstr "Suivre ce produit"

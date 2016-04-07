@@ -30,6 +30,7 @@ $session = $this->request->session();
     <?= $this->Html->css('bootstrap.min.css')?>
     <?= $this->Html->css('graphic.css') ?>
     <?= $this->Html->css('base.css') ?>
+    <?= $this->Html->css('signup.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
