@@ -1,34 +1,32 @@
 <fieldset>
-    <?php if ($this->request->session()->read('Auth.User')) {
+    <?php if ($isUserLoggedIn && !$isItemFollowed) {
         echo $this->Form->create(null, ['url' => 'follow']);
         echo $this->Form->input(null, ['name' => 'uid', 'value' => "$product->article_uid", 'type' => 'hidden']);
         echo $this->Form->button(__('Product.Follow'), ['class' => 'btn red']);
         echo $this->Form->end();
     } ?>
     <h1><b><?= $product->name ?></b></h1>
-    <img src="<?= $product->largeImageLink?>"/>
     <?php
-    foreach ($product->prices as $price) {
-        echo $price->price.'<br>';
+    foreach ($product->prices as $price){
+        echo $this->Html->para(null, __('Product.Price',$price->id, $price->date, $price->price, $price->rebate_price));
     }
 
-    if($item->amazonUrl != null){
-        echo "<a href=\"$item->amazonUrl\"><img src=\"$item->largeImageLink\"/></a><br/>";
+    if($product->amazon_url != null){
+        echo "<a href=\"$product->amazon_url\"><img src=\"$product->image_link\"/></a><br/>";
     }
-    //echo "<pre>";var_dump($item);echo "</pre>";
-    if($item->reviewUrl != null)
-        echo "<iframe src=\"$item->reviewUrl\"></iframe><br/>";
+    if($product->review_url != null)
+        echo "<iframe src=\"$product->review_url\"></iframe><br/>";
 
-    if($item->brand != null)
-        echo __('Product.Brand', $item->brand) . '<br/>';
+    if($product->brand != null)
+        echo __('Product.Brand', $product->brand) . '<br/>';
 
-    if($item->color != null)
-        echo __('Product.Color', $item->color) . '<br/>';
+    if($product->color != null)
+        echo __('Product.Color', $product->color) . '<br/>';
 
-    if($item->length != null && $item->width != null && $item->height != null)
-        echo __('Product.Size', $item->length, $item->width, $item->height) . '<br/>';
+    if($product->lengthmm != null && $product->widthmm != null && $product->heightmm != null)
+        echo __('Product.Size', $product->lengthmm, $product->widthmm, $product->heightmm) . '<br/>';
 
-    if($item->weight != null)
-        echo __('Product.Weight', $item->weight) . '<br/>';
+    if($product->weightmm != null)
+        echo __('Product.Weight', $product->weightmm) . '<br/>';
     ?>
 </fieldset>

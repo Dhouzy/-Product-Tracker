@@ -1,44 +1,55 @@
 .header {
-  display: flex;
-  text-align: center;
   background-color: #302e2e;
+  overflow: auto;
 
-  .SearchBar {
-    #search {
-      height: 30px;
-    }
-    order: 50;
-    align-self: center;
-    width: 60%;
-    -moz-box-flex: 1;
-
-  }
   .left {
-    width: 20%;
-    order: 1;
+    float: left;
+
+    h3 {
+      font-weight: 600;
+      padding: 12px 15px !important;
+      margin: 0 !important;
+      a {
+        &:hover, &:active, &:focus {
+          text-decoration: none;
+          color: #484848;
+        }
+        color: #484848;
+      }
+    }
   }
 
   .middle {
-    width: 60%;
-    order: 50;
+    margin: 0px 256px 0px 272px;
+    padding-left: 5%;
+    padding-right: 5%;
+    form {
+      padding: 10px;
+
+      #search {
+        // Leave it like that this is a less hack to prevent early compiling
+        width: -moz-calc(~"100% - 113px");
+        width: -webkit-calc(~"100% - 113px");
+        width: calc(~"100% - 113px");
+      }
+
+      * {
+        height: 30px;
+      }
+    }
   }
 
-  .buttonsHeader {
-    order: 100;
-    width: 20%;
+  .buttons-header {
+    float: right !important;
     align-self: center;
-    padding-right: 5px !important;
-    // margin-right: 1px;
+    padding-right: 15px !important;
     a {
       display: block;
-      padding: 0.5em;
       text-align: center;
-      padding: 10px;
       color: #ffffff !important;
       font-weight: 300;
     }
     li:hover {
-      // background: darken(deepskyblue, 2%);
       background-color: #000000;
       a {
         color: #ffffff;
@@ -48,14 +59,13 @@
   }
 }
 
-.btn{
-  &.red{
-    height: 30px;
+.btn {
+  margin-left: 15px;
+  &.red {
     background-color: #e00007;
     border-color: #ff5a5f #ff5a5f #e00007;
     color: #fff;
-    padding-top: 0.3em;
-    &:hover{
+    &:hover {
       background-color: darkred;
     }
   }

@@ -24,8 +24,14 @@
             <tbody>
             <?php foreach ($searchResult->amazonItems as $item): ?>
                 <tr>
-                    <td><img src="<?= $item->smallImageLink?>"></td>
-                    <td><a href="/product/<?= $item->uid ?>"><?= $item->name ?></a></td>
+                    <td><img src="<?= $item->smallImageLink ?>"></td>
+                    <td>
+                        <?= $this->Html->link($item->name, [
+                            'controller' => 'Products',
+                            'action' => 'product',
+                            'uid' => $item->uid]);
+                        ?>
+                    </td>
                     <td><?= $item->currentFormattedPrice ?></td>
                 </tr>
             <?php endforeach; ?>
@@ -33,22 +39,34 @@
         </table>
         <?php
         $maxPage = min(10, $searchResult->numMaxPages);
-        if ($currentPage == 1)
+        if ($page == 1)
             echo "&lt;&lt;&nbsp;";
         else
-            echo "<a href='?search=$searchKeywordsEncoded&p=" . ($currentPage - 1) . "'>&lt;&lt;</a>&nbsp;";
+            echo $this->Html->link('<< ', [
+                'controller' => 'Homes',
+                'action' => 'home',
+                'search' => $search,
+                'page' => $page - 1]);
 
         for ($i = 1; $i <= $maxPage; $i++) {
-            if ($currentPage == $i)
+            if ($page == $i)
                 echo "$i&nbsp;";
             else
-                echo "<a href='?search=$searchKeywordsEncoded&p=$i'>$i</a>&nbsp;";
+                echo $this->Html->link("$i ", [
+                    'controller' => 'Homes',
+                    'action' => 'home',
+                    'search' => $search,
+                    'page' => $i]);
         }
 
-        if ($currentPage == $maxPage)
+        if ($page == $maxPage)
             echo "&gt;&gt;&nbsp;";
         else
-            echo "<a href='?search=$searchKeywordsEncoded&p=" . ($currentPage + 1) . "'>&gt;&gt;</a>&nbsp;";
+            echo $this->Html->link(" >>", [
+                'controller' => 'Homes',
+                'action' => 'home',
+                'search' => $search,
+                'page' => $page + 1]);
     }
     ?>
 </fieldset>
