@@ -15,6 +15,8 @@ abstract class AbstractItem
 {
     protected $uid;
     protected $name;
+    protected $largeImageLink;
+    protected $smallImageLink;
     protected $amazonUrl;
     protected $reviewUrl;
     protected $fullPrice;
@@ -30,8 +32,6 @@ abstract class AbstractItem
     protected $weight; // Milligrams
     protected $rating;
     protected $type;
-    protected $largeImageLink;
-    protected $smallImageLink;
 
     public function __get($property){
         if (property_exists($this, $property))

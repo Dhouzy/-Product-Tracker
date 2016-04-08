@@ -6,16 +6,15 @@
         echo $this->Form->end();
     } ?>
     <h1><b><?= $product->name ?></b></h1>
-    <img src="<?= $product->largeImageLink?>"/>
     <?php
     foreach ($product->prices as $price) {
-        echo $price->price.'<br>';
+        echo $price->currentPrice.'<br>';
     }
 
     if($item->amazonUrl != null){
         echo "<a href=\"$item->amazonUrl\"><img src=\"$item->largeImageLink\"/></a><br/>";
     }
-    //echo "<pre>";var_dump($item);echo "</pre>";
+
     if($item->reviewUrl != null)
         echo "<iframe src=\"$item->reviewUrl\"></iframe><br/>";
 
