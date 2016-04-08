@@ -28,13 +28,17 @@ $session = $this->request->session();
     <?= $this->Html->meta('icon') ?>
     <?= $this->Html->css('bootstrap.min.css') ?>
     <?= $this->Html->css('graphic.css') ?>
-    <?= $this->Html->css('base.css') ?>
+    <?= $this->Html->css('app.css') ?>
+    <?= $this->Html->css('signup.css') ?>
+    <?= $this->Html->script('tooltip.js') ?>
+    <?= $this->Html->script('profile.js') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
+
 <div class="container">
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -50,7 +54,7 @@ $session = $this->request->session();
                             <?= $this->Flash->render('auth') ?>
                             <?= $this->Form->create(null, ['id' => 'test']) ?>
                             <fieldset>
-<!--                                <legend>--><?//= __('SignIn.FormTitle') ?><!--</legend>-->
+                                <!--                                <legend>--><?//= __('SignIn.FormTitle') ?><!--</legend>-->
                                 <?= $this->Form->input('username', ['label' =>__('Global.Username').__('SignIn.OrEmail'), 'class' => 'inputLogin', 'id' => 'username']) ?>
                                 <?= $this->Form->input('password',['label' =>__('Global.Password'), 'class' => 'inputLogin', 'id' => 'username']) ?>
                             </fieldset>
@@ -66,42 +70,48 @@ $session = $this->request->session();
 
 <nav class="top-bar expanded " data-topbar role="navigation">
     <section class="header navbar navbar-default ">
-        <div class="left"></div>
-<?php
-if (!isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader) {
-    // echo $this->element('searchbar');
-} else { ?>
-            <div class="middle"></div>
-        <?php } ?>
-        <ul class="buttonsHeader nav navbar-nav ">
-<?php
-    if ($session->read('Config.language') == 'fr')
-        $switchLanguage = 'en';
-    else
-        $switchLanguage = 'fr';
-?>
-    <li><a href="/lang?l=<?= $switchLanguage ?>&fromUrl=<?=
-    urlencode($this->request->here) ?>"><?= strtoupper($switchLanguage) ?></a></li>
-<?php
-    if (!$session->check('Auth.User')) {
-?><a data-toggle="modal" data-target="#myModal">
-                    <?php echo __('Global.SignIn') ?>
-                    </a><?php
-        echo '<li>' . $this->Html->link(
-            __('Global.SignUp'),
-            ['controller' => 'Users', 'action' => 'add']
-        ) . '</li>';
-    } else {
-        echo '<li>' . $this->Html->link(
-            __('Profile.Title'),
-            ['controller' => 'Users', 'action' => 'profile']) . '</li>';
-        echo '<li>' . $this->Html->link(
-            __('Global.SignOut'),
-            ['controller' => 'Users', 'action' => 'logout']
-        ) . '</li>';
-    }
-?>
+        <div class="left">
+            <h3>
+                <?= $this->Html->link('PRODUCT TRACKER', ['controller' => 'Homes', 'action' => 'home']); ?>
+            </h3>
+        </div>
+
+        <ul class="buttons-header nav navbar-nav ">
+            <?php
+            if ($session->read('Config.language') == 'fr')
+                $switchLanguage = 'en';
+            else
+                $switchLanguage = 'fr';
+            ?>
+            <li><a href="/lang?l=<?= $switchLanguage ?>&fromUrl=<?=
+                urlencode($this->request->here) ?>"><?= strtoupper($switchLanguage) ?></a></li>
+            <?php
+            if (!$session->check('Auth.User')) {
+                ?><a data-toggle="modal" data-target="#myModal">
+                <?php echo __('Global.SignIn') ?>
+                </a><?php
+                echo '<li>' . $this->Html->link(
+                        __('Global.SignUp'),
+                        ['controller' => 'Users', 'action' => 'add']
+                    ) . '</li>';
+            } else {
+                echo '<li>' . $this->Html->link(
+                        __('Profile.Title'),
+                        ['controller' => 'Users', 'action' => 'profile']) . '</li>';
+                echo '<li>' . $this->Html->link(
+                        __('Global.SignOut'),
+                        ['controller' => 'Users', 'action' => 'logout']
+                    ) . '</li>';
+            }
+            ?>
         </ul>
+        <div class="middle">
+            <?php
+            if (!isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader) {
+                echo $this->element('searchbar');
+            }
+            ?>
+        </div>
     </section>
 </nav>
 <?= $this->Flash->render() ?>
@@ -138,4 +148,3 @@ if (!isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader) {
     });
 </script>
 </html>
-

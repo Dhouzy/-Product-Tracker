@@ -1,142 +1,66 @@
-.container {
-  display: flex;
-}
 .header {
-  display: flex;
-  text-align: center;
   background-color: #302e2e;
-}
-.header .SearchBar {
-  order: 50;
-  align-self: center;
-  width: 60%;
-}
-.header .SearchBar #search {
-  display: inline;
-}
-.header .SearchBar button {
-  background-color: #e00007;
-  border-color: #ff5a5f #ff5a5f #e00007;
-  color: #fff;
-  align-text: middle;
+  overflow: auto;
 }
 .header .left {
-  width: 20%;
-  order: 1;
+  float: left;
+}
+.header .left h3 {
+  font-weight: 600;
+  padding: 12px 15px !important;
+  margin: 0 !important;
+}
+.header .left h3 a {
+  color: #484848;
+}
+.header .left h3 a:hover,
+.header .left h3 a:active,
+.header .left h3 a:focus {
+  text-decoration: none;
+  color: #484848;
 }
 .header .middle {
-  width: 60%;
-  order: 50;
+  margin: 0px 256px 0px 272px;
+  padding-left: 5%;
+  padding-right: 5%;
 }
-.header .buttonsHeader {
-  order: 100;
-  width: 20%;
-  align-self: center;
-  padding-right: 5px !important;
-}
-.header .buttonsHeader a {
-  display: block;
-  padding: 0.5em;
-  text-align: center;
+.header .middle form {
   padding: 10px;
+}
+.header .middle form #search {
+  width: -moz-calc(100% - 113px);
+  width: -webkit-calc(100% - 113px);
+  width: calc(100% - 113px);
+}
+.header .middle form * {
+  height: 30px;
+}
+.header .buttons-header {
+  float: right !important;
+  align-self: center;
+  padding-right: 15px !important;
+}
+.header .buttons-header a {
+  display: block;
+  text-align: center;
   color: #ffffff !important;
   font-weight: 300;
 }
-.header .buttonsHeader li:hover {
+.header .buttons-header li:hover {
   background-color: #000000;
 }
-.header .buttonsHeader li:hover a {
+.header .buttons-header li:hover a {
   color: #ffffff;
   font-weight: 600;
 }
-.login {
-  margin: auto;
-  background-color: #ff726b;
-  width: 300px;
-  height: 320px;
-  box-shadow: 0 0 1em black;
-  border-radius: 3px;
+.btn {
+  margin-left: 15px;
 }
-.login form {
-  display: flex;
-  flex-direction: column;
-  margin-top: 5px;
-  animation: invisiblility 0.5s forwards;
+.btn.red {
+  background-color: #e00007;
+  border-color: #ff5a5f #ff5a5f #e00007;
+  color: #fff;
 }
-.login ::-webkit-input-placeholder {
-  /* WebKit browsers */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  font-weight: 300;
-}
-.login :-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  opacity: 1;
-  font-weight: 300;
-}
-.login ::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  opacity: 1;
-  font-weight: 300;
-}
-.login :-ms-input-placeholder {
-  /* Internet Explorer 10+ */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  font-weight: 300;
-}
-.login .inputLogin {
-  align-self: center;
-  display: block;
-  appearance: none;
-  outline: 0;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background-color: rgba(255, 255, 255, 0.25);
-  width: 250px;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  text-align: center;
-}
-.login .inputLogin:hover {
-  background-color: rgba(255, 255, 255, 0.4);
-}
-.login #text {
-  order: 1;
-  align-self: center;
-  color: black;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  visibility: visible !important;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 500;
-  font-size: 20px;
-}
-.login #username {
-  order: 2;
-  align-self: center;
-}
-.login #password {
-  order: 5;
-  align-self: center;
-}
-.login #login-button {
-  order: 10;
-  align-self: center;
-  margin-top: 30px;
-  outline: 0;
-  background-color: white;
-  border: 0;
-  border-radius: 3px;
-  width: 100px;
-  margin-left: auto;
-  margin-right: auto;
-}
-@media screen and (min-width: 768px) {
-  .modal-dialog {
-    margin-top: 200px;
-  }
+.btn.red:hover {
+  background-color: darkred;
 }

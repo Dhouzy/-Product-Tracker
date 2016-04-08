@@ -101,18 +101,15 @@ class AmazonHelper
         if(isset($itemAttributes->Color))
             $amazonItem->color = $itemAttributes->Color;
 
-        if(isset($itemAttributes->Size))
-            $amazonItem->size = $itemAttributes->Size;
-        else if(isset($itemAttributes->PackageDimensions)){
+        if(isset($itemAttributes->PackageDimensions)){
             $dimensions = $itemAttributes->PackageDimensions;
-            $amazonItem->size = $dimensions->Length / 100 . "&nbsp;&times;&nbsp;"
-                    . $dimensions->Width / 100 . "&nbsp;&times;&nbsp;"
-                    . $dimensions->Height / 100; // hundrenths of inches to inches
-            $amazonItem->sizeFromDimensions = true;
+            $amazonItem->length = round($dimensions->Length / 3.937); // hundrenths of inches to millimeters
+            $amazonItem->width = round($dimensions->Length / 3.937);
+            $amazonItem->height = round($dimensions->Length / 3.937);
         }
 
         if(isset($itemAttributes->PackageDimensions->Weight))
-            $amazonItem->weight = $itemAttributes->PackageDimensions->Weight / 100; // hundrenths of pounds to pounds
+            $amazonItem->weight = round($itemAttributes->PackageDimensions->Weight / 45359.2); // hundrenths of pounds to milligrams
 
         if(isset($item->CustomerReviews->IFrameURL))
             $amazonItem->reviewUrl = $item->CustomerReviews->IFrameURL;
