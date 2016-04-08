@@ -87,9 +87,10 @@ $session = $this->request->session();
                 urlencode($this->request->here) ?>"><?= strtoupper($switchLanguage) ?></a></li>
             <?php
             if (!$session->check('Auth.User')) {
-                ?><a data-toggle="modal" data-target="#myModal">
+                ?><li><a data-toggle="modal" data-target="#myModal">
                 <?php echo __('Global.SignIn') ?>
-                </a><?php
+                </a></li>
+                <?php
                 echo '<li>' . $this->Html->link(
                         __('Global.SignUp'),
                         ['controller' => 'Users', 'action' => 'add']
