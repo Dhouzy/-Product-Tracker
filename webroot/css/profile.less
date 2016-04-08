@@ -1,0 +1,55 @@
+
+@link-color: black;
+@hover-color: #ff9933;
+
+.item-list {
+  border: gray;
+  border-width: 1px;
+  border-style: solid;
+  overflow-y: scroll;
+  overflow-x: visible;
+  height:400px;
+  width: 450px;
+
+  .item {
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    a {
+      display: block;
+      height: 100%;
+      width: 100%;
+      text-decoration: none;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    a:link {
+      color: @link-color;
+    }
+
+    a:visited {
+      color: @link-color;
+    }
+
+    a:hover {
+      color: @link-color;
+    }
+
+    a:active {
+      color: @link-color;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
+  .item:hover {
+    background-color: @hover-color;
+  }
+}

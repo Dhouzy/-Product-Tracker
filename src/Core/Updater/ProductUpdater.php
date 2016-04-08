@@ -101,7 +101,7 @@ class ProductUpdater
     }
 
 //    private function extractNumber($strToInt)
-//    {
+//    {profile.less
 //        preg_match('!((?:\d,?)+\d\.[0-9]*)!', $strToInt, $matches);
 //        return floatval($matches[0]);
 //    }
