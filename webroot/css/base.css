@@ -6,12 +6,18 @@
   float: left;
 }
 .header .left h3 {
-  color: #484848;
   font-weight: 600;
-  padding-right: 15px !important;
-  padding-top: 12px !important;
-  padding-left: 15px !important;
+  padding: 12px 15px !important;
   margin: 0 !important;
+}
+.header .left h3 a {
+  color: #484848;
+}
+.header .left h3 a:hover,
+.header .left h3 a:active,
+.header .left h3 a:focus {
+  text-decoration: none;
+  color: #484848;
 }
 .header .middle {
   margin: 0px 256px 0px 272px;

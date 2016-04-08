@@ -6,12 +6,16 @@
     float: left;
 
     h3 {
-      color: #484848;
       font-weight: 600;
-      padding-right: 15px !important;
-      padding-top: 12px !important;
-      padding-left: 15px !important;
+      padding: 12px 15px !important;
       margin: 0 !important;
+      a {
+        &:hover, &:active, &:focus {
+          text-decoration: none;
+          color: #484848;
+        }
+        color: #484848;
+      }
     }
   }
 

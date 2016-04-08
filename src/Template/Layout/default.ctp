@@ -40,7 +40,9 @@ $session = $this->request->session();
 <nav class="top-bar expanded " data-topbar role="navigation">
     <section class="header navbar navbar-default ">
         <div class="left">
-            <h3>PRODUCT TRACKER</h3>
+            <h3>
+                <?= $this->Html->link('PRODUCT TRACKER', ['controller' => 'Homes', 'action' => 'home']); ?>
+            </h3>
         </div>
 
         <ul class="buttons-header nav navbar-nav ">
