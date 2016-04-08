@@ -24,10 +24,9 @@ $session = $this->request->session();
     <title>
         <?= $this->fetch('title') ?>
     </title>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 
     <?= $this->Html->meta('icon') ?>
-    <?= $this->Html->css('bootstrap.min.css')?>
+    <?= $this->Html->css('bootstrap.min.css') ?>
     <?= $this->Html->css('graphic.css') ?>
     <?= $this->Html->css('base.css') ?>
 
@@ -36,52 +35,107 @@ $session = $this->request->session();
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav class="top-bar expanded " data-topbar role="navigation">
-        <section class="header navbar navbar-default ">
-            <div class="left"></div>
-            <?php
-            if(!isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader){
-                echo $this->element('searchbar');
-            }else{ ?>
-                <div class="middle"></div>
-                <?php  } ?>
-            <ul class="buttonsHeader nav navbar-nav ">
-                <?php
-                if($session->read('Config.language') == 'fr')
-                    $switchLanguage = 'en';
-                else
-                    $switchLanguage = 'fr';
-                ?>
-                <li><a  href="/lang?l=<?= $switchLanguage ?>&fromUrl=<?=
-                    urlencode($this->request->here) ?>"><?= strtoupper($switchLanguage) ?></a></li>
-                <?php
-                    if (!$session->check('Auth.User')) {
-                        echo '<li>' . $this->Html->link(
-                            __('Global.SignIn'),
-                            ['controller' => 'Users', 'action' => 'login']
-                        ) . '</li>';
-                        echo '<li>' . $this->Html->link(
-                            __('Global.SignUp'),
-                            ['controller' => 'Users', 'action' => 'add']
-                        ) . '</li>';
-                    } else {
-                        echo '<li>' . $this->Html->link(
-                                __('Profile.Title'),
-                                ['controller' => 'Users', 'action' => 'profile']) . '</li>';
-                        echo '<li>' . $this->Html->link(
-                            __('Global.SignOut'),
-                            ['controller' => 'Users', 'action' => 'logout']
-                        ) . '</li>';
-                    }
-                    ?>
-            </ul>
-        </section>
-    </nav>
-    <?= $this->Flash->render() ?>
-    <section class="container clearfix">
-        <?= $this->fetch('content') ?>
+<div class="container">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="login modal-content">
+                <div class="modal-body">
+                    <form class="form" id="form-login">
+                        <div class="modal-header text-center">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <p id="text">Login</p>
+                        </div>
+                        <div class="users form">
+                            <?= $this->Flash->render('auth') ?>
+                            <?= $this->Form->create(null, ['id' => 'test']) ?>
+                            <fieldset>
+<!--                                <legend>--><?//= __('SignIn.FormTitle') ?><!--</legend>-->
+                                <?= $this->Form->input('username', ['label' =>__('Global.Username').__('SignIn.OrEmail'), 'class' => 'inputLogin', 'id' => 'username']) ?>
+                                <?= $this->Form->input('password',['label' =>__('Global.Password'), 'class' => 'inputLogin', 'id' => 'username']) ?>
+                            </fieldset>
+                            <?= $this->Form->button(__('Global.SignIn'), ['id' => 'login-button']); ?>
+                            <?= $this->Form->end() ?>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<nav class="top-bar expanded " data-topbar role="navigation">
+    <section class="header navbar navbar-default ">
+        <div class="left"></div>
+<?php
+if (!isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader) {
+    // echo $this->element('searchbar');
+} else { ?>
+            <div class="middle"></div>
+        <?php } ?>
+        <ul class="buttonsHeader nav navbar-nav ">
+<?php
+    if ($session->read('Config.language') == 'fr')
+        $switchLanguage = 'en';
+    else
+        $switchLanguage = 'fr';
+?>
+    <li><a href="/lang?l=<?= $switchLanguage ?>&fromUrl=<?=
+    urlencode($this->request->here) ?>"><?= strtoupper($switchLanguage) ?></a></li>
+<?php
+    if (!$session->check('Auth.User')) {
+?><a data-toggle="modal" data-target="#myModal">
+                    <?php echo __('Global.SignIn') ?>
+                    </a><?php
+        echo '<li>' . $this->Html->link(
+            __('Global.SignUp'),
+            ['controller' => 'Users', 'action' => 'add']
+        ) . '</li>';
+    } else {
+        echo '<li>' . $this->Html->link(
+            __('Profile.Title'),
+            ['controller' => 'Users', 'action' => 'profile']) . '</li>';
+        echo '<li>' . $this->Html->link(
+            __('Global.SignOut'),
+            ['controller' => 'Users', 'action' => 'logout']
+        ) . '</li>';
+    }
+?>
+        </ul>
     </section>
-    <footer>
-    </footer>
+</nav>
+<?= $this->Flash->render() ?>
+<section class="container clearfix">
+    <?= $this->fetch('content') ?>
+</section>
+<footer>
+</footer>
+<?= $this->Html->script('http://code.jquery.com/jquery-1.12.0.min.js'); ?>
+<?= $this->Html->script('bootstrap.js'); ?>
 </body>
+
+<script>
+    $( document ).ready(function() {
+
+        $('#form-login').submit(function(event){
+            event.preventDefault();
+
+            var form = $(this).serialize();
+            $.ajax({
+                url: "/users/login",
+                type: "post",
+                data: form,
+                success: function (response) {
+                    console.log(response);
+                    location.reload();
+                    $('#myModal').modal('hide');
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+        });
+    });
+</script>
 </html>
+
