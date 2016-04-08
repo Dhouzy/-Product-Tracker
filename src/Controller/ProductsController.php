@@ -9,10 +9,10 @@
 namespace App\Controller;
 
 use Cake\Event\Event;
-use Cake\Network\Exception\NotFoundException;
 use Cake\ORM\TableRegistry;
 use App\Model\Entity\ProductsUser;
-use App\Model\Table\ProductsTable;
+use App\Model\Entity\Product;
+use App\Model\Entity\Price;
 use App\Core\Updater\ProductUpdater;
 
 /**
@@ -31,7 +31,7 @@ class ProductsController extends AppController
 
     public function product($uid){
         if (isset($uid)) {
-            $item = $this->productUpdater->updateProduct($uid);
+            $this->productUpdater->updateProduct($uid);
             
             $products = TableRegistry::get('Products');
             $product = $products
@@ -45,7 +45,7 @@ class ProductsController extends AppController
             if($isUserLoggedIn){
                 $isItemFollowed = $this->isItemFollowed($product);
             }
-            $this->set(compact('item', 'product', 'isUserLoggedIn', 'isItemFollowed'));
+            $this->set(compact('product', 'isUserLoggedIn', 'isItemFollowed'));
         }
     }
 
