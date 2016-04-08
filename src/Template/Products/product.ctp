@@ -14,6 +14,7 @@
     if($product->amazon_url != null){
         echo "<a href=\"$product->amazon_url\"><img src=\"$product->image_link\"/></a><br/>";
     }
+
     if($product->review_url != null)
         echo "<iframe src=\"$product->review_url\"></iframe><br/>";
 
