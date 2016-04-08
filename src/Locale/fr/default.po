@@ -87,6 +87,9 @@ msgstr "Poids: {0} mg"
 msgid "Product.Follow"
 msgstr "Suivre ce produit"
 
+msgid "Product.Price"
+msgstr "Prix #{0} obtenu le: {1} était: {2} et {3} en rabais"
+
 #############################
 # SignIn ####################
 #############################

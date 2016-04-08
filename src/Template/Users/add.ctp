@@ -1,21 +1,23 @@
 <fieldset>
-    <div class="users form">
+    <div class="users form signup_form">
         <?= $this->Form->create($user) ?>
 
         <legend><?= __('Global.SignUp') ?></legend>
-        <?= $this->Form->input('username', ['label' => __('Global.Username')]) ?>
-        <?= $this->Form->input('email', ['label' => __('Global.Email')]) ?>
-        <?= $this->Form->input('password', ['label' => __('Global.Password')]) ?>
-        <?= $this->Form->input('first_name', ['label' => __('Global.FirstName')]) ?>
-        <?= $this->Form->input('last_name', ['label' => __('Global.LastName')]) ?>
-        <?= $this->Form->input('phone', ['label' => __('Global.Phone')]) ?>
-        <?= $this->Form->input('street_number', ['label' => __('Global.StreetNumber')]) ?>
-        <?= $this->Form->input('street', ['label' => __('Global.Street')]) ?>
-        <?= $this->Form->input('city', ['label' => __('Global.City')]) ?>
-        <?= $this->Form->input('province', ['label' => __('Global.Province')]) ?>
-        <?= $this->Form->input('country', ['label' => __('Global.Country')]) ?>
 
-        <?= $this->Form->button(__('Global.Submit')); ?>
+        <div class="flex-container">
+            <?= $this->Form->text('username', ['placeholder' => __('Global.Username'), 'class' => 'flex-item']) ?>
+            <?= $this->Form->email('email', ['placeholder' => __('Global.Email'),'class' => 'flex-item']) ?>
+            <?= $this->Form->password('password', ['placeholder' => __('Global.Password'),'class' => 'flex-item']) ?>
+            <?= $this->Form->text('first_name', ['placeholder' => __('Global.FirstName'),'class' => 'flex-item']) ?>
+            <?= $this->Form->text('last_name', ['placeholder' => __('Global.LastName'),'class' => 'flex-item']) ?>
+            <?= $this->Form->text('phone', ['placeholder' => __('Global.Phone'),'class' => 'flex-item']) ?>
+            <?= $this->Form->text('street_number', ['placeholder' => __('Global.StreetNumber'),'class' => 'flex-item']) ?>
+            <?= $this->Form->text('street', ['placeholder' => __('Global.Street'),'class' => 'flex-item']) ?>
+            <?= $this->Form->text('city', ['placeholder' => __('Global.City'),'class' => 'flex-item']) ?>
+            <?= $this->Form->text('province', ['placeholder' => __('Global.Province'),'class' => 'flex-item']) ?>
+            <?= $this->Form->text('country', ['placeholder' => __('Global.Country'),'class' => 'flex-item']) ?>
+        </div>
+        <?= $this->Form->button(__('Global.Submit'), ['class' => 'btn red']); ?>
         <?= $this->Form->end() ?>
     </div>
 </fieldset>

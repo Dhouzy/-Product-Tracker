@@ -67,6 +67,8 @@ class ProductUpdater
         $companyRow = $this->companiesTable->find()->where(['name'=> 'Amazon Canada'])->first();
         $product = new Product();
         $product->name = $apiItem->name;
+        $product->brand = $apiItem->brand;
+        $product->color = $apiItem->color;
         $product->company_id = $companyRow->id;
         $product->article_uid = $apiItem->uid;
         $product->lengthmm = $apiItem->length;
@@ -96,12 +98,10 @@ class ProductUpdater
         $price->date = $now;
         $price->price = $fullPrice;
         $price->product_id = $product->id;
-        $price->rebate_price = $apiItem->currentPrice;
+        $price->rebate_price = $apiItem->currentPrice/100;
         $price->rebate_amount = null;
 
-        if ($this->pricesTable->save($price)){
-            $newPriceId = $price->id;
-        } else {
+        if ($this->pricesTable->save($price) === false){
             throw new Exception('Save new price failed.');
         }
     }

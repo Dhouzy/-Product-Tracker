@@ -13,31 +13,50 @@ use App\Core\Amazon\AmazonHelper;
 
 class HomesController extends AppController
 {
-    public function home() {
-        if (isset($this->request->query['search'])) {
-            $searchKeywordsEncoded = urlencode($this->request->query['search']);
-            $amazon = new AmazonHelper();
+    private $amazon;
 
-            if(isset($this->request->query['p'])) {
-                $currentPage = $this->request->query['p'];
-                if(!ctype_digit($currentPage))
-                    $this->redirect("/?search=$searchKeywordsEncoded&p=1");
-                else if(intval($currentPage) < 1)
-                    $this->redirect("/?search=$searchKeywordsEncoded&p=1");
-                else if(intval($currentPage) > 10)
-                    $this->redirect("/?search=$searchKeywordsEncoded&p=10");
+    public function initialize()
+    {
+        parent::initialize();
+        $this->amazon = new AmazonHelper();
+    }
+
+    public function home($search = null, $page = null)
+    {
+        if (isset($search)) {
+            $searchKeywordsEncoded = urlencode($search);
+
+            if (isset($page)) {
+                if (!ctype_digit($page))
+                    $page = 1;
+                else if (intval($page) < 1)
+                    $page = 1;
+                else if (intval($page) > 10)
+                    $page = 10;
             } else
-                $currentPage = 1;
+                $page = 1;
 
-            $searchResult = $amazon->search($this->request->query['search'], $currentPage);
-            $this->set(compact('searchResult', 'currentPage', 'searchKeywordsEncoded'));
+            $searchResult = $this->amazon->search($searchKeywordsEncoded, $page);
+            $this->set(compact('searchResult', 'page', 'search'));
         }
+    }
+
+    public function search()
+    {
+        if (isset($this->request->data)) {
+            return $this->redirect(
+                ['controller' => 'Homes', 'action' => 'home', 'search' => $this->request->data['search']]
+            );
+        }
+        return $this->redirect(
+            ['controller' => 'Homes', 'action' => 'home']
+        );
     }
 
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
         $this->set('doNotShowSearchBarInHeader', true);
-        $this->Auth->allow(['home']);
+        $this->Auth->allow(['home', 'search']);
     }
 }
