@@ -29,8 +29,10 @@ $session = $this->request->session();
     <?= $this->Html->meta('icon') ?>
     <?= $this->Html->css('bootstrap.min.css') ?>
     <?= $this->Html->css('graphic.css') ?>
-    <?= $this->Html->css('base.css') ?>
+    <?= $this->Html->css('app.css') ?>
     <?= $this->Html->css('signup.css') ?>
+    <?= $this->Html->script('tooltip.js') ?>
+    <?= $this->Html->script('profile.js') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>

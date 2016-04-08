@@ -4,11 +4,9 @@
     <?php foreach ($user->products as $product) { ?>
        <div class="item hover">
             <a id="<?= $product->article_uid ?>" href="#"><?= $product->name ?></a>
-            <div class="tooltip">asdadasd
-            sadasdasd
-            asdasdsasd
-            assaasdads
-            asdasdasd</div>
+            <div class="tooltip">
+                <?= $product->name ?>
+            </div>
         </div>
     <?php } ?>
 </div>
