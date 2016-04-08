@@ -1,12 +1,10 @@
 <fieldset>
-    <h1><?= __('Home.Title') ?></h1>
     <?php $loggedUser = $this->request->session()->read('Auth.User');
     if ($loggedUser != null) {
         echo '<p>' . __('Home.WhoIsLoggedIn', [$loggedUser['id'], $loggedUser['username'], $loggedUser['email']]) . '</p>';
     }
     ?>
     <div class="form">
-        <legend><?= __('Global.Search') ?></legend>
         <?= $this->element('searchbar') ?>
     </div>
 
