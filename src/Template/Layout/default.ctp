@@ -27,7 +27,7 @@ $session = $this->request->session();
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 
     <?= $this->Html->meta('icon') ?>
-    <?= $this->Html->css('bootstrap.min.css')?>
+    <?= $this->Html->css('bootstrap.min.css') ?>
     <?= $this->Html->css('graphic.css') ?>
     <?= $this->Html->css('base.css') ?>
     <?= $this->Html->css('signup.css') ?>
@@ -37,52 +37,56 @@ $session = $this->request->session();
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav class="top-bar expanded " data-topbar role="navigation">
-        <section class="header navbar navbar-default ">
-            <div class="left"></div>
+<nav class="top-bar expanded " data-topbar role="navigation">
+    <section class="header navbar navbar-default ">
+        <div class="left">
+            <h3>PRODUCT TRACKER</h3>
+        </div>
+
+        <ul class="buttons-header nav navbar-nav ">
             <?php
-            if(!isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader){
+            if ($session->read('Config.language') == 'fr')
+                $switchLanguage = 'en';
+            else
+                $switchLanguage = 'fr';
+            ?>
+            <li><a href="/lang?l=<?= $switchLanguage ?>&fromUrl=<?=
+                urlencode($this->request->here) ?>"><?= strtoupper($switchLanguage) ?></a></li>
+            <?php
+            if (!$session->check('Auth.User')) {
+                echo '<li>' . $this->Html->link(
+                        __('Global.SignIn'),
+                        ['controller' => 'Users', 'action' => 'login']
+                    ) . '</li>';
+                echo '<li>' . $this->Html->link(
+                        __('Global.SignUp'),
+                        ['controller' => 'Users', 'action' => 'add']
+                    ) . '</li>';
+            } else {
+                echo '<li>' . $this->Html->link(
+                        __('Profile.Title'),
+                        ['controller' => 'Users', 'action' => 'profile']) . '</li>';
+                echo '<li>' . $this->Html->link(
+                        __('Global.SignOut'),
+                        ['controller' => 'Users', 'action' => 'logout']
+                    ) . '</li>';
+            }
+            ?>
+        </ul>
+        <div class="middle">
+            <?php
+            if (!isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader) {
                 echo $this->element('searchbar');
-            }else{ ?>
-                <div class="middle"></div>
-                <?php  } ?>
-            <ul class="buttonsHeader nav navbar-nav ">
-                <?php
-                if($session->read('Config.language') == 'fr')
-                    $switchLanguage = 'en';
-                else
-                    $switchLanguage = 'fr';
-                ?>
-                <li><a  href="/lang?l=<?= $switchLanguage ?>&fromUrl=<?=
-                    urlencode($this->request->here) ?>"><?= strtoupper($switchLanguage) ?></a></li>
-                <?php
-                    if (!$session->check('Auth.User')) {
-                        echo '<li>' . $this->Html->link(
-                            __('Global.SignIn'),
-                            ['controller' => 'Users', 'action' => 'login']
-                        ) . '</li>';
-                        echo '<li>' . $this->Html->link(
-                            __('Global.SignUp'),
-                            ['controller' => 'Users', 'action' => 'add']
-                        ) . '</li>';
-                    } else {
-                        echo '<li>' . $this->Html->link(
-                                __('Profile.Title'),
-                                ['controller' => 'Users', 'action' => 'profile']) . '</li>';
-                        echo '<li>' . $this->Html->link(
-                            __('Global.SignOut'),
-                            ['controller' => 'Users', 'action' => 'logout']
-                        ) . '</li>';
-                    }
-                    ?>
-            </ul>
-        </section>
-    </nav>
-    <?= $this->Flash->render() ?>
-    <section class="container clearfix">
-        <?= $this->fetch('content') ?>
+            }
+            ?>
+        </div>
     </section>
-    <footer>
-    </footer>
+</nav>
+<?= $this->Flash->render() ?>
+<section class="container clearfix">
+    <?= $this->fetch('content') ?>
+</section>
+<footer>
+</footer>
 </body>
 </html>

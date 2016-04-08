@@ -1,52 +1,59 @@
 .header {
-  display: flex;
-  text-align: center;
   background-color: #302e2e;
-}
-.header .SearchBar {
-  order: 50;
-  align-self: center;
-  width: 60%;
-  -moz-box-flex: 1;
-}
-.header .SearchBar #search {
-  height: 30px;
+  overflow: auto;
 }
 .header .left {
-  width: 20%;
-  order: 1;
+  float: left;
+}
+.header .left h3 {
+  color: #484848;
+  font-weight: 600;
+  padding-right: 15px !important;
+  padding-top: 12px !important;
+  padding-left: 15px !important;
+  margin: 0 !important;
 }
 .header .middle {
-  width: 60%;
-  order: 50;
+  margin: 0px 256px 0px 272px;
+  padding-left: 5%;
+  padding-right: 5%;
 }
-.header .buttonsHeader {
-  order: 100;
-  width: 20%;
-  align-self: center;
-  padding-right: 5px !important;
-}
-.header .buttonsHeader a {
-  display: block;
-  padding: 0.5em;
-  text-align: center;
+.header .middle form {
   padding: 10px;
+}
+.header .middle form #search {
+  width: -moz-calc(100% - 113px);
+  width: -webkit-calc(100% - 113px);
+  width: calc(100% - 113px);
+}
+.header .middle form * {
+  height: 30px;
+}
+.header .buttons-header {
+  float: right !important;
+  align-self: center;
+  padding-right: 15px !important;
+}
+.header .buttons-header a {
+  display: block;
+  text-align: center;
   color: #ffffff !important;
   font-weight: 300;
 }
-.header .buttonsHeader li:hover {
+.header .buttons-header li:hover {
   background-color: #000000;
 }
-.header .buttonsHeader li:hover a {
+.header .buttons-header li:hover a {
   color: #ffffff;
   font-weight: 600;
 }
+.btn {
+  margin-left: 15px;
+}
 .btn.red {
-  height: 30px;
   background-color: #e00007;
   border-color: #ff5a5f #ff5a5f #e00007;
   color: #fff;
-  padding-top: 0.3em;
 }
 .btn.red:hover {
   background-color: darkred;
