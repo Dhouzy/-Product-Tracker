@@ -51,7 +51,7 @@ Router::scope('/', function ($routes) {
     $routes->connect('/home/:search', ['controller' => 'Homes', 'action' => 'home'],['pass' => ['search']]);
     $routes->connect('/', ['controller' => 'Homes', 'action' => 'home']);
     $routes->connect('/lang', ['controller' => 'Langs', 'action' => 'switchLang']);
-    $routes->connect('/product/:uid', ['controller' => 'Products', 'action' => 'product']);
+    $routes->connect('/product/:uid', ['controller' => 'Products', 'action' => 'product'],['pass' => ['uid']]);
     $routes->connect('/follow', ['controller' => 'Products', 'action' => 'addToUser']);
     $routes->connect('/profile', ['controller' => 'Users', 'action' => 'profile', 'profile']);
     $routes->connect('/graphic', ['controller' => 'Graphics', 'action' => 'graphic', 'graphic']);

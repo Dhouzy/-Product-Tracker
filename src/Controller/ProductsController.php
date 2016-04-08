@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use Cake\Event\Event;
+use Cake\Network\Exception\NotFoundException;
 use Cake\ORM\TableRegistry;
 use App\Model\Entity\ProductsUser;
 use App\Model\Table\ProductsTable;
@@ -21,7 +22,6 @@ use App\Core\Updater\ProductUpdater;
 class ProductsController extends AppController
 {
 
-    private $uid;
     private $productUpdater;
 
     public function initialize(){
@@ -29,19 +29,23 @@ class ProductsController extends AppController
         $this->productUpdater = new ProductUpdater();
     }
 
-    public function product(){
-        if (isset($this->request->uid)) {
-            $articleUid = $this->request->uid;
-            $item = $this->productUpdater->updateProduct($articleUid);
+    public function product($uid){
+        if (isset($uid)) {
+            $item = $this->productUpdater->updateProduct($uid);
             
-            $products = TableRegistry::get('products');
+            $products = TableRegistry::get('Products');
             $product = $products
                 ->find()
                 ->contain(['Companies', 'Prices'])
-                ->where(['article_uid' => $articleUid])
+                ->where(['article_uid' => $uid])
                 ->first();
 
-            $this->set(compact('item', 'product'));
+            $isUserLoggedIn = $this->isUserLoggedIn();
+            $isItemFollowed = false;
+            if($isUserLoggedIn){
+                $isItemFollowed = $this->isItemFollowed($product);
+            }
+            $this->set(compact('item', 'product', 'isUserLoggedIn', 'isItemFollowed'));
         }
     }
 
@@ -63,6 +67,19 @@ class ProductsController extends AppController
         }
 
         $this->redirect(['controller' => 'Users', 'action' => 'profile']);
+    }
+    
+    private function isUserLoggedIn(){
+        $user = $this->request->session()->read('Auth.User');
+        return isset($user);
+    }
+
+    private function isItemFollowed($product){
+        $userLogged = $this->request->session()->read('Auth.User');
+        $product_users = TableRegistry::get('ProductsUsers');
+        return $product_users->exists([
+            'user_id' => $userLogged['id'],
+            'product_id' => $product->id]);
     }
 
     public function beforeFilter(Event $event){
