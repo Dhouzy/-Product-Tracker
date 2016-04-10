@@ -22,16 +22,17 @@ function removeToolTip($element) {
 }
 
 function mouseOver($element) {
-    $element.children(".tooltip").css("display", "block");
+    $element.children(".tooltip").css("display", "inline-block");
 
     var left;
     var top;
+
     if ($element.children(".tooltip").hasClass("top-tooltip")) {
         left = $element.offset().left + (($element.width() / 2) - ($element.children(".tooltip").width() / 2));
-        top = $element.offset().top - 50;
+        top = $element.offset().top - ($element.height() + $element.children(".tooltip").height() + 10);
     } else if($element.children(".tooltip").hasClass("bottom-tooltip")) {
         left = $element.offset().left + (($element.width() / 2) - ($element.children(".tooltip").width() / 2));
-        top = $element.offset().top + 50;
+        top = $element.offset().top + $element.height() + 20;
     } else if($element.children(".tooltip").hasClass("left-tooltip")) {
         left = $element.offset().left - $element.children(".tooltip").width() - 30;
         top = $element.offset().top - ($element.children(".tooltip").height() - $element.height());

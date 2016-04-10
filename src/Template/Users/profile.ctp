@@ -5,9 +5,7 @@
        <div class="item hover">
             <a id="<?= $product->article_uid ?>" href="#"><?= $product->name ?></a>
             <div class="tooltip top-tooltip">
-                <?= $product->name ?>
-                asdasd
-                <div>test</div>
+                <div><img src="<?= $product->image_link ?>" width="20%" height="20%"/></div>
             </div>
         </div>
     <?php } ?>
