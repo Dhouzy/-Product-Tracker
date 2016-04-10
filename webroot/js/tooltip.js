@@ -7,9 +7,6 @@
 
 function registerTooltip($element) {
     $element.on({
-        mousemove: function () {
-            mouseMove($(this));
-        },
         mouseover: function () {
             mouseOver($(this));
         },
@@ -20,24 +17,30 @@ function registerTooltip($element) {
 }
 
 function removeToolTip($element) {
-    $element.off('mouseMove');
     $element.off('mouseover');
     $element.off('mouseleave');
-}
-
-
-function mouseMove($element) {
-    var left = $element.offset().left;
-    var top = $element.offset().top;
-    console.log(left);
-    console.log(top);
-    $element.children(".tooltip").css({top: top, left: left});
 }
 
 function mouseOver($element) {
     $element.children(".tooltip").css("display", "block");
 
-    mouseMove($element);
+    var left;
+    var top;
+    if ($element.children(".tooltip").hasClass("top-tooltip")) {
+        left = $element.offset().left + (($element.width() / 2) - ($element.children(".tooltip").width() / 2));
+        top = $element.offset().top - 50;
+    } else if($element.children(".tooltip").hasClass("bottom-tooltip")) {
+        left = $element.offset().left + (($element.width() / 2) - ($element.children(".tooltip").width() / 2));
+        top = $element.offset().top + 50;
+    } else if($element.children(".tooltip").hasClass("left-tooltip")) {
+        left = $element.offset().left - $element.children(".tooltip").width() - 30;
+        top = $element.offset().top - ($element.children(".tooltip").height() - $element.height());
+    } else if($element.children(".tooltip").hasClass("right-tooltip")) {
+        left = $element.offset().left + $element.width() + 30;
+        top = $element.offset().top - ($element.children(".tooltip").height() - $element.height());
+    }
+
+    $element.children(".tooltip").css({top: top, left: left});
 }
 
 function mouseLeave($element) {
