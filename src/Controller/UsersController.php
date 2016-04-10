@@ -18,7 +18,11 @@ use Cake\Validation\Validation;
  */
 class UsersController extends AppController
 {
-
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Security');
+    }
     public function index()
     {
         $this->set('users', $this->Users->find('all'));
@@ -57,7 +61,9 @@ class UsersController extends AppController
     {
         parent::beforeFilter($event);
         $this->Auth->allow(['add']);
-    }
+        $this->Auth->allow(['login']);
+        $this->Security->config('unlockedActions', ['login']);
+}
 
     public function login()
     {
