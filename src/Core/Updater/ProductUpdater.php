@@ -7,6 +7,7 @@ use DateTimeZone;
 use Exception;
 use DateTime;
 use App\Core\Amazon\AmazonHelper;
+use App\Core\ProductItem;
 use App\Model\Entity\Product;
 use Cake\ORM\TableRegistry;
 use App\Model\Entity\Price;
@@ -38,7 +39,6 @@ class ProductUpdater
             ->where(['article_uid' => $articleUid])
             ->first();
 
-        $apiItem = $this->fetchProductFromApi($articleUid);
         if(isset($product)){
             $latestPrice = $this->pricesTable
                 ->find()
@@ -48,12 +48,18 @@ class ProductUpdater
 
 
             $interval = $this->compareTime($latestPrice->date);
-            if($interval->d > 0){
+
+            if($interval->d > 0){ // one day
+                $apiItem = $this->fetchProductFromApi($articleUid);
                 $this->updatePrice($apiItem, $product);
+                return $apiItem;
+            } else {
+                return $this->transformProductToProductItem($product);
             }
-        }
-        else{
+        } else {
+            $apiItem = $this->fetchProductFromApi($articleUid);
             $this->createProduct($apiItem);
+            return $apiItem;
         }
     }
 
@@ -68,7 +74,7 @@ class ProductUpdater
         $product->lengthmm = $apiItem->length;
         $product->widthmm = $apiItem->width;
         $product->heightmm = $apiItem->height;
-        $product->weightmm = $apiItem->weight;
+        $product->weightmg = $apiItem->weight;
         $product->image_link = $apiItem->largeImageLink;
         $product->amazon_url = $apiItem->amazonUrl;
         $product->review_url = $apiItem->reviewUrl;
@@ -106,7 +112,7 @@ class ProductUpdater
     }
 
 //    private function extractNumber($strToInt)
-//    {
+//    {profile.less
 //        preg_match('!((?:\d,?)+\d\.[0-9]*)!', $strToInt, $matches);
 //        return floatval($matches[0]);
 //    }
@@ -117,23 +123,29 @@ class ProductUpdater
         return $amazon->findProduct($articleUid);
     }
 
-//    private function transformProductToProductItem($product)
-//    {
-//        $this->out($product->price_id);
-//        $currentPrice = $this->productsTable
-//            ->find()
-//            ->contain(['Prices'])
-//            ->where(['price_id' => $product->price_id])
-//            ->first();
-//
-//        $productItem = new ProductItem();
-//        $productItem->article_uid =$product->article_uid;
-//        $productItem->name = $product->name;
-//        $productItem->currentPrice = $currentPrice;
-//        $productItem->description = $product->description;
-//        $productItem->rating =$product->rating;
-//        $productItem->type = $product->type;
-//
-//        return $productItem;
-//    }
+    private function transformProductToProductItem($product)
+    {
+        $currentPrice = $this->productsTable
+            ->find()
+            ->contain(['Prices'])
+            ->where(['article_uid' => $product->article_uid])
+            ->first();
+
+        $productItem = new ProductItem();
+        $productItem->uid = $product->article_uid;
+        $productItem->name = $product->name;
+        $productItem->currentPrice = $currentPrice;
+        $productItem->largeImageLink = $product->image_link;
+        $productItem->rating =$product->rating;
+        $productItem->amazonUrl =$product->amazon_url;
+        $productItem->reviewUrl =$product->review_url;
+        $productItem->brand =$product->brand;
+        $productItem->color =$product->color;
+        $productItem->length =$product->lengthmm;
+        $productItem->width =$product->widthmm;
+        $productItem->height =$product->heightmm;
+        $productItem->weight =$product->weightmg;
+
+        return $productItem;
+    }
 }
