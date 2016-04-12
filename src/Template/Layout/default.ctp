@@ -26,6 +26,10 @@ $session = $this->request->session();
     </title>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 
+    <?= $this->Html->script('notify.js')?>
+    <?= $this->Html->script('notify.min.js')?>
+
+
     <?= $this->Html->meta('icon') ?>
     <?= $this->Html->css('bootstrap.min.css') ?>
     <?= $this->Html->css('graphic.css') ?>
