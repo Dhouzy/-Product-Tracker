@@ -40,9 +40,9 @@ $session = $this->request->session();
 <body>
 
 <div class="container">
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
-            <div class="login modal-content">
+            <div class="login-form modal-content">
                 <div class="modal-body">
                     <form class="form" id="form-login">
                         <div class="modal-header text-center">
@@ -52,13 +52,48 @@ $session = $this->request->session();
                         </div>
                         <div class="users form">
                             <?= $this->Flash->render('auth') ?>
-                            <?= $this->Form->create(null, ['id' => 'test']) ?>
+                            <?= $this->Form->create() ?>
                             <fieldset>
-                                <!--                                <legend>--><?//= __('SignIn.FormTitle') ?><!--</legend>-->
-                                <?= $this->Form->input('username', ['label' =>__('Global.Username').__('SignIn.OrEmail'), 'class' => 'inputLogin', 'id' => 'username']) ?>
-                                <?= $this->Form->input('password',['label' =>__('Global.Password'), 'class' => 'inputLogin', 'id' => 'username']) ?>
+                                <?= $this->Form->text('username', ['placeholder' =>__('Global.Username').__('SignIn.OrEmail'), 'class' => 'flex-item']) ?>
+                                <?= $this->Form->text('password',['placeholder' =>__('Global.Password'), 'class' => 'flex-item']) ?>
                             </fieldset>
-                            <?= $this->Form->button(__('Global.SignIn'), ['id' => 'login-button']); ?>
+                            <?= $this->Form->button(__('Global.SignIn'), ['class' => 'button-form']); ?>
+                            <?= $this->Form->end() ?>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="modal fade" id="signUp-modal" tabindex="-1" role="dialog" aria-labelledby="modalLoginLabel">
+        <div class="modal-dialog" role="document">
+            <div class="signup-form modal-content">
+                <div class="modal-body">
+                    <form class="form" id="form-SignUp">
+                        <div class="modal-header text-center">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <p id="text">Login</p>
+                        </div>
+                        <div class="users form">
+                            <?= $this->Flash->render('auth') ?>
+                            <?= $this->Form->create() ?>
+                            <fieldset>
+                                <?= $this->Form->text('username', ['placeholder' => __('Global.Username'), 'class' => 'flex-item']) ?>
+                                <?= $this->Form->email('email', ['placeholder' => __('Global.Email'),'class' => 'flex-item']) ?>
+                                <?= $this->Form->password('password', ['placeholder' => __('Global.Password'),'class' => 'flex-item']) ?>
+                                <?= $this->Form->text('first_name', ['placeholder' => __('Global.FirstName'),'class' => 'flex-item']) ?>
+                                <?= $this->Form->text('last_name', ['placeholder' => __('Global.LastName'),'class' => 'flex-item']) ?>
+                                <?= $this->Form->text('phone', ['placeholder' => __('Global.Phone'),'class' => 'flex-item']) ?>
+                                <?= $this->Form->text('street_number', ['placeholder' => __('Global.StreetNumber'),'class' => 'flex-item']) ?>
+                                <?= $this->Form->text('street', ['placeholder' => __('Global.Street'),'class' => 'flex-item']) ?>
+                                <?= $this->Form->text('city', ['placeholder' => __('Global.City'),'class' => 'flex-item']) ?>
+                                <?= $this->Form->text('province', ['placeholder' => __('Global.Province'),'class' => 'flex-item']) ?>
+                                <?= $this->Form->text('country', ['placeholder' => __('Global.Country'),'class' => 'flex-item']) ?>
+                            </fieldset>
+                            <?= $this->Form->button(__('Global.SignIn'), ['class' => 'button-form']); ?>
                             <?= $this->Form->end() ?>
                         </div>
                 </div>
@@ -87,14 +122,14 @@ $session = $this->request->session();
                 urlencode($this->request->here) ?>"><?= strtoupper($switchLanguage) ?></a></li>
             <?php
             if (!$session->check('Auth.User')) {
-                ?><li><a data-toggle="modal" data-target="#myModal">
+                ?><li><a data-toggle="modal" data-target="#login-modal">
                 <?php echo __('Global.SignIn') ?>
                 </a></li>
+
+                ?><li><a data-toggle="modal" data-target="#signUp-modal">
+                        <?php echo __('Global.SignUp') ?>
+                    </a></li>
                 <?php
-                echo '<li>' . $this->Html->link(
-                        __('Global.SignUp'),
-                        ['controller' => 'Users', 'action' => 'add']
-                    ) . '</li>';
             } else {
                 echo '<li>' . $this->Html->link(
                         __('Profile.Title'),
@@ -127,7 +162,6 @@ $session = $this->request->session();
 
 <script>
     $( document ).ready(function() {
-
         $('#form-login').submit(function(event){
             event.preventDefault();
 
@@ -139,13 +173,32 @@ $session = $this->request->session();
                 success: function (response) {
                     console.log(response);
                     location.reload();
-                    $('#myModal').modal('hide');
+                    $('#login-modal').modal('hide');
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(textStatus, errorThrown);
                 }
             });
         });
+
+        $('#form-SignUp').submit(function (event) {
+            event.preventDefault();
+
+            var form = $(this).serialize();
+            $.ajax({
+                url: "/users/add",
+                type: "post",
+                data: form,
+                success: function (response) {
+                    console.log(response);
+                    location.reload();
+                    $('#signUp-modal').modal('hide');
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+        })
     });
 </script>
 </html>

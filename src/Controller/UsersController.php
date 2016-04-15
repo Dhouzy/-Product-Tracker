@@ -63,6 +63,7 @@ class UsersController extends AppController
         $this->Auth->allow(['add']);
         $this->Auth->allow(['login']);
         $this->Security->config('unlockedActions', ['login']);
+        $this->Security->config('unlockedActions', ['add']);
 }
 
     public function login()

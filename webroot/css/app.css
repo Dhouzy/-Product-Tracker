@@ -64,97 +64,6 @@
 .btn.red:hover {
   background-color: darkred;
 }
-.login {
-  margin: auto;
-  background-color: #ff726b;
-  width: 300px;
-  height: 320px;
-  box-shadow: 0 0 1em black;
-  border-radius: 3px;
-}
-.login form {
-  display: flex;
-  flex-direction: column;
-  margin-top: 5px;
-  animation: invisiblility 0.5s forwards;
-}
-.login ::-webkit-input-placeholder {
-  /* WebKit browsers */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  font-weight: 300;
-}
-.login :-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  opacity: 1;
-  font-weight: 300;
-}
-.login ::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  opacity: 1;
-  font-weight: 300;
-}
-.login :-ms-input-placeholder {
-  /* Internet Explorer 10+ */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  font-weight: 300;
-}
-.login .inputLogin {
-  align-self: center;
-  display: block;
-  appearance: none;
-  outline: 0;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background-color: rgba(255, 255, 255, 0.25);
-  width: 250px;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  text-align: center;
-}
-.login .inputLogin:hover {
-  background-color: rgba(255, 255, 255, 0.4);
-}
-.login #text {
-  order: 1;
-  align-self: center;
-  color: black;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  visibility: visible !important;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 500;
-  font-size: 20px;
-}
-.login #username {
-  order: 2;
-  align-self: center;
-}
-.login #password {
-  order: 5;
-  align-self: center;
-}
-.login #login-button {
-  order: 10;
-  align-self: center;
-  margin-top: 30px;
-  outline: 0;
-  background-color: white;
-  border: 0;
-  border-radius: 3px;
-  width: 100px;
-  margin-left: auto;
-  margin-right: auto;
-}
-@media screen and (min-width: 768px) {
-  .modal-dialog {
-    margin-top: 200px;
-  }
-}
 .item-list {
   overflow-y: scroll;
   overflow-x: visible;
@@ -214,4 +123,273 @@
   -ms-transition: opacity 0.5s;
   -o-transition: opacity 0.5s;
   transition: opacity 0.5s;
+}
+.form-modal {
+  margin: auto;
+  background-color: #ff726b;
+  box-shadow: 0 0 1em black;
+  border-radius: 3px;
+}
+.form-modal form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  animation: invisiblility 0.5s forwards;
+}
+.form-modal ::-webkit-input-placeholder {
+  /* WebKit browsers */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  font-weight: 300;
+}
+.form-modal :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  opacity: 1;
+  font-weight: 300;
+}
+.form-modal ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  opacity: 1;
+  font-weight: 300;
+}
+.form-modal :-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  font-weight: 300;
+}
+.form-modal input[type=text],
+.form-modal input[type=email],
+.form-modal input[type=password] {
+  align-self: center;
+  display: block;
+  appearance: none;
+  outline: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.25);
+  margin: 15px auto 10px;
+  width: 250px;
+  text-align: center;
+}
+.form-modal input[type=text]:focus,
+.form-modal input[type=email]:focus,
+.form-modal input[type=password]:focus {
+  width: 280px;
+  height: 120%;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+.form-modal input[type=text]:hover,
+.form-modal input[type=email]:hover,
+.form-modal input[type=password]:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.form-modal #text {
+  order: 1;
+  align-self: center;
+  color: black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  visibility: visible !important;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+}
+.form-modal .button-form {
+  order: 10;
+  align-self: center;
+  display: block;
+  margin: 30px auto 10px;
+  outline: 0;
+  background-color: white;
+  border: 0;
+  border-radius: 3px;
+  width: 100px;
+}
+.login-form {
+  width: 350px;
+  height: 280px;
+  margin: auto;
+  background-color: #ff726b;
+  box-shadow: 0 0 1em black;
+  border-radius: 3px;
+}
+.login-form form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  animation: invisiblility 0.5s forwards;
+}
+.login-form ::-webkit-input-placeholder {
+  /* WebKit browsers */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  font-weight: 300;
+}
+.login-form :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  opacity: 1;
+  font-weight: 300;
+}
+.login-form ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  opacity: 1;
+  font-weight: 300;
+}
+.login-form :-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  font-weight: 300;
+}
+.login-form input[type=text],
+.login-form input[type=email],
+.login-form input[type=password] {
+  align-self: center;
+  display: block;
+  appearance: none;
+  outline: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.25);
+  margin: 15px auto 10px;
+  width: 250px;
+  text-align: center;
+}
+.login-form input[type=text]:focus,
+.login-form input[type=email]:focus,
+.login-form input[type=password]:focus {
+  width: 280px;
+  height: 120%;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+.login-form input[type=text]:hover,
+.login-form input[type=email]:hover,
+.login-form input[type=password]:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.login-form #text {
+  order: 1;
+  align-self: center;
+  color: black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  visibility: visible !important;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+}
+.login-form .button-form {
+  order: 10;
+  align-self: center;
+  display: block;
+  margin: 30px auto 10px;
+  outline: 0;
+  background-color: white;
+  border: 0;
+  border-radius: 3px;
+  width: 100px;
+}
+.login-form .modal-dialog {
+  width: 350px;
+  height: 280px;
+}
+.signup-form {
+  width: 400px;
+  height: 610px;
+  margin: auto;
+  background-color: #ff726b;
+  box-shadow: 0 0 1em black;
+  border-radius: 3px;
+}
+.signup-form form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  animation: invisiblility 0.5s forwards;
+}
+.signup-form ::-webkit-input-placeholder {
+  /* WebKit browsers */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  font-weight: 300;
+}
+.signup-form :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  opacity: 1;
+  font-weight: 300;
+}
+.signup-form ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  opacity: 1;
+  font-weight: 300;
+}
+.signup-form :-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  font-weight: 300;
+}
+.signup-form input[type=text],
+.signup-form input[type=email],
+.signup-form input[type=password] {
+  align-self: center;
+  display: block;
+  appearance: none;
+  outline: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.25);
+  margin: 15px auto 10px;
+  width: 250px;
+  text-align: center;
+}
+.signup-form input[type=text]:focus,
+.signup-form input[type=email]:focus,
+.signup-form input[type=password]:focus {
+  width: 280px;
+  height: 120%;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+.signup-form input[type=text]:hover,
+.signup-form input[type=email]:hover,
+.signup-form input[type=password]:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.signup-form #text {
+  order: 1;
+  align-self: center;
+  color: black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  visibility: visible !important;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+}
+.signup-form .button-form {
+  order: 10;
+  align-self: center;
+  display: block;
+  margin: 30px auto 10px;
+  outline: 0;
+  background-color: white;
+  border: 0;
+  border-radius: 3px;
+  width: 100px;
+}
+@media screen and (min-width: 768px) {
+  .modal-dialog {
+    margin-top: 100px;
+    width: 400px;
+  }
 }
