@@ -12,6 +12,7 @@
   display: none;
   position: fixed;
   z-index: 1000000;
+  opacity: 1;
   -webkit-transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
   -ms-transition: opacity 0.5s;
