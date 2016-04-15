@@ -1,25 +1,29 @@
 
 
 
+(function ($) {
 
+    $.fn.registerTooltip = function() {
+        this.on({
+            mouseover: function () {
+                mouseOver($(this));
+            },
+            mouseleave: function () {
+                mouseLeave($(this));
+            }
+        });
 
+        return this;
+    };
 
+    $.fn.removeToolTip = function () {
+        this.off('mouseover');
+        this.off('mouseleave');
 
-function registerTooltip($element) {
-    $element.on({
-        mouseover: function () {
-            mouseOver($(this));
-        },
-        mouseleave: function () {
-            mouseLeave($(this));
-        }
-    });
-}
+        return this;
+    };
 
-function removeToolTip($element) {
-    $element.off('mouseover');
-    $element.off('mouseleave');
-}
+}(jQuery));
 
 function mouseOver($element) {
     $element.children(".tooltip").css("display", "inline-block");

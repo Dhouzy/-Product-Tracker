@@ -25,21 +25,14 @@ $session = $this->request->session();
         <?= $this->fetch('title') ?>
     </title>
 
-    <?= $this->Html->script('notify.js')?>
-    <?= $this->Html->script('notify.min.js')?>
-
-
     <?= $this->Html->meta('icon') ?>
     <?= $this->Html->css('bootstrap.min.css') ?>
     <?= $this->Html->css('graphic.css') ?>
     <?= $this->Html->css('app.css') ?>
     <?= $this->Html->css('signup.css') ?>
-    <?= $this->Html->script('tooltip.js') ?>
-    <?= $this->Html->script('profile.js') ?>
-
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
+
 </head>
 <body>
 
@@ -126,7 +119,14 @@ $session = $this->request->session();
 <footer>
 </footer>
 <?= $this->Html->script('http://code.jquery.com/jquery-1.12.0.min.js'); ?>
+<?= $this->Html->script('notify.js')?>
+<?= $this->Html->script('notify.min.js')?>
 <?= $this->Html->script('bootstrap.js'); ?>
+<?= $this->Html->script('Chart.js') ?>
+<?= $this->Html->script('tooltip.js') ?>
+<?= $this->Html->script('profile.js') ?>
+<?= $this->Html->script('graphic.js') ?>
+<?= $this->fetch('script') ?>
 </body>
 
 <script>

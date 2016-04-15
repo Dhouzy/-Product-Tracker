@@ -5,7 +5,7 @@
 
     $(document).ready(function() {
         $("#products-list").children(".item").each(function () {
-            registerTooltip($(this));
+            $(this).registerTooltip();
         });
 
         $('a').click(function () {
@@ -14,7 +14,18 @@
     });
 
     function getGraphics(id) {
-        console.log(id);
+        $.ajax({
+            url : '/Graphics/Graphic',
+            type : 'post',
+            data: {
+                productId: id
+            },
+            dataType : 'html',
+            success : function(html) {
+                $("#product-graph").html(html);
+            }
+        });
     }
 
 })();
+
