@@ -25,6 +25,10 @@ $session = $this->request->session();
         <?= $this->fetch('title') ?>
     </title>
 
+    <?= $this->Html->script('notify.js')?>
+    <?= $this->Html->script('notify.min.js')?>
+
+
     <?= $this->Html->meta('icon') ?>
     <?= $this->Html->css('bootstrap.min.css') ?>
     <?= $this->Html->css('graphic.css') ?>

@@ -62,11 +62,28 @@ class ProductsController extends AppController
                 $newUserProduct->user_id = $this->request->session()->read('Auth.User')['id'];
                 $newUserProduct->product_id = $productId;
                 $this->ProductsUsers->save($newUserProduct);
-                $this->Flash->success(__('Flash.ProductAdded'));
+                $this->Flash->success("Flash.ProductAdded");
             }
         }
 
         $this->redirect(['controller' => 'Users', 'action' => 'profile']);
+    }
+
+    public function deleteFollowing() {
+        if($this->request->is('post')) {
+            $id = $this->request->data['id'];
+            $this->delete($id);
+        }
+
+        $this->redirect(['controller' => 'Users', 'action' => 'profile']);
+    }
+
+    private function delete($productId) {
+        $user = $this->request->session()->read('Auth.User');
+        $product_users = TableRegistry::get('ProductsUsers');
+        $product_users->deleteAll(['user_id' => $user['id'],
+        'product_id' => $productId]);
+        $this->Flash->success("Flash.ProductDeleted");
     }
     
     private function isUserLoggedIn(){

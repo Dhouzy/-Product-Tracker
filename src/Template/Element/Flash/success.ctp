@@ -1,1 +1,8 @@
-<div class="message success" onclick="this.classList.add('hidden')"><?= h($message) ?></div>
+<script>
+    $.notify("<?= __($message)?>",{
+        className:'success',
+        clickToHide: false,
+        autoHide: true,
+        globalPosition: 'top left'
+    });
+</script>
