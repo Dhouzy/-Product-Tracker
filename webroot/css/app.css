@@ -195,6 +195,9 @@
 .item-list .item:hover {
   background-color: #ff4d4d;
 }
+.block {
+  display: block;
+}
 .hover {
   position: relative;
 }

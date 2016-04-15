@@ -32,6 +32,7 @@ $session = $this->request->session();
     <?= $this->Html->css('signup.css') ?>
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
+    <?= $this->fetch('script') ?>
 
 </head>
 <body>
@@ -118,7 +119,7 @@ $session = $this->request->session();
 </section>
 <footer>
 </footer>
-<?= $this->Html->script('http://code.jquery.com/jquery-1.12.0.min.js'); ?>
+<?= $this->Html->script('jquery-1.12.3.min.js'); ?>
 <?= $this->Html->script('notify.js')?>
 <?= $this->Html->script('notify.min.js')?>
 <?= $this->Html->script('bootstrap.js'); ?>
@@ -126,7 +127,6 @@ $session = $this->request->session();
 <?= $this->Html->script('tooltip.js') ?>
 <?= $this->Html->script('profile.js') ?>
 <?= $this->Html->script('graphic.js') ?>
-<?= $this->fetch('script') ?>
 </body>
 
 <script>
