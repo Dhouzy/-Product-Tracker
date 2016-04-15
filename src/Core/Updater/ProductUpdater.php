@@ -93,13 +93,21 @@ class ProductUpdater
         $now  = new DateTime(null, new DateTimeZone('America/Toronto'));
 
         $fullPrice = $apiItem->fullPrice/100;
+        $rebate_amount = null;
+        if($apiItem->fullPrice == null){
+            $rebatePrice = 0;
+            $fullPrice = $apiItem->currentPrice/100;
+        }else{
+            $rebatePrice =  $apiItem->currentPrice/100;
+            $rebate_amount = $fullPrice - $rebatePrice;
+        }
 
         $price = new Price();
         $price->date = $now;
         $price->price = $fullPrice;
         $price->product_id = $product->id;
-        $price->rebate_price = $apiItem->currentPrice/100;
-        $price->rebate_amount = null;
+        $price->rebate_price = $rebatePrice;
+        $price->rebate_amount = $rebate_amount ;
 
         if ($this->pricesTable->save($price) === false){
             throw new Exception('Save new price failed.');

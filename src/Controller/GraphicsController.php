@@ -7,6 +7,11 @@
 namespace App\Controller;
 
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
+use App\Model\Entity\ProductsUser;
+use App\Model\Entity\Product;
+use App\Model\Entity\Price;
+use App\Core\Updater\ProductUpdater;
 
 /**
  * Application Controller for application wide methods
@@ -16,7 +21,11 @@ use Cake\Event\Event;
 class GraphicsController extends AppController
 {
 
-    public function graphic() {
+    public function initialize(){
+        parent::initialize();
+    }
+
+    public function graphics() {
         if($this->request->is('post')) {
             $productId = $this->request->data['productId'];
 
@@ -26,6 +35,7 @@ class GraphicsController extends AppController
                 ->contain(['Companies', 'Prices'])
                 ->where(['article_uid' => $productId])
                 ->first();
+
 
             $fieldsGraph1 = array('price', 'date');
             $fieldsGraph2 = array('rebate_price', 'date');

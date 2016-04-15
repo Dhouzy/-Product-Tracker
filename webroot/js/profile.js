@@ -15,12 +15,12 @@
 
     function getGraphics(id) {
         $.ajax({
-            url : '/Graphics/Graphic',
-            type : 'post',
+            url : '/graphics/graphics',
+            type : 'POST',
             data: {
                 productId: id
             },
-            dataType : 'html',
+            dataType: "html",
             success : function(html) {
                 $("#product-graph").html(html);
             }
