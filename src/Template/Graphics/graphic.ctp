@@ -1,27 +1,4 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: root
- * Date: 3/11/16
- * Time: 10:03 AM
- */
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <?= $this->Html->charset() ?>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>
-    <?= $cakeDescription ?>
-</title>
-<?= $this->Html->meta('icon') ?>
-<?= $this->Html->css('base_cake.css') ?>
-<?= $this->Html->css('cake.css') ?>
-<?= $this->Html->script('Chart') ?>
-<?= $this->Html->script('graphic') ?>
-</head>
-<body class="home">
+<body class="graphics">
 
     <div style="width: 80%; left: 10%; display: inline-block; position: absolute; text-align: center;">
         <label class="graphtitle">Product price variation over the time</label>
@@ -45,4 +22,3 @@
     </div>
 
 </body>
-</html>

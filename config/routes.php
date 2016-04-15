@@ -53,6 +53,7 @@ Router::scope('/', function ($routes) {
     $routes->connect('/lang', ['controller' => 'Langs', 'action' => 'switchLang']);
     $routes->connect('/product/:uid', ['controller' => 'Products', 'action' => 'product'],['pass' => ['uid']]);
     $routes->connect('/follow', ['controller' => 'Products', 'action' => 'addToUser']);
+    $routes->connect('/delete', ['controller' => 'Products', 'action' => 'deleteFollowing']);
     $routes->connect('/profile', ['controller' => 'Users', 'action' => 'profile', 'profile']);
     $routes->connect('/graphic', ['controller' => 'Graphics', 'action' => 'graphic', 'graphic']);
 

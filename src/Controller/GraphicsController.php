@@ -17,8 +17,15 @@ class GraphicsController extends AppController
 {
 
     public function graphic() {
+        if($this->request->is('post')) {
+            $productId = $this->request->data['productId'];
 
-        if (isset($this->request->product)) {
+            $products = TableRegistry::get('Products');
+            $product = $products
+                ->find()
+                ->contain(['Companies', 'Prices'])
+                ->where(['article_uid' => $productId])
+                ->first();
 
             $fieldsGraph1 = array('price', 'date');
             $fieldsGraph2 = array('rebate_price', 'date');
@@ -26,11 +33,9 @@ class GraphicsController extends AppController
                 'prices.rebate_price' => null
             ));
 
-            $product = $this->request->product;
             $graph1Data = $product->prices->find('all', array('fields' => $fieldsGraph1));
             $graph2Data = $product->prices->find('all', array('fields' => $fieldsGraph2, 'conditions' => $conditionsGraph2));
             $this->set(compact('graph1Data', 'graph2Data'));
         }
     }
-
 }

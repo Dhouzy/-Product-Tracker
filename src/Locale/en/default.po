@@ -87,6 +87,9 @@ msgstr "Weight: {0} mg"
 msgid "Product.Follow"
 msgstr "Follow this product"
 
+msgid "Product.Delete"
+msgstr "Stop following this product"
+
 msgid "Product.Price"
 msgstr "Price #{0} fetched on: {1} was: {2} and {3} on rebate"
 
@@ -137,3 +140,6 @@ msgstr "Invalid UID."
 
 msgid "Flash.ProductAdded"
 msgstr "Product successfully registered."
+
+msgid "Flash.ProductDeleted"
+msgstr "Product successfully deleted."
