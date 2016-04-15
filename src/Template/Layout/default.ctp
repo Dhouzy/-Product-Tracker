@@ -25,8 +25,7 @@ $session = $this->request->session();
         <?= $this->fetch('title') ?>
     </title>
 
-    <?= $this->Html->script('notify.js')?>
-    <?= $this->Html->script('notify.min.js')?>
+
 
 
     <?= $this->Html->meta('icon') ?>
@@ -54,7 +53,7 @@ $session = $this->request->session();
                                     aria-hidden="true">&times;</span></button>
                             <p id="text">Login</p>
                         </div>
-                        <div class="users form">
+                        <div class="users-form">
                             <?= $this->Flash->render('auth') ?>
                             <?= $this->Form->create(null, ['id' => 'test']) ?>
                             <fieldset>
@@ -127,6 +126,8 @@ $session = $this->request->session();
 </footer>
 <?= $this->Html->script('http://code.jquery.com/jquery-1.12.0.min.js'); ?>
 <?= $this->Html->script('bootstrap.js'); ?>
+<?= $this->Html->script('notify.js')?>
+<?= $this->Html->script('notify.min.js')?>
 </body>
 
 <script>
@@ -146,7 +147,12 @@ $session = $this->request->session();
                     $('#myModal').modal('hide');
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus, errorThrown);
+                    $("#user-form").notify("Test",{
+                        className:'success',
+                        clickToHide: false,
+                        autoHide: true,
+                        globalPosition: 'top left'
+                    });
                 }
             });
         });
