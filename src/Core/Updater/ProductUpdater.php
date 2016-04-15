@@ -94,11 +94,18 @@ class ProductUpdater
 
         $fullPrice = $apiItem->fullPrice/100;
 
+        if($apiItem->fullPrice == null){
+            $rebatePrice = 0;
+            $fullPrice = $apiItem->currentPrice/100;
+        }else{
+            $rebatePrice =  $apiItem->currentPrice/100;
+        }
+
         $price = new Price();
         $price->date = $now;
         $price->price = $fullPrice;
         $price->product_id = $product->id;
-        $price->rebate_price = $apiItem->currentPrice/100;
+        $price->rebate_price = $rebatePrice;
         $price->rebate_amount = null;
 
         if ($this->pricesTable->save($price) === false){
