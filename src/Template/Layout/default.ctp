@@ -159,9 +159,10 @@ $session = $this->request->session();
 <?= $this->Html->script('notify.min.js')?>
 <?= $this->Html->script('bootstrap.js'); ?>
 <?= $this->Html->script('Chart.js') ?>
+<?= $this->Html->script('tab.js') ?>
 <?= $this->Html->script('tooltip.js') ?>
-<?= $this->Html->script('profile.js') ?>
 <?= $this->Html->script('graphic.js') ?>
+<?= $this->Html->script('profile.js') ?>
 </body>
 
 <script>

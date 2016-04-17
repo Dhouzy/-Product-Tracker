@@ -23,6 +23,7 @@
             dataType: "html",
             success : function(html) {
                 $("#product-graph").html(html);
+                loadGraphics();
             }
         });
     }

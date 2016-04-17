@@ -36,15 +36,25 @@ class GraphicsController extends AppController
                 ->where(['article_uid' => $productId])
                 ->first();
 
+            $graph1Data = array();
+            $graph2Data = array();
 
-            $fieldsGraph1 = array('price', 'date');
-            $fieldsGraph2 = array('rebate_price', 'date');
-            $conditionsGraph2 = array('NOT' => array(
-                'prices.rebate_price' => null
-            ));
+            foreach ($product->prices as $price) {
+                $oPrice = (object) [
+                    'date' => $price->date,
+                    'price' => $price->price
+                ];
+                $graph1Data[] = $oPrice;
 
-            $graph1Data = $product->prices->find('all', array('fields' => $fieldsGraph1));
-            $graph2Data = $product->prices->find('all', array('fields' => $fieldsGraph2, 'conditions' => $conditionsGraph2));
+                if($price->rebate_price > 0){
+                    $oRebatePrice = (object) [
+                        'date' => $price->date,
+                        'rebate_price' => $price->rebate_price
+                    ];
+                    $graph2Data[] = $oRebatePrice;
+                }
+            }
+
             $this->set(compact('graph1Data', 'graph2Data'));
         }
     }
