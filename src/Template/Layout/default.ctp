@@ -25,6 +25,9 @@ $session = $this->request->session();
         <?= $this->fetch('title') ?>
     </title>
 
+
+
+
     <?= $this->Html->meta('icon') ?>
     <?= $this->Html->css('bootstrap.min.css') ?>
     <?= $this->Html->css('graphic.css') ?>
@@ -48,7 +51,7 @@ $session = $this->request->session();
                                     aria-hidden="true">&times;</span></button>
                             <p id="text">Login</p>
                         </div>
-                        <div class="users form">
+                        <div class="users-form">
                             <?= $this->Flash->render('auth') ?>
                             <?= $this->Form->create() ?>
                             <fieldset>
