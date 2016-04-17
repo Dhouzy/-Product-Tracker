@@ -25,14 +25,9 @@ $session = $this->request->session();
         <?= $this->fetch('title') ?>
     </title>
 
-
-
-
     <?= $this->Html->meta('icon') ?>
     <?= $this->Html->css('bootstrap.min.css') ?>
-    <?= $this->Html->css('graphic.css') ?>
     <?= $this->Html->css('app.css') ?>
-    <?= $this->Html->css('signup.css') ?>
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>

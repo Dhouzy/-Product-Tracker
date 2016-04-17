@@ -1,8 +1,8 @@
 .item-list {
   overflow-y: scroll;
   overflow-x: visible;
-  height: 400px;
-  width: 450px;
+  height: 100%;
+  width: 100%;
 }
 .item-list .item {
   display: block;
@@ -38,9 +38,6 @@
 .item-list .item:hover {
   background-color: #ff4d4d;
 }
-.block {
-  display: block;
-}
 .title-tooltip {
   display: block;
   width: 200px;
@@ -54,4 +51,14 @@
   display: block;
   margin-top: 10px;
   font-size: 14px;
+}
+.left-products-list {
+  width: 40%;
+  height: 500px;
+  border: 1px solid black;
+}
+.right-product-graph {
+  width: 55%;
+  height: 500px;
+  border: 1px solid black;
 }

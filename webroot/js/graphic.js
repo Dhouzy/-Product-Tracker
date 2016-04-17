@@ -48,8 +48,9 @@ function loadGraphics() {
             scaleLabel: "          <%=value%>"
         });
     }
-}
 
+    $("#tab-graph-1")[0].click();
+}
 
 function setChartsParameters() {
     Chart.types.Line.extend({

@@ -8,8 +8,10 @@
             $(this).registerTooltip();
         });
 
-        $('a').click(function () {
+        $('a').click(function (event) {
             getGraphics($(this)[0].id);
+            event.preventDefault();
+            event.stopPropagation();
         });
     });
 

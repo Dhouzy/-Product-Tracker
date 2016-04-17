@@ -1,6 +1,3 @@
-
-
-
 (function ($) {
 
     $.fn.registerTooltip = function() {
