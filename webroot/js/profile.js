@@ -8,7 +8,7 @@
             $(this).registerTooltip();
         });
 
-        $('a').click(function (event) {
+        $('.item-list a').click(function (event) {
             getGraphics($(this)[0].id);
             event.preventDefault();
             event.stopPropagation();
