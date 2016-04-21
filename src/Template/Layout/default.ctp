@@ -20,61 +20,43 @@
         <!--Sign Up Modal-->
         <?= $this->element('signup_modal'); ?>
 
-        <header class="header navbar navbar-default ">
-            <div class="left">
-                <h3>
-                    <?= $this->Html->link('PRODUCT TRACKER', ['controller' => 'Homes', 'action' => 'home']); ?>
-                </h3>
-            </div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button"
+                            class="navbar-toggle collapsed"
+                            data-toggle="collapse"
+                            data-target="#collapsed-header"
+                            aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-            <ul class="buttons-header nav navbar-nav ">
-                
-                <li>
-                    <?= $this->element('language_toggle'); ?>
-                </li>
-                <?php
-                    if (!$session->check('Auth.User')) {
-                        ?>
-                        <li>
-                            <a data-toggle="modal" data-target="#login-modal">
-                                <?php echo __('Global.SignIn') ?>
-                            </a>
-                        </li>
+                    <?= $this->Html->link('PRODUCT TRACKER', ['controller' => 'Homes', 'action' => 'home'], ['class' => 'navbar-brand']); ?>
+                </div>
 
+                <div class="collapse navbar-collapse" id="collapsed-header">
+                    <?= !isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader ? $this->element('searchbar_header') : '' ?>
+                    <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a data-toggle="modal" data-target="#signUp-modal">
-                                <?php echo __('Global.SignUp') ?>
-                            </a>
+                            <?= $this->element('language_toggle'); ?>
                         </li>
-                        <?php
-                    }
-                    else {
-                        echo '<li>' . $this->Html->link(__('Profile.Title'), ['controller' => 'Users', 'action' => 'profile']) . '</li>';
-                        echo '<li>' . $this->Html->link(__('Global.SignOut'), ['controller' => 'Users', 'action' => 'logout']) . '</li>';
-                    }
-                ?>
-            </ul>
-            <div class="middle">
-                <?php
-                    if (!isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader) {
-                        echo $this->element('searchbar');
-                    }
-                ?>
+                        <?= $session->check('Auth.User') ? $this->element('loggedin_header_opt') : $this->element('loggedout_header_opt') ?>
+                    </ul>
+                </div>
             </div>
-        </header>
+        </nav>
         <?= $this->Flash->render() ?>
         <section class="container clearfix">
             <?= $this->fetch('content') ?>
         </section>
-        <footer>
-            <section class="bo">
-                <div>text</div>
-            </section>
-        </footer>
+        <footer></footer>
         <?= $this->Html->script('jquery-1.12.3.min.js'); ?>
+        <?= $this->Html->script('bootstrap.js'); ?>
         <?= $this->Html->script('notify.js') ?>
         <?= $this->Html->script('notify.min.js') ?>
-        <?= $this->Html->script('bootstrap.js'); ?>
         <?= $this->Html->script('Chart.js') ?>
         <?= $this->Html->script('tab.js') ?>
         <?= $this->Html->script('tooltip.js') ?>
