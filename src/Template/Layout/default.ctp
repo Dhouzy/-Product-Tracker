@@ -14,6 +14,7 @@
     <?= $this->Html->css('jquery-ui.theme.min.css') ?>
     <?= $this->Html->css('bootstrap.min.css') ?>
     <?= $this->Html->css('app.css') ?>
+    <?= $this->Html->css('product.css')?>
 
     </head>
     <body>
@@ -37,6 +38,7 @@
         </footer>
         <?= $this->Html->script('jquery-1.12.3.min.js'); ?>
         <?= $this->Html->script('bootstrap.js'); ?>
+        <?= $this->Html->script('bootstrap.min.js'); ?>
         <?= $this->Html->script('notify.js') ?>
         <?= $this->Html->script('notify.min.js') ?>
         <?= $this->Html->script('highcharts.js') ?>
@@ -46,6 +48,7 @@
         <?= $this->Html->script('tooltip.js') ?>
         <?= $this->Html->script('graphic.js') ?>
         <?= $this->Html->script('profile.js') ?>
+        <?= $this->Html->script('product.js')?>
     </body>
 
     <script>

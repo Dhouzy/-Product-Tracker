@@ -1,1 +1,13 @@
+lessc: exception 'Less_Exception_Chunk' with message 'ParseError: Unexpected input in product.less on line 1, column 0
+1| @impor
+2| 
+3| #title{
+4|   text-align: center;
+5| }
+6| form{' in C:\wamp\www\Product_tracker\vendor\oyejorge\less.php\lib\Less\Parser.php:545
+Stack trace:
+#0 C:\wamp\www\Product_tracker\vendor\oyejorge\less.php\lib\Less\Parser.php(489): Less_Parser->GetRules('C:/wamp/www/Pro...')
+#1 C:\wamp\www\Product_tracker\vendor\oyejorge\less.php\lib\Less\Parser.php(366): Less_Parser->_parse('C:/wamp/www/Pro...')
+#2 C:\wamp\www\Product_tracker\vendor\oyejorge\less.php\bin\lessc(175): Less_Parser->parseFile('product.less')
+#3 {main} 
 

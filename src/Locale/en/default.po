@@ -70,19 +70,19 @@ msgstr "User online: <br><b>Id: </b>{0}<br><b>Username: </b>{1}<br><b>Email: </b
 # Product ###################
 #############################
 msgid "Product.Rating"
-msgstr "Rating: {0, number}/5"
+msgstr "<b>Rating</b>: {0, number}/5"
 
 msgid "Product.Brand"
-msgstr "Brand: {0}"
+msgstr "<b>Brand</b>: {0}"
 
 msgid "Product.Color"
-msgstr "Color: {0}"
+msgstr "<b>Color</b>: {0}"
 
 msgid "Product.Size"
-msgstr "Size: {0} mm &times; {1} mm &times; {2} mm"
+msgstr "<b>Size</b>: {0} mm &times; {1} mm &times; {2} mm"
 
 msgid "Product.Weight"
-msgstr "Weight: {0} mg"
+msgstr "<b>Weight</b>: {0} mg"
 
 msgid "Product.Follow"
 msgstr "Follow this product"
@@ -92,6 +92,12 @@ msgstr "Stop following this product"
 
 msgid "Product.Price"
 msgstr "Price #{0} fetched on: {1} was: {2} and {3} on rebate"
+
+msgid "Product.Chart"
+msgstr "Chart"
+
+msgid "Product.Info"
+msgstr "Informations"
 
 #############################
 # SignIn ####################

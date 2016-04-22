@@ -1,4 +1,6 @@
 <fieldset>
+    <div class="row">
+        <div class="col-md-6">
     <?php if ($isUserLoggedIn){
         if(!$isItemFollowed){
             echo $this->Form->create(null, ['url' => 'follow']);
@@ -14,18 +16,37 @@
         }
     }
     ?>
-    <h1><b><?= $product->name ?></b></h1>
+        </div>
+        <div id="title" class="col-md-6">
+            <h5><b><?= $product->name ?></b></h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <?php
+            if($product->amazon_url != null){
+                echo "<a href=\"$product->amazon_url\"><img id=\"productImage\" src=\"$product->image_link\"/></a><br/>";
+            }
+            ?>
+        </div>
+        <div class="container col-md-6">
+            <ul id="tabs" class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="#chart" data-toggle="tab"><?= __('Product.Chart')?></a></li>
+                <li role="presentation"><a href="#info" data-toggle="tab"><?= __('Product.Info')?></a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade in active"  id="chart">
+                    chart
+                </div>
+                <div class="tab-pane fade"  id="info">
+                    info
+                </div>
+            </div>
+        </div>
+    </div>
     <?php
-    foreach ($product->prices as $price){
-        echo $this->Html->para(null, __('Product.Price',$price->id, $price->date, $price->price, $price->rebate_price));
-    }
-
-    if($product->amazon_url != null){
-        echo "<a href=\"$product->amazon_url\"><img src=\"$product->image_link\"/></a><br/>";
-    }
-
     if($product->review_url != null)
-        echo "<iframe src=\"$product->review_url\"></iframe><br/>";
+        echo "<iframe id=\"productIframe\" src=\"$product->review_url\"></iframe><br/>";
 
     if($product->brand != null)
         echo __('Product.Brand', $product->brand) . '<br/>';
