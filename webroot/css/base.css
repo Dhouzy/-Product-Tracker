@@ -1,77 +1,52 @@
-.header {
+.navbar {
   background-color: #302e2e;
-  overflow: auto;
+  padding-top: 50px;
+  padding-bottom: 5px;
 }
-.header .left {
-  float: left;
+.navbar-brand {
+  font-weight: 900 !important;
+  margin-right: 40px !important;
+  margin-left: 10px !important;
+  padding: 0 !important;
+  height: 20px !important;
+  font-size: large;
 }
-.header .left h3 {
-  font-weight: 600;
-  padding: 12px 15px !important;
-  margin: 0 !important;
+.navbar-brand:hover {
+  color: darkgray !important;
 }
-.header .left h3 a {
-  color: #484848;
+.navbar-brand:hover span {
+  color: red;
 }
-.header .left h3 a:hover,
-.header .left h3 a:active,
-.header .left h3 a:focus {
-  text-decoration: none;
-  color: #484848;
+.navbar-brand span {
+  margin-right: 10px !important;
+  color: #e00007;
+  font-size: xx-large;
+  top: 8px !important;
 }
-.header .middle {
-  margin: 0px 256px 0px 272px;
-  padding-left: 5%;
-  padding-right: 5%;
+.navbar-right li a:hover {
+  color: darkgray !important;
 }
-.header .middle form {
-  padding: 10px;
+.navbar-searchbar input {
+  width: 400px !important;
+  background-color: #302e2e;
+  border-color: #e00007;
+  height: 30px !important;
 }
-.header .middle form #search {
-  width: -moz-calc(100% - 113px);
-  width: -webkit-calc(100% - 113px);
-  width: calc(100% - 113px);
+.navbar-searchbar input:focus {
+  border-color: red;
+  box-shadow: 0 0 5px red;
 }
-.header .middle form * {
-  height: 30px;
-}
-.header .buttons-header {
-  float: right !important;
-  align-self: center;
-  padding-right: 15px !important;
-}
-.header .buttons-header a {
-  display: block;
-  text-align: center;
-  color: #ffffff !important;
-  font-weight: 300;
-}
-.header .buttons-header li:hover {
-  background-color: #000000;
-}
-.header .buttons-header li:hover a {
-  color: #ffffff;
-  font-weight: 600;
-}
-.btn {
-  margin-left: 15px;
-}
-.btn.red {
+.navbar-searchbar button {
+  height: 30px !important;
   background-color: #e00007;
-  border-color: #ff5a5f #ff5a5f #e00007;
-  color: #fff;
+  border-color: #e00007;
+  color: #ffffff;
 }
-.btn.red:hover {
-  background-color: darkred;
-}
-.container {
-  margin: auto;
-}
-.container .left {
-  float: left;
-  display: block;
-}
-.container .right {
-  float: right;
-  display: block;
+.navbar-searchbar button:hover,
+.navbar-searchbar button:active,
+.navbar-searchbar button:focus {
+  background-color: red !important;
+  box-shadow: 0 0 5px red !important;
+  border-color: red !important;
+  color: #ffffff !important;
 }

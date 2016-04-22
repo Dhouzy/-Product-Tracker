@@ -33,18 +33,20 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-
-                    <?= $this->Html->link('PRODUCT TRACKER', ['controller' => 'Homes', 'action' => 'home'], ['class' => 'navbar-brand']); ?>
+                    <?= $this->Html->link('<span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span> PRODUCT TRACKER',
+                                          ['controller' => 'Homes', 'action' => 'home'],
+                                          ['class' => 'navbar-brand', 'escape' => false]); ?>
                 </div>
 
                 <div class="collapse navbar-collapse" id="collapsed-header">
-                    <?= !isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader ? $this->element('searchbar_header') : '' ?>
                     <ul class="nav navbar-nav navbar-right">
+                        <?= !isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader ? $this->element('searchbar_header') : '' ?>
                         <li>
                             <?= $this->element('language_toggle'); ?>
                         </li>
                         <?= $session->check('Auth.User') ? $this->element('loggedin_header_opt') : $this->element('loggedout_header_opt') ?>
                     </ul>
+
                 </div>
             </div>
         </nav>
