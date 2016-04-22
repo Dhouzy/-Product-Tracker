@@ -29,7 +29,7 @@
         
         <footer class="footer">
             <div class="container">
-                <p class="text-muted"><?=__('Footer.Text')?></p>
+                <p><?=__('Footer.Text')?></p>
             </div>
         </footer>
         <?= $this->Html->script('jquery-1.12.3.min.js'); ?>

@@ -1,4 +1,6 @@
 @dark-grey: #302e2e;
+@grey: #777;
+@light-grey: darkgrey;
 @light-red: red;
 @red: #e00007;
 
@@ -8,9 +10,11 @@
 html {
   position: relative;
   min-height: 100%;
+  background-color: gainsboro;
 }
 
 body {
+  background-color: gainsboro;
   margin-bottom: 90px;
   margin-top: 115px;
 }
@@ -22,6 +26,7 @@ body {
   height: 70px;
   background-color: @dark-grey;
   .container {
+    color: @grey;
     margin: 0;
     padding: 15px;
   }
@@ -34,10 +39,11 @@ body {
 .navbar {
   background-color: @dark-grey;
   padding-top: 40px;
-  height:95px;
+  height: 95px;
 }
 
 .navbar-brand {
+  outline: 0;
   font-weight: 900 !important;
   margin-right: 40px !important;
   margin-left: 10px !important;
@@ -53,6 +59,7 @@ body {
   }
 
   span {
+    border-top: none !important;
     margin-right: 10px !important;
     color: @red;
     font-size: xx-large;
@@ -62,18 +69,29 @@ body {
 
 .navbar-right {
   li {
-    a:hover {
-      color: darkgray !important;
+    a {
+      top: 5px;
+      padding-top: 10px !important;
+      outline: 0;
+      border-top: 2px solid @red;
+      &:hover, &:active, &:focus {
+        border-top: 2px solid @light-red;
+        color: darkgray !important;
+        outline: 0;
+      }
     }
+
   }
 }
 
 .navbar-searchbar {
+  padding-right: 40px;
+
   input {
     width: 400px !important;
-    background-color: #302e2e;
+    background-color: @dark-grey;
     border-color: @red;
-    color: darkgrey;
+    color: @light-grey;
     height: 30px !important;
     &:focus {
       border-color: @light-red;
