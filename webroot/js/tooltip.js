@@ -38,7 +38,7 @@ function mouseOver($element) {
         left = $element.offset().left - $element.children(".tooltip").width() - 30;
         top = $element.offset().top - ($element.children(".tooltip").height() - $element.height());
     } else if($element.children(".tooltip").hasClass("right-tooltip")) {
-        left = $element.offset().left + $element.width() + 30;
+        left = $element.offset().left + $element.width() + 40;
         top = $element.offset().top - ($element.children(".tooltip").height() - $element.height());
     }
 

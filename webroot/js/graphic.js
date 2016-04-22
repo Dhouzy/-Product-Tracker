@@ -1,117 +1,176 @@
 
+var chartPriceData = null;
+var chartDiscountData = null;
 
 function loadGraphics() {
-    setChartsParameters();
+
+    Highcharts.setOptions({
+        global : {
+            useUTC : true
+        }
+    });
+
+    $('#fromDatepicker').datepicker({
+        showOtherMonths: true,
+        dateFormat: 'yy-mm-dd'
+    });
+    $('#toDatepicker').datepicker({
+        showOtherMonths: true,
+        dateFormat: 'yy-mm-dd'
+    });
+
+    $('#fromDatepicker, #toDatepicker').on('change', function (e) {
+        modifyGraphsDates();
+    });
 
     if($("#productPriceVariationChart").length > 0) {
-        var chartData1 = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [
-                {
-                    label: "My Second dataset",
-                    fillColor: "rgba(151,187,205,0.2)",
-                    strokeColor: "rgba(151,187,205,1)",
-                    pointColor: "rgba(151,187,205,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: $.parseJSON($("#dataForProductPriceVariationChart").val())
+        chartPriceData = $.parseJSON($("#dataForProductPriceVariationChart").val());
+        $('#productPriceVariationChart').highcharts({
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Product price variation'
+            },
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    day: "%b %e, %Y",
+                    week: "%b %e, %Y"
                 }
-            ]
-        };
-
-        var ctxChart1 = $("#productPriceVariationChart").get(0).getContext("2d");
-        var productPriceVariationChart = new Chart(ctxChart1).LineAlt(chartData1, {
-            scaleLabel: "          <%=value%>"
+            },
+            yAxis: {
+                labels: {
+                    enabled: true
+                },
+                title: {
+                    text: 'Price ($)'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    var date = '<b>' + Highcharts.dateFormat('%A, %b %e, %Y', this.x) + '</b><br />';
+                    return date + "$" + this.y;
+                }
+            },
+            credits: {
+                enabled: false
+            }
         });
     }
 
     if($("#productPriceDiscountVariationChart").length > 0) {
-        var chartData2 = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [
-                {
-                    label: "My First dataset",
-                    fillColor: "rgba(151,187,205,0.2)",
-                    strokeColor: "rgba(151,187,205,1)",
-                    pointColor: "rgba(151,187,205,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: $.parseJSON($("#dataForProductPriceDiscountVariationChart").val())
+        chartDiscountData = $.parseJSON($("#dataForProductPriceDiscountVariationChart").val());
+        $('#productPriceDiscountVariationChart').highcharts({
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Product discount price variation'
+            },
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    day: "%b %e, %Y",
+                    week: "%b %e, %Y"
                 }
-            ]
-        };
-
-        var ctxChart2 = $("#productPriceDiscountVariationChart").get(0).getContext("2d");
-        var productPriceDiscountVariationChart = new Chart(ctxChart2).LineAlt(chartData2, {
-            scaleLabel: "          <%=value%>"
+            },
+            yAxis: {
+                labels: {
+                    enabled: true
+                },
+                title: {
+                    text: 'Price ($)'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    var date = '<b>' + Highcharts.dateFormat('%A, %b %e, %Y', this.x) + '</b><br />';
+                    return date + "$" + this.y;
+                }
+            },
+            credits: {
+                enabled: false
+            }
         });
     }
+
+    var year = moment().format('YYYY');
+    var month = moment().format('MM');
+    var maxDays = moment().daysInMonth();
+    var minDate = year + "-" + month + "-01";
+    var maxDate = year + "-" + month + "-" + maxDays;
+
+    $('#fromDatepicker').val(minDate);
+    $('#toDatepicker').val(maxDate);
+
+    modifyGraphsDates();
 
     $("#tab-graph-1")[0].click();
 }
 
-function setChartsParameters() {
-    Chart.types.Line.extend({
-        name: "LineAlt",
-        draw: function () {
-            Chart.types.Line.prototype.draw.apply(this, arguments);
-            var ctx = this.chart.ctx;
-            ctx.save();
-            ctx.textAlign = "center";
-            ctx.textBaseline = "bottom";
-            ctx.fillStyle = this.options.scaleFontColor;
-            var x = this.scale.xScalePaddingLeft * 0.4;
-            var y = this.chart.height / 2;
-            ctx.translate(x, y);
-            ctx.rotate(-90 * Math.PI / 180);
-            ctx.fillText(this.datasets[0].label, 0, 0);
-            ctx.restore();
+function modifyGraphsDates() {
+    var fromSelectedDate = $('#fromDatepicker').val();
+    var toSelectedDate = $('#toDatepicker').val();
+
+    var chartPrice = $('#productPriceVariationChart').highcharts();
+    var chartDiscount = $('#productPriceDiscountVariationChart').highcharts();
+
+    //Graph 1
+    if(chartPriceData !== null && chartPrice) {
+        var chartPriceDataBetweenDates = tableValuesBetweenDates(chartPriceData, fromSelectedDate, toSelectedDate);
+        if (chartPrice.series.length > 0) {
+            chartPrice.series[0].remove();
+        }
+        var tempPrice = [];
+        for (var i = 0; i < chartPriceDataBetweenDates.length; i++) {
+            var date1 = chartPriceDataBetweenDates[i].x.split("-");
+            var element1 = {
+                x : Date.UTC(date1[0], date1[1], date1[2]),
+                y : chartPriceDataBetweenDates[i].y
+            };
+            tempPrice.push(element1);
+        }
+        chartPrice.addSeries({
+            name: 'Price',
+            type: 'line',
+            data: tempPrice,
+            color: '#2f7ed8'
+        });
+    }
+
+    //Graph 2
+    if(chartDiscountData !== null && chartDiscount) {
+        var chartDiscountDataBetweenDates = tableValuesBetweenDates(chartDiscountData, fromSelectedDate, toSelectedDate);
+        if (chartDiscount.series.length > 0) {
+            chartDiscount.series[0].remove();
+        }
+        var tempDiscount = [];
+        for (var y = 0; y < chartDiscountDataBetweenDates.length; y++) {
+            var date2 = chartDiscountDataBetweenDates[y].x.split("-");
+            var element2 = {
+                x : Date.UTC(date2[0], date2[1], date2[2]),
+                y : chartDiscountDataBetweenDates[y].y
+            };
+            tempDiscount.push(element2);
+        }
+        chartDiscount.addSeries({
+            name: 'Discount price',
+            type: 'line',
+            data: tempDiscount,
+            color: '#2f7ed8'
+        });
+    }
+}
+
+function tableValuesBetweenDates(table, date1, date2) {
+    var tempTable = [];
+
+    $.each(table, function(index, value) {
+        if(value.x >= date1 && value.x <= date2) {
+            tempTable.push(value);
         }
     });
 
-    Chart.defaults.global = {
-        animation: true,
-        animationSteps: 60,
-        animationEasing: "easeOutQuart",
-        showScale: true,
-        scaleOverride: false,
-        scaleSteps: null,
-        scaleStepWidth: null,
-        scaleStartValue: null,
-        scaleLineColor: "rgba(0,0,0,.1)",
-        scaleLineWidth: 1,
-        scaleShowLabels: true,
-        scaleLabel: "<%=value%>",
-        scaleIntegersOnly: true,
-        scaleBeginAtZero: false,
-        scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-        scaleFontSize: 12,
-        scaleFontStyle: "normal",
-        scaleFontColor: "#666",
-        responsive: false,
-        maintainAspectRatio: true,
-        showTooltips: true,
-        customTooltips: false,
-        tooltipEvents: ["mousemove", "touchstart", "touchmove"],
-        tooltipFillColor: "rgba(0,0,0,0.8)",
-        tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-        tooltipFontSize: 14,
-        tooltipFontStyle: "normal",
-        tooltipFontColor: "#fff",
-        tooltipTitleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-        tooltipTitleFontSize: 14,
-        tooltipTitleFontStyle: "bold",
-        tooltipTitleFontColor: "#fff",
-        tooltipYPadding: 6,
-        tooltipXPadding: 6,
-        tooltipCaretSize: 8,
-        tooltipCornerRadius: 6,
-        tooltipXOffset: 10,
-        tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
-        multiTooltipTemplate: "<%= value %>",
-        onAnimationProgress: function(){},
-        onAnimationComplete: function(){}
-    };
+    return tempTable;
 }

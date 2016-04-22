@@ -26,6 +26,9 @@ $session = $this->request->session();
     </title>
 
     <?= $this->Html->meta('icon') ?>
+    <?= $this->Html->css('jquery-ui.min.css') ?>
+    <?= $this->Html->css('jquery-ui.structure.min.css') ?>
+    <?= $this->Html->css('jquery-ui.theme.min.css') ?>
     <?= $this->Html->css('bootstrap.min.css') ?>
     <?= $this->Html->css('app.css') ?>
     <?= $this->fetch('meta') ?>
@@ -153,10 +156,12 @@ $session = $this->request->session();
 <footer>
 </footer>
 <?= $this->Html->script('jquery-1.12.3.min.js'); ?>
+<?= $this->Html->script('jquery-ui.min.js'); ?>
 <?= $this->Html->script('notify.js')?>
 <?= $this->Html->script('notify.min.js')?>
 <?= $this->Html->script('bootstrap.js'); ?>
-<?= $this->Html->script('Chart.js') ?>
+<?= $this->Html->script('highcharts.js') ?>
+<?= $this->Html->script('moment.js') ?>
 <?= $this->Html->script('tab.js') ?>
 <?= $this->Html->script('tooltip.js') ?>
 <?= $this->Html->script('graphic.js') ?>

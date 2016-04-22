@@ -69,11 +69,11 @@
 }
 .container .left {
   float: left;
-  display: block;
+  display: inline-block;
 }
 .container .right {
-  float: right;
-  display: block;
+  float: left;
+  display: inline-block;
 }
 .item-list {
   overflow-y: scroll;
@@ -130,14 +130,19 @@
   font-size: 14px;
 }
 .left-products-list {
-  width: 40%;
+  width: 35%;
+  margin-right: 5%;
   height: 500px;
   border: 1px solid black;
 }
 .right-product-graph {
-  width: 55%;
+  width: 45%;
   height: 500px;
   border: 1px solid black;
+}
+#container-profile {
+  margin-bottom: 60px;
+  display: inline-block;
 }
 .hover {
   position: relative;

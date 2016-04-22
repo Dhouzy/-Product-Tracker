@@ -4,7 +4,7 @@
 (function () {
 
     $(document).ready(function() {
-        $("#products-list").children(".item").each(function () {
+        $("#products-list").find(".item").each(function () {
             $(this).registerTooltip();
         });
 
