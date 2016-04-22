@@ -110,3 +110,7 @@ body {
   float: right;
   display: block;
 }
+.center {
+  margin: auto;
+  text-align: center;
+}

@@ -67,5 +67,28 @@
   display: inline-block;
 }
 .selected {
-  color: #e00007;
+  background-color: #e00007;
+}
+.selected a:link {
+  color: #ffffff !important;
+}
+.selected a:visited {
+  color: #ffffff !important;
+}
+.selected a:hover {
+  color: #ffffff !important;
+}
+.selected a:active {
+  color: #ffffff !important;
+}
+#NoItemClickContainer {
+  width: 100%;
+  height: 100%;
+  display: table;
+  text-align: center;
+}
+#NoItemClickContainer #NoItemClickText {
+  font-size: 20px;
+  display: table-cell;
+  vertical-align: middle;
 }

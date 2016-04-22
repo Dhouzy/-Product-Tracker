@@ -1,12 +1,27 @@
-.graphtitle {
-  font-size: 20px;
-}
-.graphXAxisTitle {
-  font-size: 12px;
-  font-color: #666;
-  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-}
 .item-infos-btn {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+#ProductPriceVariationChart {
+  margin: 10px;
+}
+#DatePicker {
+  margin-top: 20px;
+  margin-bottom: -5px;
+}
+#DatePicker #FromDate {
+  margin-right: 8px;
+}
+#DatePicker input {
+  background-color: #302e2e;
+  border-color: #e00007;
+  color: #a9a9a9;
+  padding: 4px 12px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#DatePicker input:focus {
+  border-color: #ff0000;
+  box-shadow: 0 0 5px #ff0000;
 }

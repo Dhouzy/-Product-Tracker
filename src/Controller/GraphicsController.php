@@ -57,7 +57,7 @@ class GraphicsController extends AppController
                 }
             }
 
-            $this->set(compact('graph1Data', 'graph2Data'));
+            $this->set(compact('productId', 'graph1Data', 'graph2Data'));
         }
     }
 }
