@@ -37,57 +37,15 @@
         </footer>
         <?= $this->Html->script('jquery-1.12.3.min.js'); ?>
         <?= $this->Html->script('bootstrap.js'); ?>
+        <?= $this->Html->script('navbar_modal.js'); ?>
         <?= $this->Html->script('notify.js') ?>
         <?= $this->Html->script('notify.min.js') ?>
         <?= $this->Html->script('highcharts.js') ?>
         <?= $this->Html->script('moment.js') ?>
         <?= $this->Html->script('jquery-ui.min.js') ?>
+        <?= $this->Html->script('search.js') ?>
         <?= $this->Html->script('tooltip.js') ?>
         <?= $this->Html->script('graphic.js') ?>
         <?= $this->Html->script('profile.js') ?>
     </body>
-
-    <script>
-        $(document).ready(function () {
-            $('#form-login').submit(function (event) {
-                event.preventDefault();
-
-                var form = $(this).serialize();
-                $.ajax({
-                    url: "/users/login.json",
-                    type: "post",
-                    data: form,
-                    success: function (responseData) {
-                        if(responseData.loginSucceeded) {
-                            window.location = responseData.redirectUrl;
-                        } else {
-                            window.alert("<?= __('SignIn.Failure') ?>");
-                        }
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(textStatus, errorThrown);
-                    }
-                });
-            });
-
-            $('#form-SignUp').submit(function (event) {
-                event.preventDefault();
-
-                var form = $(this).serialize();
-                $.ajax({
-                    url: "/users/add",
-                    type: "post",
-                    data: form,
-                    success: function (response) {
-                        console.log(response);
-                        location.reload();
-                        $('#signUp-modal').modal('hide');
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(textStatus, errorThrown);
-                    }
-                });
-            })
-        });
-    </script>
 </html>
