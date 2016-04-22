@@ -1,3 +1,9 @@
+<?php
+if(isset($tableOnly) && $tableOnly):
+    $this->layout = false;
+    echo $this->element('search_results_row', ['amazonItems' => $searchResult->amazonItems]);
+else:
+?>
 <fieldset>
     <?php $loggedUser = $this->request->session()->read('Auth.User');
     if ($loggedUser != null) {
@@ -11,6 +17,11 @@
     <?php
     if (isset($searchResult)) {
         ?>
+        <script>
+            var searchMaxPage = <?= min(10, $searchResult->numMaxPages) ?>;
+            var searchCurrentPage = <?= $page ?>;
+            var searchQuery = "<?= addslashes($search) ?>";
+        </script>
         <table>
             <thead>
             <tr>
@@ -19,20 +30,8 @@
                 <th><?= __('Search.Table.Price') ?></th>
             </tr>
             </thead>
-            <tbody>
-            <?php foreach ($searchResult->amazonItems as $item): ?>
-                <tr>
-                    <td><img src="<?= $item->smallImageLink ?>"></td>
-                    <td>
-                        <?= $this->Html->link($item->name, [
-                            'controller' => 'Products',
-                            'action' => 'product',
-                            'uid' => $item->uid]);
-                        ?>
-                    </td>
-                    <td><?= $item->currentFormattedPrice ?></td>
-                </tr>
-            <?php endforeach; ?>
+            <tbody id="search-results-table-body">
+            <?= $this->element('search_results_row', ['amazonItems' => $searchResult->amazonItems]) ?>
             </tbody>
         </table>
         <?php
@@ -68,4 +67,4 @@
     }
     ?>
 </fieldset>
-
+<?php endif; ?>

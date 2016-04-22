@@ -49,7 +49,7 @@ Router::scope('/', function ($routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/home/:search-:page', ['controller' => 'Homes', 'action' => 'home'],['pass' => ['search', 'page']]);
+    $routes->connect('/home/:search/:page', ['controller' => 'Homes', 'action' => 'home'],['pass' => ['search', 'page']]);
     $routes->connect('/home/:search', ['controller' => 'Homes', 'action' => 'home'],['pass' => ['search']]);
     $routes->connect('/', ['controller' => 'Homes', 'action' => 'home']);
     $routes->connect('/lang', ['controller' => 'Langs', 'action' => 'switchLang']);

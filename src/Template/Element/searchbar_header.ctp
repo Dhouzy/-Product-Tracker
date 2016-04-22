@@ -1,15 +1,16 @@
 <li>
-    <?= $this->Form->create(null, ['url' => ['controller' => 'Homes', 'action' => 'search'], 'class' => 'navbar-form navbar-left']) ?>
+    <form onsubmit="performSearch(this); return false;" class="navbar-form navbar-left">
     <div class="input-group navbar-searchbar">
-        <?= $this->Form->input('search',
+        <input type="text" placeholder="<?= __('Global.Search') ?>" class="form-control" />
+        <?php /* $this->Form->input('search',
                                ['label' => false,
                                 'placeholder' => __('Global.Search'),
                                 'class' => 'form-control',
-                                'templates' => ['inputContainer' => '{{content}}']]); ?>
+                                'templates' => ['inputContainer' => '{{content}}']]); */?>
         <span class="input-group-btn">
-    <?= $this->Form->button('<span class="glyphicon glyphicon-search" aria-hidden="true"></span>',
+        <?= $this->Form->button('<span class="glyphicon glyphicon-search" aria-hidden="true"></span>',
                             ['type' => 'submit', 'class' => 'btn btn-default', 'escape' => false]); ?>
-    </span>
+        </span>
     </div>
-    <?= $this->Form->end() ?>
+    </form>
 </li>
