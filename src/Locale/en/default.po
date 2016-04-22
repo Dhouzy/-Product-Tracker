@@ -102,6 +102,9 @@ msgstr "Enter your username (or email) and password to sign in."
 msgid "SignIn.OrEmail"
 msgstr " (or email)"
 
+msgid "SignIn.Failure"
+msgstr "Invalid username or password."
+
 #############################
 # Profile ###################
 #############################
@@ -143,3 +146,9 @@ msgstr "Product successfully registered."
 
 msgid "Flash.ProductDeleted"
 msgstr "Product successfully deleted."
+
+#############################
+# Footer ####################
+#############################
+msgid "Footer.Text"
+msgstr "Find some brilliant stuff to put in here."
