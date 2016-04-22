@@ -1,4 +1,3 @@
-<?php $session = $this->request->session(); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,42 +18,20 @@
         <?= $this->element('login_modal'); ?>
         <!--Sign Up Modal-->
         <?= $this->element('signup_modal'); ?>
+        <!--Header navbar-->
+        <?= $this->element('navbar'); ?>
 
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button"
-                            class="navbar-toggle collapsed"
-                            data-toggle="collapse"
-                            data-target="#collapsed-header"
-                            aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <?= $this->Html->link('<span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span> PRODUCT TRACKER',
-                                          ['controller' => 'Homes', 'action' => 'home'],
-                                          ['class' => 'navbar-brand', 'escape' => false]); ?>
-                </div>
-
-                <div class="collapse navbar-collapse" id="collapsed-header">
-                    <ul class="nav navbar-nav navbar-right">
-                        <?= !isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader ? $this->element('searchbar_header') : '' ?>
-                        <li>
-                            <?= $this->element('language_toggle'); ?>
-                        </li>
-                        <?= $session->check('Auth.User') ? $this->element('loggedin_header_opt') : $this->element('loggedout_header_opt') ?>
-                    </ul>
-
-                </div>
-            </div>
-        </nav>
+        
         <?= $this->Flash->render() ?>
         <section class="container clearfix">
             <?= $this->fetch('content') ?>
         </section>
-        <footer></footer>
+        
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted"><?=__('Footer.Text')?></p>
+            </div>
+        </footer>
         <?= $this->Html->script('jquery-1.12.3.min.js'); ?>
         <?= $this->Html->script('bootstrap.js'); ?>
         <?= $this->Html->script('notify.js') ?>

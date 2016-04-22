@@ -1,7 +1,40 @@
+@dark-grey: #302e2e;
+@light-red: red;
+@red: #e00007;
+
+///////////////////////////////////
+//// FOOTER //////////////////////
+/////////////////////////////////
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 90px;
+  margin-top: 115px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  background-color: @dark-grey;
+  .container {
+    margin: 0;
+    padding: 15px;
+  }
+}
+
+///////////////////////////////////
+//// NAVBAR //////////////////////
+/////////////////////////////////
+
 .navbar {
-  background-color: #302e2e;
-  padding-top: 50px;
-  padding-bottom: 5px;
+  background-color: @dark-grey;
+  padding-top: 40px;
+  height:95px;
 }
 
 .navbar-brand {
@@ -15,13 +48,13 @@
   &:hover {
     color: darkgray !important;
     span {
-      color: red;
+      color: @light-red;
     }
   }
 
   span {
     margin-right: 10px !important;
-    color: #e00007;
+    color: @red;
     font-size: xx-large;
     top: 8px !important;
   }
@@ -39,23 +72,24 @@
   input {
     width: 400px !important;
     background-color: #302e2e;
-    border-color: #e00007;
+    border-color: @red;
+    color: darkgrey;
     height: 30px !important;
     &:focus {
-      border-color: red;
-      box-shadow: 0 0 5px red;
+      border-color: @light-red;
+      box-shadow: 0 0 5px @light-red;
     }
   }
 
   button {
     height: 30px !important;
-    background-color: #e00007;
-    border-color: #e00007;
+    background-color: @red;
+    border-color: @red;
     color: #ffffff;
     &:hover, &:active, &:focus {
-      background-color: red !important;
-      box-shadow: 0 0 5px red !important;
-      border-color: red !important;
+      background-color: @light-red !important;
+      box-shadow: 0 0 5px @light-red !important;
+      border-color: @light-red !important;
       color: #ffffff !important;
     }
   }
