@@ -1,94 +1,108 @@
-<?php
-/**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @since         0.10.0
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
-
-$cakeDescription = 'CakePHP: the rapid development php framework';
-$session = $this->request->session();
-?>
+<?php $session = $this->request->session(); ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <?= $this->Html->charset() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <?= $this->fetch('title') ?>
-    </title>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <head>
+        <?= $this->Html->charset() ?>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->meta('icon') ?>
-    <?= $this->Html->css('bootstrap.min.css') ?>
-    <?= $this->Html->css('graphic.css') ?>
-    <?= $this->Html->css('base.css') ?>
-    <?= $this->Html->css('signup.css') ?>
+        <title>
+            <?= $this->fetch('title') ?>
+        </title>
 
-    <?= $this->fetch('meta') ?>
-    <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
-</head>
-<body>
-<nav class="top-bar expanded " data-topbar role="navigation">
-    <section class="header navbar navbar-default ">
-        <div class="left">
-            <h3>
-                <?= $this->Html->link('PRODUCT TRACKER', ['controller' => 'Homes', 'action' => 'home']); ?>
-            </h3>
-        </div>
+        <?= $this->Html->css('bootstrap.min.css') ?>
+        <?= $this->Html->css('app.css') ?>
 
-        <ul class="buttons-header nav navbar-nav ">
-            <?php
-            if ($session->read('Config.language') == 'fr')
-                $switchLanguage = 'en';
-            else
-                $switchLanguage = 'fr';
-            ?>
-            <li><a href="/lang?l=<?= $switchLanguage ?>&fromUrl=<?=
-                urlencode($this->request->here) ?>"><?= strtoupper($switchLanguage) ?></a></li>
-            <?php
-            if (!$session->check('Auth.User')) {
-                echo '<li>' . $this->Html->link(
-                        __('Global.SignIn'),
-                        ['controller' => 'Users', 'action' => 'login']
-                    ) . '</li>';
-                echo '<li>' . $this->Html->link(
-                        __('Global.SignUp'),
-                        ['controller' => 'Users', 'action' => 'add']
-                    ) . '</li>';
-            } else {
-                echo '<li>' . $this->Html->link(
-                        __('Profile.Title'),
-                        ['controller' => 'Users', 'action' => 'profile']) . '</li>';
-                echo '<li>' . $this->Html->link(
-                        __('Global.SignOut'),
-                        ['controller' => 'Users', 'action' => 'logout']
-                    ) . '</li>';
-            }
-            ?>
-        </ul>
-        <div class="middle">
-            <?php
-            if (!isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader) {
-                echo $this->element('searchbar');
-            }
-            ?>
-        </div>
-    </section>
-</nav>
-<?= $this->Flash->render() ?>
-<section class="container clearfix">
-    <?= $this->fetch('content') ?>
-</section>
-<footer>
-</footer>
-</body>
+    </head>
+    <body>
+        <!--Login Modal-->
+        <?= $this->element('login_modal'); ?>
+        <!--Sign Up Modal-->
+        <?= $this->element('signup_modal'); ?>
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button"
+                            class="navbar-toggle collapsed"
+                            data-toggle="collapse"
+                            data-target="#collapsed-header"
+                            aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <?= $this->Html->link('PRODUCT TRACKER', ['controller' => 'Homes', 'action' => 'home'], ['class' => 'navbar-brand']); ?>
+                </div>
+
+                <div class="collapse navbar-collapse" id="collapsed-header">
+                    <?= !isset($doNotShowSearchBarInHeader) || !$doNotShowSearchBarInHeader ? $this->element('searchbar_header') : '' ?>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <?= $this->element('language_toggle'); ?>
+                        </li>
+                        <?= $session->check('Auth.User') ? $this->element('loggedin_header_opt') : $this->element('loggedout_header_opt') ?>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <?= $this->Flash->render() ?>
+        <section class="container clearfix">
+            <?= $this->fetch('content') ?>
+        </section>
+        <footer></footer>
+        <?= $this->Html->script('jquery-1.12.3.min.js'); ?>
+        <?= $this->Html->script('bootstrap.js'); ?>
+        <?= $this->Html->script('notify.js') ?>
+        <?= $this->Html->script('notify.min.js') ?>
+        <?= $this->Html->script('Chart.js') ?>
+        <?= $this->Html->script('tab.js') ?>
+        <?= $this->Html->script('tooltip.js') ?>
+        <?= $this->Html->script('graphic.js') ?>
+        <?= $this->Html->script('profile.js') ?>
+    </body>
+
+    <script>
+        $(document).ready(function () {
+            $('#form-login').submit(function (event) {
+                event.preventDefault();
+
+                var form = $(this).serialize();
+                $.ajax({
+                    url: "/users/login",
+                    type: "post",
+                    data: form,
+                    success: function (response) {
+                        console.log(response);
+                        location.reload();
+                        $('#login-modal').modal('hide');
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+                    }
+                });
+            });
+
+            $('#form-SignUp').submit(function (event) {
+                event.preventDefault();
+
+                var form = $(this).serialize();
+                $.ajax({
+                    url: "/users/add",
+                    type: "post",
+                    data: form,
+                    success: function (response) {
+                        console.log(response);
+                        location.reload();
+                        $('#signUp-modal').modal('hide');
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+                    }
+                });
+            })
+        });
+    </script>
 </html>

@@ -1,0 +1,503 @@
+.header {
+  background-color: #302e2e;
+  overflow: auto;
+}
+.header .left {
+  float: left;
+}
+.header .left h3 {
+  font-weight: 600;
+  padding: 12px 15px !important;
+  margin: 0 !important;
+}
+.header .left h3 a {
+  color: #484848;
+}
+.header .left h3 a:hover,
+.header .left h3 a:active,
+.header .left h3 a:focus {
+  text-decoration: none;
+  color: #484848;
+}
+.header .middle {
+  margin: 0px 256px 0px 272px;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.header .middle form {
+  padding: 10px;
+}
+.header .middle form #search {
+  width: -moz-calc(100% - 113px);
+  width: -webkit-calc(100% - 113px);
+  width: calc(100% - 113px);
+}
+.header .middle form * {
+  height: 30px;
+}
+.header .buttons-header {
+  float: right !important;
+  align-self: center;
+  padding-right: 15px !important;
+}
+.header .buttons-header a {
+  display: block;
+  text-align: center;
+  color: #ffffff !important;
+  font-weight: 300;
+}
+.header .buttons-header li:hover {
+  background-color: #000000;
+}
+.header .buttons-header li:hover a {
+  color: #ffffff;
+  font-weight: 600;
+}
+.btn {
+  margin-left: 15px;
+}
+.btn.red {
+  background-color: #e00007;
+  border-color: #ff5a5f #ff5a5f #e00007;
+  color: #fff;
+}
+.btn.red:hover {
+  background-color: darkred;
+}
+.container {
+  margin: auto;
+}
+.container .left {
+  float: left;
+  display: block;
+}
+.container .right {
+  float: right;
+  display: block;
+}
+.item-list {
+  overflow-y: scroll;
+  overflow-x: visible;
+  height: 100%;
+  width: 100%;
+}
+.item-list .item {
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.item-list .item a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.item-list .item a:link {
+  color: #000000;
+}
+.item-list .item a:visited {
+  color: #000000;
+}
+.item-list .item a:hover {
+  color: #000000;
+}
+.item-list .item a:active {
+  color: #000000;
+}
+.item-list .item a:hover {
+  text-decoration: none;
+}
+.item-list .item:hover {
+  background-color: #ff4d4d;
+}
+.title-tooltip {
+  display: block;
+  width: 200px;
+  font-weight: bold;
+  font-size: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden !important;
+}
+.price-tooltip {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+}
+.left-products-list {
+  width: 40%;
+  height: 500px;
+  border: 1px solid black;
+}
+.right-product-graph {
+  width: 55%;
+  height: 500px;
+  border: 1px solid black;
+}
+.hover {
+  position: relative;
+}
+.hover .tooltip {
+  border: red;
+  border-width: 1px;
+  border-style: solid;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  padding: 10px;
+  display: none;
+  position: fixed;
+  z-index: 1000000;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -ms-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+.form-modal {
+  margin: auto;
+  background-color: #ff726b;
+  box-shadow: 0 0 1em black;
+  border-radius: 3px;
+}
+.form-modal form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  animation: invisiblility 0.5s forwards;
+}
+.form-modal ::-webkit-input-placeholder {
+  /* WebKit browsers */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  font-weight: 300;
+}
+.form-modal :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  opacity: 1;
+  font-weight: 300;
+}
+.form-modal ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  opacity: 1;
+  font-weight: 300;
+}
+.form-modal :-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  font-weight: 300;
+}
+.form-modal input[type=text],
+.form-modal input[type=email],
+.form-modal input[type=password] {
+  align-self: center;
+  display: block;
+  appearance: none;
+  outline: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.25);
+  margin: 15px auto 10px;
+  width: 250px;
+  text-align: center;
+}
+.form-modal input[type=text]:focus,
+.form-modal input[type=email]:focus,
+.form-modal input[type=password]:focus {
+  width: 280px;
+  height: 120%;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+.form-modal input[type=text]:hover,
+.form-modal input[type=email]:hover,
+.form-modal input[type=password]:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.form-modal #text {
+  order: 1;
+  align-self: center;
+  color: black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  visibility: visible !important;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+}
+.form-modal .button-form {
+  order: 10;
+  align-self: center;
+  display: block;
+  margin: 30px auto 10px;
+  outline: 0;
+  background-color: white;
+  border: 0;
+  border-radius: 3px;
+  width: 100px;
+}
+.login-form {
+  width: 350px;
+  height: 280px;
+  margin: auto;
+  background-color: #ff726b;
+  box-shadow: 0 0 1em black;
+  border-radius: 3px;
+}
+.login-form form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  animation: invisiblility 0.5s forwards;
+}
+.login-form ::-webkit-input-placeholder {
+  /* WebKit browsers */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  font-weight: 300;
+}
+.login-form :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  opacity: 1;
+  font-weight: 300;
+}
+.login-form ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  opacity: 1;
+  font-weight: 300;
+}
+.login-form :-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  font-weight: 300;
+}
+.login-form input[type=text],
+.login-form input[type=email],
+.login-form input[type=password] {
+  align-self: center;
+  display: block;
+  appearance: none;
+  outline: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.25);
+  margin: 15px auto 10px;
+  width: 250px;
+  text-align: center;
+}
+.login-form input[type=text]:focus,
+.login-form input[type=email]:focus,
+.login-form input[type=password]:focus {
+  width: 280px;
+  height: 120%;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+.login-form input[type=text]:hover,
+.login-form input[type=email]:hover,
+.login-form input[type=password]:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.login-form #text {
+  order: 1;
+  align-self: center;
+  color: black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  visibility: visible !important;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+}
+.login-form .button-form {
+  order: 10;
+  align-self: center;
+  display: block;
+  margin: 30px auto 10px;
+  outline: 0;
+  background-color: white;
+  border: 0;
+  border-radius: 3px;
+  width: 100px;
+}
+.login-form .modal-dialog {
+  width: 350px;
+  height: 280px;
+}
+.signup-form {
+  width: 400px;
+  height: 610px;
+  margin: auto;
+  background-color: #ff726b;
+  box-shadow: 0 0 1em black;
+  border-radius: 3px;
+}
+.signup-form form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  animation: invisiblility 0.5s forwards;
+}
+.signup-form ::-webkit-input-placeholder {
+  /* WebKit browsers */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  font-weight: 300;
+}
+.signup-form :-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  opacity: 1;
+  font-weight: 300;
+}
+.signup-form ::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  opacity: 1;
+  font-weight: 300;
+}
+.signup-form :-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: black;
+  font-weight: 300;
+}
+.signup-form input[type=text],
+.signup-form input[type=email],
+.signup-form input[type=password] {
+  align-self: center;
+  display: block;
+  appearance: none;
+  outline: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.25);
+  margin: 15px auto 10px;
+  width: 250px;
+  text-align: center;
+}
+.signup-form input[type=text]:focus,
+.signup-form input[type=email]:focus,
+.signup-form input[type=password]:focus {
+  width: 280px;
+  height: 120%;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+.signup-form input[type=text]:hover,
+.signup-form input[type=email]:hover,
+.signup-form input[type=password]:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.signup-form #text {
+  order: 1;
+  align-self: center;
+  color: black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  visibility: visible !important;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+}
+.signup-form .button-form {
+  order: 10;
+  align-self: center;
+  display: block;
+  margin: 30px auto 10px;
+  outline: 0;
+  background-color: white;
+  border: 0;
+  border-radius: 3px;
+  width: 100px;
+}
+@media screen and (min-width: 768px) {
+  .modal-dialog {
+    margin-top: 100px;
+    width: 400px;
+  }
+}
+/* Style the list */
+ul.tab {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+/* Float the list items side by side */
+ul.tab li {
+  float: left;
+}
+/* Style the links inside the list items */
+ul.tab li a {
+  display: inline-block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 17px;
+}
+/* Change background color of links on hover */
+ul.tab li a:hover {
+  background-color: #ddd;
+}
+/* Create an active/current tablink class */
+ul.tab li a:focus,
+.active {
+  background-color: #ccc;
+}
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+.tabcontent {
+  -webkit-animation: fadeEffect 1s;
+  animation: fadeEffect 1s;
+  /* Fading effect takes 1 second */
+}
+@-webkit-keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.graphtitle {
+  font-size: 20px;
+}
+.graphXAxisTitle {
+  font-size: 12px;
+  font-color: #666;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+.item-infos-btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

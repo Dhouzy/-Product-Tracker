@@ -7,6 +7,11 @@
 namespace App\Controller;
 
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
+use App\Model\Entity\ProductsUser;
+use App\Model\Entity\Product;
+use App\Model\Entity\Price;
+use App\Core\Updater\ProductUpdater;
 
 /**
  * Application Controller for application wide methods
@@ -16,21 +21,41 @@ use Cake\Event\Event;
 class GraphicsController extends AppController
 {
 
-    public function graphic() {
+    public function initialize(){
+        parent::initialize();
+    }
 
-        if (isset($this->request->product)) {
+    public function graphics() {
+        if($this->request->is('post')) {
+            $productId = $this->request->data['productId'];
 
-            $fieldsGraph1 = array('price', 'date');
-            $fieldsGraph2 = array('rebate_price', 'date');
-            $conditionsGraph2 = array('NOT' => array(
-                'prices.rebate_price' => null
-            ));
+            $products = TableRegistry::get('Products');
+            $product = $products
+                ->find()
+                ->contain(['Companies', 'Prices'])
+                ->where(['article_uid' => $productId])
+                ->first();
 
-            $product = $this->request->product;
-            $graph1Data = $product->prices->find('all', array('fields' => $fieldsGraph1));
-            $graph2Data = $product->prices->find('all', array('fields' => $fieldsGraph2, 'conditions' => $conditionsGraph2));
+            $graph1Data = array();
+            $graph2Data = array();
+
+            foreach ($product->prices as $price) {
+                $oPrice = (object) [
+                    'date' => $price->date,
+                    'price' => $price->price
+                ];
+                $graph1Data[] = $oPrice;
+
+                if($price->rebate_price > 0){
+                    $oRebatePrice = (object) [
+                        'date' => $price->date,
+                        'rebate_price' => $price->rebate_price
+                    ];
+                    $graph2Data[] = $oRebatePrice;
+                }
+            }
+
             $this->set(compact('graph1Data', 'graph2Data'));
         }
     }
-
 }

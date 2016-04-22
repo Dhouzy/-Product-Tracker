@@ -1,10 +1,19 @@
 <fieldset>
-    <?php if ($isUserLoggedIn && !$isItemFollowed) {
-        echo $this->Form->create(null, ['url' => 'follow']);
-        echo $this->Form->input(null, ['name' => 'uid', 'value' => "$product->article_uid", 'type' => 'hidden']);
-        echo $this->Form->button(__('Product.Follow'), ['class' => 'btn red']);
-        echo $this->Form->end();
-    } ?>
+    <?php if ($isUserLoggedIn){
+        if(!$isItemFollowed){
+            echo $this->Form->create(null, ['url' => 'follow']);
+            echo $this->Form->input(null, ['name' => 'uid', 'value' => "$product->article_uid", 'type' => 'hidden']);
+            echo $this->Form->button(__('Product.Follow'), ['class' => 'btn red']);
+            echo $this->Form->end();
+        }
+        else {
+            echo $this->Form->create(null, ['url' => 'delete']);
+            echo $this->Form->input(null, ['name' => 'id', 'value' => "$product->id", 'type' => 'hidden']);
+            echo $this->Form->button(__('Product.Delete'),['class' => 'btn red']);
+            echo $this->Form->end();
+        }
+    }
+    ?>
     <h1><b><?= $product->name ?></b></h1>
     <?php
     foreach ($product->prices as $price){

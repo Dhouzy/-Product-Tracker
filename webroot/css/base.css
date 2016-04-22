@@ -64,3 +64,14 @@
 .btn.red:hover {
   background-color: darkred;
 }
+.container {
+  margin: auto;
+}
+.container .left {
+  float: left;
+  display: block;
+}
+.container .right {
+  float: right;
+  display: block;
+}
