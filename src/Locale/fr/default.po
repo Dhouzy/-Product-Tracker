@@ -152,3 +152,9 @@ msgstr "Produit supprimé avec succès"
 #############################
 msgid "Footer.Text"
 msgstr "Trouver du texte intelligent à mettre ici."
+
+#############################
+# Login ####################
+#############################
+msgid "Login.Error"
+msgstr "Votre identifiant et/ou votre mot de passe est faux."

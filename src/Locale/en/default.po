@@ -152,3 +152,10 @@ msgstr "Product successfully deleted."
 #############################
 msgid "Footer.Text"
 msgstr "Find some brilliant stuff to put in here."
+
+#############################
+# Login ####################
+#############################
+msgid "Login.Error"
+msgstr "Your login and/or password are wrong."
+

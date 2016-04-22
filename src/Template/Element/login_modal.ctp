@@ -1,6 +1,10 @@
+
 <div class="container">
     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
+            <div id="login-alert" class="alert alert-danger" style="display: none; text-align: center">
+                <p><?=__('Login.Error')?></p>
+            </div>
             <div class="login-form modal-content">
                 <div class="modal-body">
                     <form class="form" id="form-login">

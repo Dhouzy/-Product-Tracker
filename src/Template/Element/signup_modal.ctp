@@ -1,6 +1,7 @@
 <div class="container">
     <div class="modal fade" id="signUp-modal" tabindex="-1" role="dialog" aria-labelledby="modalLoginLabel">
         <div class="modal-dialog" role="document">
+            <?= $this->Flash->render() ?>
             <div class="signup-form modal-content">
                 <div class="modal-body">
                     <form class="form" id="form-SignUp">

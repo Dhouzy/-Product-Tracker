@@ -11,8 +11,9 @@ $(document).ready(function () {
             success: function (responseData) {
                 if(responseData.loginSucceeded) {
                     window.location = responseData.redirectUrl;
+                    $("#login-alert").hide();
                 } else {
-                    window.alert("<?= __('SignIn.Failure') ?>");
+                    $("#login-alert").show();
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -26,13 +27,17 @@ $(document).ready(function () {
 
         var form = $(this).serialize();
         $.ajax({
-            url: "/users/add",
+            url: "/users/add.json",
             type: "post",
             data: form,
             success: function (response) {
-                console.log(response);
-                location.reload();
-                $('#signUp-modal').modal('hide');
+                if(!response.userSaved){
+
+                }else{
+                    location.reload();
+                    $('#signUp-modal').modal('hide');
+                }
+                //console.log(response);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);

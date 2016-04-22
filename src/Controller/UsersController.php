@@ -49,12 +49,15 @@ class UsersController extends AppController
                 $user = $this->Users->patchEntity($user, $this->request->data);
                 if ($this->Users->save($user)) {
                     $this->Flash->success(__('Flash.UserRegistered', $user->first_name));
+                    $this->set('user', $user);
                     return $this->redirect(['controller' => 'Homes', 'action' => 'home']);
                 }
-                $this->Flash->error(__('Flash.RegistrationFailed'));
+                $this->Flash->error(__('Flash.RegistrationFailed'), true);
             }
         }
-        $this->set('user', $user);
+
+        $this->set('userSaved', false);
+        $this->set('_serialize', ['userSaved']);
     }
 
     public function beforeFilter(Event $event)
