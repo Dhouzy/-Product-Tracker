@@ -15,7 +15,7 @@
                             <?= $this->Form->create() ?>
                             <fieldset>
                                 <?= $this->Form->text('username', ['placeholder' => __('Global.Username') . __('SignIn.OrEmail'), 'class' => 'flex-item']) ?>
-                                <?= $this->Form->text('password', ['placeholder' => __('Global.Password'), 'class' => 'flex-item']) ?>
+                                <?= $this->Form->password('password', ['placeholder' => __('Global.Password'), 'class' => 'flex-item']) ?>
                             </fieldset>
                             <?= $this->Form->button(__('Global.SignIn'), ['class' => 'button-form']); ?>
                             <?= $this->Form->end() ?>
