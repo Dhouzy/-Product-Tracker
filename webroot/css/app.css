@@ -80,6 +80,22 @@ body {
   border-color: #e00007;
   color: #ffffff;
 }
+.navbar-searchbar button:hover,
+.navbar-searchbar button:active,
+.navbar-searchbar button:focus {
+  background-color: #ff0000 !important;
+  box-shadow: 0 0 5px #ff0000 !important;
+  border-color: #ff0000 !important;
+  color: #ffffff !important;
+}
+.btn {
+  margin-left: 15px;
+}
+.btn.red {
+  background-color: #e00007;
+  border-color: #ff5a5f #ff5a5f #e00007;
+  color: #fff;
+}
 .btn.red:hover {
   background-color: darkred;
 }
@@ -88,18 +104,11 @@ body {
 }
 .container .left {
   float: left;
-  display: inline-block;
+  display: block;
 }
 .container .right {
-  float: left;
-  display: inline-block;
-.navbar-searchbar button:hover,
-.navbar-searchbar button:active,
-.navbar-searchbar button:focus {
-  background-color: #ff0000 !important;
-  box-shadow: 0 0 5px #ff0000 !important;
-  border-color: #ff0000 !important;
-  color: #ffffff !important;
+  float: right;
+  display: block;
 }
 .item-list {
   overflow-y: scroll;
