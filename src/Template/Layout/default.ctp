@@ -71,13 +71,15 @@
 
                 var form = $(this).serialize();
                 $.ajax({
-                    url: "/users/login",
+                    url: "/users/login.json",
                     type: "post",
                     data: form,
-                    success: function (response) {
-                        console.log(response);
-                        location.reload();
-                        $('#login-modal').modal('hide');
+                    success: function (responseData) {
+                        if(responseData.loginSucceeded) {
+                            window.location = responseData.redirectUrl;
+                        } else {
+                            window.alert("<?= __('SignIn.Failure') ?>");
+                        }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         console.log(textStatus, errorThrown);

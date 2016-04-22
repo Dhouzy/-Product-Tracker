@@ -102,6 +102,9 @@ msgstr "Enter your username (or email) and password to sign in."
 msgid "SignIn.OrEmail"
 msgstr " (or email)"
 
+msgid "SignIn.Failure"
+msgstr "Invalid username or password."
+
 #############################
 # Profile ###################
 #############################
