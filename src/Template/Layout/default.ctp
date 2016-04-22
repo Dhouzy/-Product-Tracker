@@ -42,7 +42,6 @@
         <?= $this->Html->script('highcharts.js') ?>
         <?= $this->Html->script('moment.js') ?>
         <?= $this->Html->script('jquery-ui.min.js') ?>
-        <?= $this->Html->script('tab.js') ?>
         <?= $this->Html->script('tooltip.js') ?>
         <?= $this->Html->script('graphic.js') ?>
         <?= $this->Html->script('profile.js') ?>

@@ -36,7 +36,7 @@
   text-decoration: none;
 }
 .item-list .item:hover {
-  background-color: #ff4d4d;
+  background-color: #ff0000;
 }
 .title-tooltip {
   display: block;
@@ -65,4 +65,7 @@
 #container-profile {
   margin-bottom: 60px;
   display: inline-block;
+}
+.selected {
+  color: #e00007;
 }

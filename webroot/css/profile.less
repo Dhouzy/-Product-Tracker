@@ -1,6 +1,5 @@
 
-@link-color: black;
-@hover-color: #ff4d4d;
+@import "variables";
 
 .item-list {
   overflow-y: scroll;
@@ -47,7 +46,7 @@
   }
 
   .item:hover {
-    background-color: @hover-color;
+    background-color: @light-red;
   }
 }
 
@@ -84,4 +83,8 @@
 #container-profile {
   margin-bottom: 60px;
   display: inline-block;
+}
+
+.selected {
+  color : @red
 }
