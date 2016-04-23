@@ -36,14 +36,16 @@
                 <p><?=__('Footer.Text')?></p>
             </div>
         </footer>
+        <!--Load librairies first-->
         <?= $this->Html->script('jquery-1.12.3.min.js'); ?>
-        <?= $this->Html->script('bootstrap.js'); ?>
-        <?= $this->Html->script('navbar_modal.js'); ?>
-        <?= $this->Html->script('notify.js') ?>
-        <?= $this->Html->script('notify.min.js') ?>
-        <?= $this->Html->script('highcharts.js') ?>
-        <?= $this->Html->script('moment.js') ?>
+        <?= $this->Html->script('bootstrap.min.js'); ?>
         <?= $this->Html->script('jquery-ui.min.js') ?>
+        <?= $this->Html->script('highcharts.js') ?>
+        <?= $this->Html->script('notify.min.js') ?>
+
+        <!--Custom stuff-->
+        <?= $this->Html->script('navbar_modal.js'); ?>
+        <?= $this->Html->script('moment.js') ?>
         <?= $this->Html->script('search.js') ?>
         <?= $this->Html->script('tooltip.js') ?>
         <?= $this->Html->script('graphic.js') ?>
