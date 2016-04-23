@@ -1,30 +1,21 @@
-
-<div class="container">
-    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div id="login-alert" class="alert alert-danger" style="display: none; text-align: center">
-                <p><?=__('Login.Error')?></p>
-            </div>
-            <div class="login-form modal-content">
-                <div class="modal-body">
-                    <form class="form" id="form-login">
-                        <div class="modal-header text-center">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <p id="text">Login</p>
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form id="form-login">
+                        <div class="input-group input-group-sm">
+                                <span class="input-group-addon"><span class="fa fa-fw fa-user"></span></span>
+                                <input name="username"
+                                       type="text"
+                                       class="form-control"
+                                       placeholder="<?= __('Global.Username') . __('SignIn.OrEmail') ?>">
                         </div>
-                        <div class="users-form">
-                            <?= $this->Flash->render('auth') ?>
-                            <?= $this->Form->create() ?>
-                            <fieldset>
-                                <?= $this->Form->text('username', ['placeholder' => __('Global.Username') . __('SignIn.OrEmail'), 'class' => 'flex-item']) ?>
-                                <?= $this->Form->password('password', ['placeholder' => __('Global.Password'), 'class' => 'flex-item']) ?>
-                            </fieldset>
-                            <?= $this->Form->button(__('Global.SignIn'), ['class' => 'button-form']); ?>
-                            <?= $this->Form->end() ?>
+                        <div class="input-group input-group-sm">
+                                <span class="input-group-addon  fa-fw"><span class="fa fa-fw fa-unlock"></span></span>
+                                <input name="password" type="password" class="form-control" placeholder="<?= __('Global.Password') ?>">
                         </div>
-                </div>
+                    <button class="btn btn-default" type="submit" style="display: none"></button>
+                </form>
             </div>
         </div>
     </div>
