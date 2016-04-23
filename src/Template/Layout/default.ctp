@@ -13,6 +13,7 @@
     <?= $this->Html->css('jquery-ui.structure.min.css') ?>
     <?= $this->Html->css('jquery-ui.theme.min.css') ?>
     <?= $this->Html->css('bootstrap.min.css') ?>
+    <?= $this->Html->css('font-awesome.min.css') ?>
     <?= $this->Html->css('app.css') ?>
 
     </head>

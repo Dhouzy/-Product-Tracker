@@ -9,7 +9,7 @@ body {
   margin-top: 115px;
 }
 .footer {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   width: 100%;
   height: 70px;
@@ -229,6 +229,46 @@ body {
   -o-transition: opacity 0.5s;
   transition: opacity 0.5s;
 }
+.modal-backdrop {
+  background-color: transparent;
+}
+#login-modal .modal-dialog {
+  width: 400px;
+  position: absolute;
+  margin: 0;
+  top: 94px;
+  right: 0;
+}
+#login-modal .modal-dialog .modal-content {
+  background-color: #302e2e;
+  box-shadow: none;
+  border: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-left: solid 2px #e00007;
+  border-bottom: solid 2px #e00007;
+}
+#login-modal .modal-dialog .modal-content .modal-body form .input-group {
+  width: 100%;
+  padding: 1px;
+}
+#login-modal .modal-dialog .modal-content .modal-body form .input-group input {
+  background-color: #302e2e;
+  border-color: #e00007;
+  color: #a9a9a9;
+}
+#login-modal .modal-dialog .modal-content .modal-body form .input-group input:focus {
+  border-color: #ff0000;
+  box-shadow: 0 0 5px #ff0000;
+}
+#login-modal .modal-dialog .modal-content .modal-body form .input-group span {
+  background-color: #e00007;
+  border-color: #e00007;
+}
+#login-modal .modal-dialog .modal-content .modal-body form .input-group span span {
+  color: #ffffff;
+}
 .form-modal {
   margin: auto;
   background-color: #ff726b;
@@ -313,97 +353,6 @@ body {
   border: 0;
   border-radius: 3px;
   width: 100px;
-}
-.login-form {
-  width: 350px;
-  height: 280px;
-  margin: auto;
-  background-color: #ff726b;
-  box-shadow: 0 0 1em black;
-  border-radius: 3px;
-}
-.login-form form {
-  display: flex;
-  flex-direction: column;
-  margin-top: 5px;
-  animation: invisiblility 0.5s forwards;
-}
-.login-form ::-webkit-input-placeholder {
-  /* WebKit browsers */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  font-weight: 300;
-}
-.login-form :-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  opacity: 1;
-  font-weight: 300;
-}
-.login-form ::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  opacity: 1;
-  font-weight: 300;
-}
-.login-form :-ms-input-placeholder {
-  /* Internet Explorer 10+ */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  font-weight: 300;
-}
-.login-form input[type=text],
-.login-form input[type=email],
-.login-form input[type=password] {
-  align-self: center;
-  display: block;
-  appearance: none;
-  outline: 0;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background-color: rgba(255, 255, 255, 0.25);
-  margin: 15px auto 10px;
-  width: 250px;
-  text-align: center;
-}
-.login-form input[type=text]:focus,
-.login-form input[type=email]:focus,
-.login-form input[type=password]:focus {
-  width: 280px;
-  height: 120%;
-  background-color: rgba(255, 255, 255, 0.6) !important;
-}
-.login-form input[type=text]:hover,
-.login-form input[type=email]:hover,
-.login-form input[type=password]:hover {
-  background-color: rgba(255, 255, 255, 0.4);
-}
-.login-form #text {
-  order: 1;
-  align-self: center;
-  color: black;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  visibility: visible !important;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 500;
-  font-size: 20px;
-}
-.login-form .button-form {
-  order: 10;
-  align-self: center;
-  display: block;
-  margin: 30px auto 10px;
-  outline: 0;
-  background-color: white;
-  border: 0;
-  border-radius: 3px;
-  width: 100px;
-}
-.login-form .modal-dialog {
-  width: 350px;
-  height: 280px;
 }
 .signup-form {
   width: 400px;
@@ -491,12 +440,6 @@ body {
   border: 0;
   border-radius: 3px;
   width: 100px;
-}
-@media screen and (min-width: 768px) {
-  .modal-dialog {
-    margin-top: 100px;
-    width: 400px;
-  }
 }
 .item-infos-btn {
   margin-top: 5px;
