@@ -99,6 +99,9 @@ msgstr "Chart"
 msgid "Product.Info"
 msgstr "Informations"
 
+msgid "Product.BuyThisProduct"
+msgstr "Buy this product"
+
 #############################
 # SignIn ####################
 #############################

@@ -1,11 +1,16 @@
 <fieldset>
     <div class="row">
-        <div class="col-md-6">
+        <div id="form" class="col-md-6">
     <?php if ($isUserLoggedIn){
         if(!$isItemFollowed){
             echo $this->Form->create(null, ['url' => 'follow']);
             echo $this->Form->input(null, ['name' => 'uid', 'value' => "$product->article_uid", 'type' => 'hidden']);
             echo $this->Form->button(__('Product.Follow'), ['class' => 'btn red']);
+            echo $this->Form->end();
+            echo $this->Form->create(null, ['url' => $product->amazon_url]);
+            if($product->amazon_url) {
+                echo $this->Form->button(__('Product.BuyThisProduct'), ['class' => 'btn red']);
+            }
             echo $this->Form->end();
         }
         else {
@@ -13,12 +18,15 @@
             echo $this->Form->input(null, ['name' => 'id', 'value' => "$product->id", 'type' => 'hidden']);
             echo $this->Form->button(__('Product.Delete'),['class' => 'btn red']);
             echo $this->Form->end();
+            ?>
+            <form></>
+            <?php
         }
     }
     ?>
         </div>
         <div id="title" class="col-md-6">
-            <h5><b><?= $product->name ?></b></h5>
+            <h3><b><?= $product->name ?></b></h3>
         </div>
     </div>
     <div class="row">
