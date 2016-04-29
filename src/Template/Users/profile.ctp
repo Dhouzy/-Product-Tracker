@@ -1,12 +1,12 @@
 <div id="container-profile">
-    <h2><?= $user->first_name . "&nbsp" . $user->last_name ?></h2>
-    <h3><?= __('Profile.YourProducts') ?></h3>
+    <h2 style="margin-left: 5%;"><?= $user->first_name . "&nbsp" . $user->last_name ?></h2>
+    <h3 style="margin-left: 5%;"><?= __('Profile.YourProducts') ?></h3>
     <div class="left-products-list left" id="products-list">
         <div class="item-list">
             <?php foreach ($user->products as $product) { ?>
                <div class="item hover">
                     <a id="<?= $product->article_uid ?>" href="#"><?= $product->name ?></a>
-                    <div class="tooltip right-tooltip" style="width: 400px;">
+                    <div class="tooltip top-tooltip" style="width: 400px;">
                         <?php if(empty($product->image_link)) { ?>
                             <div style="display: inline-block"><img src="/img/no_image_available.png" width="110px" height="110px"/></div>
                         <?php } else { ?>
@@ -14,7 +14,7 @@
                         <?php } ?>
                         <div style="display: inline-block; margin-left: 20px">
                             <div class="title-tooltip"><?= $product->name ?></div>
-                            <div class="price-tooltip">$40.05</div>
+                            <div class="price-tooltip"><?= __('Profile.CurrentPrice') ?> 40$</div>
                         </div>
                     </div>
                 </div>
@@ -22,6 +22,8 @@
         </div>
     </div>
     <div class="right-product-graph right" id="product-graph">
-
+        <div id="NoItemClickContainer">
+            <p id="NoItemClickText"><?= __('Profile.NeedToClickOnAProduct') ?></p>
+        </div>
     </div>
 </div>

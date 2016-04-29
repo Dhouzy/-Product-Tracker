@@ -1,3 +1,9 @@
+<?php
+if(isset($tableOnly) && $tableOnly):
+    $this->layout = false;
+    echo $this->element('search_results_row', ['amazonItems' => $searchResult->amazonItems]);
+else:
+?>
 <fieldset>
     <?php $loggedUser = $this->request->session()->read('Auth.User');
     if ($loggedUser != null) {
@@ -10,8 +16,14 @@
 
     <?php
     if (isset($searchResult)) {
+        $maxPage = min(5, $searchResult->numMaxPages);
         ?>
-        <table>
+        <script>
+            var searchMaxPage = <?= $maxPage ?>;
+            var searchCurrentPage = <?= $page ?>;
+            var searchQuery = "<?= addslashes($search) ?>";
+        </script>
+        <table id="search-results-table">
             <thead>
             <tr>
                 <th></th>
@@ -20,52 +32,28 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($searchResult->amazonItems as $item): ?>
-                <tr>
-                    <td><img src="<?= $item->smallImageLink ?>"></td>
-                    <td>
-                        <?= $this->Html->link($item->name, [
-                            'controller' => 'Products',
-                            'action' => 'product',
-                            'uid' => $item->uid]);
-                        ?>
-                    </td>
-                    <td><?= $item->currentFormattedPrice ?></td>
-                </tr>
-            <?php endforeach; ?>
+            <?= $this->element('search_results_row', ['amazonItems' => $searchResult->amazonItems]) ?>
             </tbody>
         </table>
-        <?php
-        $maxPage = min(10, $searchResult->numMaxPages);
-        if ($page == 1)
-            echo "&lt;&lt;&nbsp;";
-        else
-            echo $this->Html->link('<< ', [
-                'controller' => 'Homes',
-                'action' => 'home',
-                'search' => $search,
-                'page' => $page - 1]);
+        <nav id="search-pagination">
+            <ul class="pagination">
+            <?php
 
-        for ($i = 1; $i <= $maxPage; $i++) {
-            if ($page == $i)
-                echo "$i&nbsp;";
-            else
-                echo $this->Html->link("$i ", [
-                    'controller' => 'Homes',
-                    'action' => 'home',
-                    'search' => $search,
-                    'page' => $i]);
-        }
+            echo "<li id='search-item-previous' class='page-item " . ($page == 1 ? " disabled" : "").  "'>"
+                . "<a class='page-link' href='#' onclick='searchGoToPreviousPage(); return false;'><span class='glyphicon glyphicon-triangle-left'></span></a></li>";
 
-        if ($page == $maxPage)
-            echo "&gt;&gt;&nbsp;";
-        else
-            echo $this->Html->link(" >>", [
-                'controller' => 'Homes',
-                'action' => 'home',
-                'search' => $search,
-                'page' => $page + 1]);
+            for ($i = 1; $i <= $maxPage; $i++) {
+                echo "<li id='search-item-page-$i' class='page-item " . ($page == $i ? " disabled" : "") . "'>"
+                    . "<a class='page-link' href='#' onclick='searchGoToPage($i); return false;'>$i</a></li>";
+            }
+
+            echo "<li id='search-item-next' class='page-item " . ($page == $maxPage ? " disabled" : "") . "'>"
+                . "<a class='page-link' href='#' onclick='searchGoToNextPage(); return false;'><span class='glyphicon glyphicon-triangle-right'></span></a></li>";
+            ?>
+            </ul>
+        </nav>
+    <?php
     }
     ?>
 </fieldset>
-
+<?php endif; ?>

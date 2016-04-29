@@ -120,6 +120,37 @@ msgstr "Profil"
 msgid "Profile.YourProducts"
 msgstr "Vos produits:"
 
+msgid "Profile.CurrentPrice"
+msgstr "Prix courrant : "
+
+msgid "Profile.NeedToClickOnAProduct"
+msgstr "Vous avez besoin de cliquer sur un produit pour voir les informations sur le prix de ce produit"
+
+#############################
+# Graph #####################
+#############################
+
+msgid "Graph.GoToProduct"
+msgstr "Aller aux informations sur le produit"
+
+msgid "Graph.From"
+msgstr "De : "
+
+msgid "Graph.To"
+msgstr "À : "
+
+msgid "Graph.ProductPriceVariation"
+msgstr "Variation du prix du produit"
+
+msgid "Graph.PriceYAxisTitle"
+msgstr "Prix ($)"
+
+msgid "Graph.Price"
+msgstr "Prix"
+
+msgid "Graph.DiscountPrice"
+msgstr "Prix en rabait"
+
 #############################
 # Search ####################
 #############################

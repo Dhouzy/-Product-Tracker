@@ -86,5 +86,34 @@
 }
 
 .selected {
-  color : @red
+  background-color : @red;
+
+  a:link {
+    color: @selected-link !important;
+  }
+
+  a:visited {
+    color: @selected-link !important;
+  }
+
+  a:hover {
+    color: @selected-link !important;
+  }
+
+  a:active {
+    color: @selected-link !important;
+  }
+}
+
+#NoItemClickContainer {
+  width:100%;
+  height: 100%;
+  display: table;
+  text-align: center;
+
+  #NoItemClickText {
+    font-size: 20px;
+    display: table-cell;
+    vertical-align: middle;
+  }
 }

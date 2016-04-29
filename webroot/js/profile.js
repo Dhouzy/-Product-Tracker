@@ -9,6 +9,8 @@
         });
 
         $('.item-list a').click(function (event) {
+            $(".item-list .item").removeClass("selected");
+            $(this).parent().addClass("selected");
             getGraphics($(this)[0].id);
             event.preventDefault();
             event.stopPropagation();

@@ -37,7 +37,8 @@ class HomesController extends AppController
                 $page = 1;
 
             $searchResult = $this->amazon->search($searchKeywordsEncoded, $page);
-            $this->set(compact('searchResult', 'page', 'search'));
+            $tableOnly = $this->request->query('tableOnly') == "true";
+            $this->set(compact('searchResult', 'page', 'search', 'tableOnly'));
         }
     }
 

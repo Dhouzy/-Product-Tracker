@@ -1,12 +1,40 @@
-.graphtitle {
-  font-size: 20px;
-}
-.graphXAxisTitle {
-  font-size: 12px;
-  font-color: #666;
-  font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-}
 .item-infos-btn {
   margin-top: 5px;
-  margin-bottom: 5px;
+}
+#ProductPriceVariationChart {
+  margin: 10px;
+}
+#DatePicker {
+  margin-top: 20px;
+  margin-bottom: -5px;
+}
+#DatePicker #FromDate {
+  margin-right: 8px;
+}
+#DatePicker input {
+  background-color: #302e2e;
+  border-color: #e00007;
+  color: #a9a9a9;
+  padding: 4px 12px;
+}
+#DatePicker input:focus {
+  border-color: #ff0000;
+  box-shadow: 0 0 5px #ff0000;
+}
+.ui-datepicker {
+  z-index: 999999 !important;
+  background: #302e2e !important;
+  border: solid 2px #e00007 !important;
+  color: #ffffff !important;
+}
+.ui-datepicker * {
+  background: #302e2e !important;
+  border: none !important;
+  color: #ffffff !important;
+}
+.ui-datepicker .ui-datepicker-next span {
+  background: url("/img/jquery_ui/ui-icons_ffffff_256x240.png") no-repeat -48px -192px !important;
+}
+.ui-datepicker .ui-datepicker-prev span {
+  background: url("/img/jquery_ui/ui-icons_ffffff_256x240.png") no-repeat -80px -192px !important;
 }
