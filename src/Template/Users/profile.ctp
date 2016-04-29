@@ -14,7 +14,7 @@
                         <?php } ?>
                         <div style="display: inline-block; margin-left: 20px">
                             <div class="title-tooltip"><?= $product->name ?></div>
-                            <div class="price-tooltip">Current price : 40$</div>
+                            <div class="price-tooltip"><?= __('Profile.CurrentPrice') ?> 40$</div>
                         </div>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
     </div>
     <div class="right-product-graph right" id="product-graph">
         <div id="NoItemClickContainer">
-            <p id="NoItemClickText">You need to click on a product to shown that product price informations</p>
+            <p id="NoItemClickText"><?= __('Profile.NeedToClickOnAProduct') ?></p>
         </div>
     </div>
 </div>

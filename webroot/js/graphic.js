@@ -24,7 +24,7 @@ function loadGraphics() {
             type: 'line'
         },
         title: {
-            text: 'Product price variation'
+            text: $('#graph-title').val()
         },
         xAxis: {
             type: 'datetime',
@@ -38,7 +38,7 @@ function loadGraphics() {
                 enabled: true
             },
             title: {
-                text: 'Price ($)'
+                text: $('#graph-yaxis-title').val()
             }
         },
         tooltip: {
@@ -84,7 +84,7 @@ function modifyGraphsDates() {
 
     var serie1, serie2;
 
-    //Graph 1
+    //Serie 1
     if(chartPriceData !== null && chartPrice) {
         var chartPriceDataBetweenDates = tableValuesBetweenDates(chartPriceData, fromSelectedDate, toSelectedDate);
         var tempPrice = [];
@@ -96,14 +96,14 @@ function modifyGraphsDates() {
             tempPrice.push(element1);
         }
         serie1 = {
-            name: 'Price',
+            name: $('#price-title').val(),
             type: 'line',
             data: tempPrice,
             color: '#adad85'
         };
     }
 
-    //Graph 2
+    //Serie 2
     if(chartDiscountData !== null && chartPrice) {
         var chartDiscountDataBetweenDates = tableValuesBetweenDates(chartDiscountData, fromSelectedDate, toSelectedDate);
         var tempDiscount = [];
@@ -115,7 +115,7 @@ function modifyGraphsDates() {
             tempDiscount.push(element2);
         }
         serie2 = {
-            name: 'Discount price',
+            name: $('#discount-price-title').val(),
             type: 'line',
             data: tempDiscount,
             color: '#e00007'
