@@ -63,9 +63,6 @@ msgstr "Pays"
 msgid "Home.Title"
 msgstr "Home"
 
-msgid "Home.WhoIsLoggedIn"
-msgstr "User online: <br><b>Id: </b>{0}<br><b>Username: </b>{1}<br><b>Email: </b>{2}"
-
 #############################
 # Product ###################
 #############################

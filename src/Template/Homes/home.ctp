@@ -6,9 +6,6 @@ else:
 ?>
 <fieldset>
     <?php $loggedUser = $this->request->session()->read('Auth.User');
-    if ($loggedUser != null) {
-        echo '<p>' . __('Home.WhoIsLoggedIn', [$loggedUser['id'], $loggedUser['username'], $loggedUser['email']]) . '</p>';
-    }
     ?>
     <div class="form">
         <?= $this->element('searchbar') ?>

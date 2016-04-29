@@ -211,6 +211,16 @@ body {
   display: table-cell;
   vertical-align: middle;
 }
+#home-search-bar {
+  margin: 20px;
+}
+#home-search-bar .form-control,
+#home-search-bar .btn {
+  height: 45px;
+}
+#home-search-bar .btn {
+  width: 45px;
+}
 #search-results-table {
   width: 100%;
 }
