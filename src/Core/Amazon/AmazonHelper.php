@@ -60,14 +60,16 @@ class AmazonHelper
         $items = $jsonObj->Items;
 
         $searchResult = new SearchResult();
-        $searchResult->moreSearchURL = $items->MoreSearchResultsUrl;
-        $searchResult->numMaxPages = $items->TotalPages;
+        $searchResult->moreSearchURL = isset($items->MoreSearchResultsUrl) ? $items->MoreSearchResultsUrl : null;
+        $searchResult->numMaxPages = isset($items->TotalPages) ? $items->TotalPages : null;
 
-        foreach($items->Item as $item)
-        {
-            $amazonItem = $this->_readOneResult($item);
-            $searchResult->addItem($amazonItem);
+        if(isset($items->Item)) {
+            foreach ($items->Item as $item) {
+                $amazonItem = $this->_readOneResult($item);
+                $searchResult->addItem($amazonItem);
+            }
         }
+
         return $searchResult;
     }
 
@@ -108,9 +110,12 @@ class AmazonHelper
 
         if(isset($itemAttributes->PackageDimensions)){
             $dimensions = $itemAttributes->PackageDimensions;
-            $amazonItem->length = round($dimensions->Length / 3.937); // hundrenths of inches to millimeters
-            $amazonItem->width = round($dimensions->Length / 3.937);
-            $amazonItem->height = round($dimensions->Length / 3.937);
+            if(isset($dimensions->Length))
+                $amazonItem->length = round($dimensions->Length / 3.937); // hundrenths of inches to millimeters
+            if(isset($dimensions->Width))
+                $amazonItem->width = round($dimensions->Width / 3.937);
+            if(isset($dimensions->Height))
+                $amazonItem->height = round($dimensions->Height / 3.937);
         }
 
         if(isset($itemAttributes->PackageDimensions->Weight))

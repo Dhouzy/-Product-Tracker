@@ -1,7 +1,7 @@
 
 function performSearch(searchForm){
     var searchQuery = $("input[type=text]", searchForm).val();
-    window.location = "/home/" + encodeURIComponent(searchQuery);
+    window.location = "/?q=" + encodeURIComponent(searchQuery);
 }
 
 function searchGoToPreviousPage(){
@@ -20,11 +20,11 @@ function searchGoToPage(page){
 
     searchCurrentPage = page;
 
-    var strUrl = "/home/" + encodeURIComponent(searchQuery) + "/" + page;
+    var strUrl = "/?q=" + encodeURIComponent(searchQuery) + "&p=" + page;
 
     window.history.pushState({page: page}, "", strUrl);
 
-    $.get(strUrl + "?tableOnly=true", function(data){
+    $.get(strUrl + "&tableOnly=true", function(data){
         $("#search-results-table tbody").html(data);
     });
 
