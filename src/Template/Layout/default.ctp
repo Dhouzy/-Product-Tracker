@@ -50,5 +50,6 @@
         <?= $this->Html->script('tooltip.js') ?>
         <?= $this->Html->script('graphic.js') ?>
         <?= $this->Html->script('profile.js') ?>
+        <?= $this->Html->script('product.js') ?>
     </body>
 </html>
