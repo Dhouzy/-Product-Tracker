@@ -43,15 +43,15 @@ class GraphicsController extends AppController
                 $dateFormat = date_format(date_create($price->date),"Y-m-d");
 
                 $oPrice = (object) [
-                    'x' => $dateFormat,
-                    'y' => $price->price
+                    'date' => $dateFormat,
+                    'price' => $price->price
                 ];
                 $graph1Data[] = $oPrice;
 
                 if($price->rebate_price > 0){
                     $oRebatePrice = (object) [
-                        'x' => $dateFormat,
-                        'y' => $price->rebate_price
+                        'date' => $dateFormat,
+                        'price' => $price->rebate_price
                     ];
                     $graph2Data[] = $oRebatePrice;
                 }
