@@ -28,16 +28,16 @@ function searchGoToPage(page){
         $("#search-results-table tbody").html(data);
     });
 
-    $("#search-pagination .disabled").removeClass("disabled");
-    $("#search-item-page-" + page).addClass("disabled");
+    $(".search-pagination .disabled").removeClass("disabled");
+    $(".search-item-page-" + page).addClass("disabled");
 
     if(page == 1) {
         // Does not have previous page
-        $("#search-item-previous").addClass("disabled");
+        $(".search-item-previous").addClass("disabled");
     }
 
     if(page == searchMaxPage) {
         // Does not have last page
-        $("#search-item-next").addClass("disabled");
+        $(".search-item-next").addClass("disabled");
     }
 }

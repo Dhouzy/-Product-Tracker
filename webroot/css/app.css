@@ -223,6 +223,13 @@ body {
 #home-search-form .btn {
   width: 45px;
 }
+.search-pagination {
+  text-align: center;
+}
+.search-pagination ul {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 #search-results-table {
   width: 100%;
 }
