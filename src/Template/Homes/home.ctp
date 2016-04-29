@@ -18,6 +18,7 @@ else:
         <script>
             var searchMaxPage = <?= $maxPage ?>;
             var searchCurrentPage = <?= $page ?>;
+            var searchInitialPage = <?= $page ?>;
             var searchQuery = "<?= addslashes($search) ?>";
         </script>
         <?= $this->element('search_pagination', ['page' => $page, 'maxPage' => $maxPage]); ?>

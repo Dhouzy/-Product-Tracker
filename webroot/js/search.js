@@ -1,6 +1,9 @@
 
 window.onpopstate = function(event){
-    searchGoToPage(event.state.page);
+    if(event.state == null)
+        searchGoToPage(searchInitialPage);
+    else
+        searchGoToPage(event.state.page);
 }
 
 function performSearch(searchForm){
@@ -28,8 +31,10 @@ function searchGoToPage(page){
 
     window.history.pushState({page: page}, "", strUrl);
 
+    $("#search-results-table tbody").css('visibility', 'hidden');
+
     $.get(strUrl + "&tableOnly=true", function(data){
-        $("#search-results-table tbody").html(data);
+        $("#search-results-table tbody").html(data).css('visibility', 'visible');
     });
 
     $(".search-pagination .disabled").removeClass("disabled");

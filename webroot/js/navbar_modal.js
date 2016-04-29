@@ -1,5 +1,6 @@
 $(document).ready(function () {
     'use strict';
+
     $('#form-login').submit(function (event) {
         event.preventDefault();
 
@@ -12,7 +13,7 @@ $(document).ready(function () {
                 if(responseData.loginSucceeded) {
                     window.location = responseData.redirectUrl;
                 } else {
-                    window.alert("<?= __('SignIn.Failure') ?>");
+                    window.alert(strings.signIn.failure);
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
