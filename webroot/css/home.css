@@ -1,11 +1,14 @@
-#home-search-bar {
+#home-search-form {
+  width: 100%;
+}
+#home-search-form > div {
   margin: 20px;
 }
-#home-search-bar .form-control,
-#home-search-bar .btn {
+#home-search-form .form-control,
+#home-search-form .btn {
   height: 45px;
 }
-#home-search-bar .btn {
+#home-search-form .btn {
   width: 45px;
 }
 #search-results-table {

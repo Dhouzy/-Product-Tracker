@@ -1,5 +1,5 @@
-<form onsubmit="performSearch(this); return false;">
-    <div id="home-search-bar" class="input-group">
+<form id="home-search-form" onsubmit="performSearch(this); return false;">
+    <div class="input-group">
         <input type="text" placeholder="<?= __('Global.Search') ?>" class="form-control" />
         <span class="input-group-btn">
         <?= $this->Form->button('<span class="glyphicon glyphicon-search" aria-hidden="true"></span>',
