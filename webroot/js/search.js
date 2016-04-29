@@ -1,4 +1,8 @@
 
+window.onpopstate = function(event){
+    searchGoToPage(event.state.page);
+}
+
 function performSearch(searchForm){
     var searchQuery = $("input[type=text]", searchForm).val();
     window.location = "/?q=" + encodeURIComponent(searchQuery);
