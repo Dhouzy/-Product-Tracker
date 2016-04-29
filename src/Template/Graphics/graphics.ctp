@@ -1,14 +1,9 @@
 <div>
 
-    <div class="item-infos-btn container">
+    <div class="item-infos-btn center">
         <?php
             echo $this->Form->create(null, ['url' => ['controller' => 'Products', 'action' => 'product', 'uid' => $productId]]);
-            echo $this->Form->button("Go to product", ['class' => 'btn red left']);
-            echo $this->Form->end();
-        ?>
-        <?php
-            echo $this->Form->create(null, ['url' => ['controller' => 'Products', 'action' => 'deleteFollowing', 'uid' => $productId]]);
-            echo $this->Form->button("Unfolow", ['class' => 'btn red right']);
+            echo $this->Form->button("Go to product", ['class' => 'btn red']);
             echo $this->Form->end();
         ?>
     </div>
