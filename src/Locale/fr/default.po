@@ -188,4 +188,4 @@ msgstr "Produit supprimé avec succès"
 # Footer ####################
 #############################
 msgid "Footer.Text"
-msgstr "Trouver du texte intelligent à mettre ici."
+msgstr "Tous droits réservés &copy; M.-A.&nbsp;Dion, M.&nbsp;Bernard, H.&nbsp;Glauss, V.&nbsp;Bissonnette, A.&nbsp;Sasseville, 2016"

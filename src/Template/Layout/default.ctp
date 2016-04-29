@@ -32,9 +32,7 @@
         </section>
 
         <footer class="footer">
-            <div class="container">
-                <p><?=__('Footer.Text')?></p>
-            </div>
+            <?=__('Footer.Text')?>
         </footer>
         <!--Load librairies first-->
         <?= $this->Html->script('jquery-1.12.3.min.js'); ?>
