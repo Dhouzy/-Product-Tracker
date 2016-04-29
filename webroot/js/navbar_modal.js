@@ -31,11 +31,24 @@ $(document).ready(function () {
             type: "post",
             data: form,
             success: function (response) {
-                if(!response.userSaved){
-
-                }else{
+                if(response.userSaved){
                     location.reload();
-                    $('#signup-modal').modal('hide');
+                    $('#signUp-alert').hide();
+                }else{
+                    console.log(response.userSavedMsg);
+                    $("#signUp-alert").show();
+
+                    if (response.userSavedMsg.user != null){
+                        console.log(response.userSavedMsg.user);
+                    }
+                    var test = Object.keys(response.userSavedMsg);
+                    for (var i = 0; i < Object.keys(response.userSavedMsg).length; i++){
+                        switch (Object.keys(response.userSavedMsg)[i]){
+                            case 'user' :
+                                $('#signUp-alert').append("<p>" + response.userSavedMsg.user + "</p>");
+                                break;
+                        }
+                    }
                 }
                 //console.log(response);
             },

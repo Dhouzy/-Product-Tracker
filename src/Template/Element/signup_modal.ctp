@@ -57,10 +57,16 @@
                         <span class="fa fa-fw fa-check"></span><?=__('Global.SignUp')?>
                     </button>
                 </form>
-                <div id="login-alert" class="alert text-center">
-                    <p><span class="fa fa-fw fa-exclamation-triangle"></span>Votre identifiant et/ou votre mot de passe
-                        est faux.</p>
+<!--                <div id="login-alert" class="alert text-center">-->
+<!--                    <p><span class="fa fa-fw fa-exclamation-triangle"></span>Votre identifiant et/ou votre mot de passe-->
+<!--                        est faux.</p>-->
+<!--                </div>-->
+
+                <div id="signUp-alert" class="alert alert-danger" style="display: none; text-align: center">
+                    <!--                <p>--><?//=__('Login.Error')?><!--</p>-->
+                    <p><span class="fa fa-fw fa-exclamation-triangle"></span></p>
                 </div>
+
             </div>
         </div>
     </div>
