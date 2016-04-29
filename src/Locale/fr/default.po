@@ -63,9 +63,6 @@ msgstr "Pays"
 msgid "Home.Title"
 msgstr "Accueil"
 
-msgid "Home.WhoIsLoggedIn"
-msgstr "Utilisateur en ligne: <br><b>Id: </b>{0}<br><b>Nom d'utilisateur: </b>{1}<br><b>Courriel: </b>{2}"
-
 #############################
 # Product ###################
 #############################
@@ -191,4 +188,4 @@ msgstr "Produit supprimé avec succès"
 # Footer ####################
 #############################
 msgid "Footer.Text"
-msgstr "Trouver du texte intelligent à mettre ici."
+msgstr "Tous droits réservés &copy; M.-A.&nbsp;Dion, M.&nbsp;Bernard, H.&nbsp;Glauss, V.&nbsp;Bissonnette, A.&nbsp;Sasseville, 2016"

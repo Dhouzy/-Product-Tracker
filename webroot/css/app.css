@@ -6,24 +6,21 @@ html {
 body {
   background-color: gainsboro;
   margin-bottom: 90px;
-  margin-top: 115px;
+  margin-top: 75px;
 }
 .footer {
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
   width: 100%;
-  height: 70px;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 17px;
   background-color: #302e2e;
-}
-.footer .container {
   color: #777777;
-  margin: 0;
-  padding: 15px;
+  text-align: center;
 }
 .navbar {
   background-color: #302e2e;
-  padding-top: 40px;
-  height: 95px;
 }
 .navbar-brand {
   outline: 0;
@@ -62,20 +59,21 @@ body {
 }
 .navbar-searchbar {
   padding-right: 40px;
+  margin-top: 6px;
 }
 .navbar-searchbar input {
   width: 400px !important;
   background-color: #302e2e;
   border-color: #e00007;
   color: #a9a9a9;
-  height: 30px !important;
+  height: 35px !important;
 }
 .navbar-searchbar input:focus {
   border-color: #ff0000;
   box-shadow: 0 0 5px #ff0000;
 }
 .navbar-searchbar button {
-  height: 30px !important;
+  height: 35px !important;
   background-color: #e00007;
   border-color: #e00007;
   color: #ffffff;
@@ -115,6 +113,7 @@ body {
 }
 .center {
   margin: auto;
+  display: block;
   text-align: center;
 }
 .item-list {
@@ -179,7 +178,6 @@ body {
 .right-product-graph {
   width: 45%;
   height: 500px;
-  border: 1px solid black;
 }
 #container-profile {
   margin-bottom: 60px;
@@ -205,11 +203,32 @@ body {
   height: 100%;
   display: table;
   text-align: center;
+  border: 1px solid black;
 }
 #NoItemClickContainer #NoItemClickText {
   font-size: 20px;
   display: table-cell;
   vertical-align: middle;
+}
+#home-search-form {
+  width: 100%;
+}
+#home-search-form > div {
+  margin: 20px;
+}
+#home-search-form .form-control,
+#home-search-form .btn {
+  height: 45px;
+}
+#home-search-form .btn {
+  width: 45px;
+}
+.search-pagination {
+  text-align: center;
+}
+.search-pagination ul {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 #search-results-table {
   width: 100%;
@@ -273,7 +292,7 @@ body {
   width: 400px;
   position: absolute;
   margin: 0;
-  top: 94px;
+  top: 49px;
   right: 0;
 }
 #login-modal .modal-dialog .modal-content {
@@ -478,9 +497,6 @@ body {
   border-radius: 3px;
   width: 100px;
 }
-.item-infos-btn {
-  margin-top: 5px;
-}
 #ProductPriceVariationChart {
   margin: 10px;
 }
@@ -517,6 +533,11 @@ body {
 }
 .ui-datepicker .ui-datepicker-prev span {
   background: url("/img/jquery_ui/ui-icons_ffffff_256x240.png") no-repeat -80px -192px !important;
+}
+#DatePicker span {
+  border: solid 2px #e00007 !important;
+  background: #e00007 !important;
+  color: white !important;
 }
 #title {
   text-align: center;
