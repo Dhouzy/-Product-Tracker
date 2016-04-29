@@ -22,7 +22,7 @@ $(document).ready(function () {
         });
     });
 
-    $('#form-SignUp').submit(function (event) {
+    $('#form-signup').submit(function (event) {
         event.preventDefault();
 
         var form = $(this).serialize();
@@ -35,7 +35,7 @@ $(document).ready(function () {
 
                 }else{
                     location.reload();
-                    $('#signUp-modal').modal('hide');
+                    $('#signup-modal').modal('hide');
                 }
                 //console.log(response);
             },
