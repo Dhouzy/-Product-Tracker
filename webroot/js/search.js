@@ -15,6 +15,9 @@ function searchGoToNextPage(){
 }
 
 function searchGoToPage(page){
+    if(page == searchCurrentPage)
+        return;
+
     searchCurrentPage = page;
 
     var strUrl = "/home/" + encodeURIComponent(searchQuery) + "/" + page;
@@ -22,19 +25,19 @@ function searchGoToPage(page){
     window.history.pushState({page: page}, "", strUrl);
 
     $.get(strUrl + "?tableOnly=true", function(data){
-        $("#search-results-table-body").html(data);
+        $("#search-results-table tbody").html(data);
     });
 
-    $(".search-inactive-link").removeClass("search-inactive-link");
-    $("#search-link-page-" + page).addClass("search-inactive-link");
+    $("#search-pagination .disabled").removeClass("disabled");
+    $("#search-item-page-" + page).addClass("disabled");
 
     if(page == 1) {
         // Does not have previous page
-        $("#search-link-previous").addClass("search-inactive-link");
+        $("#search-item-previous").addClass("disabled");
     }
 
     if(page == searchMaxPage) {
         // Does not have last page
-        $("#search-link-next").addClass("search-inactive-link");
+        $("#search-item-next").addClass("disabled");
     }
 }

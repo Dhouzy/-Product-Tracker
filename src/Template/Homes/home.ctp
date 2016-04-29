@@ -23,7 +23,7 @@ else:
             var searchCurrentPage = <?= $page ?>;
             var searchQuery = "<?= addslashes($search) ?>";
         </script>
-        <table>
+        <table id="search-results-table">
             <thead>
             <tr>
                 <th></th>
@@ -31,22 +31,28 @@ else:
                 <th><?= __('Search.Table.Price') ?></th>
             </tr>
             </thead>
-            <tbody id="search-results-table-body">
+            <tbody>
             <?= $this->element('search_results_row', ['amazonItems' => $searchResult->amazonItems]) ?>
             </tbody>
         </table>
-        <?php
+        <nav id="search-pagination">
+            <ul class="pagination">
+            <?php
 
-        echo "<a id='search-link-previous' " . ($page == 1 ? "class='search-inactive-link' " : "")
-            . "href='#' onclick='searchGoToPreviousPage(); return false;'>&lt;&lt;</a>";
+            echo "<li id='search-item-previous' class='page-item " . ($page == 1 ? " disabled" : "").  "'>"
+                . "<a class='page-link' href='#' onclick='searchGoToPreviousPage(); return false;'><span class='glyphicon glyphicon-triangle-left'></span></a></li>";
 
-        for ($i = 1; $i <= $maxPage; $i++) {
-            echo "<a id='search-link-page-$i' " . ($page == $i ? "class='search-inactive-link' " : "")
-                . "href='#' onclick='searchGoToPage($i); return false;'>$i</a>";
-        }
+            for ($i = 1; $i <= $maxPage; $i++) {
+                echo "<li id='search-item-page-$i' class='page-item " . ($page == $i ? " disabled" : "") . "'>"
+                    . "<a class='page-link' href='#' onclick='searchGoToPage($i); return false;'>$i</a></li>";
+            }
 
-        echo "<a id='search-link-next' " . ($page == $maxPage ? "class='search-inactive-link' " : "")
-                . "href='#' onclick='searchGoToNextPage(); return false;'>&gt;&gt;</a>";
+            echo "<li id='search-item-next' class='page-item " . ($page == $maxPage ? " disabled" : "") . "'>"
+                . "<a class='page-link' href='#' onclick='searchGoToNextPage(); return false;'><span class='glyphicon glyphicon-triangle-right'></span></a></li>";
+            ?>
+            </ul>
+        </nav>
+    <?php
     }
     ?>
 </fieldset>
