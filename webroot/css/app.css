@@ -16,7 +16,7 @@ body {
   line-height: 16px;
   padding: 17px;
   background-color: #302e2e;
-  color: #777777;
+  color: #777;
   text-align: center;
 }
 .navbar {
@@ -35,7 +35,7 @@ body {
   color: darkgray !important;
 }
 .navbar-brand:hover span {
-  color: #ff0000;
+  color: red;
 }
 .navbar-brand span {
   border-top: none !important;
@@ -53,7 +53,7 @@ body {
 .navbar-right li a:hover,
 .navbar-right li a:active,
 .navbar-right li a:focus {
-  border-top: 2px solid #ff0000;
+  border-top: 2px solid red;
   color: darkgray !important;
   outline: 0;
 }
@@ -65,12 +65,12 @@ body {
   width: 400px !important;
   background-color: #302e2e;
   border-color: #e00007;
-  color: #a9a9a9;
+  color: darkgrey;
   height: 35px !important;
 }
 .navbar-searchbar input:focus {
-  border-color: #ff0000;
-  box-shadow: 0 0 5px #ff0000;
+  border-color: red;
+  box-shadow: 0 0 5px red;
 }
 .navbar-searchbar button {
   height: 35px !important;
@@ -81,9 +81,9 @@ body {
 .navbar-searchbar button:hover,
 .navbar-searchbar button:active,
 .navbar-searchbar button:focus {
-  background-color: #ff0000 !important;
-  box-shadow: 0 0 5px #ff0000 !important;
-  border-color: #ff0000 !important;
+  background-color: red !important;
+  box-shadow: 0 0 5px red !important;
+  border-color: red !important;
   color: #ffffff !important;
 }
 .btn {
@@ -116,6 +116,9 @@ body {
   display: block;
   text-align: center;
 }
+.not-visible {
+  display: none;
+}
 .item-list {
   overflow-y: scroll;
   overflow-x: visible;
@@ -139,22 +142,22 @@ body {
   overflow: hidden;
 }
 .item-list .item a:link {
-  color: #000000;
+  color: black;
 }
 .item-list .item a:visited {
-  color: #000000;
+  color: black;
 }
 .item-list .item a:hover {
-  color: #000000;
+  color: black;
 }
 .item-list .item a:active {
-  color: #000000;
+  color: black;
 }
 .item-list .item a:hover {
   text-decoration: none;
 }
 .item-list .item:hover {
-  background-color: #ff0000;
+  background-color: red;
 }
 .title-tooltip {
   display: block;
@@ -187,16 +190,16 @@ body {
   background-color: #e00007;
 }
 .selected a:link {
-  color: #ffffff !important;
+  color: white !important;
 }
 .selected a:visited {
-  color: #ffffff !important;
+  color: white !important;
 }
 .selected a:hover {
-  color: #ffffff !important;
+  color: white !important;
 }
 .selected a:active {
-  color: #ffffff !important;
+  color: white !important;
 }
 #NoItemClickContainer {
   width: 100%;
@@ -315,7 +318,7 @@ body {
   border: solid 2px #e00007;
 }
 .modal-header {
-  color: #777777;
+  color: #777;
   border-bottom-color: #e00007;
   padding-bottom: 0;
   margin-bottom: 10px;
@@ -330,11 +333,11 @@ body {
 .modal-body form .input-group input {
   background-color: #302e2e;
   border-color: #e00007;
-  color: #a9a9a9;
+  color: darkgrey;
 }
 .modal-body form .input-group input:focus {
-  border-color: #ff0000;
-  box-shadow: 0 0 5px #ff0000;
+  border-color: red;
+  box-shadow: 0 0 5px red;
 }
 .modal-body form .input-group span {
   background-color: #e00007;
@@ -356,9 +359,9 @@ body {
 .modal-body form button:hover,
 .modal-body form button:active,
 .modal-body form button:focus {
-  background-color: #ff0000 !important;
-  box-shadow: 0 0 5px #ff0000 !important;
-  border-color: #ff0000 !important;
+  background-color: red !important;
+  box-shadow: 0 0 5px red !important;
+  border-color: red !important;
   color: #ffffff !important;
 }
 .modal-body form button span {
@@ -367,7 +370,7 @@ body {
 .modal-body .alert {
   border: solid thin #e00007;
   background-color: #e00007;
-  color: #a9a9a9;
+  color: darkgrey;
   font-size: 12px;
   padding: 7px 7px 7px 12px;
   margin: 1px 0 0 0;
@@ -392,12 +395,12 @@ body {
 #DatePicker input {
   background-color: #302e2e;
   border-color: #e00007;
-  color: #a9a9a9;
+  color: darkgrey;
   padding: 4px 12px;
 }
 #DatePicker input:focus {
-  border-color: #ff0000;
-  box-shadow: 0 0 5px #ff0000;
+  border-color: red;
+  box-shadow: 0 0 5px red;
 }
 .ui-datepicker {
   z-index: 999999 !important;
@@ -441,7 +444,7 @@ form {
 }
 #tabs li.active a {
   background-color: #e00007;
-  color: #a9a9a9;
+  color: darkgrey;
 }
 #tabs li a {
   color: #302e2e;

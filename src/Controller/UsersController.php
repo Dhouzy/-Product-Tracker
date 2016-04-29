@@ -34,43 +34,46 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
+
     public function add()
     {
+        $userSavedMsg = array();
+
         $user = new User();
         if ($this->request->is('post')) {
             $requestEmail = $this->request->data['email'];
             $requestUsername = $this->request->data['username'];
-//            if($requestUsername != ''){
-//                $this->set('userSavedMsg',['username' =>  __('Flash.UsernameAlreadyExists')]);
-//            }
-            if($requestEmail != ''){
-                $this->set('userSavedMsg',['email' =>  __('Flash.UsernameAlreadyExists')]);
-            }
-            else if($this->Users->find('emailAlreadyExists', ['email' => $requestEmail])){
-//                $this->Flash->error(__('Flash.EmailAlreadyExists', $requestEmail));
-                 $this->set('userSavedMsg',['email' => __('Flash.EmailAlreadyExists')]);
-            }
-            else if($requestEmail != ''){
-                $this->set('userSavedMsg',['user' =>  __('Flash.UsernameAlreadyExists')]);
-            }
-            else if($this->Users->find('usernameAlreadyExists', ['username' => $requestUsername])){
-//                $this->Flash->error(__('Flash.UsernameAlreadyExists', $requestUsername));
-                $this->set('userSavedMsg',['user' =>  __('Flash.UsernameAlreadyExists')]);
+            $requestPassword = $this->request->data['password'];
 
-            } else {
+            if($this->Users->find('emailAlreadyExists', ['email' => $requestEmail])){
+                $userSavedMsg['email'] = __('Flash.EmailAlreadyExists');
+            }
+            else if(empty($requestEmail)){
+                $userSavedMsg['email'] = __('Flash.EmptyError', __('Global.Email'));
+            }
+
+            if($this->Users->find('usernameAlreadyExists', ['username' => $requestUsername])){
+                $userSavedMsg['user'] = __('Flash.UsernameAlreadyExists', $requestUsername );
+            }
+            else if(empty($requestEmail)){
+                $userSavedMsg['user'] = __('Flash.EmptyError', __('Global.Username'));
+            }
+            if(strlen($requestPassword) < 7){
+                $userSavedMsg['password'] = __('Flash.TooShortPassword');
+            }
+
+            if (count($userSavedMsg) == 0) {
                 $user = $this->Users->patchEntity($user, $this->request->data);
                 if ($this->Users->save($user)) {
                     $this->set('user', $user);
                     return $this->redirect(['controller' => 'Homes', 'action' => 'home']);
 
                 }
-                $this->set('userSavedMsg', ('Flash.RegistrationFailed'));
-
             }
         }
 
         $this->set('userSaved', false);
-        $this->set('_serialize', ['userSavedMsg', 'fieldError']);
+        $this->set($userSavedMsg);
     }
 
 

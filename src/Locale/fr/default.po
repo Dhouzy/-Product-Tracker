@@ -184,6 +184,15 @@ msgstr "Produit enregistré avec succès."
 msgid "Flash.ProductDeleted"
 msgstr "Produit supprimé avec succès"
 
+msgid "Flash.EmptyError"
+msgstr "Vous devez entrez votre {0}."
+
+msgid "Flash.TooShortPassword"
+msgstr "Votre mot de passe doit être plus long que 6 caractères."
+
+msgid "Flash.BadLogin"
+msgstr "Votre identifiant et/ou votre mot de passe est faux."
+
 #############################
 # Footer ####################
 #############################

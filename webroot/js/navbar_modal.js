@@ -14,7 +14,7 @@ $(document).ready(function () {
                     window.location = responseData.redirectUrl;
                     $("#login-alert").hide();
                 } else {
-                    $("#login-alert").show();
+                    $("#login-alert").css('display', 'block');
                 }
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -32,30 +32,38 @@ $(document).ready(function () {
             type: "post",
             data: form,
             success: function (response) {
-                if(response.userSaved){
+                if(response.userSaved ===true){
                     location.reload();
                     $('#signUp-alert').hide();
                 }else{
-                    console.log(response.userSavedMsg);
-                    $("#signUp-alert").show();
-
-                    if (response.userSavedMsg.user != null){
-                        console.log(response.userSavedMsg.user);
-                    }
-                    var test = Object.keys(response.userSavedMsg);
-                    for (var i = 0; i < Object.keys(response.userSavedMsg).length; i++){
-                        switch (Object.keys(response.userSavedMsg)[i]){
+                    $('#emplacement-alert').empty();
+                    for (var i = 0; i < Object.keys(response).length; i++){
+                        switch (Object.keys(response)[i]){
                             case 'user' :
-                                $('#signUp-alert').append("<p>" + response.userSavedMsg.user + "</p>");
+                                $('#emplacement-alert').append("<div class='alert text-center'><p>" + response.user + "</p></div>");
+                                $('#username').css("display", "table-cell");
+                                break;
+                            case 'email' :
+                                $('#emplacement-alert').append("<div class='alert text-center'><p>" + response.email + "</p></div>");
+                                $('#email').css("display", "table-cell");
+                                break;
+                            case 'password' :
+                                $('#emplacement-alert').append("<div class='alert text-center'><p>" + response.password + "</p></div>");
+                                $('#password').css("display", "table-cell");
                                 break;
                         }
                     }
                 }
-                //console.log(response);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);
             }
         });
+    });
+
+    $('#signup-link, #signin-link').on("click", function(){
+        $('#emplacement-alert').empty();
+        $('.input-group-addon').css("display", "none");
+
     });
 });
