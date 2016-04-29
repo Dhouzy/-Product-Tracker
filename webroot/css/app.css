@@ -208,6 +208,9 @@ body {
   display: table-cell;
   vertical-align: middle;
 }
+.search-inactive-link {
+  color: gray;
+}
 .hover {
   position: relative;
 }

@@ -16,9 +16,10 @@ else:
 
     <?php
     if (isset($searchResult)) {
+        $maxPage = min(5, $searchResult->numMaxPages);
         ?>
         <script>
-            var searchMaxPage = <?= min(10, $searchResult->numMaxPages) ?>;
+            var searchMaxPage = <?= $maxPage ?>;
             var searchCurrentPage = <?= $page ?>;
             var searchQuery = "<?= addslashes($search) ?>";
         </script>
@@ -35,35 +36,17 @@ else:
             </tbody>
         </table>
         <?php
-        $maxPage = min(10, $searchResult->numMaxPages);
-        if ($page == 1)
-            echo "&lt;&lt;&nbsp;";
-        else
-            echo $this->Html->link('<< ', [
-                'controller' => 'Homes',
-                'action' => 'home',
-                'search' => $search,
-                'page' => $page - 1]);
+
+        echo "<a id='search-link-previous' " . ($page == 1 ? "class='search-inactive-link' " : "")
+            . "href='#' onclick='searchGoToPreviousPage(); return false;'>&lt;&lt;</a>";
 
         for ($i = 1; $i <= $maxPage; $i++) {
-            if ($page == $i)
-                echo "$i&nbsp;";
-            else
-                echo $this->Html->link("$i ", [
-                    'controller' => 'Homes',
-                    'action' => 'home',
-                    'search' => $search,
-                    'page' => $i]);
+            echo "<a id='search-link-page-$i' " . ($page == $i ? "class='search-inactive-link' " : "")
+                . "href='#' onclick='searchGoToPage($i); return false;'>$i</a>";
         }
 
-        if ($page == $maxPage)
-            echo "&gt;&gt;&nbsp;";
-        else
-            echo $this->Html->link(" >>", [
-                'controller' => 'Homes',
-                'action' => 'home',
-                'search' => $search,
-                'page' => $page + 1]);
+        echo "<a id='search-link-next' " . ($page == $maxPage ? "class='search-inactive-link' " : "")
+                . "href='#' onclick='searchGoToNextPage(); return false;'>&gt;&gt;</a>";
     }
     ?>
 </fieldset>
