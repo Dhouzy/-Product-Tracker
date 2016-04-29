@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 
+use App\Core\Amazon\AmazonHelper;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 use App\Model\Entity\ProductsUser;
@@ -32,13 +33,16 @@ class ProductsController extends AppController
     public function product($uid){
         if (isset($uid)) {
             $this->productUpdater->updateProduct($uid);
-            
+
             $products = TableRegistry::get('Products');
             $product = $products
                 ->find()
                 ->contain(['Companies', 'Prices'])
                 ->where(['article_uid' => $uid])
                 ->first();
+
+            $amazonHelper = new AmazonHelper();
+            $product->review_url = $amazonHelper->getReviewUrl($product->article_uid);
 
             $isUserLoggedIn = $this->isUserLoggedIn();
             $isItemFollowed = false;

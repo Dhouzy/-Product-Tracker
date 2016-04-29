@@ -49,6 +49,11 @@ class AmazonHelper
         return $amazonItem;
     }
 
+    function getReviewUrl($productASIN){
+        $amazonItem = $this->findProduct($productASIN);
+        return $amazonItem->reviewUrl;
+    }
+
     private function _readSearchResult($url)
     {
         $jsonObj = $this->_getJSONFromURL($url);
