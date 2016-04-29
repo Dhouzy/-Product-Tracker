@@ -17,7 +17,7 @@
                     </div>
                     <button class="btn btn-default" type="submit" style="display: none"></button>
                 </form>
-                <div id="login-alert" class="alert">
+                <div id="login-alert" class="alert hidden">
                     <p><span class="fa fa-fw fa-exclamation-triangle"></span>Votre identifiant et/ou votre mot de passe
                         est faux.</p>
                 </div>
