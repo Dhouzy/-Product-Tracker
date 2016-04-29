@@ -101,14 +101,17 @@ body {
 }
 .container {
   margin: auto;
+  width: 100%;
 }
 .container .left {
   float: left;
   display: block;
+  margin-left: 5%;
 }
 .container .right {
   float: right;
   display: block;
+  margin-right: 5%;
 }
 .center {
   margin: auto;
@@ -446,7 +449,6 @@ body {
 }
 .item-infos-btn {
   margin-top: 5px;
-  margin-bottom: 5px;
 }
 #ProductPriceVariationChart {
   margin: 10px;
