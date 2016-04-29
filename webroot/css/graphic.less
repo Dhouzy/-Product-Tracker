@@ -1,4 +1,3 @@
-
 @import "variables";
 
 .item-infos-btn {
@@ -6,7 +5,7 @@
 }
 
 #ProductPriceVariationChart {
-  margin : 10px;
+  margin: 10px;
 }
 
 #DatePicker {
@@ -27,8 +26,27 @@
     }
 
     padding: 4px 12px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+  }
+}
+
+.ui-datepicker {
+  z-index: 999999 !important;
+  background: @dark-grey !important;
+  border: solid 2px @red !important;
+  color: #ffffff !important;
+  * {
+    background: @dark-grey !important;
+    border: none !important;
+    color: #ffffff !important;
+  }
+  .ui-datepicker-next {
+    span {
+      background: url("/img/jquery_ui/ui-icons_ffffff_256x240.png") no-repeat -48px -192px !important;
+    }
+  }
+  .ui-datepicker-prev {
+    span {
+      background: url("/img/jquery_ui/ui-icons_ffffff_256x240.png") no-repeat -80px -192px !important;
+    }
   }
 }
