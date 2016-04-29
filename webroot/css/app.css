@@ -115,6 +115,7 @@ body {
 }
 .center {
   margin: auto;
+  display: block;
   text-align: center;
 }
 .item-list {
@@ -179,7 +180,6 @@ body {
 .right-product-graph {
   width: 45%;
   height: 500px;
-  border: 1px solid black;
 }
 #container-profile {
   margin-bottom: 60px;
@@ -205,6 +205,7 @@ body {
   height: 100%;
   display: table;
   text-align: center;
+  border: 1px solid black;
 }
 #NoItemClickContainer #NoItemClickText {
   font-size: 20px;
@@ -478,9 +479,6 @@ body {
   border-radius: 3px;
   width: 100px;
 }
-.item-infos-btn {
-  margin-top: 5px;
-}
 #ProductPriceVariationChart {
   margin: 10px;
 }
@@ -517,6 +515,11 @@ body {
 }
 .ui-datepicker .ui-datepicker-prev span {
   background: url("/img/jquery_ui/ui-icons_ffffff_256x240.png") no-repeat -80px -192px !important;
+}
+#DatePicker span {
+  border: solid 2px #e00007 !important;
+  background: #e00007 !important;
+  color: white !important;
 }
 #title {
   text-align: center;
