@@ -7,7 +7,6 @@
             echo $this->Form->input(null, ['name' => 'uid', 'value' => "$product->article_uid", 'type' => 'hidden']);
             echo $this->Form->button(__('Product.Follow'), ['class' => 'btn red']);
             echo $this->Form->end();
-            echo $this->Form->create(null, ['url' => $product->amazon_url]);
         }
         else {
             echo $this->Form->create(null, ['url' => 'delete']);
@@ -18,7 +17,8 @@
 
             <?php
         }
-        ?><form></>
+        ?>
+        <form method="post" action="<?= $product->amazon_url?>" target="_blank"></>
         <?php
         if($product->amazon_url) {
             echo $this->Form->button(__('Product.BuyThisProduct'), ['class' => 'btn red']);
@@ -35,8 +35,11 @@
     <div class="row">
         <div class="col-md-6">
             <?php
-            if($product->amazon_url != null){
+            if($product->amazon_url != null && $product->image_link != null){
                 echo "<a href=\"$product->amazon_url\"><img id=\"productImage\" src=\"$product->image_link\"/></a><br/>";
+            }
+            else {
+                echo "<img id=\"productImage\" src=\"/img/no_image_available.png\" /><br/>";
             }
             ?>
         </div>

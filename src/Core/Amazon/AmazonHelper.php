@@ -88,15 +88,13 @@ class AmazonHelper
             $amazonItem->currentFormattedPrice = $item->OfferSummary->LowestNewPrice->FormattedPrice;
             if(isset($item->SmallImage)) {
                 $amazonItem->smallImageLink = $item->SmallImage->URL;
+                $amazonItem->largeImageLink =  $item->SmallImage->URL;
             }
             else {
                 $amazonItem->smallImageLink = "";
             }
             if(isset($item->LargeImage)) {
                 $amazonItem->largeImageLink = $item->LargeImage->URL;
-            }
-            else {
-                $amazonItem->largeImageLink = "";
             }
         }
 
