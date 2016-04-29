@@ -6,9 +6,6 @@ else:
 ?>
 <fieldset>
     <?php $loggedUser = $this->request->session()->read('Auth.User');
-    if ($loggedUser != null) {
-        echo '<p>' . __('Home.WhoIsLoggedIn', [$loggedUser['id'], $loggedUser['username'], $loggedUser['email']]) . '</p>';
-    }
     ?>
     <div class="form">
         <?= $this->element('searchbar') ?>
@@ -21,8 +18,10 @@ else:
         <script>
             var searchMaxPage = <?= $maxPage ?>;
             var searchCurrentPage = <?= $page ?>;
+            var searchInitialPage = <?= $page ?>;
             var searchQuery = "<?= addslashes($search) ?>";
         </script>
+        <?= $this->element('search_pagination', ['page' => $page, 'maxPage' => $maxPage]); ?>
         <table id="search-results-table">
             <thead>
             <tr>
@@ -35,23 +34,7 @@ else:
             <?= $this->element('search_results_row', ['amazonItems' => $searchResult->amazonItems]) ?>
             </tbody>
         </table>
-        <nav id="search-pagination">
-            <ul class="pagination">
-            <?php
-
-            echo "<li id='search-item-previous' class='page-item " . ($page == 1 ? " disabled" : "").  "'>"
-                . "<a class='page-link' href='#' onclick='searchGoToPreviousPage(); return false;'><span class='glyphicon glyphicon-triangle-left'></span></a></li>";
-
-            for ($i = 1; $i <= $maxPage; $i++) {
-                echo "<li id='search-item-page-$i' class='page-item " . ($page == $i ? " disabled" : "") . "'>"
-                    . "<a class='page-link' href='#' onclick='searchGoToPage($i); return false;'>$i</a></li>";
-            }
-
-            echo "<li id='search-item-next' class='page-item " . ($page == $maxPage ? " disabled" : "") . "'>"
-                . "<a class='page-link' href='#' onclick='searchGoToNextPage(); return false;'><span class='glyphicon glyphicon-triangle-right'></span></a></li>";
-            ?>
-            </ul>
-        </nav>
+        <?= $this->element('search_pagination', ['page' => $page, 'maxPage' => $maxPage]); ?>
     <?php
     }
     ?>

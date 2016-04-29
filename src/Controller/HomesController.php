@@ -21,12 +21,15 @@ class HomesController extends AppController
         $this->amazon = new AmazonHelper();
     }
 
-    public function home($search = null, $page = null)
+    public function home()
     {
-        if (isset($search)) {
+        $search = $this->request->query('q');
+        $page = $this->request->query('p');
+
+        if ($search != null) {
             $searchKeywordsEncoded = urlencode($search);
 
-            if (isset($page)) {
+            if ($page != null) {
                 if (!ctype_digit($page))
                     $page = 1;
                 else if (intval($page) < 1)
