@@ -6,24 +6,21 @@ html {
 body {
   background-color: gainsboro;
   margin-bottom: 90px;
-  margin-top: 115px;
+  margin-top: 75px;
 }
 .footer {
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
   width: 100%;
-  height: 70px;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 17px;
   background-color: #302e2e;
-}
-.footer .container {
   color: #777777;
-  margin: 0;
-  padding: 15px;
+  text-align: center;
 }
 .navbar {
   background-color: #302e2e;
-  padding-top: 40px;
-  height: 95px;
 }
 .navbar-brand {
   outline: 0;
@@ -62,20 +59,21 @@ body {
 }
 .navbar-searchbar {
   padding-right: 40px;
+  margin-top: 6px;
 }
 .navbar-searchbar input {
   width: 400px !important;
   background-color: #302e2e;
   border-color: #e00007;
   color: #a9a9a9;
-  height: 30px !important;
+  height: 35px !important;
 }
 .navbar-searchbar input:focus {
   border-color: #ff0000;
   box-shadow: 0 0 5px #ff0000;
 }
 .navbar-searchbar button {
-  height: 30px !important;
+  height: 35px !important;
   background-color: #e00007;
   border-color: #e00007;
   color: #ffffff;
@@ -101,17 +99,21 @@ body {
 }
 .container {
   margin: auto;
+  width: 100%;
 }
 .container .left {
   float: left;
   display: block;
+  margin-left: 5%;
 }
 .container .right {
   float: right;
   display: block;
+  margin-right: 5%;
 }
 .center {
   margin: auto;
+  display: block;
   text-align: center;
 }
 .item-list {
@@ -176,7 +178,6 @@ body {
 .right-product-graph {
   width: 45%;
   height: 500px;
-  border: 1px solid black;
 }
 #container-profile {
   margin-bottom: 60px;
@@ -202,11 +203,66 @@ body {
   height: 100%;
   display: table;
   text-align: center;
+  border: 1px solid black;
 }
 #NoItemClickContainer #NoItemClickText {
   font-size: 20px;
   display: table-cell;
   vertical-align: middle;
+}
+#home-search-form {
+  width: 100%;
+}
+#home-search-form > div {
+  margin: 20px;
+}
+#home-search-form .form-control,
+#home-search-form .btn {
+  height: 45px;
+}
+#home-search-form .btn {
+  width: 45px;
+}
+.search-pagination {
+  text-align: center;
+}
+.search-pagination ul {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#search-results-table {
+  width: 100%;
+}
+#search-results-table thead th {
+  height: 30px;
+  vertical-align: middle;
+  padding-left: 7px;
+  border-bottom: 1px solid #302e2e;
+}
+#search-results-table thead th:last-child {
+  text-align: right;
+  padding-right: 7px;
+}
+#search-results-table .search-image-cell {
+  width: 89px;
+  height: 89px;
+  padding-top: 7px;
+  text-align: center;
+  vertical-align: top;
+}
+#search-results-table .search-image-cell img {
+  border-radius: 3px;
+}
+#search-results-table .search-link-cell,
+#search-results-table .search-price-cell {
+  padding: 7px;
+  vertical-align: top;
+}
+#search-results-table .search-price-cell {
+  text-align: right;
+}
+#search-results-table tbody tr:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .hover {
   position: relative;
@@ -236,7 +292,7 @@ body {
   width: 400px;
   position: absolute;
   margin: 0;
-  top: 94px;
+  top: 49px;
   right: 0;
 }
 #login-modal .modal-dialog .modal-content {
@@ -323,10 +379,6 @@ body {
   color: white;
   margin-right: 5px;
 }
-.item-infos-btn {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
 #ProductPriceVariationChart {
   margin: 10px;
 }
@@ -342,11 +394,63 @@ body {
   border-color: #e00007;
   color: #a9a9a9;
   padding: 4px 12px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
 }
 #DatePicker input:focus {
   border-color: #ff0000;
   box-shadow: 0 0 5px #ff0000;
+}
+.ui-datepicker {
+  z-index: 999999 !important;
+  background: #302e2e !important;
+  border: solid 2px #e00007 !important;
+  color: #ffffff !important;
+}
+.ui-datepicker * {
+  background: #302e2e !important;
+  border: none !important;
+  color: #ffffff !important;
+}
+.ui-datepicker .ui-datepicker-next span {
+  background: url("/img/jquery_ui/ui-icons_ffffff_256x240.png") no-repeat -48px -192px !important;
+}
+.ui-datepicker .ui-datepicker-prev span {
+  background: url("/img/jquery_ui/ui-icons_ffffff_256x240.png") no-repeat -80px -192px !important;
+}
+#DatePicker span {
+  border: solid 2px #e00007 !important;
+  background: #e00007 !important;
+  color: white !important;
+}
+#title {
+  text-align: center;
+}
+form {
+  width: 200px;
+  margin: 0 !important;
+}
+#productImage {
+  width: 500px;
+  margin-bottom: 10px;
+}
+#productIframe {
+  width: 100%;
+  height: 300px;
+}
+.btn {
+  margin-left: 0;
+}
+#tabs li.active a {
+  background-color: #e00007;
+  color: #a9a9a9;
+}
+#tabs li a {
+  color: #302e2e;
+  background-color: #ff5555;
+}
+#form {
+  display: flex;
+  flex-direction: row;
+}
+.tab-pane {
+  min-height: 300px;
 }

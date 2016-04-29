@@ -1,0 +1,67 @@
+@import "variables";
+
+#home-search-form {
+  width: 100%;
+
+  & > div {
+    margin: 20px;
+  }
+
+  .form-control, .btn {
+    height: 45px;
+  }
+
+  .btn {
+    width: 45px;
+  }
+}
+
+.search-pagination {
+  text-align: center;
+
+  ul {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+#search-results-table {
+  width: 100%;
+
+  thead th {
+    height: 30px;
+    vertical-align: middle;
+    padding-left: 7px;
+    border-bottom: 1px solid @dark-grey;
+  }
+
+  thead th:last-child {
+    text-align: right;
+    padding-right: 7px;
+  }
+
+  .search-image-cell {
+    width: 89px;
+    height: 89px;
+    padding-top: 7px;
+    text-align: center;
+    vertical-align: top;
+
+    img {
+      border-radius: 3px;
+    }
+  }
+
+  .search-link-cell, .search-price-cell {
+    padding: 7px;
+    vertical-align: top;
+  }
+
+  .search-price-cell {
+    text-align: right;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}

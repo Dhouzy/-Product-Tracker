@@ -63,26 +63,23 @@ msgstr "Pays"
 msgid "Home.Title"
 msgstr "Accueil"
 
-msgid "Home.WhoIsLoggedIn"
-msgstr "Utilisateur en ligne: <br><b>Id: </b>{0}<br><b>Nom d'utilisateur: </b>{1}<br><b>Courriel: </b>{2}"
-
 #############################
 # Product ###################
 #############################
 msgid "Product.Rating"
-msgstr "Score: {0}/5"
+msgstr "<b>Score</b>: {0}/5"
 
 msgid "Product.Brand"
-msgstr "Marque: {0}"
+msgstr "<b>Marque</b>: {0}"
 
 msgid "Product.Color"
-msgstr "Couleur: {0}"
+msgstr "<b>Couleur</b>: {0}"
 
 msgid "Product.Size"
-msgstr "Taille: {0} mm &times; {1} mm &times; {2} mm"
+msgstr "<b>Taille</b>: {0} mm &times; {1} mm &times; {2} mm"
 
 msgid "Product.Weight"
-msgstr "Poids: {0} mg"
+msgstr "<b>Poids</b>: {0} mg"
 
 msgid "Product.Follow"
 msgstr "Suivre ce produit"
@@ -92,6 +89,15 @@ msgstr "Ne plus suivre ce produit"
 
 msgid "Product.Price"
 msgstr "Prix #{0} obtenu le: {1} était: {2} et {3} en rabais"
+
+msgid "Product.Chart"
+msgstr "Graphique"
+
+msgid "Product.Info"
+msgstr "Informations"
+
+msgid "Product.BuyThisProduct"
+msgstr "Acheter ce produit"
 
 #############################
 # SignIn ####################
@@ -113,6 +119,37 @@ msgstr "Profil"
 
 msgid "Profile.YourProducts"
 msgstr "Vos produits:"
+
+msgid "Profile.CurrentPrice"
+msgstr "Prix courrant : "
+
+msgid "Profile.NeedToClickOnAProduct"
+msgstr "Vous avez besoin de cliquer sur un produit pour voir les informations sur le prix de ce produit"
+
+#############################
+# Graph #####################
+#############################
+
+msgid "Graph.GoToProduct"
+msgstr "Aller aux informations sur le produit"
+
+msgid "Graph.From"
+msgstr "De : "
+
+msgid "Graph.To"
+msgstr "À : "
+
+msgid "Graph.ProductPriceVariation"
+msgstr "Variation du prix du produit"
+
+msgid "Graph.PriceYAxisTitle"
+msgstr "Prix ($)"
+
+msgid "Graph.Price"
+msgstr "Prix"
+
+msgid "Graph.DiscountPrice"
+msgstr "Prix en rabait"
 
 #############################
 # Search ####################
@@ -151,7 +188,7 @@ msgstr "Produit supprimé avec succès"
 # Footer ####################
 #############################
 msgid "Footer.Text"
-msgstr "Trouver du texte intelligent à mettre ici."
+msgstr "Tous droits réservés &copy; M.-A.&nbsp;Dion, M.&nbsp;Bernard, H.&nbsp;Glauss, V.&nbsp;Bissonnette, A.&nbsp;Sasseville, 2016"
 
 #############################
 # Login ####################

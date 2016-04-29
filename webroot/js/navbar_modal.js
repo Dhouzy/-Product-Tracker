@@ -1,5 +1,6 @@
 $(document).ready(function () {
     'use strict';
+
     $('#form-login').submit(function (event) {
         event.preventDefault();
 

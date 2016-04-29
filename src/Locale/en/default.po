@@ -63,26 +63,23 @@ msgstr "Pays"
 msgid "Home.Title"
 msgstr "Home"
 
-msgid "Home.WhoIsLoggedIn"
-msgstr "User online: <br><b>Id: </b>{0}<br><b>Username: </b>{1}<br><b>Email: </b>{2}"
-
 #############################
 # Product ###################
 #############################
 msgid "Product.Rating"
-msgstr "Rating: {0, number}/5"
+msgstr "<b>Rating</b>: {0, number}/5"
 
 msgid "Product.Brand"
-msgstr "Brand: {0}"
+msgstr "<b>Brand</b>: {0}"
 
 msgid "Product.Color"
-msgstr "Color: {0}"
+msgstr "<b>Color</b>: {0}"
 
 msgid "Product.Size"
-msgstr "Size: {0} mm &times; {1} mm &times; {2} mm"
+msgstr "<b>Size</b>: {0} mm &times; {1} mm &times; {2} mm"
 
 msgid "Product.Weight"
-msgstr "Weight: {0} mg"
+msgstr "<b>Weight</b>: {0} mg"
 
 msgid "Product.Follow"
 msgstr "Follow this product"
@@ -92,6 +89,15 @@ msgstr "Stop following this product"
 
 msgid "Product.Price"
 msgstr "Price #{0} fetched on: {1} was: {2} and {3} on rebate"
+
+msgid "Product.Chart"
+msgstr "Chart"
+
+msgid "Product.Info"
+msgstr "Informations"
+
+msgid "Product.BuyThisProduct"
+msgstr "Buy this product"
 
 #############################
 # SignIn ####################
@@ -113,6 +119,37 @@ msgstr "Profile"
 
 msgid "Profile.YourProducts"
 msgstr "Your products:"
+
+msgid "Profile.CurrentPrice"
+msgstr "Current price : "
+
+msgid "Profile.NeedToClickOnAProduct"
+msgstr "You need to click on a product to shown that product price informations"
+
+#############################
+# Graph #####################
+#############################
+
+msgid "Graph.GoToProduct"
+msgstr "Go to product informations"
+
+msgid "Graph.From"
+msgstr "From : "
+
+msgid "Graph.To"
+msgstr "To : "
+
+msgid "Graph.ProductPriceVariation"
+msgstr "Product price variation"
+
+msgid "Graph.PriceYAxisTitle"
+msgstr "Price ($)"
+
+msgid "Graph.Price"
+msgstr "Price"
+
+msgid "Graph.DiscountPrice"
+msgstr "Discount price"
 
 #############################
 # Search ####################
@@ -151,7 +188,7 @@ msgstr "Product successfully deleted."
 # Footer ####################
 #############################
 msgid "Footer.Text"
-msgstr "Find some brilliant stuff to put in here."
+msgstr "All rights reserved &copy; M.-A.&nbsp;Dion, M.&nbsp;Bernard, H.&nbsp;Glauss, V.&nbsp;Bissonnette, A.&nbsp;Sasseville, 2016"
 
 #############################
 # Login ####################

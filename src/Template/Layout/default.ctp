@@ -9,12 +9,16 @@
             <?= $this->fetch('title') ?>
         </title>
 
-    <?= $this->Html->css('jquery-ui.min.css') ?>
-    <?= $this->Html->css('jquery-ui.structure.min.css') ?>
-    <?= $this->Html->css('jquery-ui.theme.min.css') ?>
-    <?= $this->Html->css('bootstrap.min.css') ?>
-    <?= $this->Html->css('font-awesome.min.css') ?>
-    <?= $this->Html->css('app.css') ?>
+        <?= $this->Html->css('jquery-ui.min.css') ?>
+        <?= $this->Html->css('jquery-ui.structure.min.css') ?>
+        <?= $this->Html->css('jquery-ui.theme.min.css') ?>
+        <?= $this->Html->css('bootstrap.min.css') ?>
+        <?= $this->Html->css('font-awesome.min.css') ?>
+        <?= $this->Html->css('app.css') ?>
+
+        <script type="application/javascript">
+            <?= $this->element('js_global_strings'); ?>
+        </script>
 
     </head>
     <body>
@@ -32,9 +36,7 @@
         </section>
 
         <footer class="footer">
-            <div class="container">
-                <p><?=__('Footer.Text')?></p>
-            </div>
+            <?=__('Footer.Text')?>
         </footer>
         <!--Load librairies first-->
         <?= $this->Html->script('jquery-1.12.3.min.js'); ?>
@@ -50,5 +52,6 @@
         <?= $this->Html->script('tooltip.js') ?>
         <?= $this->Html->script('graphic.js') ?>
         <?= $this->Html->script('profile.js') ?>
+        <?= $this->Html->script('product.js') ?>
     </body>
 </html>

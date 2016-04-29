@@ -6,9 +6,6 @@ else:
 ?>
 <fieldset>
     <?php $loggedUser = $this->request->session()->read('Auth.User');
-    if ($loggedUser != null) {
-        echo '<p>' . __('Home.WhoIsLoggedIn', [$loggedUser['id'], $loggedUser['username'], $loggedUser['email']]) . '</p>';
-    }
     ?>
     <div class="form">
         <?= $this->element('searchbar') ?>
@@ -16,13 +13,16 @@ else:
 
     <?php
     if (isset($searchResult)) {
+        $maxPage = min(5, $searchResult->numMaxPages);
         ?>
         <script>
-            var searchMaxPage = <?= min(10, $searchResult->numMaxPages) ?>;
+            var searchMaxPage = <?= $maxPage ?>;
             var searchCurrentPage = <?= $page ?>;
+            var searchInitialPage = <?= $page ?>;
             var searchQuery = "<?= addslashes($search) ?>";
         </script>
-        <table>
+        <?= $this->element('search_pagination', ['page' => $page, 'maxPage' => $maxPage]); ?>
+        <table id="search-results-table">
             <thead>
             <tr>
                 <th></th>
@@ -30,40 +30,12 @@ else:
                 <th><?= __('Search.Table.Price') ?></th>
             </tr>
             </thead>
-            <tbody id="search-results-table-body">
+            <tbody>
             <?= $this->element('search_results_row', ['amazonItems' => $searchResult->amazonItems]) ?>
             </tbody>
         </table>
-        <?php
-        $maxPage = min(10, $searchResult->numMaxPages);
-        if ($page == 1)
-            echo "&lt;&lt;&nbsp;";
-        else
-            echo $this->Html->link('<< ', [
-                'controller' => 'Homes',
-                'action' => 'home',
-                'search' => $search,
-                'page' => $page - 1]);
-
-        for ($i = 1; $i <= $maxPage; $i++) {
-            if ($page == $i)
-                echo "$i&nbsp;";
-            else
-                echo $this->Html->link("$i ", [
-                    'controller' => 'Homes',
-                    'action' => 'home',
-                    'search' => $search,
-                    'page' => $i]);
-        }
-
-        if ($page == $maxPage)
-            echo "&gt;&gt;&nbsp;";
-        else
-            echo $this->Html->link(" >>", [
-                'controller' => 'Homes',
-                'action' => 'home',
-                'search' => $search,
-                'page' => $page + 1]);
+        <?= $this->element('search_pagination', ['page' => $page, 'maxPage' => $maxPage]); ?>
+    <?php
     }
     ?>
 </fieldset>

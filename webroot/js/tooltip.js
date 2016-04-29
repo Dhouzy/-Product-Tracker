@@ -2,8 +2,8 @@
 
     $.fn.registerTooltip = function() {
         this.on({
-            mouseover: function () {
-                mouseOver($(this));
+            mousemove: function(event) {
+                mouseOver($(this), event);
             },
             mouseleave: function () {
                 mouseLeave($(this));
@@ -14,7 +14,7 @@
     };
 
     $.fn.removeToolTip = function () {
-        this.off('mouseover');
+        this.off('mousemove');
         this.off('mouseleave');
 
         return this;
@@ -22,27 +22,26 @@
 
 }(jQuery));
 
-function mouseOver($element) {
-    $element.children(".tooltip").css("display", "inline-block");
-
+function mouseOver($element, event) {
     var left;
     var top;
 
     if ($element.children(".tooltip").hasClass("top-tooltip")) {
-        left = $element.offset().left + (($element.width() / 2) - ($element.children(".tooltip").width() / 2));
-        top = $element.offset().top - ($element.height() + $element.children(".tooltip").height() + 10);
+        left = event.clientX - ($element.children(".tooltip").width() / 2);
+        top = event.clientY - $element.children(".tooltip").height() - 50;
     } else if($element.children(".tooltip").hasClass("bottom-tooltip")) {
-        left = $element.offset().left + (($element.width() / 2) - ($element.children(".tooltip").width() / 2));
-        top = $element.offset().top + $element.height() + 20;
+        left = event.clientX - ($element.children(".tooltip").width() / 2);
+        top = event.clientY + 50;
     } else if($element.children(".tooltip").hasClass("left-tooltip")) {
-        left = $element.offset().left - $element.children(".tooltip").width() - 30;
-        top = $element.offset().top - ($element.children(".tooltip").height() - $element.height());
+        left = event.clientX - $element.children(".tooltip").width() - 50;
+        top = event.clientY - ($element.children(".tooltip").height() / 2);
     } else if($element.children(".tooltip").hasClass("right-tooltip")) {
-        left = $element.offset().left + $element.width() + 40;
-        top = $element.offset().top - ($element.children(".tooltip").height() - $element.height());
+        left = event.clientX + 50;
+        top = event.clientY - ($element.children(".tooltip").height() / 2);
     }
 
     $element.children(".tooltip").css({top: top, left: left});
+    $element.children(".tooltip").css("display", "inline-block");
 }
 
 function mouseLeave($element) {

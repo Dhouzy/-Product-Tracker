@@ -131,6 +131,8 @@ class ProductUpdater
         return $amazon->findProduct($articleUid);
     }
 
+
+
     private function transformProductToProductItem($product)
     {
         $currentPrice = $this->productsTable

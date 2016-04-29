@@ -60,7 +60,6 @@
 .right-product-graph {
   width: 45%;
   height: 500px;
-  border: 1px solid black;
 }
 #container-profile {
   margin-bottom: 60px;
@@ -86,6 +85,7 @@
   height: 100%;
   display: table;
   text-align: center;
+  border: 1px solid black;
 }
 #NoItemClickContainer #NoItemClickText {
   font-size: 20px;

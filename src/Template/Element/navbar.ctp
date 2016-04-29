@@ -23,7 +23,9 @@
                     <?= $this->element('language_toggle'); ?>
                 </li>
                 <?php $session = $this->request->session(); ?>
-                <?= $session->check('Auth.User') ? $this->element('loggedin_header_opt') : $this->element('loggedout_header_opt') ?>
+                <?= $session->check('Auth.User')
+                    ? $this->element('loggedin_header_opt', ['username' => $this->request->session()->read('Auth.User')['username']])
+                    : $this->element('loggedout_header_opt') ?>
             </ul>
 
         </div>

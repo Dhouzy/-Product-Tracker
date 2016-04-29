@@ -14,7 +14,7 @@
     <option dojo="false" />
     <option elision="false" />
     <option enforceall="false" />
-    <option eqeqeq="true" />
+    <option eqeqeq="false" />
     <option eqnull="false" />
     <option es3="false" />
     <option es5="false" />
