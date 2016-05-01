@@ -2,15 +2,18 @@
 
     <div class="item-infos-btn">
         <div class="row">
-            <div class="col-lg-4"></div>
-            <div class="col-lg-4">
-                <?php
-                echo $this->Form->create(null, ['url' => ['controller' => 'Products', 'action' => 'product', 'uid' => $productId]]);
-                echo $this->Form->button(__('Graph.GoToProduct'), ['class' => 'btn red']);
-                echo $this->Form->end();
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <?php echo $this->Html->link(
+                __('Graph.GoToProduct'),
+                array(
+                'controller'=>'Products',
+                'action'=>'product',
+                $productId
+                ), array('class'=>'btn red center', 'escape'=>false));
                 ?>
             </div>
-            <div class="col-lg-4"></div>
+            <div class="col-lg-3"></div>
         </div>
     </div>
 
