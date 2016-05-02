@@ -1,64 +1,91 @@
 
-var chartPriceData = null;
-var chartDiscountData = null;
+var chart = null;
+var priceData = null;
+var discountData = null;
+
+$('#FromDate, #ToDate').on('change', function (e) {
+    modifyGraphsDates();
+});
 
 function loadGraphics() {
 
+    if($('#ProductPriceVariationChart')){
+
+        setChartTheme();
+
+        var dateFormat = $('#highcharts-date-format').val();
+
+        $('#ProductPriceVariationChart').highcharts({
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: $('#graph-title').val()
+            },
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: {
+                    millisecond: dateFormat,
+                    second: dateFormat,
+                    minute: dateFormat,
+                    hour: dateFormat,
+                    day: dateFormat,
+                    week: dateFormat,
+                    month: dateFormat,
+                    year: dateFormat
+                }
+            },
+            yAxis: {
+                labels: {
+                    enabled: true
+                },
+                title: {
+                    text: $('#graph-yaxis-title').val()
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    var date = '<b>' + Highcharts.dateFormat('%A, ' + dateFormat, this.x) + '</b><br />';
+                    return date + "$" + this.y;
+                }
+            },
+            credits: {
+                enabled: false
+            }
+        });
+
+        chart = $('#ProductPriceVariationChart').highcharts();
+
+        if(chart) {
+            setChartOptions();
+            setDatePickerValues();
+
+            if($("#DataForProductPriceVariationChart").length > 0) {
+                priceData = $.parseJSON($("#DataForProductPriceVariationChart").val());
+            }
+
+            if($("#DataForProductPriceDiscountVariationChart").length > 0) {
+                discountData = $.parseJSON($("#DataForProductPriceDiscountVariationChart").val());
+            }
+
+            modifyGraphsDates();
+        }
+    }
+}
+
+function setDatePickerValues(){
     $('#FromDate').datepicker({
         showOtherMonths: true,
+        monthNames: $('#datepicker-months').val().split(","),
+        dayNamesMin: $('#datepicker-days-min').val().split(","),
         dateFormat: 'yy-mm-dd'
     });
     $('#ToDate').datepicker({
         showOtherMonths: true,
+        monthNames: $('#datepicker-months').val().split(","),
+        dayNamesMin: $('#datepicker-days-min').val().split(","),
         dateFormat: 'yy-mm-dd'
     });
-
-    $('#FromDate, #ToDate').on('change', function (e) {
-        modifyGraphsDates();
-    });
-
-    setChartsGlobalParameters();
-
-    $('#ProductPriceVariationChart').highcharts({
-        chart: {
-            type: 'line'
-        },
-        title: {
-            text: $('#graph-title').val()
-        },
-        xAxis: {
-            type: 'datetime',
-            dateTimeLabelFormats: {
-                day: "%b %e, %Y",
-                week: "%b %e, %Y"
-            }
-        },
-        yAxis: {
-            labels: {
-                enabled: true
-            },
-            title: {
-                text: $('#graph-yaxis-title').val()
-            }
-        },
-        tooltip: {
-            formatter: function () {
-                var date = '<b>' + Highcharts.dateFormat('%A, %b %e, %Y', this.x) + '</b><br />';
-                return date + "$" + this.y;
-            }
-        },
-        credits: {
-            enabled: false
-        }
-    });
-
-    if($("#DataForProductPriceVariationChart").length > 0) {
-        chartPriceData = $.parseJSON($("#DataForProductPriceVariationChart").val());
-    }
-
-    if($("#DataForProductPriceDiscountVariationChart").length > 0) {
-        chartDiscountData = $.parseJSON($("#DataForProductPriceDiscountVariationChart").val());
-    }
 
     var year = moment().format('YYYY');
     var month = moment().format('MM');
@@ -68,30 +95,25 @@ function loadGraphics() {
 
     $('#FromDate').val(minDate);
     $('#ToDate').val(maxDate);
-
-    modifyGraphsDates();
 }
 
 function modifyGraphsDates() {
-
     var fromSelectedDate = $('#FromDate').val();
     var toSelectedDate = $('#ToDate').val();
 
-    var chartPrice = $('#ProductPriceVariationChart').highcharts();
-
-    while(chartPrice.series.length > 0)
-        chartPrice.series[0].remove(true);
+    while(chart.series.length > 0)
+        chart.series[0].remove(true);
 
     var serie1, serie2;
 
     //Serie 1
-    if(chartPriceData !== null && chartPrice) {
-        var chartPriceDataBetweenDates = tableValuesBetweenDates(chartPriceData, fromSelectedDate, toSelectedDate);
+    if(priceData !== null) {
+        var priceDataBetweenDates = tableValuesBetweenDates(priceData, fromSelectedDate, toSelectedDate);
         var tempPrice = [];
-        for (var i = 0; i < chartPriceDataBetweenDates.length; i++) {
+        for (var i = 0; i < priceDataBetweenDates.length; i++) {
             var element1 = {
-                x :  moment(chartPriceDataBetweenDates[i].date, "YYYY-M-D").valueOf(),
-                y : chartPriceDataBetweenDates[i].price
+                x :  moment(priceDataBetweenDates[i].date, "YYYY-M-D").valueOf(),
+                y : priceDataBetweenDates[i].price
             };
             tempPrice.push(element1);
         }
@@ -101,16 +123,18 @@ function modifyGraphsDates() {
             data: tempPrice,
             color: '#adad85'
         };
+
+        chart.addSeries(serie1);
     }
 
     //Serie 2
-    if(chartDiscountData !== null && chartPrice) {
-        var chartDiscountDataBetweenDates = tableValuesBetweenDates(chartDiscountData, fromSelectedDate, toSelectedDate);
+    if(discountData !== null) {
+        var discountDataBetweenDates = tableValuesBetweenDates(discountData, fromSelectedDate, toSelectedDate);
         var tempDiscount = [];
-        for (var y = 0; y < chartDiscountDataBetweenDates.length; y++) {
+        for (var y = 0; y < discountDataBetweenDates.length; y++) {
             var element2 = {
-                x : moment(chartDiscountDataBetweenDates[y].date, "YYYY-M-D").valueOf(),
-                y : chartDiscountDataBetweenDates[y].price
+                x : moment(discountDataBetweenDates[y].date, "YYYY-M-D").valueOf(),
+                y : discountDataBetweenDates[y].price
             };
             tempDiscount.push(element2);
         }
@@ -120,10 +144,9 @@ function modifyGraphsDates() {
             data: tempDiscount,
             color: '#e00007'
         };
-    }
 
-    chartPrice.addSeries(serie1);
-    chartPrice.addSeries(serie2);
+        chart.addSeries(serie2);
+    }
 }
 
 function tableValuesBetweenDates(table, date1, date2) {
@@ -138,15 +161,23 @@ function tableValuesBetweenDates(table, date1, date2) {
     return tempTable;
 }
 
-// Taken from http://www.highcharts.com/demo/line-basic/dark-unica
-// Highchart theme
-function setChartsGlobalParameters() {
-
+function setChartOptions() {
     Highcharts.setOptions({
         global : {
             useUTC : true
+        },
+        lang: {
+            months: $('#highcharts-months').val().split(","),
+            weekdays: $('#highcharts-days').val().split(","),
+            shortMonths: $('#highcharts-short-months').val().split(","),
+            decimalPoint: $('#highcharts-decimal-point').val()
         }
     });
+}
+
+// Taken from http://www.highcharts.com/demo/line-basic/dark-unica
+// Highchart theme
+function setChartTheme() {
 
     Highcharts.theme = {
         colors: ["#2b908f", "#90ee7e", "#f45b5b", "#7798BF", "#aaeeee", "#ff0066", "#eeaaee",
@@ -347,7 +378,6 @@ function setChartsGlobalParameters() {
         maskColor: 'rgba(255,255,255,0.3)'
     };
 
-// Apply the theme
+    // Apply the theme
     Highcharts.setOptions(Highcharts.theme);
-
 }

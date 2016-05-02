@@ -152,6 +152,35 @@ msgid "Graph.DiscountPrice"
 msgstr "Discount price"
 
 #############################
+# Highcharts translation ####
+#############################
+
+msgid "Highcharts.Months"
+msgstr "january,february,march,april,may,june,july,august,september,october,november,december"
+
+msgid "Highcharts.ShortMonths"
+msgstr "jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec"
+
+msgid "Highcharts.Days"
+msgstr "sunday,monday,tuesday,wednesday,thursday,friday,saturday"
+
+msgid "Highcharts.DecimalPoint"
+msgstr "."
+
+msgid "Highcharts.DateFormat"
+msgstr "%b %e, %Y"
+
+#############################
+# Datepicker translation ####
+#############################
+
+msgid "Datepicker.Months"
+msgstr "January,February,March,April,May,June,July,August,September,October,November,December"
+
+msgid "Datepicker.DaysMin"
+msgstr "Su,Mo,Tu,We,Th,Fr,Sa"
+
+#############################
 # Search ####################
 #############################
 msgid "Search.Table.Name"

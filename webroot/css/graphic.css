@@ -35,6 +35,13 @@
 .ui-datepicker .ui-datepicker-prev span {
   background: url("/img/jquery_ui/ui-icons_ffffff_256x240.png") no-repeat -80px -192px !important;
 }
+.ui-datepicker .ui-datepicker-today {
+  background: red !important;
+  border: solid 1px #e00007 !important;
+}
+.ui-datepicker .ui-datepicker-current-day a {
+  background: red !important;
+}
 #DatePicker span {
   border: solid 2px #e00007 !important;
   background: #e00007 !important;

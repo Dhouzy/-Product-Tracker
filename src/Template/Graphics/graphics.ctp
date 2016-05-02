@@ -54,3 +54,16 @@
     <input id="graph-yaxis-title" type="hidden" value="<?= __('Graph.PriceYAxisTitle') ?>">
     <input id="price-title" type="hidden" value="<?= __('Graph.Price') ?>">
     <input id="discount-price-title" type="hidden" value="<?= __('Graph.DiscountPrice') ?>">
+
+    <!-- Translation for the dates in highcharts -->
+    <input id="highcharts-months" type="hidden" value="<?= __('Highcharts.Months') ?>">
+    <input id="highcharts-short-months" type="hidden" value="<?= __('Highcharts.ShortMonths') ?>">
+    <input id="highcharts-days" type="hidden" value="<?= __('Highcharts.Days') ?>">
+    <input id="highcharts-decimal-point" type="hidden" value="<?= __('Highcharts.DecimalPoint') ?>">
+    <input id="highcharts-date-format" type="hidden" value="<?= __('Highcharts.DateFormat') ?>">
+
+    <!-- Translation for the datepickers -->
+    <input id="datepicker-months" type="hidden" value="<?= __('Datepicker.Months') ?>">
+    <input id="datepicker-days-min" type="hidden" value="<?= __('Datepicker.DaysMin') ?>">
+
+
