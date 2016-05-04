@@ -104,7 +104,26 @@ class UsersController extends AppController
     public function profile()
     {
         $userLogged = $this->request->session()->read('Auth.User');
-        $user = $this->Users->get($userLogged['id'], ['contain' => ['Products']]);
+        $user = $this->Users->get($userLogged['id'], ['contain' => ['Products' => ['Prices']]]);
+
+        foreach ($user->products as $product) {
+            $maxDate = "";
+            $mostRecentPrice = null;
+            foreach($product->prices as $price)
+            {
+                if($price->date > $maxDate)
+                {
+                    $maxDate = $price->date;
+                    $mostRecentPrice = $price;
+                }
+            }
+            if($mostRecentPrice->rebate_price > 0) {
+                $product->mostRecentPrice = $mostRecentPrice->rebate_price;
+            } else {
+                $product->mostRecentPrice = $mostRecentPrice->price;
+            }
+        }
+
         $this->set(compact("user"));
     }
 }
