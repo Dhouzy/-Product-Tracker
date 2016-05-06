@@ -63,7 +63,7 @@ $(document).ready(function () {
 
     $('#signup-link, #signin-link').on("click", function(){
         $('#emplacement-alert').empty();
-        $('.input-group-addon').css("display", "none");
+        $('.validation ').css("display", "none");
 
     });
 });

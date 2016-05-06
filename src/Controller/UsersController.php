@@ -65,9 +65,8 @@ class UsersController extends AppController
             if (count($userSavedMsg) == 0) {
                 $user = $this->Users->patchEntity($user, $this->request->data);
                 if ($this->Users->save($user)) {
-                    $this->set('user', $user);
-                    return $this->redirect(['controller' => 'Homes', 'action' => 'home']);
-
+                    $this->set('userSaved', true);
+                    return;
                 }
             }
         }
