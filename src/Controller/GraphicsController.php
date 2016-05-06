@@ -60,4 +60,9 @@ class GraphicsController extends AppController
             $this->set(compact('productId', 'graph1Data', 'graph2Data'));
         }
     }
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        $this->Auth->allow(['graphics']);
+    }
 }

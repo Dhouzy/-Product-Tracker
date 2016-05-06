@@ -11,8 +11,6 @@
 namespace App\Core\Amazon;
 
 use Cake\Core\Configure;
-use App\Core\Amazon\AmazonItem;
-use App\Core\Amazon\SearchResult;
 
 class AmazonHelper
 {

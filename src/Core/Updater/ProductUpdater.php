@@ -19,13 +19,13 @@ class ProductUpdater
     private $companiesTable;
     private $amazon;
 
-    function __construct()
+    public function __construct()
     {
         $this->amazon = new AmazonHelper();
         $this->productsTable = TableRegistry::get('products');
         $this->pricesTable = TableRegistry::get('prices');
         $this->companiesTable = TableRegistry::get('companies');
-        date_default_timezone_set('America/Toronto');
+        date_default_timezone_set('UTC');
     }
 
     /**
@@ -33,7 +33,7 @@ class ProductUpdater
      * @return \App\Core\Amazon\AbstractItem
      * @throws Exception
      */
-    function updateProduct($articleUid){
+    public function updateProduct($articleUid){
         $product = $this->productsTable
             ->find()
             ->where(['article_uid' => $articleUid])
@@ -49,21 +49,17 @@ class ProductUpdater
 
             $interval = $this->compareTime($latestPrice->date);
 
-            if($interval->d > 0){ // one day
+            if($interval->s > 1){ // one day
                 $apiItem = $this->fetchProductFromApi($articleUid);
                 $this->updatePrice($apiItem, $product);
-                return $apiItem;
-            } else {
-                return $this->transformProductToProductItem($product);
             }
         } else {
             $apiItem = $this->fetchProductFromApi($articleUid);
             $this->createProduct($apiItem);
-            return $apiItem;
         }
     }
 
-    function createProduct($apiItem){
+    public function createProduct($apiItem){
         $companyRow = $this->companiesTable->find()->where(['name'=> 'Amazon Canada'])->first();
         $product = new Product();
         $product->name = $apiItem->name;
@@ -89,8 +85,8 @@ class ProductUpdater
         }
     }
 
-    function updatePrice($apiItem, $product){
-        $now  = new DateTime(null, new DateTimeZone('America/Toronto'));
+    public function updatePrice($apiItem, $product){
+        $now  = new DateTime(null, new DateTimeZone('UTC'));
 
         $fullPrice = $apiItem->fullPrice/100;
         $rebate_amount = null;
@@ -115,47 +111,13 @@ class ProductUpdater
     }
 
     public function compareTime($lastPriceUpdate){
-        $now  = new DateTime(null, new DateTimeZone('America/Toronto'));
+        $now  = new DateTime(null, new DateTimeZone('UTC'));
         return $interval = $lastPriceUpdate->diff($now);
     }
-
-//    private function extractNumber($strToInt)
-//    {profile.less
-//        preg_match('!((?:\d,?)+\d\.[0-9]*)!', $strToInt, $matches);
-//        return floatval($matches[0]);
-//    }
 
     public function fetchProductFromApi($articleUid)
     {
         $amazon = new AmazonHelper();
         return $amazon->findProduct($articleUid);
-    }
-
-
-
-    private function transformProductToProductItem($product)
-    {
-        $currentPrice = $this->productsTable
-            ->find()
-            ->contain(['Prices'])
-            ->where(['article_uid' => $product->article_uid])
-            ->first();
-
-        $productItem = new ProductItem();
-        $productItem->uid = $product->article_uid;
-        $productItem->name = $product->name;
-        $productItem->currentPrice = $currentPrice;
-        $productItem->largeImageLink = $product->image_link;
-        $productItem->rating =$product->rating;
-        $productItem->amazonUrl =$product->amazon_url;
-        $productItem->reviewUrl =$product->review_url;
-        $productItem->brand =$product->brand;
-        $productItem->color =$product->color;
-        $productItem->length =$product->lengthmm;
-        $productItem->width =$product->widthmm;
-        $productItem->height =$product->heightmm;
-        $productItem->weight =$product->weightmg;
-
-        return $productItem;
     }
 }
