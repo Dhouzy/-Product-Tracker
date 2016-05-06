@@ -118,7 +118,7 @@ msgid "Profile.Title"
 msgstr "Profil"
 
 msgid "Profile.YourProducts"
-msgstr "Vos produits:"
+msgstr "Vos produits :"
 
 msgid "Profile.CurrentPrice"
 msgstr "Prix courrant : "
