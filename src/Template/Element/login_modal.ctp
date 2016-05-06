@@ -15,7 +15,9 @@
                         <input name="password" type="password" class="form-control"
                                placeholder="<?= __('Global.Password') ?>">
                     </div>
-                    <button class="btn btn-default" type="submit" style="display: none"></button>
+                    <button class="btn btn-default" type="submit">
+                        <span class="fa fa-fw fa-check"></span><?=__('Global.SignIn')?>
+                    </button>
                 </form>
                 <div id="login-alert" class="alert not-visible">
                     <p><span class="fa fa-fw fa-exclamation-triangle"></span><?= __('Flash.BadLogin') ?></p>

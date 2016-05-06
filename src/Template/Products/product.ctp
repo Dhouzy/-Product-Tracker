@@ -1,6 +1,8 @@
+<script>
+    var productUid = "<?= $product->article_uid ?>";
+</script>
 <fieldset>
-    <div class="row">
-        <div id="form" class="col-md-6">
+    <div id="top-button-bar">
     <?php if ($isUserLoggedIn){
         if(!$isItemFollowed){
             echo $this->Form->create(null, ['url' => 'follow']);
@@ -13,9 +15,6 @@
             echo $this->Form->input(null, ['name' => 'id', 'value' => "$product->id", 'type' => 'hidden']);
             echo $this->Form->button(__('Product.Delete'),['class' => 'btn red']);
             echo $this->Form->end();
-            ?>
-
-            <?php
         }
         ?>
         <form method="post" action="<?= $product->amazon_url?>" target="_blank"></>
@@ -26,24 +25,19 @@
         echo $this->Form->end();
     }
     ?>
-        <input name="product_uid" type="hidden" value="<?= $product->article_uid?>"/>
-        </div>
-        <div id="title" class="col-md-6">
-            <h3><b><?= $product->name ?></b></h3>
-        </div>
     </div>
-    <div class="row">
-        <div class="col-md-6">
-            <?php
-            if($product->amazon_url != null && $product->image_link != null){
-                echo "<a href=\"$product->amazon_url\"><img id=\"productImage\" src=\"$product->image_link\"/></a><br/>";
-            }
-            else {
-                echo "<img id=\"productImage\" src=\"/img/no_image_available.png\" /><br/>";
-            }
-            ?>
-        </div>
-        <div class="col-md-6">
+    <h3><?= $product->name ?></h3>
+    <div id="main-product-container">
+        <?php
+        if($product->amazon_url != null && $product->image_link != null){
+            echo "<a id='productImageLink' href=\"$product->amazon_url\"><img id=\"productImage\" src=\"$product->image_link\"/></a><br/>";
+        }
+        else {
+            echo '<img id="productImage" src="/img/no_image_available.png" /><br/>';
+        }
+        ?>
+
+        <div id="tab-container">
             <ul id="tabs" class="nav nav-tabs">
                 <li role="presentation" class="active"><a href="#chart" data-toggle="tab"><?= __('Product.Chart')?></a></li>
                 <li role="presentation"><a href="#info" data-toggle="tab"><?= __('Product.Info')?></a></li>
@@ -70,8 +64,8 @@
                 </div>
                 <div class="tab-pane fade" id="iframe">
                     <?php
-                        if($product->review_url != null)
-                            echo "<iframe id=\"productIframe\" src=\"$product->review_url\"></iframe><br/>";
+                    if($product->review_url != null)
+                        echo "<iframe id=\"productIframe\" src=\"$product->review_url\"></iframe><br/>";
                     ?>
                 </div>
             </div>
