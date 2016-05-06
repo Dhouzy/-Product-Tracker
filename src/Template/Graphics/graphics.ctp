@@ -1,5 +1,3 @@
-<div>
-
     <div class="item-infos-btn">
         <div class="row">
             <div class="col-lg-3"></div>
