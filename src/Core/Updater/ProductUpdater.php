@@ -48,8 +48,7 @@ class ProductUpdater
 
 
             $interval = $this->compareTime($latestPrice->date);
-
-            if($interval->s > 1){ // one day
+            if($interval->i > 0){ // one minute
                 $apiItem = $this->fetchProductFromApi($articleUid);
                 $this->updatePrice($apiItem, $product);
             }
