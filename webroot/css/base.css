@@ -16,7 +16,7 @@ body {
   line-height: 16px;
   padding: 17px;
   background-color: #302e2e;
-  color: #777777;
+  color: #777;
   text-align: center;
 }
 .navbar {
@@ -35,7 +35,7 @@ body {
   color: darkgray !important;
 }
 .navbar-brand:hover span {
-  color: #ff0000;
+  color: red;
 }
 .navbar-brand span {
   border-top: none !important;
@@ -53,7 +53,7 @@ body {
 .navbar-right li a:hover,
 .navbar-right li a:active,
 .navbar-right li a:focus {
-  border-top: 2px solid #ff0000;
+  border-top: 2px solid red;
   color: darkgray !important;
   outline: 0;
 }
@@ -65,12 +65,12 @@ body {
   width: 400px !important;
   background-color: #302e2e;
   border-color: #e00007;
-  color: #a9a9a9;
+  color: darkgrey;
   height: 35px !important;
 }
 .navbar-searchbar input:focus {
-  border-color: #ff0000;
-  box-shadow: 0 0 5px #ff0000;
+  border-color: red;
+  box-shadow: 0 0 5px red;
 }
 .navbar-searchbar button {
   height: 35px !important;
@@ -81,9 +81,9 @@ body {
 .navbar-searchbar button:hover,
 .navbar-searchbar button:active,
 .navbar-searchbar button:focus {
-  background-color: #ff0000 !important;
-  box-shadow: 0 0 5px #ff0000 !important;
-  border-color: #ff0000 !important;
+  background-color: red !important;
+  box-shadow: 0 0 5px red !important;
+  border-color: red !important;
   color: #ffffff !important;
 }
 .btn {
@@ -115,4 +115,7 @@ body {
   margin: auto;
   display: block;
   text-align: center;
+}
+.not-visible {
+  display: none;
 }

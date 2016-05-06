@@ -34,28 +34,47 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
+
     public function add()
     {
+        $userSavedMsg = array();
+
         $user = new User();
         if ($this->request->is('post')) {
             $requestEmail = $this->request->data['email'];
             $requestUsername = $this->request->data['username'];
+            $requestPassword = $this->request->data['password'];
 
             if($this->Users->find('emailAlreadyExists', ['email' => $requestEmail])){
-                $this->Flash->error(__('Flash.EmailAlreadyExists', $requestEmail));
-            } else if($this->Users->find('usernameAlreadyExists', ['username' => $requestUsername])){
-                $this->Flash->error(__('Flash.UsernameAlreadyExists', $requestUsername));
-            } else {
+                $userSavedMsg['email'] = __('Flash.EmailAlreadyExists');
+            }
+            else if(empty($requestEmail)){
+                $userSavedMsg['email'] = __('Flash.EmptyError', __('Global.Email'));
+            }
+
+            if($this->Users->find('usernameAlreadyExists', ['username' => $requestUsername])){
+                $userSavedMsg['user'] = __('Flash.UsernameAlreadyExists', $requestUsername );
+            }
+            else if(empty($requestEmail)){
+                $userSavedMsg['user'] = __('Flash.EmptyError', __('Global.Username'));
+            }
+            if(strlen($requestPassword) < 7){
+                $userSavedMsg['password'] = __('Flash.TooShortPassword');
+            }
+
+            if (count($userSavedMsg) == 0) {
                 $user = $this->Users->patchEntity($user, $this->request->data);
                 if ($this->Users->save($user)) {
-                    $this->Flash->success(__('Flash.UserRegistered', $user->first_name));
-                    return $this->redirect(['controller' => 'Homes', 'action' => 'home']);
+                    $this->set('userSaved', true);
+                    return;
                 }
-                $this->Flash->error(__('Flash.RegistrationFailed'));
             }
         }
-        $this->set('user', $user);
+
+        $this->set('userSaved', false);
+        $this->set($userSavedMsg);
     }
+
 
     public function beforeFilter(Event $event)
     {

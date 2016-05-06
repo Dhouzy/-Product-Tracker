@@ -213,8 +213,25 @@ msgstr "Product successfully registered."
 msgid "Flash.ProductDeleted"
 msgstr "Product successfully deleted."
 
+msgid "Flash.EmptyError"
+msgstr "Your must enter your {0}."
+
+msgid "Flash.TooShortPassword"
+msgstr "Your password must be longer than 6 characters."
+
+msgid "Flash.BadLogin"
+msgstr "Your login and or your password are false."
+
+
 #############################
 # Footer ####################
 #############################
 msgid "Footer.Text"
 msgstr "All rights reserved &copy; M.-A.&nbsp;Dion, M.&nbsp;Bernard, H.&nbsp;Glauss, V.&nbsp;Bissonnette, A.&nbsp;Sasseville, 2016"
+
+#############################
+# Login ####################
+#############################
+msgid "Login.Error"
+msgstr "Your login and/or password are wrong."
+

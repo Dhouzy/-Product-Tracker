@@ -20,125 +20,182 @@
       border-bottom-right-radius: 0;
       border-left: solid 2px @red;
       border-bottom: solid 2px @red;
-      .modal-body {
-        form {
-          .input-group {
-            width: 100%;
-            padding: 1px;
-            input {
-              background-color: @dark-grey;
-              border-color: @red;
-              color: @light-grey;
-              &:focus {
-                border-color: @light-red;
-                box-shadow: 0 0 5px @light-red;
-              }
-            }
-            span {
-              background-color: @red;
-              border-color: @red;
-              span {
-                color: #ffffff;
-              }
-            }
-          }
+    }
+  }
+}
 
+#signup-modal {
+  .modal-dialog {
+    min-width: 200px;
+    top: 70px;
+    .modal-content {
+      background-color: @dark-grey;
+      box-shadow: none;
+      border: solid 2px @red;
+
+    }
+  }
+}
+
+.modal-header {
+  color: @grey;
+  border-bottom-color: @red;
+  padding-bottom: 0;
+  margin-bottom: 10px;
+  p {
+    font-size: 16px;
+  }
+}
+
+.modal-body {
+  form {
+    .input-group {
+      width: 100%;
+      padding: 1px;
+      input {
+        background-color: @dark-grey;
+        border-color: @red;
+        color: @light-grey;
+        &:focus {
+          border-color: @light-red;
+          box-shadow: 0 0 5px @light-red;
         }
+      }
+      span {
+        background-color: @red;
+        border-color: @red;
+        span {
+          color: #ffffff;
+        }
+      }
+    }
+    button {
+      width: 100%;
+      height: 30px;
+      margin-left: 0px;
+      margin-top: 1px;
+      margin-bottom: 1px;
+      background-color: @red;
+      border-color: @red;
+      color: #ffffff;
+      &:hover, &:active, &:focus {
+        background-color: @light-red !important;
+        box-shadow: 0 0 5px @light-red !important;
+        border-color: @light-red !important;
+        color: #ffffff !important;
+      }
+      span {
+        margin-right: 5px;
+      }
+    }
+  }
+  .alert {
+    border: solid thin @red;
+    background-color: @red;
+    color: @light-grey;
+    font-size: 12px;
+    padding: 7px 7px 7px 12px;
+    margin: 1px 0 0 0;
+    p {
+      color: white;
+      span {
+        color: white;
+        margin-right: 5px;
       }
     }
   }
 }
 
-.form-modal {
-  margin: auto;
-  //background-color: #FF4136;
-  background-color: #ff726b;
-  // width: 200px;
-  // height: 200px;
-  //animation: pulse 0.5s ease-in forwards;
-  box-shadow: 0 0 1em black;
-  border-radius: 3px;
-  form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 5px;
-    animation: invisiblility 0.5s forwards;
-  }
-
-  ::-webkit-input-placeholder { /* WebKit browsers */
-    font-family: 'Source Sans Pro', sans-serif;
-    color: black;
-    font-weight: 300;
-  }
-  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    font-family: 'Source Sans Pro', sans-serif;
-    color: black;
-    opacity: 1;
-    font-weight: 300;
-  }
-  ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    font-family: 'Source Sans Pro', sans-serif;
-    color: black;
-    opacity: 1;
-    font-weight: 300;
-  }
-  :-ms-input-placeholder { /* Internet Explorer 10+ */
-    font-family: 'Source Sans Pro', sans-serif;
-    color: black;
-    font-weight: 300;
-  }
-
-  input[type=text], input[type=email], input[type=password] {
-    align-self: center;
-    display: block;
-    appearance: none;
-    outline: 0;
-    border: 1px solid fade(white, 40%);
-    background-color: fade(white, 25%);
-    margin: 15px auto 10px;
-    width: 250px;
-    text-align: center;
-    &:focus {
-      // background-color: white;
-      width: 280px;
-      height: 120%;
-      background-color: fade(white, 60%) !important;
-    }
-    &:hover {
-      background-color: fade(white, 40%);
-    }
-  }
-
-  #text {
-    order: 1;
-    align-self: center;
-    color: black;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    visibility: visible !important;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 500;
-    font-size: 20px;
-  }
-
-  .button-form {
-    order: 10;
-    align-self: center;
-    display: block;
-    margin: 30px auto 10px;
-    outline: 0;
-    background-color: white;
-    border: 0;
-    border-radius: 3px;
-    width: 100px;
-  }
-}
-
-.signup-form {
-  @width: 400px;
-  @height: 610px;
-  width: @width;
-  height: @height;
-  .form-modal;
-}
-
+//.form-modal {
+//  margin: auto;
+//  //background-color: #FF4136;
+//  background-color: #ff726b;
+//  // width: 200px;
+//  // height: 200px;
+//  //animation: pulse 0.5s ease-in forwards;
+//  box-shadow: 0 0 1em black;
+//  border-radius: 3px;
+//  form {
+//    display: flex;
+//    flex-direction: column;
+//    margin-top: 5px;
+//    animation: invisiblility 0.5s forwards;
+//  }
+//
+//  ::-webkit-input-placeholder { /* WebKit browsers */
+//    font-family: 'Source Sans Pro', sans-serif;
+//    color: black;
+//    font-weight: 300;
+//  }
+//  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+//    font-family: 'Source Sans Pro', sans-serif;
+//    color: black;
+//    opacity: 1;
+//    font-weight: 300;
+//  }
+//  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+//    font-family: 'Source Sans Pro', sans-serif;
+//    color: black;
+//    opacity: 1;
+//    font-weight: 300;
+//  }
+//  :-ms-input-placeholder { /* Internet Explorer 10+ */
+//    font-family: 'Source Sans Pro', sans-serif;
+//    color: black;
+//    font-weight: 300;
+//  }
+//
+//  input[type=text], input[type=email], input[type=password] {
+//    align-self: center;
+//    display: block;
+//    appearance: none;
+//    outline: 0;
+//    border: 1px solid fade(white, 40%);
+//    background-color: fade(white, 25%);
+//    margin: 15px auto 10px;
+//    width: 250px;
+//    text-align: center;
+//    &:focus {
+//      // background-color: white;
+//      width: 280px;
+//      height: 120%;
+//      background-color: fade(white, 60%) !important;
+//    }
+//    &:hover {
+//      background-color: fade(white, 40%);
+//    }
+//  }
+//
+//  #text {
+//    order: 1;
+//    align-self: center;
+//    color: black;
+//    margin-top: 5px;
+//    margin-bottom: 5px;
+//    visibility: visible !important;
+//    font-family: 'Source Sans Pro', sans-serif;
+//    font-weight: 500;
+//    font-size: 20px;
+//  }
+//
+//  .button-form {
+//    order: 10;
+//    align-self: center;
+//    display: block;
+//    margin: 30px auto 10px;
+//    outline: 0;
+//    background-color: white;
+//    border: 0;
+//    border-radius: 3px;
+//    width: 100px;
+//  }
+//}
+//
+//.signup-form {
+//  @width: 400px;
+//  @height: 610px;
+//  width: @width;
+//  height: @height;
+//  .form-modal;
+//}
+//
