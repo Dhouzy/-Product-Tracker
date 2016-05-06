@@ -59,7 +59,6 @@ body {
 }
 .navbar-searchbar {
   padding-right: 40px;
-  margin-top: 6px;
 }
 .navbar-searchbar input {
   width: 400px !important;
@@ -119,20 +118,33 @@ body {
 .not-visible {
   display: none;
 }
-.item-list {
-  overflow-y: scroll;
-  overflow-x: visible;
-  height: 100%;
+#profile-data-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
 }
-.item-list .item {
+#profile-data-container #products-list,
+#profile-data-container #product-graph {
+  height: 500px;
+  min-width: 500px;
+  width: 1px;
+  flex-grow: 1;
+}
+#profile-data-container #products-list {
+  overflow-y: scroll;
+  overflow-x: visible;
+  border: 1px solid black;
+  margin-right: 10px;
+}
+#profile-data-container #products-list .item {
   display: block;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 15px;
   padding-right: 15px;
 }
-.item-list .item a {
+#profile-data-container #products-list .item a {
   display: block;
   height: 100%;
   width: 100%;
@@ -141,23 +153,26 @@ body {
   white-space: nowrap;
   overflow: hidden;
 }
-.item-list .item a:link {
+#profile-data-container #products-list .item a:link {
   color: #000000;
 }
-.item-list .item a:visited {
+#profile-data-container #products-list .item a:visited {
   color: #000000;
 }
-.item-list .item a:hover {
+#profile-data-container #products-list .item a:hover {
   color: #000000;
 }
-.item-list .item a:active {
+#profile-data-container #products-list .item a:active {
   color: #000000;
 }
-.item-list .item a:hover {
+#profile-data-container #products-list .item a:hover {
   text-decoration: none;
 }
-.item-list .item:hover {
+#profile-data-container #products-list .item:hover {
   background-color: #ff0000;
+}
+#profile-data-container #product-graph {
+  margin-left: 10px;
 }
 .title-tooltip {
   display: block;
@@ -172,19 +187,6 @@ body {
   display: block;
   margin-top: 10px;
   font-size: 14px;
-}
-.left-products-list {
-  width: 35%;
-  height: 500px;
-  border: 1px solid black;
-}
-.right-product-graph {
-  width: 45%;
-  height: 500px;
-}
-#container-profile {
-  margin-bottom: 60px;
-  display: inline-block;
 }
 .selected {
   background-color: #e00007;

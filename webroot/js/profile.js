@@ -1,15 +1,13 @@
 
 
-
 (function () {
-
     $(document).ready(function() {
         $("#products-list").find(".item").each(function () {
             $(this).registerTooltip();
         });
 
-        $('.item-list a').click(function (event) {
-            $(".item-list .item").removeClass("selected");
+        $('#products-list a').click(function (event) {
+            $("#products-list .item").removeClass("selected");
             $(this).parent().addClass("selected");
             getGraphics($(this)[0].id);
             event.preventDefault();
@@ -31,6 +29,5 @@
             }
         });
     }
-
 })();
 
