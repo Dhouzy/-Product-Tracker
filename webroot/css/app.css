@@ -388,11 +388,13 @@ body {
   margin: 10px;
 }
 #DatePicker {
-  margin-top: 20px;
   margin-bottom: -5px;
 }
 #DatePicker #FromDate {
   margin-right: 8px;
+}
+#DatePicker .input-group {
+  margin-top: 10px;
 }
 #DatePicker input {
   background-color: #302e2e;
