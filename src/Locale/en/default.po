@@ -82,10 +82,10 @@ msgid "Product.Weight"
 msgstr "<b>Weight</b>: {0} mg"
 
 msgid "Product.Follow"
-msgstr "Follow this product"
+msgstr "Follow This Product"
 
 msgid "Product.Delete"
-msgstr "Stop following this product"
+msgstr "Stop Following This Product"
 
 msgid "Product.Price"
 msgstr "Price #{0} fetched on: {1} was: {2} and {3} on rebate"
@@ -97,7 +97,7 @@ msgid "Product.Info"
 msgstr "Informations"
 
 msgid "Product.BuyThisProduct"
-msgstr "Buy this product"
+msgstr "Buy This Product"
 
 #############################
 # SignIn ####################
@@ -124,14 +124,14 @@ msgid "Profile.CurrentPrice"
 msgstr "Current price : "
 
 msgid "Profile.NeedToClickOnAProduct"
-msgstr "You need to click on a product to shown that product price informations"
+msgstr "You need to click on a product to show that product's price variation."
 
 #############################
 # Graph #####################
 #############################
 
 msgid "Graph.GoToProduct"
-msgstr "Go to product informations"
+msgstr "Go to Product Information"
 
 msgid "Graph.From"
 msgstr "From : "
@@ -140,7 +140,7 @@ msgid "Graph.To"
 msgstr "To : "
 
 msgid "Graph.ProductPriceVariation"
-msgstr "Product price variation"
+msgstr "Product Price Variation"
 
 msgid "Graph.PriceYAxisTitle"
 msgstr "Price ($)"
@@ -149,7 +149,7 @@ msgid "Graph.Price"
 msgstr "Price"
 
 msgid "Graph.DiscountPrice"
-msgstr "Discount price"
+msgstr "Discount Price"
 
 #############################
 # Highcharts translation ####
@@ -217,10 +217,10 @@ msgid "Flash.EmptyError"
 msgstr "Your must enter your {0}."
 
 msgid "Flash.TooShortPassword"
-msgstr "Your password must be longer than 6 characters."
+msgstr "Your password must have at least 7 characters."
 
 msgid "Flash.BadLogin"
-msgstr "Your login and or your password are false."
+msgstr "Your login and or password is/are wrong."
 
 
 #############################
@@ -233,5 +233,5 @@ msgstr "All rights reserved &copy; M.-A.&nbsp;Dion, M.&nbsp;Bernard, H.&nbsp;Gla
 # Login ####################
 #############################
 msgid "Login.Error"
-msgstr "Your login and/or password are wrong."
+msgstr "Your login and/or password is/are wrong."
 

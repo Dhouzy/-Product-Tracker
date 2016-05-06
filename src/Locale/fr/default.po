@@ -40,7 +40,7 @@ msgid "Global.LastName"
 msgstr "Nom de famille"
 
 msgid "Global.Phone"
-msgstr "Telephone"
+msgstr "Téléphone"
 
 msgid "Global.StreetNumber"
 msgstr "Numéro civique"
@@ -124,7 +124,7 @@ msgid "Profile.CurrentPrice"
 msgstr "Prix courrant : "
 
 msgid "Profile.NeedToClickOnAProduct"
-msgstr "Vous avez besoin de cliquer sur un produit pour voir les informations sur le prix de ce produit"
+msgstr "Vous devez cliquer sur un produit pour voir l'évolution du prix de ce produit."
 
 #############################
 # Graph #####################
@@ -149,7 +149,7 @@ msgid "Graph.Price"
 msgstr "Prix"
 
 msgid "Graph.DiscountPrice"
-msgstr "Prix en rabait"
+msgstr "Prix en rabais"
 
 #############################
 # Highcharts translation ####
@@ -193,7 +193,7 @@ msgstr "Prix"
 # Flash #####################
 #############################
 msgid "Flash.UserRegistered"
-msgstr "Bravo {0}! Vous êtes inscrit!"
+msgstr "Bravo {0} ! Vous êtes inscrit !"
 
 msgid "Flash.RegistrationFailed"
 msgstr "Oups! L'inscription a échoué."
@@ -217,10 +217,10 @@ msgid "Flash.EmptyError"
 msgstr "Vous devez entrez votre {0}."
 
 msgid "Flash.TooShortPassword"
-msgstr "Votre mot de passe doit être plus long que 6 caractères."
+msgstr "Votre mot de passe doit contenir au moins 7 caractères."
 
 msgid "Flash.BadLogin"
-msgstr "Votre identifiant et/ou votre mot de passe est faux."
+msgstr "Votre identifiant et/ou votre mot de passe est/sont faux."
 
 #############################
 # Footer ####################
@@ -232,4 +232,4 @@ msgstr "Tous droits réservés &copy; M.-A.&nbsp;Dion, M.&nbsp;Bernard, H.&nbsp;
 # Login ####################
 #############################
 msgid "Login.Error"
-msgstr "Votre identifiant et/ou votre mot de passe est faux."
+msgstr "Votre identifiant et/ou votre mot de passe est/sont faux."
