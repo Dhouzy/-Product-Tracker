@@ -25,14 +25,21 @@
 }
 
 #signup-modal {
+  background-color: rgba(0, 0, 0, 0.2);
   .modal-dialog {
     min-width: 200px;
     top: 70px;
+
     .modal-content {
       background-color: @dark-grey;
       box-shadow: none;
       border: solid 2px @red;
+    }
 
+    &:after {
+      content: "";
+      display: block;
+      height: 70px;
     }
   }
 }

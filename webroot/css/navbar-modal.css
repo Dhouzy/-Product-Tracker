@@ -18,6 +18,9 @@
   border-left: solid 2px #e00007;
   border-bottom: solid 2px #e00007;
 }
+#signup-modal {
+  background-color: rgba(0, 0, 0, 0.2);
+}
 #signup-modal .modal-dialog {
   min-width: 200px;
   top: 70px;
@@ -26,6 +29,11 @@
   background-color: #302e2e;
   box-shadow: none;
   border: solid 2px #e00007;
+}
+#signup-modal .modal-dialog:after {
+  content: "";
+  display: block;
+  height: 70px;
 }
 .modal-header {
   color: #777777;

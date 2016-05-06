@@ -118,7 +118,7 @@ msgid "Profile.Title"
 msgstr "Profil"
 
 msgid "Profile.YourProducts"
-msgstr "Vos produits:"
+msgstr "Vos produits :"
 
 msgid "Profile.CurrentPrice"
 msgstr "Prix courrant : "
@@ -168,7 +168,7 @@ msgid "Highcharts.DecimalPoint"
 msgstr ","
 
 msgid "Highcharts.DateFormat"
-msgstr "%e %b %Y"
+msgstr "%e %b"
 
 #############################
 # Datepicker translation ####

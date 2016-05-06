@@ -25,10 +25,10 @@ function loadGraphics() {
             xAxis: {
                 type: 'datetime',
                 dateTimeLabelFormats: {
-                    millisecond: dateFormat,
-                    second: dateFormat,
-                    minute: dateFormat,
-                    hour: dateFormat,
+                    millisecond: dateFormat + " %H:%M",
+                    second: dateFormat + " %H:%M",
+                    minute: dateFormat + " %H:%M",
+                    hour: dateFormat + " %Hh",
                     day: dateFormat,
                     week: dateFormat,
                     month: dateFormat,
@@ -66,6 +66,7 @@ function loadGraphics() {
 
             if($("#DataForProductPriceDiscountVariationChart").length > 0) {
                 discountData = $.parseJSON($("#DataForProductPriceDiscountVariationChart").val());
+
             }
 
             modifyGraphsDates();
@@ -112,7 +113,7 @@ function modifyGraphsDates() {
         var tempPrice = [];
         for (var i = 0; i < priceDataBetweenDates.length; i++) {
             var element1 = {
-                x :  moment(priceDataBetweenDates[i].date, "YYYY-M-D").valueOf(),
+                x :  moment(priceDataBetweenDates[i].date, "YYYY-M-D H:m:s").valueOf(),
                 y : priceDataBetweenDates[i].price
             };
             tempPrice.push(element1);
@@ -133,7 +134,7 @@ function modifyGraphsDates() {
         var tempDiscount = [];
         for (var y = 0; y < discountDataBetweenDates.length; y++) {
             var element2 = {
-                x : moment(discountDataBetweenDates[y].date, "YYYY-M-D").valueOf(),
+                x : moment(discountDataBetweenDates[y].date, "YYYY-M-D H:m:s").valueOf(),
                 y : discountDataBetweenDates[y].price
             };
             tempDiscount.push(element2);

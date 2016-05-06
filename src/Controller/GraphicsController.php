@@ -40,7 +40,7 @@ class GraphicsController extends AppController
             $graph2Data = array();
 
             foreach ($product->prices as $price) {
-                $dateFormat = date_format(date_create($price->date),"Y-m-d");
+                $dateFormat = date_format(date_create($price->date),"Y-m-d H:i:s");
 
                 $oPrice = (object) [
                     'date' => $dateFormat,
