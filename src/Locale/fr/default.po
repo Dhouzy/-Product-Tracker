@@ -70,13 +70,13 @@ msgid "Product.Rating"
 msgstr "<b>Score</b>: {0}/5"
 
 msgid "Product.Brand"
-msgstr "<b>Marque</b>: {0}"
+msgstr "<b>Marque</b>:"
 
 msgid "Product.Color"
-msgstr "<b>Couleur</b>: {0}"
+msgstr "<b>Couleur</b>:"
 
 msgid "Product.Size"
-msgstr "<b>Taille</b>: {0} mm &times; {1} mm &times; {2} mm"
+msgstr "<b>Taille</b>:"
 
 msgid "Product.Weight"
 msgstr "<b>Poids</b>: {0} mg"

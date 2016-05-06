@@ -70,16 +70,16 @@ msgid "Product.Rating"
 msgstr "<b>Rating</b>: {0, number}/5"
 
 msgid "Product.Brand"
-msgstr "<b>Brand</b>: {0}"
+msgstr "<b>Brand</b>:"
 
 msgid "Product.Color"
-msgstr "<b>Color</b>: {0}"
+msgstr "<b>Color</b>:"
 
 msgid "Product.Size"
-msgstr "<b>Size</b>: {0} mm &times; {1} mm &times; {2} mm"
+msgstr "<b>Size</b>:"
 
 msgid "Product.Weight"
-msgstr "<b>Weight</b>: {0} mg"
+msgstr "<b>Weight</b>:"
 
 msgid "Product.Follow"
 msgstr "Follow This Product"

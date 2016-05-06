@@ -40,10 +40,11 @@
         </footer>
         <!--Load librairies first-->
         <?= $this->Html->script('jquery-1.12.3.min.js'); ?>
+        <?= $this->Html->script('notify.min.js') ?>
         <?= $this->Html->script('bootstrap.min.js'); ?>
         <?= $this->Html->script('jquery-ui.min.js') ?>
         <?= $this->Html->script('highcharts.js') ?>
-        <?= $this->Html->script('notify.min.js') ?>
+
 
         <!--Custom stuff-->
         <?= $this->Html->script('navbar_modal.js'); ?>
