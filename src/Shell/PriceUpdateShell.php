@@ -11,8 +11,6 @@ namespace App\Shell;
 use App\Core\Updater\ProductUpdater;
 use Cake\Console\Shell;
 use Cake\ORM\TableRegistry;
-use DateTime;
-use DateTimeZone;
 
 /**
  * -------Pour caller le service-------
@@ -26,12 +24,11 @@ class PriceUpdateShell extends Shell
 {
     private $productsTable;
     private $pricesTable;
-    private $now;
+
     public function main(){
 
         $this->productsTable = TableRegistry::get('products');
         $this->pricesTable = TableRegistry::get('prices');
-        $this->now = new DateTime(null, new DateTimeZone('America/Toronto'));
 
         $this->updateAllProduct();
     }
@@ -40,21 +37,10 @@ class PriceUpdateShell extends Shell
         $this->out(date('m/d/Y h:i:s a') . 'Daily update started');
         $productUpdater = new ProductUpdater();
 
-        $query = $this->productsTable->find();
-        foreach ($query as $row) {
-
-            $product = $this->pricesTable->find()
-                ->order(['id' => 'DESC'])
-                ->first();
-                $this->out($product->id);            
-                $interval = $productUpdater->compareTime($product->date);
-
-            if($interval->d > 0){
-                $this->out("yay");
-                $apiProduct = $productUpdater->fetchProductFromApi($product->articleUid);
-                $productUpdater->updatePrice($apiProduct, $row);
-
-            }
+        $products = $this->productsTable->find();
+        foreach ($products as $product) {
+            $this->out('Updating: '.$product->name.' with id: '.$product->id);
+            $productUpdater->updateProduct($product->article_uid);
         }
         $this->out(date('m/d/Y h:i:s a') .'Daily update ended');
     }

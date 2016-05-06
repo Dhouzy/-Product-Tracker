@@ -59,7 +59,6 @@ body {
 }
 .navbar-searchbar {
   padding-right: 40px;
-  margin-top: 6px;
 }
 .navbar-searchbar input {
   width: 400px !important;
@@ -116,20 +115,36 @@ body {
   display: block;
   text-align: center;
 }
-.item-list {
-  overflow-y: scroll;
-  overflow-x: visible;
-  height: 100%;
+.not-visible {
+  display: none;
+}
+#profile-data-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
 }
-.item-list .item {
+#profile-data-container #products-list,
+#profile-data-container #product-graph {
+  height: 500px;
+  min-width: 500px;
+  width: 1px;
+  flex-grow: 1;
+}
+#profile-data-container #products-list {
+  overflow-y: scroll;
+  overflow-x: visible;
+  border: 1px solid black;
+  margin-right: 10px;
+}
+#profile-data-container #products-list .item {
   display: block;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 15px;
   padding-right: 15px;
 }
-.item-list .item a {
+#profile-data-container #products-list .item a {
   display: block;
   height: 100%;
   width: 100%;
@@ -138,23 +153,26 @@ body {
   white-space: nowrap;
   overflow: hidden;
 }
-.item-list .item a:link {
+#profile-data-container #products-list .item a:link {
   color: #000000;
 }
-.item-list .item a:visited {
+#profile-data-container #products-list .item a:visited {
   color: #000000;
 }
-.item-list .item a:hover {
+#profile-data-container #products-list .item a:hover {
   color: #000000;
 }
-.item-list .item a:active {
+#profile-data-container #products-list .item a:active {
   color: #000000;
 }
-.item-list .item a:hover {
+#profile-data-container #products-list .item a:hover {
   text-decoration: none;
 }
-.item-list .item:hover {
+#profile-data-container #products-list .item:hover {
   background-color: #ff0000;
+}
+#profile-data-container #product-graph {
+  margin-left: 10px;
 }
 .title-tooltip {
   display: block;
@@ -169,19 +187,6 @@ body {
   display: block;
   margin-top: 10px;
   font-size: 14px;
-}
-.left-products-list {
-  width: 35%;
-  height: 500px;
-  border: 1px solid black;
-}
-.right-product-graph {
-  width: 45%;
-  height: 500px;
-}
-#container-profile {
-  margin-bottom: 60px;
-  display: inline-block;
 }
 .selected {
   background-color: #e00007;
@@ -305,197 +310,79 @@ body {
   border-left: solid 2px #e00007;
   border-bottom: solid 2px #e00007;
 }
-#login-modal .modal-dialog .modal-content .modal-body form .input-group {
+#signup-modal .modal-dialog {
+  min-width: 200px;
+  top: 70px;
+}
+#signup-modal .modal-dialog .modal-content {
+  background-color: #302e2e;
+  box-shadow: none;
+  border: solid 2px #e00007;
+}
+.modal-header {
+  color: #777777;
+  border-bottom-color: #e00007;
+  padding-bottom: 0;
+  margin-bottom: 10px;
+}
+.modal-header p {
+  font-size: 16px;
+}
+.modal-body form .input-group {
   width: 100%;
   padding: 1px;
 }
-#login-modal .modal-dialog .modal-content .modal-body form .input-group input {
+.modal-body form .input-group input {
   background-color: #302e2e;
   border-color: #e00007;
   color: #a9a9a9;
 }
-#login-modal .modal-dialog .modal-content .modal-body form .input-group input:focus {
+.modal-body form .input-group input:focus {
   border-color: #ff0000;
   box-shadow: 0 0 5px #ff0000;
 }
-#login-modal .modal-dialog .modal-content .modal-body form .input-group span {
+.modal-body form .input-group span {
   background-color: #e00007;
   border-color: #e00007;
 }
-#login-modal .modal-dialog .modal-content .modal-body form .input-group span span {
+.modal-body form .input-group span span {
   color: #ffffff;
 }
-.form-modal {
-  margin: auto;
-  background-color: #ff726b;
-  box-shadow: 0 0 1em black;
-  border-radius: 3px;
+.modal-body form button {
+  width: 100%;
+  height: 30px;
+  margin-left: 0px;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  background-color: #e00007;
+  border-color: #e00007;
+  color: #ffffff;
 }
-.form-modal form {
-  display: flex;
-  flex-direction: column;
-  margin-top: 5px;
-  animation: invisiblility 0.5s forwards;
+.modal-body form button:hover,
+.modal-body form button:active,
+.modal-body form button:focus {
+  background-color: #ff0000 !important;
+  box-shadow: 0 0 5px #ff0000 !important;
+  border-color: #ff0000 !important;
+  color: #ffffff !important;
 }
-.form-modal ::-webkit-input-placeholder {
-  /* WebKit browsers */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  font-weight: 300;
+.modal-body form button span {
+  margin-right: 5px;
 }
-.form-modal :-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  opacity: 1;
-  font-weight: 300;
+.modal-body .alert {
+  border: solid thin #e00007;
+  background-color: #e00007;
+  color: #a9a9a9;
+  font-size: 12px;
+  padding: 7px 7px 7px 12px;
+  margin: 1px 0 0 0;
 }
-.form-modal ::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  opacity: 1;
-  font-weight: 300;
+.modal-body .alert p {
+  color: white;
 }
-.form-modal :-ms-input-placeholder {
-  /* Internet Explorer 10+ */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  font-weight: 300;
-}
-.form-modal input[type=text],
-.form-modal input[type=email],
-.form-modal input[type=password] {
-  align-self: center;
-  display: block;
-  appearance: none;
-  outline: 0;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background-color: rgba(255, 255, 255, 0.25);
-  margin: 15px auto 10px;
-  width: 250px;
-  text-align: center;
-}
-.form-modal input[type=text]:focus,
-.form-modal input[type=email]:focus,
-.form-modal input[type=password]:focus {
-  width: 280px;
-  height: 120%;
-  background-color: rgba(255, 255, 255, 0.6) !important;
-}
-.form-modal input[type=text]:hover,
-.form-modal input[type=email]:hover,
-.form-modal input[type=password]:hover {
-  background-color: rgba(255, 255, 255, 0.4);
-}
-.form-modal #text {
-  order: 1;
-  align-self: center;
-  color: black;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  visibility: visible !important;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 500;
-  font-size: 20px;
-}
-.form-modal .button-form {
-  order: 10;
-  align-self: center;
-  display: block;
-  margin: 30px auto 10px;
-  outline: 0;
-  background-color: white;
-  border: 0;
-  border-radius: 3px;
-  width: 100px;
-}
-.signup-form {
-  width: 400px;
-  height: 610px;
-  margin: auto;
-  background-color: #ff726b;
-  box-shadow: 0 0 1em black;
-  border-radius: 3px;
-}
-.signup-form form {
-  display: flex;
-  flex-direction: column;
-  margin-top: 5px;
-  animation: invisiblility 0.5s forwards;
-}
-.signup-form ::-webkit-input-placeholder {
-  /* WebKit browsers */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  font-weight: 300;
-}
-.signup-form :-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  opacity: 1;
-  font-weight: 300;
-}
-.signup-form ::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  opacity: 1;
-  font-weight: 300;
-}
-.signup-form :-ms-input-placeholder {
-  /* Internet Explorer 10+ */
-  font-family: 'Source Sans Pro', sans-serif;
-  color: black;
-  font-weight: 300;
-}
-.signup-form input[type=text],
-.signup-form input[type=email],
-.signup-form input[type=password] {
-  align-self: center;
-  display: block;
-  appearance: none;
-  outline: 0;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background-color: rgba(255, 255, 255, 0.25);
-  margin: 15px auto 10px;
-  width: 250px;
-  text-align: center;
-}
-.signup-form input[type=text]:focus,
-.signup-form input[type=email]:focus,
-.signup-form input[type=password]:focus {
-  width: 280px;
-  height: 120%;
-  background-color: rgba(255, 255, 255, 0.6) !important;
-}
-.signup-form input[type=text]:hover,
-.signup-form input[type=email]:hover,
-.signup-form input[type=password]:hover {
-  background-color: rgba(255, 255, 255, 0.4);
-}
-.signup-form #text {
-  order: 1;
-  align-self: center;
-  color: black;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  visibility: visible !important;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: 500;
-  font-size: 20px;
-}
-.signup-form .button-form {
-  order: 10;
-  align-self: center;
-  display: block;
-  margin: 30px auto 10px;
-  outline: 0;
-  background-color: white;
-  border: 0;
-  border-radius: 3px;
-  width: 100px;
+.modal-body .alert p span {
+  color: white;
+  margin-right: 5px;
 }
 #ProductPriceVariationChart {
   margin: 10px;
@@ -534,6 +421,13 @@ body {
 .ui-datepicker .ui-datepicker-prev span {
   background: url("/img/jquery_ui/ui-icons_ffffff_256x240.png") no-repeat -80px -192px !important;
 }
+.ui-datepicker .ui-datepicker-today {
+  background: red !important;
+  border: solid 1px #e00007 !important;
+}
+.ui-datepicker .ui-datepicker-current-day a {
+  background: red !important;
+}
 #DatePicker span {
   border: solid 2px #e00007 !important;
   background: #e00007 !important;
@@ -541,10 +435,6 @@ body {
 }
 #title {
   text-align: center;
-}
-form {
-  width: 200px;
-  margin: 0 !important;
 }
 #productImage {
   width: 500px;
@@ -558,9 +448,6 @@ form {
 #productIframe html body {
   background-color: gainsboro !important;
 }
-.btn {
-  margin-left: 0;
-}
 #tabs li.active a {
   background-color: #e00007;
   color: #a9a9a9;
@@ -572,6 +459,13 @@ form {
 #form {
   display: flex;
   flex-direction: row;
+}
+#form form {
+  width: 200px;
+  margin: 0 !important;
+}
+#form form .btn {
+  margin-left: 0;
 }
 .tab-pane {
   min-height: 300px;

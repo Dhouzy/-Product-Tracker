@@ -59,7 +59,6 @@ body {
 }
 .navbar-searchbar {
   padding-right: 40px;
-  margin-top: 6px;
 }
 .navbar-searchbar input {
   width: 400px !important;
@@ -115,4 +114,7 @@ body {
   margin: auto;
   display: block;
   text-align: center;
+}
+.not-visible {
+  display: none;
 }

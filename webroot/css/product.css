@@ -1,10 +1,6 @@
 #title {
   text-align: center;
 }
-form {
-  width: 200px;
-  margin: 0 !important;
-}
 #productImage {
   width: 500px;
   margin-bottom: 10px;
@@ -17,9 +13,6 @@ form {
 #productIframe html body {
   background-color: gainsboro !important;
 }
-.btn {
-  margin-left: 0;
-}
 #tabs li.active a {
   background-color: #e00007;
   color: #a9a9a9;
@@ -31,6 +24,13 @@ form {
 #form {
   display: flex;
   flex-direction: row;
+}
+#form form {
+  width: 200px;
+  margin: 0 !important;
+}
+#form form .btn {
+  margin-left: 0;
 }
 .tab-pane {
   min-height: 300px;

@@ -40,7 +40,7 @@ msgid "Global.LastName"
 msgstr "Nom de famille"
 
 msgid "Global.Phone"
-msgstr "Telephone"
+msgstr "Téléphone"
 
 msgid "Global.StreetNumber"
 msgstr "Numéro civique"
@@ -124,7 +124,7 @@ msgid "Profile.CurrentPrice"
 msgstr "Prix courrant : "
 
 msgid "Profile.NeedToClickOnAProduct"
-msgstr "Vous avez besoin de cliquer sur un produit pour voir les informations sur le prix de ce produit"
+msgstr "Vous devez cliquer sur un produit pour voir l'évolution du prix de ce produit."
 
 #############################
 # Graph #####################
@@ -149,7 +149,36 @@ msgid "Graph.Price"
 msgstr "Prix"
 
 msgid "Graph.DiscountPrice"
-msgstr "Prix en rabait"
+msgstr "Prix en rabais"
+
+#############################
+# Highcharts translation ####
+#############################
+
+msgid "Highcharts.Months"
+msgstr "janvier,février,mars,avril,mai,juin,juillet,août,septembre,octobre,novembre,décembre"
+
+msgid "Highcharts.ShortMonths"
+msgstr "jan,fév,mar,avr,mai,juin,juil,aoû,sep,oct,nov,déc"
+
+msgid "Highcharts.Days"
+msgstr "dimanche,lundi,mardi,mercredi,jeudi,vendredi,samedi"
+
+msgid "Highcharts.DecimalPoint"
+msgstr ","
+
+msgid "Highcharts.DateFormat"
+msgstr "%e %b %Y"
+
+#############################
+# Datepicker translation ####
+#############################
+
+msgid "Datepicker.Months"
+msgstr "Janvier,Février,Mars,Avril,Mai,Juin,Juillet,Août,Septembre,Octobre,Novembre,Décembre"
+
+msgid "Datepicker.DaysMin"
+msgstr "Di,Lu,Ma,Me,Je,Ve,Sa"
 
 #############################
 # Search ####################
@@ -164,7 +193,7 @@ msgstr "Prix"
 # Flash #####################
 #############################
 msgid "Flash.UserRegistered"
-msgstr "Bravo {0}! Vous êtes inscrit!"
+msgstr "Bravo {0} ! Vous êtes inscrit !"
 
 msgid "Flash.RegistrationFailed"
 msgstr "Oups! L'inscription a échoué."
@@ -184,8 +213,23 @@ msgstr "Produit enregistré avec succès."
 msgid "Flash.ProductDeleted"
 msgstr "Produit supprimé avec succès"
 
+msgid "Flash.EmptyError"
+msgstr "Vous devez entrez votre {0}."
+
+msgid "Flash.TooShortPassword"
+msgstr "Votre mot de passe doit contenir au moins 7 caractères."
+
+msgid "Flash.BadLogin"
+msgstr "Votre identifiant et/ou votre mot de passe est/sont faux."
+
 #############################
 # Footer ####################
 #############################
 msgid "Footer.Text"
 msgstr "Tous droits réservés &copy; M.-A.&nbsp;Dion, M.&nbsp;Bernard, H.&nbsp;Glauss, V.&nbsp;Bissonnette, A.&nbsp;Sasseville, 2016"
+
+#############################
+# Login ####################
+#############################
+msgid "Login.Error"
+msgstr "Votre identifiant et/ou votre mot de passe est/sont faux."
