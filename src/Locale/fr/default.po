@@ -168,7 +168,7 @@ msgid "Highcharts.DecimalPoint"
 msgstr ","
 
 msgid "Highcharts.DateFormat"
-msgstr "%e %b %Y"
+msgstr "%e %b"
 
 #############################
 # Datepicker translation ####
