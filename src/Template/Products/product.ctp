@@ -1,6 +1,7 @@
 <script>
     var productUid = "<?= $product->article_uid ?>";
 </script>
+<?php $this->Html->script('product.js', ['block' => 'scriptBottom']); ?>
 <fieldset>
     <div id="top-button-bar">
     <?php if ($isUserLoggedIn){

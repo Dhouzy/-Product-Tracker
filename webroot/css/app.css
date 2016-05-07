@@ -118,6 +118,24 @@ body {
 .not-visible {
   display: none;
 }
+.home-carousel {
+  margin: 0 auto;
+  width: 95%;
+  height: 100%;
+  padding: 20px;
+  background-color: #302e2e;
+}
+.home-carousel .home-carousel-image {
+  height: 600px;
+  border: solid 5px #e00007;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.home-carousel .home-carousel-image img {
+  position: relative;
+  height: 100%;
+  width: auto;
+}
 #profile-data-container {
   display: flex;
   flex-direction: row;
