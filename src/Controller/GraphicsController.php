@@ -41,14 +41,14 @@ class GraphicsController extends AppController
 
             foreach ($product->prices as $price) {
                 $dateFormat = date_format(date_create($price->date),"Y-m-d H:i:s");
-
-                $oPrice = (object) [
-                    'date' => $dateFormat,
-                    'price' => $price->price
-                ];
-                $graph1Data[] = $oPrice;
-
-                if($price->rebate_price > 0){
+                if($price->price > 0) {
+                    $oPrice = (object) [
+                        'date' => $dateFormat,
+                        'price' => $price->price
+                    ];
+                    $graph1Data[] = $oPrice;
+                }
+                if($price->rebate_price > 0) {
                     $oRebatePrice = (object) [
                         'date' => $dateFormat,
                         'price' => $price->rebate_price
