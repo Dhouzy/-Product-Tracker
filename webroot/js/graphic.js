@@ -3,13 +3,13 @@ var chart = null;
 var priceData = null;
 var discountData = null;
 
-$('#FromDate, #ToDate').on('change', function (e) {
-    modifyGraphsDates();
-});
-
 function loadGraphics() {
 
     if($('#ProductPriceVariationChart')){
+
+        $('#FromDate, #ToDate').on('change', function (e) {
+            modifyGraphsDates();
+        });
 
         setChartTheme();
 
@@ -33,7 +33,8 @@ function loadGraphics() {
                     week: dateFormat,
                     month: dateFormat,
                     year: dateFormat
-                }
+                },
+
             },
             yAxis: {
                 labels: {
@@ -165,7 +166,7 @@ function tableValuesBetweenDates(table, date1, date2) {
 function setChartOptions() {
     Highcharts.setOptions({
         global : {
-            useUTC : true
+            useUTC : false
         },
         lang: {
             months: $('#highcharts-months').val().split(","),

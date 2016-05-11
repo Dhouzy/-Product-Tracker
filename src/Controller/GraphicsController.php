@@ -13,6 +13,9 @@ use App\Model\Entity\Product;
 use App\Model\Entity\Price;
 use App\Core\Updater\ProductUpdater;
 
+use \Datetime;
+use \DateTimeZone;
+
 /**
  * Application Controller for application wide methods
  *
@@ -40,7 +43,9 @@ class GraphicsController extends AppController
             $graph2Data = array();
 
             foreach ($product->prices as $price) {
-                $dateFormat = date_format(date_create($price->date),"Y-m-d H:i:s");
+                $date = new DateTime($price->date);
+                $date->setTimezone(new DateTimeZone('America/Toronto'));
+                $dateFormat = $date->format("Y-m-d H:i:s");
                 if($price->price > 0) {
                     $oPrice = (object) [
                         'date' => $dateFormat,
@@ -56,6 +61,7 @@ class GraphicsController extends AppController
                     $graph2Data[] = $oRebatePrice;
                 }
             }
+            echo "<script>console.log(" . json_encode($graph1Data).");</script>";
 
             $this->set(compact('productId', 'graph1Data', 'graph2Data'));
         }

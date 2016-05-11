@@ -14,7 +14,7 @@
                     <?php } ?>
                     <div style="display: inline-block; margin-left: 20px">
                         <div class="title-tooltip"><?= $product->name ?></div>
-                        <div class="price-tooltip"><?= __('Profile.CurrentPrice') ?> <?= $product->mostRecentPrice ?></div>
+                        <div class="price-tooltip"><?= __('Profile.CurrentPrice') ?> $<?= $product->mostRecentPrice ?></div>
                     </div>
                 </div>
             </div>
