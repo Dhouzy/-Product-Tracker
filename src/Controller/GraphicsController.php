@@ -61,7 +61,6 @@ class GraphicsController extends AppController
                     $graph2Data[] = $oRebatePrice;
                 }
             }
-            echo "<script>console.log(" . json_encode($graph1Data).");</script>";
 
             $this->set(compact('productId', 'graph1Data', 'graph2Data'));
         }
