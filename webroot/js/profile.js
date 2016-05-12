@@ -1,5 +1,4 @@
 
-
 (function () {
     $(document).ready(function() {
         $("#products-list").find(".item").each(function () {

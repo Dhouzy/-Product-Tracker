@@ -151,6 +151,9 @@ msgstr "Price"
 msgid "Graph.DiscountPrice"
 msgstr "Discount Price"
 
+msgid "Graph.InvalidDateFormat"
+msgstr "Error: invalid date format. Must be YYYY-MM-DD."
+
 #############################
 # Highcharts translation ####
 #############################

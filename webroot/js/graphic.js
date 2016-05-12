@@ -3,13 +3,11 @@ var chart = null;
 var priceData = null;
 var discountData = null;
 
-$('#FromDate, #ToDate').on('change', function (e) {
-    modifyGraphsDates();
-});
-
 function loadGraphics() {
-
     if($('#ProductPriceVariationChart')){
+        $('#FromDate, #ToDate').on('change', function (e) {
+            modifyGraphsDates();
+        });
 
         setChartTheme();
 
@@ -102,6 +100,11 @@ function modifyGraphsDates() {
     var fromSelectedDate = $('#FromDate').val();
     var toSelectedDate = $('#ToDate').val();
 
+    if(!(isValidDateFormat(fromSelectedDate) && isValidDateFormat(toSelectedDate))){
+        window.alert(strings.chart.invalidDateFormat);
+        return;
+    }
+
     while(chart.series.length > 0)
         chart.series[0].remove(true);
 
@@ -148,6 +151,10 @@ function modifyGraphsDates() {
 
         chart.addSeries(serie2);
     }
+}
+
+function isValidDateFormat(strDate){
+    return strDate.search(/[0-9]{4}-(0[0-9]|1[0-2])-([0-2][0-9]|3[01])/) != -1;
 }
 
 function tableValuesBetweenDates(table, date1, date2) {
