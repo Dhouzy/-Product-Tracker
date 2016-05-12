@@ -1,6 +1,7 @@
 <script>
     var productUid = "<?= $product->article_uid ?>";
 </script>
+<?php $this->Html->script('product.js', ['block' => 'scriptBottom']); ?>
 <fieldset>
     <div id="top-button-bar">
     <?php if ($isUserLoggedIn){
@@ -48,19 +49,21 @@
 
                 </div>
                 <div class="tab-pane fade"  id="info">
+                    <table>
                     <?php
                     if($product->brand != null)
-                        echo __('Product.Brand', $product->brand) . '<br/>';
+                        echo '<tr><td>' . __('Product.Brand') . '</td><td>' . $product->brand . '</td></tr>';
 
                     if($product->color != null)
-                        echo __('Product.Color', $product->color) . '<br/>';
+                        echo '<tr><td>' .  __('Product.Color') . '</td><td>' . $product->color . '</td></tr>';
 
                     if($product->lengthmm != null && $product->widthmm != null && $product->heightmm != null)
-                        echo __('Product.Size', $product->lengthmm, $product->widthmm, $product->heightmm) . '<br/>';
+                        echo '<tr><td>' .  __('Product.Size') . '</td><td>' . $product->lengthmm ." mm x " . $product->widthmm ." mm x ". $product->heightmm . " mm". '</td></tr>';
 
                     if($product->weightmm != null)
-                        echo __('Product.Weight', $product->weightmm) . '<br/>';
+                        echo '<tr><td>' .  __('Product.Weight', $product->weightmm) . '</td><td>' . $product->weighmm . '</td></tr>';
                     ?>
+                    </table>
                 </div>
                 <div class="tab-pane fade" id="iframe">
                     <?php

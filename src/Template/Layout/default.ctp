@@ -15,6 +15,8 @@
         <?= $this->Html->css('bootstrap.min.css') ?>
         <?= $this->Html->css('font-awesome.min.css') ?>
         <?= $this->Html->css('app.css') ?>
+        <?= $this->Html->css('slick.css') ?>
+        <?= $this->Html->css('slick-theme.css') ?>
 
         <script type="application/javascript">
             <?= $this->element('js_global_strings'); ?>
@@ -36,14 +38,16 @@
         </section>
 
         <footer class="footer">
-            <?=__('Footer.Text')?>
+            <?= __('Footer.Text') ?>
         </footer>
         <!--Load librairies first-->
         <?= $this->Html->script('jquery-1.12.3.min.js'); ?>
+        <?= $this->Html->script('notify.min.js') ?>
         <?= $this->Html->script('bootstrap.min.js'); ?>
         <?= $this->Html->script('jquery-ui.min.js') ?>
         <?= $this->Html->script('highcharts.js') ?>
         <?= $this->Html->script('notify.min.js') ?>
+        <?= $this->Html->script("slick.min.js") ?>
 
         <!--Custom stuff-->
         <?= $this->Html->script('navbar_modal.js'); ?>
@@ -52,6 +56,6 @@
         <?= $this->Html->script('tooltip.js') ?>
         <?= $this->Html->script('graphic.js') ?>
         <?= $this->Html->script('profile.js') ?>
-        <?= $this->Html->script('product.js') ?>
+        <?= $this->fetch('scriptBottom'); ?>
     </body>
 </html>

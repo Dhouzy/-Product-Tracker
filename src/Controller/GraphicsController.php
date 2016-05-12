@@ -13,6 +13,9 @@ use App\Model\Entity\Product;
 use App\Model\Entity\Price;
 use App\Core\Updater\ProductUpdater;
 
+use \Datetime;
+use \DateTimeZone;
+
 /**
  * Application Controller for application wide methods
  *
@@ -37,27 +40,21 @@ class GraphicsController extends AppController
                 ->first();
 
             $graph1Data = array();
-            $graph2Data = array();
 
             foreach ($product->prices as $price) {
-                $dateFormat = date_format(date_create($price->date),"Y-m-d H:i:s");
-
-                $oPrice = (object) [
-                    'date' => $dateFormat,
-                    'price' => $price->price
-                ];
-                $graph1Data[] = $oPrice;
-
-                if($price->rebate_price > 0){
-                    $oRebatePrice = (object) [
+                $date = new DateTime($price->date);
+                $date->setTimezone(new DateTimeZone('America/Toronto'));
+                $dateFormat = $date->format("Y-m-d H:i:s");
+                if($price->price > 0) {
+                    $oPrice = (object) [
                         'date' => $dateFormat,
-                        'price' => $price->rebate_price
+                        'price' => $price->price
                     ];
-                    $graph2Data[] = $oRebatePrice;
+                    $graph1Data[] = $oPrice;
                 }
             }
 
-            $this->set(compact('productId', 'graph1Data', 'graph2Data'));
+            $this->set(compact('productId', 'graph1Data'));
         }
     }
     public function beforeFilter(Event $event)

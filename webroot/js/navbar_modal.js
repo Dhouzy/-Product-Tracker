@@ -63,6 +63,7 @@ $(document).ready(function () {
 
     $('#signup-link, #signin-link').on("click", function(){
         $('#emplacement-alert').empty();
+        $("#login-alert").css('display', 'none');
         $('.validation ').css("display", "none");
 
     });
