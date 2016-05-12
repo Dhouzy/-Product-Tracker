@@ -1,7 +1,6 @@
 
 var chart = null;
 var priceData = null;
-var discountData = null;
 
 function loadGraphics() {
 
@@ -65,11 +64,6 @@ function loadGraphics() {
                 priceData = $.parseJSON($("#DataForProductPriceVariationChart").val());
             }
 
-            if($("#DataForProductPriceDiscountVariationChart").length > 0) {
-                discountData = $.parseJSON($("#DataForProductPriceDiscountVariationChart").val());
-
-            }
-
             modifyGraphsDates();
         }
     }
@@ -106,8 +100,6 @@ function modifyGraphsDates() {
     while(chart.series.length > 0)
         chart.series[0].remove(true);
 
-    var serie1, serie2;
-
     //Serie 1
     if(priceData !== null) {
         var priceDataBetweenDates = tableValuesBetweenDates(priceData, fromSelectedDate, toSelectedDate);
@@ -119,7 +111,7 @@ function modifyGraphsDates() {
             };
             tempPrice.push(element1);
         }
-        serie1 = {
+        var serie1 = {
             name: $('#price-title').val(),
             type: 'line',
             data: tempPrice,
@@ -127,27 +119,6 @@ function modifyGraphsDates() {
         };
 
         chart.addSeries(serie1);
-    }
-
-    //Serie 2
-    if(discountData !== null) {
-        var discountDataBetweenDates = tableValuesBetweenDates(discountData, fromSelectedDate, toSelectedDate);
-        var tempDiscount = [];
-        for (var y = 0; y < discountDataBetweenDates.length; y++) {
-            var element2 = {
-                x : moment(discountDataBetweenDates[y].date, "YYYY-M-D H:m:s").valueOf(),
-                y : discountDataBetweenDates[y].price
-            };
-            tempDiscount.push(element2);
-        }
-        serie2 = {
-            name: $('#discount-price-title').val(),
-            type: 'line',
-            data: tempDiscount,
-            color: '#e00007'
-        };
-
-        chart.addSeries(serie2);
     }
 }
 

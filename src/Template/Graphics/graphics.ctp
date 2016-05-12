@@ -34,11 +34,9 @@
         </div>
     </div>
     <div id="PriceGraph">
-        <?php if ((isset($graph1Data) && !empty($graph1Data)) || (isset($graph2Data) && !empty($graph2Data))) { ?>
+        <?php if (isset($graph1Data) && !empty($graph1Data)) { ?>
             <input id="DataForProductPriceVariationChart" type="hidden"
                    value='<?php echo json_encode($graph1Data); ?>'/>
-            <input id="DataForProductPriceDiscountVariationChart" type="hidden"
-                   value='<?php echo json_encode($graph2Data); ?>'/>
             <div id="ProductPriceVariationChart"></div>
         <?php } else { ?>
             <label>No data</label>

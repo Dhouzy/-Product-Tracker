@@ -40,7 +40,6 @@ class GraphicsController extends AppController
                 ->first();
 
             $graph1Data = array();
-            $graph2Data = array();
 
             foreach ($product->prices as $price) {
                 $date = new DateTime($price->date);
@@ -53,16 +52,9 @@ class GraphicsController extends AppController
                     ];
                     $graph1Data[] = $oPrice;
                 }
-                if($price->rebate_price > 0) {
-                    $oRebatePrice = (object) [
-                        'date' => $dateFormat,
-                        'price' => $price->rebate_price
-                    ];
-                    $graph2Data[] = $oRebatePrice;
-                }
             }
 
-            $this->set(compact('productId', 'graph1Data', 'graph2Data'));
+            $this->set(compact('productId', 'graph1Data'));
         }
     }
     public function beforeFilter(Event $event)
