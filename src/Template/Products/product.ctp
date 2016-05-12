@@ -40,9 +40,9 @@
 
         <div id="tab-container">
             <ul id="tabs" class="nav nav-tabs">
-                <li role="presentation" class="active"><a href="#chart" data-toggle="tab"><?= __('Product.Chart')?></a></li>
-                <li role="presentation"><a href="#info" data-toggle="tab"><?= __('Product.Info')?></a></li>
-                <li role="presentation"><a href="#iframe" data-toggle="tab">Amazon rate</a></li>
+                <li role="presentation" class="active"><a href="#chart" data-toggle="tab"><?= __('Product.Chart') ?></a></li>
+                <li role="presentation"><a href="#info" data-toggle="tab"><?= __('Product.Info') ?></a></li>
+                <li role="presentation"><a href="#iframe" data-toggle="tab"><?= __('Product.AmazonReviews') ?></a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane fade in active"  id="chart">

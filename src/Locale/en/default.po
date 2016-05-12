@@ -96,6 +96,9 @@ msgstr "Chart"
 msgid "Product.Info"
 msgstr "Informations"
 
+msgid "Product.AmazonReviews"
+msgstr "Amazon Reviews"
+
 msgid "Product.BuyThisProduct"
 msgstr "Buy This Product"
 
