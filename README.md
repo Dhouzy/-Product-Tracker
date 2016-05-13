@@ -1,26 +1,35 @@
-# CakePHP Application Skeleton
+# **Product Tracker**
 
-[![Build Status](https://img.shields.io/travis/cakephp/app/master.svg?style=flat-square)](https://travis-ci.org/cakephp/app)
-[![License](https://img.shields.io/packagist/l/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
+![](http://imgur.com/o0ukd32.jpg)
 
-A skeleton for creating applications with [CakePHP](http://cakephp.org) 3.x.
+Ce site internet permet de suivre les changements de prix des produits sur internet.
+***
+Product Tracker est un projet étudiant visant à se familiariser avec le framework CakePHP et le les langanges PHP et javascript.
 
-The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
+## Par:
+Alexandre Sasseville<br>
+Marc-André Dion<br>
+Maxime Bernard<br>
+Hippolyte Glaus<br>
+Vincent Bissonette<br>
 
-## Installation
+###The MIT License
+Copyright (c) 2016 Alexandre Sasseville Marc-André Dion Maxime Bernard Hippolyte Glaus Vincent Bissonette<br>
 
-1. Download [Composer](http://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist cakephp/app [app_name]`.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-If Composer is installed globally, run
-```bash
-composer create-project --prefer-dist cakephp/app [app_name]
-```
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
 
-You should now be able to visit the path to where you installed the app and see
-the setup traffic lights.
-
-## Configuration
-
-Read and edit `config/app.php` and setup the 'Datasources' and any other
-configuration relevant for your application.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
