@@ -238,7 +238,11 @@ function setChartTheme() {
                     color: '#B0B0B3'
                 },
                 marker: {
-                    lineColor: '#333'
+                    lineColor: '#333',
+                    lineWidth : 2,
+                    radius : 4,
+                    symbol : 'circle',
+                    enabled : true
                 }
             },
             boxplot: {
